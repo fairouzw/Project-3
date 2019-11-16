@@ -49,7 +49,10 @@ authRoutes.post("/signup", (req, res, next) => {
     const aNewUser = new User({
       username: username,
       password: hashPass,
-      email: email
+      email: email,
+      favourites: favourites,
+      posts: posts,
+      follows: follows
     });
 
     aNewUser.save(err => {

@@ -17,7 +17,7 @@ authRoutes.get("/checkuser", (req, res, next) => {
 
 // POST /signup
 authRoutes.post("/signup", (req, res, next) => {
-  const { username, password, email } = req.body;
+  const { username, password, email, favourites, posts, follows } = req.body;
 
   if (!username || !password) {
     res.status(400).json({ message: "Provide username and password" });
@@ -49,7 +49,10 @@ authRoutes.post("/signup", (req, res, next) => {
     const aNewUser = new User({
       username: username,
       password: hashPass,
-      email: email
+      email: email,
+      favourites: favourites,
+      posts: posts,
+      follows: follows
     });
 
     aNewUser.save(err => {

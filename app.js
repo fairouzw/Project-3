@@ -12,6 +12,7 @@ var indexRouter = require("./routes/index");
 // var usersRouter = require("./routes/profile-routes");
 const authRoutes = require("./routes/auth-routes");
 const profRoutes = require("./routes/profile-routes");
+const postRoutes = require("./routes/post-routes");
 
 var app = express();
 
@@ -77,14 +78,15 @@ app.use(passport.session());
 
 app.use("/api", authRoutes);
 app.use("/api", profRoutes);
+app.use("/api/posts", postRoutes);
 
 // catch 404 and forward to error handler
-app.use(function(req, res, next) {
+app.use(function (req, res, next) {
   next(createError(404));
 });
 
 // error handler
-app.use(function(err, req, res, next) {
+app.use(function (err, req, res, next) {
   // set locals, only providing error in development
   res.locals.message = err.message;
   res.locals.error = req.app.get("env") === "development" ? err : {};

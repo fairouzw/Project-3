@@ -4,23 +4,21 @@ const Schema = mongoose.Schema;
 const userSchema = new Schema(
   {
     username: String,
+    email: String,
     password: String,
-    image: String,
-    campus: {
-      type: String,
+    favourites: [{ type: Schema.Types.ObjectId, ref: 'favourites' }],
+    posts: [{ type: Schema.Types.ObjectId, ref: 'posts' }],
+    follows: {
+      type: String, // try to implement following category-tags
       enum: [
-        "Madrid",
-        "Barcelona",
-        "Miami",
-        "Paris",
-        "Berlin",
-        "Amsterdam",
-        "Mexico",
-        "Sau Paulo",
-        "Lisbon"
+        "food",
+        "electronics",
+        "furniture",
+        "clothes",
+        "dishes"
       ]
     },
-    course: { type: String, enum: ["WebDev", "UX/UI", "Data Analytics"] }
+
   },
   {
     timestamps: true

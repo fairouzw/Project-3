@@ -11,6 +11,7 @@ const cors = require("cors");
 var indexRouter = require("./routes/index");
 // var usersRouter = require("./routes/profile-routes");
 const authRoutes = require("./routes/auth-routes");
+const profRoutes = require("./routes/profile-routes");
 
 var app = express();
 
@@ -72,8 +73,10 @@ app.use(
 app.use(passport.initialize());
 app.use(passport.session());
 
+//app.use
+
 app.use("/api", authRoutes);
-app.use("/api", require("./routes/profile-routes"));
+app.use("/api", profRoutes);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

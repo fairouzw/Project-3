@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import AuthService from "./auth-service";
 import { withRouter } from "react-router-dom";
 import axios from "axios";
 
@@ -8,18 +7,14 @@ class Signup extends Component {
     super(props);
     this.state = {
       username: "",
-      password: "",
-      image: "",
-      course: "",
-      campus: ""
+      password: ""
     };
-    this.service = new AuthService();
   }
 
   handleFormSubmit = event => {
     event.preventDefault();
     axios
-      .post("/api//signup", this.state)
+      .post("/api/signup", this.state)
       .then(response => {
         this.props.getUser(response.data);
         this.props.history.push("/profile");
@@ -53,10 +48,10 @@ class Signup extends Component {
                             name="username"
                             onChange={e => this.handleChange(e)}
                             value={this.state.username}
-                            required
-                            autofocus
+                            required="required"
+                            autoFocus
                           />
-                          <label for="inputEmail">Username</label>
+                          <label htmlFor="inputEmail">Username</label>
                         </div>
 
                         <div className="form-label-group">
@@ -68,70 +63,11 @@ class Signup extends Component {
                             name="password"
                             onChange={e => this.handleChange(e)}
                             value={this.state.password}
-                            required
+                            required="required"
                           />
-                          <label for="inputPassword">Password</label>
+                          <label htmlFor="inputPassword">Password</label>
                         </div>
 
-                        <div className="input-group mb-3">
-                          <div className="input-group-prepend">
-                            <label
-                              className="input-group-text"
-                              for="inputGroupSelect01"
-                            >
-                              Course
-                            </label>
-                          </div>
-                          <select
-                            className="custom-select"
-                            id="inputGroupSelect01"
-                            name="course"
-                            onChange={e => this.handleChange(e)}
-                            value={this.state.campus}
-                            required
-                          >
-                            <option value={this.state.campus}>
-                              {this.state.course}
-                            </option>
-                            <option value="WebDev">WebDev</option>
-                            <option value="UX/UI">UX/UI</option>
-                            <option value="Data Analytics">
-                              Data Analytics
-                            </option>
-                          </select>
-                        </div>
-
-                        <div className="input-group mb-3">
-                          <div className="input-group-prepend">
-                            <label
-                              className="input-group-text"
-                              for="inputGroupSelect01"
-                            >
-                              Campus
-                            </label>
-                          </div>
-                          <select
-                            className="custom-select"
-                            id="inputGroupSelect01"
-                            name="campus"
-                            onChange={e => this.handleChange(e)}
-                            value={this.state.course}
-                            required
-                          >
-                            <option value={this.state.campus}>
-                              {this.state.campus}
-                            </option>
-                            <option value="Madrid">Madrid</option>
-                            <option value="Barcelona">Barcelona</option>
-                            <option value="Berlin">Berlin</option>
-                            <option value="Miami">Miami</option>
-                            <option value="Paris">Paris</option>
-                            <option value="Amsterdam">Amsterdam</option>
-                            <option value="Mexico">Mexico</option>
-                            <option value="Sau Paulo">Sao Paulo</option>
-                            <option value="Lisbon">Lisbon</option>
-                          </select>
-                        </div>
                         <button
                           className="btn btn-lg btn-primary btn-block btn-login text-uppercase font-weight-bold mb-2"
                           type="submit"

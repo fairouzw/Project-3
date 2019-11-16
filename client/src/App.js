@@ -7,7 +7,7 @@ import Start from "./components/Start";
 import Login from "./components/Login";
 import Signup from "./components/Signup";
 import Profile from "./components/Profile";
-// import AuthService from "./components/auth-service";
+import Navbar from "./components/Navbar";
 
 class App extends Component {
   constructor(props) {
@@ -26,6 +26,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
+        <Navbar />
         <Switch>
           <Route
             exact

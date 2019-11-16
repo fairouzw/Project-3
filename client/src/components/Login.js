@@ -1,6 +1,5 @@
 import React, { Component } from "react";
-// import AuthService from "./auth-service";
-import { Link, withRouter } from "react-router-dom";
+import { withRouter } from "react-router-dom";
 import axios from "axios";
 
 class Login extends Component {
@@ -10,7 +9,6 @@ class Login extends Component {
       username: "",
       password: ""
     };
-    // this.service = new AuthService();
   }
 
   handleFormSubmit = event => {
@@ -21,7 +19,7 @@ class Login extends Component {
         this.props.getUser(response.data);
         this.props.history.push("/profile");
       })
-      .catch(error => console.log(error));
+      .catch(() => console.log("Incorrect login details!"));
   };
 
   handleChange = event => {
@@ -52,9 +50,9 @@ class Login extends Component {
                             value={this.state.username}
                             onChange={e => this.handleChange(e)}
                             required
-                            autofocus
+                            autoFocus
                           />
-                          <label for="inputEmail">Username</label>
+                          <label htmlFor="inputEmail">Username</label>
                         </div>
 
                         <div className="form-label-group">
@@ -68,7 +66,7 @@ class Login extends Component {
                             onChange={e => this.handleChange(e)}
                             required
                           />
-                          <label for="inputPassword">Password</label>
+                          <label htmlFor="inputPassword">Password</label>
                         </div>
 
                         <div className="custom-control custom-checkbox mb-3">

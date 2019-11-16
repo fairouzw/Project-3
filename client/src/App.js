@@ -3,7 +3,7 @@ import { Switch, Route, Redirect } from "react-router-dom";
 import "./App.css";
 
 //pages
-import Home from "./components/Home";
+import Start from "./components/Home";
 import Login from "./components/Login";
 import Signup from "./components/Signup";
 import Profile from "./components/Profile";
@@ -15,7 +15,6 @@ class App extends Component {
     this.state = {
       loggedInUser: this.props.user
     };
-    // this.service = new AuthService();
   }
 
   getTheUser = userObj => {
@@ -33,7 +32,7 @@ class App extends Component {
             path="/"
             render={() => {
               if (this.state.loggedInUser === null) {
-                return <Home />;
+                return <Start />;
               }
             }}
           />

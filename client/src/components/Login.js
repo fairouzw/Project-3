@@ -7,7 +7,8 @@ class Login extends Component {
     super(props);
     this.state = {
       username: "",
-      password: ""
+      password: "",
+      errorMessage: null
     };
   }
 
@@ -19,7 +20,13 @@ class Login extends Component {
         this.props.getUser(response.data);
         this.props.history.push("/profile");
       })
-      .catch(() => console.log("Incorrect login details!"));
+      .catch(error => {
+        //error.response.message;
+        this.setState({
+          errorMessage: "Incorrect login details!"
+        });
+        console.log("Incorrect login details!");
+      });
   };
 
   handleChange = event => {
@@ -39,6 +46,7 @@ class Login extends Component {
                   <div className="row">
                     <div className="col-md-9 col-lg-8 mx-auto">
                       <h3 className="login-heading mb-4">Welcome back!</h3>
+                      <div> {this.state.errorMessage}</div>
                       <form onSubmit={this.handleFormSubmit}>
                         <div className="form-label-group">
                           <input

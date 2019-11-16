@@ -5,6 +5,9 @@ class Start extends Component {
   render() {
     return (
       <div>
+        <br />
+        <br />
+        <br />
         <Link to="/signup">
           <button className="btn btn-lg btn-primary btn-block btn-login text-uppercase font-weight-bold mb-2">
             Sign up

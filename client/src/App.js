@@ -8,6 +8,7 @@ import Login from "./components/Login";
 import Signup from "./components/Signup";
 import Profile from "./components/Profile";
 import Navbar from "./components/Navbar";
+import Home from "./components/Home";
 
 class App extends Component {
   constructor(props) {
@@ -74,6 +75,8 @@ class App extends Component {
               />
             )}
           />
+
+          <Route exact path="/home" component={Home} />
         </Switch>
       </div>
     );

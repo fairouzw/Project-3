@@ -37,6 +37,7 @@ router.post("/new-post", (req, res, next) => {
     location: req.body.location,
     description: req.body.description,
     postname: req.body.postname
+    /* HAD TO UNCOMMENT THIS SO THAT THIS ROUTE WOULD WORK :) */
     // owner: req.user._id,
     // categories: req.body.categories,
     // likes: req.user._id,

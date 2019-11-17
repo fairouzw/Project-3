@@ -33,11 +33,11 @@ class Navbar extends Component {
             </button>
             <div className="collapse navbar-collapse" id="navbarResponsive">
               <ul className="navbar-nav ml-auto">
-                <li className="nav-item">
+                {/* <li className="nav-item">
                   <Link className="nav-link" href="#">
                     Post Stuff
                   </Link>
-                </li>
+                </li> */}
 
                 <li className="nav-item">
                   <Link to="/home" className="nav-link">

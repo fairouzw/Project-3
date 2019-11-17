@@ -3,32 +3,26 @@ const Schema = mongoose.Schema;
 //const moment = require('moment')
 
 const postSchema = new Schema(
-    {
-        imgUrl: String,
-        location: String,
-        description: String,
-        postname: String,
-        owner: { type: Schema.Types.ObjectId, ref: 'User' },
-        categories: {
-            type: String, // try to implement following category-tags
-            enum: [
-                "food",
-                "electronics",
-                "furniture",
-                "clothes",
-                "dishes"
-            ]
-        },
-        //comments: [{ type: Schema.Types.ObjectId, ref: 'Comment' }],
-        likes: [{ type: Schema.Types.ObjectId, ref: 'User' }],
-        expireDate: {
-            type: String,
-            //default: () => moment().format('MMM Do YY')
-        },
+  {
+    imgUrl: String,
+    location: String,
+    description: String,
+    postname: String,
+    owner: { type: Schema.Types.ObjectId, ref: "User" },
+    categories: {
+      type: String, // try to implement following category-tags
+      enum: ["food", "electronics", "furniture", "clothes", "dishes"]
     },
-    {
-        timestamps: true
+    //comments: [{ type: Schema.Types.ObjectId, ref: 'Comment' }],
+    likes: [{ type: Schema.Types.ObjectId, ref: "User" }],
+    expireDate: {
+      type: String
+      //default: () => moment().format('MMM Do YY')
     }
+  },
+  {
+    timestamps: true
+  }
 );
 const Post = mongoose.model("Post", postSchema);
 

@@ -38,7 +38,13 @@ router.put("/profiles/:id", (req, res, next) => {
     return;
   }
 
-  User.findByIdAndUpdate(req.params.id, { username, email, favourites, posts, follows })
+  User.findByIdAndUpdate(req.params.id, {
+    username,
+    email,
+    favourites,
+    posts,
+    follows
+  })
     .then(() => {
       res.json({
         message: `Profile data for User with ${req.params.id} has been updated successfully.`

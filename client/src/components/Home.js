@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import "../App.css";
+import AddPost from "./AddPost";
 
 class Home extends Component {
   render() {
@@ -11,6 +12,9 @@ class Home extends Component {
               <div className="col-12 text-center">
                 <h1 className="font-weight-light">Our Map Will Be Here</h1>
                 <p className="lead">{this.props.userData.username}</p>
+              </div>
+              <div>
+                <AddPost />
               </div>
             </div>
           </div>

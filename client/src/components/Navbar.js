@@ -1,7 +1,17 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
+import axios from "axios";
 
 class Navbar extends Component {
+  logoutUser = () => {
+    axios
+      .post("/api/logout")
+      .then(() => {
+        this.props.getUser(null);
+        this.props.history.push("/");
+      })
+      .catch(error => console.log(error));
+  };
   render() {
     return (
       <div>
@@ -25,12 +35,23 @@ class Navbar extends Component {
               <ul className="navbar-nav ml-auto">
                 <li className="nav-item">
                   <Link className="nav-link" href="#">
+                    Post Stuff
+                  </Link>
+                </li>
+
+                <li className="nav-item">
+                  <Link to="/home" className="nav-link">
+                    Home
+                  </Link>
+                </li>
+                <li className="nav-item">
+                  <Link to="/profile" className="nav-link">
                     Profile
                   </Link>
                 </li>
                 <li className="nav-item">
-                  <Link className="nav-link" href="#">
-                    Does Nothing
+                  <Link onClick={this.logoutUser} to="/" className="nav-link">
+                    Logout
                   </Link>
                 </li>
               </ul>

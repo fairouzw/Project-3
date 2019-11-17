@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import "../App.css";
 
 class Home extends Component {
   render() {
@@ -9,13 +10,24 @@ class Home extends Component {
             <div className="row h-100 align-items-center">
               <div className="col-12 text-center">
                 <h1 className="font-weight-light">Our Map Will Be Here</h1>
-                <p className="lead">
-                  A great starter layout for a landing page
-                </p>
+                <p className="lead">{this.props.userData.username}</p>
               </div>
             </div>
           </div>
         </header>
+        <section className="py-5">
+          <div className="container">
+            <h2 className="font-weight-light">
+              All posts will be displayed here with search bar
+            </h2>
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+              Repellendus ab nulla dolorum autem nisi officiis blanditiis
+              voluptatem hic, assumenda aspernatur facere ipsam nemo ratione
+              cumque magnam enim fugiat reprehenderit expedita.
+            </p>
+          </div>
+        </section>
       </div>
     );
   }

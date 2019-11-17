@@ -27,7 +27,9 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <Navbar />
+        {this.state.loggedInUser !== null ? (
+          <Navbar getUser={this.getTheUser} />
+        ) : null}
         <Switch>
           <Route
             exact
@@ -67,6 +69,16 @@ class App extends Component {
           ></Route>
           <Route
             exact
+            path="/home"
+            render={() => (
+              <Home
+                getUser={this.getTheUser}
+                userData={this.state.loggedInUser}
+              />
+            )}
+          />
+          <Route
+            exact
             path="/profile"
             render={() => (
               <Profile
@@ -75,8 +87,6 @@ class App extends Component {
               />
             )}
           />
-
-          <Route exact path="/home" component={Home} />
         </Switch>
       </div>
     );

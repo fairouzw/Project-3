@@ -5,8 +5,8 @@ class UpdateProfile extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            username: this.props.getUser.username,
-            email: this.props.getUser.email,
+            username: this.props.username,
+            email: this.props.email,
             // follows: []
         }
     }
@@ -17,7 +17,7 @@ class UpdateProfile extends Component {
 
         event.preventDefault();
 
-        axios.put(`/api/profiles/${this.props.id}`, { username, email }) // how to get the id???
+        axios.put(`/api/profiles/${this.props.userData.id}`, { username, email }) // how to get the id???
             .then(() => {
                 this.props.getUser(); // what to put here??
 

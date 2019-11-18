@@ -29,3 +29,8 @@
   background-position: center;
   background-repeat: no-repeat;
 }
+
+img {
+  width: 30px;
+  height: 30px;
+}

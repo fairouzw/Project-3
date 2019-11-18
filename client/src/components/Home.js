@@ -1,8 +1,11 @@
 import React, { Component } from "react";
 import "../App.css";
 import AddPost from "./AddPost";
+import Map from "./Map";
 
 class Home extends Component {
+
+
   render() {
     return (
       <div>
@@ -10,8 +13,10 @@ class Home extends Component {
           <div className="container h-100">
             <div className="row h-100 align-items-center">
               <div className="col-12 text-center">
-                <h1 className="font-weight-light">Our Map Will Be Here</h1>
-                <p className="lead">{this.props.userData.username}</p>
+                <h1 className="font-weight-light"><Map />
+                </h1>
+                <p className="lead">Hi {this.props.userData.username}</p>
+                <p className="lead">Get some street credibility!</p>
               </div>
               <div>
                 <AddPost />

@@ -1,7 +1,27 @@
 import React, { Component } from "react";
-import EditProfile from "./EditProfile";
+import UpdateProfile from "./UpdateProfile";
+import axios from 'axios';
+
+
 
 class Profile extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      // userData: this.props.userData,
+      formVisible: false
+    };
+  }
+
+
+  handleFormVisibility = () => {
+
+    this.setState({
+      formVisible: !this.state.formVisible
+    })
+  }
+
+
   render() {
     return (
       <div>
@@ -16,7 +36,9 @@ class Profile extends Component {
         {this.props.userData.follows !== null ? (
           <p> Follows: {this.props.userData.follows}</p>
         ) : null}
-        <EditProfile />
+        {this.state.formVisible && <UpdateProfile getUser={this.state} />}
+        {!this.state.formVisible && <button onClick={this.handleFormVisibility} className="button is-primary">Update Userdata</button>}
+
       </div>
     );
   }

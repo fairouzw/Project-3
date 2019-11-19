@@ -5,7 +5,7 @@ const Schema = mongoose.Schema;
 const postSchema = new Schema(
   {
     imgUrl: String,
-    location: String,
+    location: { lat: Number, long: Number },
     description: String,
     postname: String,
     owner: { type: Schema.Types.ObjectId, ref: "User" },

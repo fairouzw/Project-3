@@ -14,7 +14,6 @@ class AddPost extends Component {
     super();
     this.state = {
       imgUrl: "",
-      location: "",
       description: "",
       postname: ""
     };
@@ -27,18 +26,21 @@ class AddPost extends Component {
 
     getLocation()
       .then(location => {
-        return axios.post("/api/posts/new-post", {
-          imgUrl,
-          location: { lat: location.latitude, lon: location.logitude },
-          description,
-          postname
-        });
+
+        return axios
+          .post("/api/posts/new-post", {
+            imgUrl,
+            location: { lat: location.latitude, long: location.longitude },
+            description,
+            postname
+          })
+
+
       })
       .then(() => {
         // this.props.getData();
         this.setState({
           imgUrl: "",
-          location: "",
           description: "",
           postname: ""
         });
@@ -58,6 +60,7 @@ class AddPost extends Component {
   };
 
   render() {
+    console.log(this.location)
     return (
       <div>
         <div className="container">
@@ -108,7 +111,7 @@ class AddPost extends Component {
                 />
               </div>
               <label htmlFor="inputEmail">Location</label>
-              <div className="form-label-group">
+              {/* <div className="form-label-group">
                 <input
                   type="text"
                   id="inputEmail"
@@ -120,7 +123,7 @@ class AddPost extends Component {
                   // required
                   // autoFocus
                 />
-              </div>
+              </div> */}
               <br />
               <button
                 className="btn btn-lg btn-primary btn-block btn-login text-uppercase font-weight-bold mb-2"

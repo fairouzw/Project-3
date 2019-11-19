@@ -26,16 +26,12 @@ class AddPost extends Component {
 
     getLocation()
       .then(location => {
-
-        return axios
-          .post("/api/posts/new-post", {
-            imgUrl,
-            location: { lat: location.latitude, long: location.longitude },
-            description,
-            postname
-          })
-
-
+        return axios.post("/api/posts/new-post", {
+          imgUrl,
+          location: { lat: location.latitude, long: location.longitude },
+          description,
+          postname
+        });
       })
       .then(() => {
         // this.props.getData();
@@ -60,7 +56,7 @@ class AddPost extends Component {
   };
 
   render() {
-    console.log(this.location)
+    console.log(this.location);
     return (
       <div>
         <div className="container">

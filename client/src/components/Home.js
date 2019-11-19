@@ -2,8 +2,29 @@ import React, { Component } from "react";
 import "../App.css";
 import AddPost from "./AddPost";
 import Map from "./Map";
+import axios from "axios";
 
 class Home extends Component {
+  constructor() {
+    super();
+    this.state = {
+      listOfPosts: []
+    };
+  }
+
+  getAllPosts = () => {
+    axios.get(`/api/posts`) /* pagination ?limit=50 */.then(res => {
+      // console.log(res.data);
+      this.setState({
+        listOfPosts: res.data
+      });
+    });
+  };
+
+  componentDidMount = () => {
+    this.getAllPosts();
+  };
+
   render() {
     return (
       <div>
@@ -15,11 +36,11 @@ class Home extends Component {
                 <br />
                 <br />
                 <br />
-
                 <p className="lead">Hi {this.props.userData.username}</p>
                 <p className="lead">Get some street credibility!</p>
                 <div className="align-items-center">
-                  <Map />
+                  <Map posts={this.state.listOfPosts} />
+                  {/* check if posts are empty */}
                 </div>
               </div>
               <div>

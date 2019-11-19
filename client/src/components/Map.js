@@ -38,7 +38,8 @@ class Map extends Component {
   };
 
   render() {
-    console.log(this.state.userLocation);
+    // console.log(this.state.userLocation);
+    console.log(this.props.posts);
 
     return (
       <div>
@@ -49,7 +50,23 @@ class Map extends Component {
             mapStyle="mapbox://styles/los-lena/ck34ysrdu0fd61cqhbk6ai0fc"
             mapboxApiAccessToken="pk.eyJ1IjoibG9zLWxlbmEiLCJhIjoiY2szNHllYzI5MTZsOTNubzI1emZ2aHFiaSJ9.v7gsBidhvQm2T5EOb_GcGA"
           >
-            {Object.keys(this.state.userLocation).length !== 0 ? (
+            {this.props.posts.map(post => {
+              return (
+                <Marker
+                  key={post._id}
+                  latitude={post.location.lat}
+                  longitude={post.location.long}
+                >
+                  <img
+                    className="location-icon"
+                    src={require("./icon.png")}
+                    alt="location"
+                  />
+                </Marker>
+              );
+            })}
+
+            {/* {Object.keys(this.state.userLocation).length !== 0 ? (
               <Marker
                 latitude={this.state.userLocation.lat}
                 longitude={this.state.userLocation.long}
@@ -62,7 +79,7 @@ class Map extends Component {
               </Marker>
             ) : (
               <div>Empty</div>
-            )}
+            )} */}
           </ReactMapGL>
           <button onClick={this.setUserLocation}>Get Location!</button>
         </div>

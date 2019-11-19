@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import axios from "axios";
 
-
 function getLocation() {
   return new Promise((resolve, reject) => {
     navigator.geolocation.getCurrentPosition(position => {
@@ -22,10 +21,12 @@ class AddPost extends Component {
 
   handleFormSubmit = event => {
     event.preventDefault();
+
     const { imgUrl, description, postname } = this.state;
 
     getLocation()
       .then(location => {
+
         return axios
           .post("/api/posts/new-post", {
             imgUrl,
@@ -33,6 +34,8 @@ class AddPost extends Component {
             description,
             postname
           })
+
+
       })
       .then(() => {
         // this.props.getData();
@@ -46,7 +49,10 @@ class AddPost extends Component {
   };
 
   handleChange = event => {
-    if (event.target.name === 'location' && event.target.value === 'Current Location') {
+    if (
+      event.target.name === "location" &&
+      event.target.value === "Current Location"
+    ) {
       return;
     }
     const { name, value } = event.target;
@@ -71,8 +77,8 @@ class AddPost extends Component {
                   value={this.state.postname}
                   onChange={this.handleChange}
 
-                // required
-                // autoFocus
+                  // required
+                  // autoFocus
                 />
               </div>
               <label htmlFor="inputEmail">Upload an image</label>
@@ -85,8 +91,8 @@ class AddPost extends Component {
                   value={this.state.imgUrl}
                   onChange={this.handleChange}
 
-                // required
-                // autoFocus
+                  // required
+                  // autoFocus
                 />
               </div>
               <label htmlFor="inputEmail">Description</label>
@@ -100,8 +106,8 @@ class AddPost extends Component {
                   value={this.state.description}
                   onChange={this.handleChange}
 
-                // required
-                // autoFocus
+                  // required
+                  // autoFocus
                 />
               </div>
               <label htmlFor="inputEmail">Location</label>
@@ -114,8 +120,8 @@ class AddPost extends Component {
                   name="location"
                   value={this.state.location}
                   onChange={this.handleChange}
-                // required
-                // autoFocus
+                  // required
+                  // autoFocus
                 />
               </div> */}
               <br />

@@ -1,47 +1,56 @@
 import React, { Component } from "react";
-import axios from 'axios';
+import axios from "axios";
 
 class UpdateProfile extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            username: this.props.username,
-            email: this.props.email,
-            // follows: []
-        }
-    }
-
-    submitHandler = event => {
-        const username = this.state.username;
-        const email = this.state.email;
-
-        event.preventDefault();
-
-        axios.put(`/api/profiles/${this.props.userData.id}`, { username, email }) // how to get the id???
-            .then(() => {
-                this.props.getUser(); // what to put here??
-
-                this.props.history.push('/profile');
-            })
-            .catch(error => console.log(error))
+  constructor(props) {
+    super(props);
+    this.state = {
+      username: " ",
+      email: " "
+      // follows: []
     };
+  }
 
+  submitHandler = event => {
+    event.preventDefault();
+    const { username, email } = this.state;
 
-    handleChange = event => {
-        const { name, value } = event.target;
-        this.setState({ [name]: value });
-    };
+    axios
+      .put(`/api/profiles/${this.props.userData._id}`, { username, email }) // how to get the id???
+      .then(() => {
+        // this.props.getUser(); // what to put here??
+        this.props.history.push("/profile");
+      })
+      .catch(error => console.log(error));
+  };
 
-    render() {
-        return (
-            <div>
-                <h1>Update Userdata: </h1>
-                <form onSubmit={this.submitHandler}>
-                    <input onChange={this.handleChange} value={this.state.username} type="text" placeholder="username"></input>
-                    <br></br>
-                    <input onChange={this.handleChange} value={this.state.email} type="text" placeholder="email"></input>
-                    <br></br>
-                    {/* <select
+  handleChange = event => {
+    const { name, value } = event.target;
+    this.setState({ [name]: value });
+  };
+
+  render() {
+    return (
+      <div>
+        <h1>Update Userdata: </h1>
+        <form onSubmit={this.submitHandler}>
+          <input
+            onChange={this.handleChange}
+            value={this.state.username}
+            type="text"
+            placeholder="username"
+            name="username"
+          />
+          <br></br>
+          <input
+            onChange={this.handleChange}
+            value={this.state.email}
+            type="text"
+            placeholder="email"
+            name="email"
+          />
+          <br></br>
+          {/* <select
                         className="custom-select"
                         id="inputGroupSelect01"
                         name="follows"
@@ -54,13 +63,11 @@ class UpdateProfile extends Component {
                         <option value="dishes">Dishes</option>
 
                     </select> */}
-                    <button type="submit">Submit</button>
-                </form>
-            </div>
-        );
-    }
-
+          <button type="submit">Submit</button>
+        </form>
+      </div>
+    );
+  }
 }
-
 
 export default UpdateProfile;

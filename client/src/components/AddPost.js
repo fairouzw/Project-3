@@ -1,6 +1,14 @@
 import React, { Component } from "react";
 import axios from "axios";
 
+function getLocation() {
+  return new Promise((resolve, reject) => {
+    navigator.geolocation.getCurrentPosition(position => {
+      resolve(position.coords);
+    });
+  });
+}
+
 class AddPost extends Component {
   constructor() {
     super();
@@ -14,13 +22,17 @@ class AddPost extends Component {
 
   handleFormSubmit = event => {
     event.preventDefault();
-    const { imgUrl, location, description, postname } = this.state;
-    axios
-      .post("/api/posts/new-post", {
-        imgUrl,
-        location,
-        description,
-        postname
+
+    const { imgUrl, description, postName } = this.state;
+
+    getLocation()
+      .then(location => {
+        return axios.post("/api/posts/new-post", {
+          imgUrl,
+          location: { lat: location.latitude, lon: location.logitude },
+          description,
+          postName
+        });
       })
       .then(() => {
         // this.props.getData();
@@ -35,6 +47,12 @@ class AddPost extends Component {
   };
 
   handleChange = event => {
+    if (
+      event.target.name === "location" &&
+      event.target.value === "Current Location"
+    ) {
+      return;
+    }
     const { name, value } = event.target;
     this.setState({ [name]: value });
   };

@@ -4,19 +4,23 @@ import AddPost from "./AddPost";
 import Map from "./Map";
 
 class Home extends Component {
-
-
   render() {
     return (
       <div>
         <header className="masthead">
           <div className="container h-100">
-            <div className="row h-100 align-items-center">
+            <div className="row h-200 align-items-center">
               <div className="col-12 text-center">
-                <h1 className="font-weight-light"><Map />
-                </h1>
+                <h1 className="font-weight-light"></h1>
+                <br />
+                <br />
+                <br />
+
                 <p className="lead">Hi {this.props.userData.username}</p>
                 <p className="lead">Get some street credibility!</p>
+                <div className="align-items-center">
+                  <Map />
+                </div>
               </div>
               <div>
                 <AddPost />

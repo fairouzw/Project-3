@@ -44,7 +44,7 @@ class AddPost extends Component {
       <div>
         <div className="container">
           <div className="row">
-            <form>
+            <form onSubmit={this.handleFormSubmit}>
               <label htmlFor="inputEmail">Title/Caption</label>
               <div className="form-label-group">
                 <input

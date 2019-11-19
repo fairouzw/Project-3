@@ -23,7 +23,7 @@ class AddPost extends Component {
   handleFormSubmit = event => {
     event.preventDefault();
 
-    const { imgUrl, description, postName } = this.state;
+    const { imgUrl, description, postname } = this.state;
 
     getLocation()
       .then(location => {
@@ -31,7 +31,7 @@ class AddPost extends Component {
           imgUrl,
           location: { lat: location.latitude, lon: location.logitude },
           description,
-          postName
+          postname
         });
       })
       .then(() => {

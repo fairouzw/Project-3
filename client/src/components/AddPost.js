@@ -15,33 +15,31 @@ class AddPost extends Component {
     super();
     this.state = {
       imgUrl: "",
-      location: "",
       description: "",
-      postName: ""
+      postname: ""
     };
   }
 
   handleFormSubmit = event => {
     event.preventDefault();
-    const { imgUrl, description, postName } = this.state;
+    const { imgUrl, description, postname } = this.state;
 
     getLocation()
       .then(location => {
         return axios
           .post("/api/posts/new-post", {
             imgUrl,
-            location: { lat: location.latitude, lon: location.logitude },
+            location: { lat: location.latitude, long: location.longitude },
             description,
-            postName
+            postname
           })
       })
       .then(() => {
         // this.props.getData();
         this.setState({
           imgUrl: "",
-          location: "",
           description: "",
-          postName: ""
+          postname: ""
         });
       })
       .catch(error => console.log(error));
@@ -56,6 +54,7 @@ class AddPost extends Component {
   };
 
   render() {
+    console.log(this.location)
     return (
       <div>
         <div className="container">
@@ -68,8 +67,8 @@ class AddPost extends Component {
                   id="inputEmail"
                   className="form-control"
                   placeholder="Caption"
-                  name="postName"
-                  value={this.state.postName}
+                  name="postname"
+                  value={this.state.postname}
                   onChange={this.handleChange}
 
                 // required
@@ -106,7 +105,7 @@ class AddPost extends Component {
                 />
               </div>
               <label htmlFor="inputEmail">Location</label>
-              <div className="form-label-group">
+              {/* <div className="form-label-group">
                 <input
                   type="text"
                   id="inputEmail"
@@ -118,7 +117,7 @@ class AddPost extends Component {
                 // required
                 // autoFocus
                 />
-              </div>
+              </div> */}
               <br />
               <button
                 className="btn btn-lg btn-primary btn-block btn-login text-uppercase font-weight-bold mb-2"

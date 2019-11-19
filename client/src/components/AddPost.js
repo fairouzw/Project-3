@@ -8,19 +8,19 @@ class AddPost extends Component {
       imgUrl: "",
       location: "",
       description: "",
-      postName: ""
+      postname: ""
     };
   }
 
   handleFormSubmit = event => {
     event.preventDefault();
-    const { imgUrl, location, description, postName } = this.state;
+    const { imgUrl, location, description, postname } = this.state;
     axios
       .post("/api/posts/new-post", {
         imgUrl,
         location,
         description,
-        postName
+        postname
       })
       .then(() => {
         // this.props.getData();
@@ -28,7 +28,7 @@ class AddPost extends Component {
           imgUrl: "",
           location: "",
           description: "",
-          postName: ""
+          postname: ""
         });
       })
       .catch(error => console.log(error));
@@ -52,8 +52,8 @@ class AddPost extends Component {
                   id="inputEmail"
                   className="form-control"
                   placeholder="Caption"
-                  name="postName"
-                  value={this.state.postName}
+                  name="postname"
+                  value={this.state.postname}
                   onChange={this.handleChange}
 
                   // required

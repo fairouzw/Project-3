@@ -45,7 +45,7 @@ class App extends Component {
             path="/login"
             render={() => {
               if (this.state.loggedInUser) {
-                return <Redirect to="/profile"></Redirect>;
+                return <Redirect to="/home"></Redirect>;
               } else {
                 return <Login getUser={this.getTheUser} />;
               }
@@ -56,7 +56,7 @@ class App extends Component {
             path="/signup"
             render={() => {
               if (this.state.loggedInUser) {
-                return <Redirect to="/profile"></Redirect>;
+                return <Redirect to="/home"></Redirect>;
               } else {
                 return (
                   <Signup

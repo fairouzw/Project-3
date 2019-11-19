@@ -31,7 +31,7 @@ class Profile extends Component {
         <p> Welcome {this.props.userData.username} !</p>
         <p> Username: {this.props.userData.username}</p>
         {this.props.userData.email !== null ? (
-          <p> E-mail: {this.props.userData.email}</p>
+          <p> E-mail: {this.props.userData.email}</p> // how to set the value on  null??
         ) : null}
         {this.props.userData.follows !== null ? (
           <p> Follows: {this.props.userData.follows}</p>

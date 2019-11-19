@@ -18,7 +18,7 @@ class Login extends Component {
       .post("/api/login", this.state)
       .then(response => {
         this.props.getUser(response.data);
-        this.props.history.push("/profile");
+        this.props.history.push("/home");
       })
       .catch(error => {
         //error.response.message;

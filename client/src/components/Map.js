@@ -4,8 +4,8 @@ import ReactMapGL, { Marker, Popup } from "react-map-gl";
 class Map extends Component {
   state = {
     viewport: {
-      width: "70vw",
-      height: "70vh",
+      width: "50vw",
+      height: "50vh",
       latitude: 52.520008,
       longitude: 13.404954,
       zoom: 11
@@ -56,31 +56,30 @@ class Map extends Component {
 
     return (
       <div>
-        <div>
-          <ReactMapGL
-            {...this.state.viewport}
-            onViewportChange={this.customizeMap}
-            mapStyle="mapbox://styles/los-lena/ck34ysrdu0fd61cqhbk6ai0fc"
-            mapboxApiAccessToken="pk.eyJ1IjoibG9zLWxlbmEiLCJhIjoiY2szNHllYzI5MTZsOTNubzI1emZ2aHFiaSJ9.v7gsBidhvQm2T5EOb_GcGA"
-          >
-            {this.props.posts.map(post => {
-              return (
-                <div>
-                  <Marker
-                    key={post._id}
-                    latitude={post.location.lat}
-                    longitude={post.location.long}
-                  >
-                    <img
-                      className="location-icon"
-                      onClick={() => {
-                        this.setSelectedHotspot(post);
-                      }}
-                      src={require("./attraction-15.svg")}
-                      alt="location"
-                    />
-                  </Marker>
-                  {/* {this.state.selectedHotspot !== null ? (
+        <ReactMapGL
+          {...this.state.viewport}
+          onViewportChange={this.customizeMap}
+          mapStyle="mapbox://styles/los-lena/ck34ysrdu0fd61cqhbk6ai0fc"
+          mapboxApiAccessToken="pk.eyJ1IjoibG9zLWxlbmEiLCJhIjoiY2szNHllYzI5MTZsOTNubzI1emZ2aHFiaSJ9.v7gsBidhvQm2T5EOb_GcGA"
+        >
+          {this.props.posts.map(post => {
+            return (
+              <div>
+                <Marker
+                  key={post._id}
+                  latitude={post.location.lat}
+                  longitude={post.location.long}
+                >
+                  <img
+                    className="location-icon"
+                    onClick={() => {
+                      this.setSelectedHotspot(post);
+                    }}
+                    src={require("./attraction-15.svg")}
+                    alt="location"
+                  />
+                </Marker>
+                {/* {this.state.selectedHotspot !== null ? (
                     <Popup
                       latitude={this.state.selectedHotspot.location.lat}
                       longitude={this.state.selectedHotspot.location.long}
@@ -89,21 +88,21 @@ class Map extends Component {
                       <p>{post.postname}</p>
                     </Popup>
                   ) : null} */}
-                </div>
-              );
-            })}
+              </div>
+            );
+          })}
 
-            {this.state.selectedHotspot !== null ? (
-              <Popup
-                latitude={this.state.selectedHotspot.location.lat}
-                longitude={this.state.selectedHotspot.location.long}
-                onClose={this.closePopup}
-              >
-                <p>Testing</p>
-              </Popup>
-            ) : null}
+          {this.state.selectedHotspot !== null ? (
+            <Popup
+              latitude={this.state.selectedHotspot.location.lat}
+              longitude={this.state.selectedHotspot.location.long}
+              onClose={this.closePopup}
+            >
+              <p>Testing</p>
+            </Popup>
+          ) : null}
 
-            {/* {Object.keys(this.state.userLocation).length !== 0 ? (
+          {/* {Object.keys(this.state.userLocation).length !== 0 ? (
               <Marker
                 latitude={this.state.userLocation.lat}
                 longitude={this.state.userLocation.long}
@@ -117,9 +116,8 @@ class Map extends Component {
             ) : (
               <div>Empty</div>
             )} */}
-          </ReactMapGL>
-          <button onClick={this.setUserLocation}>Get Location!</button>
-        </div>
+        </ReactMapGL>
+        <button onClick={this.setUserLocation}>Get Location!</button>
       </div>
     );
   }

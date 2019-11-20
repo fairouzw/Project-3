@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import ReactMapGL, { Marker } from "react-map-gl";
+import ReactMapGL, { Marker, Popup } from "react-map-gl";
 
 class Map extends Component {
   state = {
@@ -10,30 +10,43 @@ class Map extends Component {
       longitude: 13.404954,
       zoom: 11
     },
-    userLocation: {}
+    userLocation: {},
+    selectedHotspot: null
   };
 
   customizeMap = viewport => {
     this.setState({ viewport: viewport });
   };
 
-  setUserLocation = () => {
-    navigator.geolocation.getCurrentPosition(position => {
-      let setUserLocation = {
-        lat: position.coords.latitude,
-        long: position.coords.longitude
-      };
-      let newViewport = {
-        height: "70vh",
-        width: "70vw",
-        latitude: position.coords.latitude,
-        longitude: position.coords.longitude,
-        zoom: 16
-      };
-      this.setState({
-        viewport: newViewport,
-        userLocation: setUserLocation
-      });
+  // setUserLocation = () => {
+  //   navigator.geolocation.getCurrentPosition(position => {
+  //     let setUserLocation = {
+  //       lat: position.coords.latitude,
+  //       long: position.coords.longitude
+  //     };
+  //     let newViewport = {
+  //       height: "70vh",
+  //       width: "70vw",
+  //       latitude: position.coords.latitude,
+  //       longitude: position.coords.longitude,
+  //       zoom: 16
+  //     };
+  //     this.setState({
+  //       viewport: newViewport,
+  //       userLocation: setUserLocation
+  //     });
+  //   });
+  // };
+
+  setSelectedHotspot = object => {
+    this.setState({
+      selectedHotspot: object
+    });
+  };
+
+  closePopup = () => {
+    this.setState({
+      selectedHotspot: null
     });
   };
 
@@ -52,19 +65,43 @@ class Map extends Component {
           >
             {this.props.posts.map(post => {
               return (
-                <Marker
-                  key={post._id}
-                  latitude={post.location.lat}
-                  longitude={post.location.long}
-                >
-                  <img
-                    className="location-icon"
-                    src={require("./icon.png")}
-                    alt="location"
-                  />
-                </Marker>
+                <div>
+                  <Marker
+                    key={post._id}
+                    latitude={post.location.lat}
+                    longitude={post.location.long}
+                  >
+                    <img
+                      className="location-icon"
+                      onClick={() => {
+                        this.setSelectedHotspot(post);
+                      }}
+                      src={require("./attraction-15.svg")}
+                      alt="location"
+                    />
+                  </Marker>
+                  {/* {this.state.selectedHotspot !== null ? (
+                    <Popup
+                      latitude={this.state.selectedHotspot.location.lat}
+                      longitude={this.state.selectedHotspot.location.long}
+                      onClose={this.closePopup}
+                    >
+                      <p>{post.postname}</p>
+                    </Popup>
+                  ) : null} */}
+                </div>
               );
             })}
+
+            {this.state.selectedHotspot !== null ? (
+              <Popup
+                latitude={this.state.selectedHotspot.location.lat}
+                longitude={this.state.selectedHotspot.location.long}
+                onClose={this.closePopup}
+              >
+                <p>Testing</p>
+              </Popup>
+            ) : null}
 
             {/* {Object.keys(this.state.userLocation).length !== 0 ? (
               <Marker

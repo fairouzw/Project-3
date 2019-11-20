@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import UpdateProfile from "./UpdateProfile";
-import axios from "axios";
+// import axios from "axios";
 
 class Profile extends Component {
   constructor(props) {

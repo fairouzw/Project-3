@@ -13,13 +13,13 @@ class Home extends Component {
   }
 
   getAllPosts = () => {
-    axios.get(`/api/posts`) /* pagination ?limit=50 */
-      .then(res => {
-        // console.log(res.data);
-        this.setState({
-          listOfPosts: res.data
-        });
+    axios.get(`/api/posts`).then(res => {
+      // console.log(res.data);
+      /* pagination ?limit=50 */
+      this.setState({
+        listOfPosts: res.data
       });
+    });
   };
 
   componentDidMount = () => {
@@ -33,7 +33,9 @@ class Home extends Component {
           <div className="container h-100">
             <div className="row h-200 align-items-center">
               <div className="col-12 text-center">
-                <h1 className="font-weight-light"></h1>
+                {/* <h1 className="font-weight-light">
+
+                </h1> */}
                 <br />
                 <br />
                 <br />

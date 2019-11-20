@@ -30,24 +30,18 @@ class Home extends Component {
     return (
       <div>
         <header className="masthead">
-          <div className="container h-100">
-            <div className="row h-200 align-items-center">
-              <div className="col-12 text-center">
-                {/* <h1 className="font-weight-light">
-
-                </h1> */}
-                <br />
-                <br />
-                <br />
-                <p className="lead">Hi {this.props.userData.username}</p>
-                <p className="lead">Get some street credibility!</p>
-
-                <div className="align-items-center">
-                  <Map posts={this.state.listOfPosts} />
-                  {/* check if posts are empty */}
-                </div>
+          <br />
+          <br />
+          <br />
+          <br />
+          <br />
+          <br />
+          <div className="container h-100 px-lg-5">
+            <div className="row mx-lg-n5">
+              <div className="col-12 col-md-8 py-3 px-lg-5">
+                <Map posts={this.state.listOfPosts} />
               </div>
-              <div>
+              <div className="col-6 col-md-4 py-3 px-lg-5">
                 <AddPost />
               </div>
             </div>
@@ -72,3 +66,23 @@ class Home extends Component {
 }
 
 export default Home;
+
+// <div className="row h-200 align-items-center">
+//   <div className="col-12 text-center">
+//     <br />
+//     <br />
+//     <br />
+//     {/* <h1 className="font-weight-light">
+//     </h1> */}
+//     <p className="lead">Hi {this.props.userData.username}</p>
+//     <p className="lead">Get some street credibility!</p>
+
+//     <div className="align-items-center">
+//       <Map posts={this.state.listOfPosts} />
+//       {/* check if posts are empty */}
+//     </div>
+//   </div>
+//   <div>
+//     <AddPost />
+//   </div>
+// </div>

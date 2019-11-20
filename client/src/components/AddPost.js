@@ -89,30 +89,29 @@ class AddPost extends Component {
   render() {
     console.log(this.location);
     return (
-      <div>
-        <div className="container">
-          <div className="row">
-            <form onSubmit={this.handleFormSubmit}>
-              <label htmlFor="inputEmail">Title/Caption</label>
-              <div className="form-label-group">
-                <input
-                  type="text"
-                  id="inputEmail"
-                  className="form-control"
-                  placeholder="Caption"
-                  name="postname"
-                  value={this.state.postname}
-                  onChange={this.handleChange}
+      <div className="container">
+        <div className="row">
+          <form onSubmit={this.handleFormSubmit}>
+            <label htmlFor="inputEmail">Title/Caption</label>
+            <div className="form-label-group">
+              <input
+                type="text"
+                id="inputEmail"
+                className="form-control"
+                placeholder="Caption"
+                name="postname"
+                value={this.state.postname}
+                onChange={this.handleChange}
 
-                  // required
-                  // autoFocus
-                />
-              </div>
-              <label htmlFor="inputEmail">Upload an image</label>
+                // required
+                // autoFocus
+              />
+            </div>
+            <label htmlFor="inputEmail">Upload an image</label>
 
-              <div className="form-label-group">
-                <input type="file" onChange={e => this.handleFileUpload(e)} />
-                {/* <input
+            <div className="form-label-group">
+              <input type="file" onChange={e => this.handleFileUpload(e)} />
+              {/* <input
                   id="inputEmail"
                   className="form-control"
                   placeholder="Image"
@@ -123,24 +122,24 @@ class AddPost extends Component {
                   // required
                   // autoFocus
                 /> */}
-              </div>
-              <label htmlFor="inputEmail">Description</label>
-              <div className="form-label-group">
-                <input
-                  type="text"
-                  id="inputEmail"
-                  className="form-control"
-                  placeholder="Write something"
-                  name="description"
-                  value={this.state.description}
-                  onChange={this.handleChange}
+            </div>
+            <label htmlFor="inputEmail">Description</label>
+            <div className="form-label-group">
+              <input
+                type="text"
+                id="inputEmail"
+                className="form-control"
+                placeholder="Write something"
+                name="description"
+                value={this.state.description}
+                onChange={this.handleChange}
 
-                  // required
-                  // autoFocus
-                />
-              </div>
-              <label htmlFor="inputEmail">Location</label>
-              {/* <div className="form-label-group">
+                // required
+                // autoFocus
+              />
+            </div>
+            <label htmlFor="inputEmail">Location</label>
+            {/* <div className="form-label-group">
                 <input
                   type="text"
                   id="inputEmail"
@@ -153,16 +152,15 @@ class AddPost extends Component {
                   // autoFocus
                 />
               </div> */}
-              <br />
-              <button
-                className="btn btn-lg btn-primary btn-block btn-login text-uppercase font-weight-bold mb-2"
-                type="submit"
-              >
-                POST
-              </button>
-              <div className="text-center"></div>
-            </form>
-          </div>
+            <br />
+            <button
+              className="btn btn-lg btn-primary btn-block btn-login text-uppercase font-weight-bold mb-2"
+              type="submit"
+            >
+              POST
+            </button>
+            <div className="text-center"></div>
+          </form>
         </div>
       </div>
     );

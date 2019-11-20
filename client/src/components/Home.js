@@ -13,12 +13,13 @@ class Home extends Component {
   }
 
   getAllPosts = () => {
-    axios.get(`/api/posts`) /* pagination ?limit=50 */.then(res => {
-      // console.log(res.data);
-      this.setState({
-        listOfPosts: res.data
+    axios.get(`/api/posts`) /* pagination ?limit=50 */
+      .then(res => {
+        // console.log(res.data);
+        this.setState({
+          listOfPosts: res.data
+        });
       });
-    });
   };
 
   componentDidMount = () => {
@@ -38,6 +39,7 @@ class Home extends Component {
                 <br />
                 <p className="lead">Hi {this.props.userData.username}</p>
                 <p className="lead">Get some street credibility!</p>
+
                 <div className="align-items-center">
                   <Map posts={this.state.listOfPosts} />
                   {/* check if posts are empty */}

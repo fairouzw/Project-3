@@ -16,12 +16,6 @@ const postRoutes = require("./routes/post-routes");
 
 var app = express();
 
-app.use(cors({
-  // this could be multiple domains/origins, but we will allow just our React app
-  origin: ["http://localhost:3000"]
-}));
-// passport and bcrypt
-
 const session = require("express-session");
 const passport = require("passport");
 

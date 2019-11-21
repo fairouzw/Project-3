@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-// import service from '../api/service';
 import axios from "axios";
 
 function getLocation() {
@@ -20,59 +19,51 @@ class AddPost extends Component {
     };
   }
 
-  // handleFileUpload = e => {
-  //   console.log("The file to be uploaded is: ", e.target.files[0]);
+  handleFileUpload = target => {
+    console.log("The file to be uploaded is: ", target.files[0]);
 
-  //   const uploadData = new FormData();
-  //   // imageUrl => this name has to be the same as in the model since we pass
-  //   // req.body to .create() method when creating a new thing in '/api/things/create' POST route
-  //   uploadData.append("imgUrl", e.target.files[0]);
+    const uploadData = new FormData();
+    // imageUrl => this name has to be the same as in the model since we pass
+    // req.body to .create() method when creating a new thing in '/api/things/create' POST route
+    uploadData.append("imgUrl", target.files[0]);
 
-  //   service
-  //     .handleUpload(uploadData)
-  //     .then(response => {
-  //       // console.log('response is: ', response);
-  //       // after the console.log we can see that response carries 'secure_url' which we can use to update the state
-  //       this.setState({ imgUrl: response.secure_url });
-  //     })
-  //     .catch(err => {
-  //       console.log("Error while uploading the file: ", err);
-  //     });
-  // };
+    return axios
+      .post("/api/upload", uploadData)
+      .then(response => {
+        console.log('response is: ', response);
+        // after the console.log we can see that response carries 'secure_url' which we can use to update the state        
+        return response.data.secure_url
+      })
+      .catch(err => {
+        console.log("Error while uploading the file: ", err);
+      });
+  };
 
   handleFormSubmit = event => {
     event.preventDefault();
 
-    const { imgUrl, description, postname } = this.state;
+    const { description, postname } = this.state;
 
-    // service
-    //   .saveNewThing(this.state)
-    //   .then(res => {
-    //     console.log("added: ", res);
-    //     // here you would redirect to some other page
-    //   })
-    //   .catch(err => {
-    //     console.log("Error while adding the thing: ", err);
-    //   });
-
-    getLocation()
-      .then(location => {
-        return axios.post("/api/posts/new-post", {
-          imgUrl,
-          location: { lat: location.latitude, long: location.longitude },
-          description,
-          postname
-        });
-      })
-      .then(() => {
-        // this.props.getData();
-        this.setState({
-          imgUrl: "",
-          description: "",
-          postname: ""
-        });
-      })
-      .catch(error => console.log(error));
+    this.handleFileUpload(document.getElementById('file-input')).then((imgUrl) => {
+      getLocation()
+        .then(location => {
+          return axios.post("/api/posts/new-post", {
+            imgUrl,
+            location: { lat: location.latitude, long: location.longitude },
+            description,
+            postname
+          });
+        })
+        .then(() => {
+          // this.props.getData();
+          this.setState({
+            imgUrl: "",
+            description: "",
+            postname: ""
+          });
+        })
+        .catch(error => console.log(error));
+    })
   };
 
   handleChange = event => {
@@ -103,14 +94,14 @@ class AddPost extends Component {
                 value={this.state.postname}
                 onChange={this.handleChange}
 
-                // required
-                // autoFocus
+              // required
+              // autoFocus
               />
             </div>
             <label htmlFor="inputEmail">Upload an image</label>
 
             <div className="form-label-group">
-              <input type="file" onChange={e => this.handleFileUpload(e)} />
+              <input type="file" id="file-input" />
               {/* <input
                   id="inputEmail"
                   className="form-control"
@@ -134,8 +125,8 @@ class AddPost extends Component {
                 value={this.state.description}
                 onChange={this.handleChange}
 
-                // required
-                // autoFocus
+              // required
+              // autoFocus
               />
             </div>
             <label htmlFor="inputEmail">Location</label>

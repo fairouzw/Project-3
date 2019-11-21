@@ -104,7 +104,7 @@ class Map extends Component {
               onClick={this.popUpHandler}
             >
               <p>{this.state.selectedHotspot.postname}</p>
-              <img src={this.state.selectedHotspot.imageUrl} alt="" />
+              <img src={this.state.selectedHotspot.imgUrl} alt="" />
             </Popup>
           ) : null}
 

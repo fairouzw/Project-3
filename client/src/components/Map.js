@@ -44,6 +44,10 @@ class Map extends Component {
     });
   };
 
+  popUpHandler = e => {
+    console.log("target", e.target);
+  };
+
   closePopup = () => {
     this.setState({
       selectedHotspot: null
@@ -52,7 +56,7 @@ class Map extends Component {
 
   render() {
     // console.log(this.state.userLocation);
-    console.log(this.props.posts);
+    // console.log(this.props.posts);
 
     return (
       <div>
@@ -97,8 +101,10 @@ class Map extends Component {
               latitude={this.state.selectedHotspot.location.lat}
               longitude={this.state.selectedHotspot.location.long}
               onClose={this.closePopup}
+              onClick={this.popUpHandler}
             >
-              <p>Testing</p>
+              <p>{this.state.selectedHotspot.postname}</p>
+              <img src={this.state.selectedHotspot.imageUrl} alt="" />
             </Popup>
           ) : null}
 

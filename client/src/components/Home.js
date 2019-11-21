@@ -76,7 +76,6 @@ export default Home;
 //     </h1> */}
 //     <p className="lead">Hi {this.props.userData.username}</p>
 //     <p className="lead">Get some street credibility!</p>
-
 //     <div className="align-items-center">
 //       <Map posts={this.state.listOfPosts} />
 //       {/* check if posts are empty */}

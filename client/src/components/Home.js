@@ -66,22 +66,3 @@ class Home extends Component {
 }
 
 export default Home;
-
-// <div className="row h-200 align-items-center">
-//   <div className="col-12 text-center">
-//     <br />
-//     <br />
-//     <br />
-//     {/* <h1 className="font-weight-light">
-//     </h1> */}
-//     <p className="lead">Hi {this.props.userData.username}</p>
-//     <p className="lead">Get some street credibility!</p>
-//     <div className="align-items-center">
-//       <Map posts={this.state.listOfPosts} />
-//       {/* check if posts are empty */}
-//     </div>
-//   </div>
-//   <div>
-//     <AddPost />
-//   </div>
-// </div>

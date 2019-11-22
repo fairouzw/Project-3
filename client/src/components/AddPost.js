@@ -30,9 +30,9 @@ class AddPost extends Component {
     return axios
       .post("/api/upload", uploadData)
       .then(response => {
-        console.log('response is: ', response);
-        // after the console.log we can see that response carries 'secure_url' which we can use to update the state        
-        return response.data.secure_url
+        console.log("response is: ", response);
+        // after the console.log we can see that response carries 'secure_url' which we can use to update the state
+        return response.data.secure_url;
       })
       .catch(err => {
         console.log("Error while uploading the file: ", err);
@@ -44,26 +44,28 @@ class AddPost extends Component {
 
     const { description, postname } = this.state;
 
-    this.handleFileUpload(document.getElementById('file-input')).then((imgUrl) => {
-      getLocation()
-        .then(location => {
-          return axios.post("/api/posts/new-post", {
-            imgUrl,
-            location: { lat: location.latitude, long: location.longitude },
-            description,
-            postname
-          });
-        })
-        .then(() => {
-          // this.props.getData();
-          this.setState({
-            imgUrl: "",
-            description: "",
-            postname: ""
-          });
-        })
-        .catch(error => console.log(error));
-    })
+    this.handleFileUpload(document.getElementById("file-input")).then(
+      imgUrl => {
+        getLocation()
+          .then(location => {
+            return axios.post("/api/posts/new-post", {
+              imgUrl,
+              location: { lat: location.latitude, long: location.longitude },
+              description,
+              postname
+            });
+          })
+          .then(() => {
+            // this.props.getData();
+            this.setState({
+              imgUrl: "",
+              description: "",
+              postname: ""
+            });
+          })
+          .catch(error => console.log(error));
+      }
+    );
   };
 
   handleChange = event => {
@@ -94,8 +96,8 @@ class AddPost extends Component {
                 value={this.state.postname}
                 onChange={this.handleChange}
 
-              // required
-              // autoFocus
+                // required
+                // autoFocus
               />
             </div>
             <label htmlFor="inputEmail">Upload an image</label>
@@ -125,8 +127,8 @@ class AddPost extends Component {
                 value={this.state.description}
                 onChange={this.handleChange}
 
-              // required
-              // autoFocus
+                // required
+                // autoFocus
               />
             </div>
             <label htmlFor="inputEmail">Location</label>

@@ -21,7 +21,6 @@ class Login extends Component {
         this.props.history.push("/home");
       })
       .catch(error => {
-        //error.response.message;
         this.setState({
           errorMessage: "Incorrect login details!"
         });

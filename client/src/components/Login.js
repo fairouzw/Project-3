@@ -46,7 +46,10 @@ class Login extends Component {
                   <div className="row">
                     <div className="col-md-9 col-lg-8 mx-auto">
                       <h3 className="login-heading mb-4">Welcome back!</h3>
-                      <div> {this.state.errorMessage}</div>
+                      <div style={{ color: "red" }}>
+                        {" "}
+                        {this.state.errorMessage}
+                      </div>
                       <form onSubmit={this.handleFormSubmit}>
                         <div className="form-label-group">
                           <input

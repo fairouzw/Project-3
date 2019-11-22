@@ -7,7 +7,8 @@ class Signup extends Component {
     super(props);
     this.state = {
       username: "",
-      password: ""
+      password: "",
+      errorMessage: null
     };
   }
 
@@ -19,7 +20,15 @@ class Signup extends Component {
         this.props.getUser(response.data);
         this.props.history.push("/home");
       })
-      .catch(() => { });
+      .catch(error => {
+        if (error.response.status === 400) {
+          this.setState({ errorMessage: error.response.data.message });
+        } else {
+          this.setState({
+            errorMessage: "Unknown error, sorry 'bout that."
+          });
+        }
+      });
   };
 
   handleChange = event => {
@@ -38,6 +47,10 @@ class Signup extends Component {
                   <div className="row">
                     <div className="col-md-9 col-lg-8 mx-auto">
                       <h3 className="login-heading mb-4">Welcome!</h3>
+                      <div style={{ color: "red" }}>
+                        {" "}
+                        {this.state.errorMessage}
+                      </div>
                       <form onSubmit={this.handleFormSubmit}>
                         <div className="form-label-group">
                           <input

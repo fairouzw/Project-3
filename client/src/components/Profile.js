@@ -1,22 +1,36 @@
 import React, { Component } from "react";
-import UpdateProfile from "./UpdateProfile";
-// import axios from "axios";
+// import UpdateProfile from "./UpdateProfile";
+import axios from "axios";
 
 class Profile extends Component {
   constructor(props) {
     super(props);
     this.state = {
       // userData: this.props.userData,
-      formVisible: false
+      username: this.props.userData.username,
+      email: this.props.userData.email
     };
   }
 
-  handleFormVisibility = () => {
-    this.setState({
-      formVisible: !this.state.formVisible
-    });
+  handleFormSubmit = event => {
+    // event.preventDefault(); I uncommented this so that it would refresh the page and update the userdate above.
+    const { username, email } = this.state;
+
+    axios
+      .put(`/api/profiles/${this.props.userData._id}`, { username, email })
+      .then(() => {
+        // this.props.getUser();
+        this.props.history.push("/profile");
+      })
+      .catch(error => console.log(error));
   };
 
+  handleChange = e => {
+    const { name, value } = e.target;
+    this.setState({
+      [name]: value
+    });
+  };
   render() {
     return (
       <div>
@@ -25,23 +39,47 @@ class Profile extends Component {
         <br />
         <p> Welcome {this.props.userData.username} !</p>
         <p> Username: {this.props.userData.username}</p>
-        {this.props.userData.email !== null ? (
-          <p> E-mail: {this.props.userData.email}</p> // how to set the value on  null??
-        ) : null}
-        {this.props.userData.follows !== null ? (
-          <p> Follows: {this.props.userData.follows}</p>
-        ) : null}
-        {this.state.formVisible && (
-          <UpdateProfile getUser={this.props.userData} />
-        )}
-        {!this.state.formVisible && (
+        <p> Email: {this.props.userData.email}</p>
+
+        <form onSubmit={this.handleFormSubmit}>
+          <div className="form-label-group">
+            <input
+              type="text"
+              id="inputEmail"
+              className="form-control"
+              placeholder="Username"
+              name="username"
+              onChange={e => this.handleChange(e)}
+              value={this.state.username}
+              // required
+              // autofocus
+            />
+            <label htmlFor="inputEmail">Username</label>
+          </div>
+
+          <div className="form-label-group">
+            <input
+              type="text"
+              id="inputEmail"
+              className="form-control"
+              placeholder="Email"
+              name="email"
+              onChange={e => this.handleChange(e)}
+              value={this.state.email}
+              // required
+              // autofocus
+            />
+            <label htmlFor="inputEmail">Email</label>
+          </div>
+
           <button
-            onClick={this.handleFormVisibility}
-            className="button is-primary"
+            className="btn btn-lg btn-primary btn-block btn-login text-uppercase font-weight-bold mb-2"
+            type="submit"
           >
-            Update Userdata
+            Update Details
           </button>
-        )}
+          <div className="text-center"></div>
+        </form>
       </div>
     );
   }

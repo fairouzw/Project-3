@@ -17,9 +17,7 @@ class Navbar extends Component {
       <div>
         <nav className="navbar navbar-expand-lg navbar-light bg-light shadow fixed-top">
           <div className="container">
-            <Link className="navbar-brand" href="#">
-              Funk Noch!
-            </Link>
+            <Link className="navbar-brand">Funk Noch!</Link>
             <button
               className="navbar-toggler"
               type="button"

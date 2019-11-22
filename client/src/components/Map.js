@@ -11,7 +11,7 @@ class Map extends Component {
       zoom: 11
     },
     userLocation: {},
-    selectedHotspot: null
+    selectedSpot: null
   };
 
   customizeMap = viewport => {
@@ -38,9 +38,9 @@ class Map extends Component {
   //   });
   // };
 
-  setSelectedHotspot = object => {
+  setSelectedSpot = object => {
     this.setState({
-      selectedHotspot: object
+      selectedSpot: object
     });
   };
 
@@ -50,7 +50,7 @@ class Map extends Component {
 
   closePopup = () => {
     this.setState({
-      selectedHotspot: null
+      selectedSpot: null
     });
   };
 
@@ -77,34 +77,25 @@ class Map extends Component {
                   <img
                     className="location-icon"
                     onClick={() => {
-                      this.setSelectedHotspot(post);
+                      this.setSelectedSpot(post);
                     }}
                     src={require("./attraction-15.svg")}
                     alt="location"
                   />
                 </Marker>
-                {/* {this.state.selectedHotspot !== null ? (
-                    <Popup
-                      latitude={this.state.selectedHotspot.location.lat}
-                      longitude={this.state.selectedHotspot.location.long}
-                      onClose={this.closePopup}
-                    >
-                      <p>{post.postname}</p>
-                    </Popup>
-                  ) : null} */}
               </div>
             );
           })}
 
-          {this.state.selectedHotspot !== null ? (
+          {this.state.selectedSpot !== null ? (
             <Popup
-              latitude={this.state.selectedHotspot.location.lat}
-              longitude={this.state.selectedHotspot.location.long}
+              latitude={this.state.selectedSpot.location.lat}
+              longitude={this.state.selectedSpot.location.long}
               onClose={this.closePopup}
               onClick={this.popUpHandler}
             >
-              <p>{this.state.selectedHotspot.postname}</p>
-              <img src={this.state.selectedHotspot.imgUrl} alt="" />
+              <p>{this.state.selectedSpot.postname}</p>
+              <img src={this.state.selectedSpot.imgUrl} alt="" />
             </Popup>
           ) : null}
 

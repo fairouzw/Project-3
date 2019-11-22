@@ -30,7 +30,17 @@
   background-repeat: no-repeat;
 }
 
-img {
-  width: 30px;
+.location-icon {
   height: 30px;
+}
+
+.post-pic {
+  height: 100px;
+}
+/* .all-posts {
+  display: flex;
+} */
+.one-post {
+  border: 1px solid rgb(200, 200, 200);
+  width: 300px;
 }

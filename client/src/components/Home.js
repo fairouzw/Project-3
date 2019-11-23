@@ -10,7 +10,8 @@ class Home extends Component {
   constructor() {
     super();
     this.state = {
-      listOfPosts: []
+      listOfPosts: [],
+      filteredListOfPosts: []
     };
   }
 
@@ -19,7 +20,8 @@ class Home extends Component {
       // console.log(res.data);
       /* pagination ?limit=50 */
       this.setState({
-        listOfPosts: res.data
+        listOfPosts: res.data,
+        filteredListOfPosts: res.data
       });
     });
   };
@@ -29,19 +31,20 @@ class Home extends Component {
   };
 
   searchResultPost = search => {
+
+    // const results = postList.filter ... (that's what's actually happening here)
     const results = [];
     const postList = [...this.state.listOfPosts];
     console.log(this.state.listOfPosts)
-    postList.map(p => {
-      console.log(p.postname)
-      return p.postname.toLowerCase().includes(search.toLowerCase())
-        ? results.push(p)
-        : " ";
 
+    postList.forEach(p => {
+      console.log(p.postname)
+      if (p.postname.toLowerCase().includes(search.toLowerCase())) {
+        results.push(p)
+      }
     });
-    results.length >= 1
-      ? this.setState({ listOfPosts: results })
-      : this.setState({ listOfPosts: [...this.state.listOfPosts] });
+
+    this.setState({ filteredListOfPosts: results })
     console.log(results)
   };
 
@@ -57,8 +60,10 @@ class Home extends Component {
           <br />
           <div className="container h-100 px-lg-5">
             <div className="row mx-lg-n5">
+
               <div className="col-12 col-md-8 py-3 px-lg-5">
-                <Map posts={this.state.listOfPosts} />
+                <Map posts={this.state.filteredListOfPosts} />
+                {/* this.state.filteredListOfPosts */}
               </div>
               <div className="col-6 col-md-4 py-3 px-lg-5">
                 <AddPost />
@@ -74,7 +79,7 @@ class Home extends Component {
                 <SearchPost searchPost={this.searchResultPost} />
               </div>
               <div>
-                <DisplayPost posts={this.state.listOfPosts}></DisplayPost>
+                <DisplayPost posts={this.state.filteredListOfPosts}></DisplayPost>
               </div>
               All posts will be displayed here with search bar
             </h2>

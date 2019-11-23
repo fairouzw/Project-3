@@ -13,7 +13,7 @@ class Profile extends Component {
   }
 
   handleFormSubmit = event => {
-    // event.preventDefault(); I uncommented this so that it would refresh the page and update the userdate above.
+    event.preventDefault(); /* I uncommented this so that it would refresh the page and update the userdate above. */
     const { username, email } = this.state;
 
     axios
@@ -37,9 +37,9 @@ class Profile extends Component {
         <br />
         <br />
         <br />
-        <p> Welcome {this.props.userData.username} !</p>
-        <p> Username: {this.props.userData.username}</p>
-        <p> Email: {this.props.userData.email}</p>
+        <p> Welcome {this.state.username} !</p>
+
+        <p> Email: {this.state.email}</p>
 
         <form onSubmit={this.handleFormSubmit}>
           <div className="form-label-group">

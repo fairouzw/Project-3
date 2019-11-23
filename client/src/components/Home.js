@@ -5,13 +5,15 @@ import Map from "./Map";
 import axios from "axios";
 import DisplayPost from "./DisplayPost";
 import SearchPost from "./SearchPost";
+import Popup from "./PopUp"
 
 class Home extends Component {
   constructor() {
     super();
     this.state = {
       listOfPosts: [],
-      filteredListOfPosts: []
+      filteredListOfPosts: [],
+      showPopup: false
     };
   }
 
@@ -48,6 +50,14 @@ class Home extends Component {
     console.log(results)
   };
 
+  togglePopup = event => {
+    event.preventDefault();
+    this.setState({
+      showPopup: !this.state.showPopup
+    });
+  }
+
+
   render() {
     return (
       <div>
@@ -65,13 +75,26 @@ class Home extends Component {
                 <Map posts={this.state.filteredListOfPosts} />
                 {/* this.state.filteredListOfPosts */}
               </div>
+
               <div className="col-6 col-md-4 py-3 px-lg-5">
+
                 <AddPost />
               </div>
 
             </div>
           </div>
         </header>
+        <div className='popup-button'>
+          <h1>Add Post</h1>
+          <button onClick={this.togglePopup}>show popup</button>
+          {this.state.showPopup ?
+            <Popup
+              text='Your next post:'
+              closePopup={this.togglePopup}
+            />
+            : null
+          }
+        </div>
         <section className="py-5">
           <div className="container">
             <h2 className="font-weight-light">
@@ -83,14 +106,10 @@ class Home extends Component {
               </div>
               All posts will be displayed here with search bar
             </h2>
-            <p>
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-              Repellendus ab nulla dolorum autem nisi officiis blanditiis
-              voluptatem hic, assumenda aspernatur facere ipsam nemo ratione
-              cumque magnam enim fugiat reprehenderit expedita.
-            </p>
+
           </div>
         </section>
+
       </div>
     );
   }

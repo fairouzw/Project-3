@@ -1,6 +1,7 @@
 import React, { Component } from "react";
-// import UpdateProfile from "./UpdateProfile";
 import axios from "axios";
+// import UpdateProfile from "./UpdateProfile";
+
 
 class Profile extends Component {
   constructor(props) {
@@ -8,9 +9,29 @@ class Profile extends Component {
     this.state = {
       // userData: this.props.userData,
       username: this.props.userData.username,
-      email: this.props.userData.email
+      email: this.props.userData.email,
+      listOfPosts: [],
     };
   }
+
+  getAllUserPosts = () => {
+    axios.get(`/api/posts?owner_id=${this.props.userData._id}`).then(res => {
+
+
+      this.setState({
+        listOfPosts: res.data
+      });
+
+    })
+  }
+
+
+
+
+  componentDidMount = () => {
+    this.getAllUserPosts();
+  };
+
 
   handleFormSubmit = event => {
     event.preventDefault(); /* I uncommented this so that it would refresh the page and update the userdate above. */
@@ -31,6 +52,8 @@ class Profile extends Component {
       [name]: value
     });
   };
+
+
   render() {
     return (
       <div>
@@ -51,8 +74,8 @@ class Profile extends Component {
               name="username"
               onChange={e => this.handleChange(e)}
               value={this.state.username}
-              // required
-              // autofocus
+            // required
+            // autofocus
             />
             <label htmlFor="inputEmail">Username</label>
           </div>
@@ -66,8 +89,8 @@ class Profile extends Component {
               name="email"
               onChange={e => this.handleChange(e)}
               value={this.state.email}
-              // required
-              // autofocus
+            // required
+            // autofocus
             />
             <label htmlFor="inputEmail">Email</label>
           </div>
@@ -80,6 +103,11 @@ class Profile extends Component {
           </button>
           <div className="text-center"></div>
         </form>
+
+        <div className="my-posts">
+          <p> Posttitle {this.state.listOfPosts.map(p => <li key={p._id}>{p.postname}<br></br>{p.description}</li>)} !</p>
+          <img className="post-pic" src={this.state.listOfPosts.map(p => <p key={p._id}>{p.imgUrl}</p>)} alt=""></img>
+        </div>
       </div>
     );
   }

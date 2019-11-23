@@ -1,9 +1,6 @@
 import React, { Component } from "react";
 
 class Search extends Component {
-    constructor() {
-        super();
-    }
 
     changeHandler = e => {
         let { value } = e.target;

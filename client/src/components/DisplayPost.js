@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import ReactMapGL, { Marker, Popup } from "react-map-gl";
 
 class DisplayPost extends Component {
 

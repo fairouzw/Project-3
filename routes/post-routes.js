@@ -6,8 +6,11 @@ let User = require("../models/user-model");
 let Comment = require("../models/comment-model");
 
 //GET all posts
+// /api/posts
+// /api/posts?owner_id=12983761823515423
 router.get("/", (req, res, next) => {
-  Post.find()
+  dbQuery = req.query.owner_id ? { owner: req.query.owner_id } : {}
+  Post.find(dbQuery)
     .then(allThePosts => {
       res.json(allThePosts);
     })
@@ -17,7 +20,7 @@ router.get("/", (req, res, next) => {
 });
 
 // /api/posts/o1i72367458523dasdztr
-router.get("/:id", function(req, res, next) {
+router.get("/:id", function (req, res, next) {
   Post.findById(req.params.id).then(post => {
     Comment.find({ post: post._id }).then(comments => {
       // this can probably be done in a simpler/cleaner way -- please research
@@ -36,9 +39,9 @@ router.post("/new-post", (req, res, next) => {
     imgUrl: req.body.imgUrl,
     location: req.body.location,
     description: req.body.description,
-    postname: req.body.postname
+    postname: req.body.postname,
     /* HAD TO UNCOMMENT THIS SO THAT THIS ROUTE WOULD WORK :) */
-    // owner: req.user._id,
+    owner: req.user._id,
     // categories: req.body.categories,
     // likes: req.user._id,
     // expireDate: req.body.expireDate

@@ -3,17 +3,11 @@ import React, { Component } from "react";
 class Search extends Component {
     constructor() {
         super();
-        this.state = {
-            search: "",
-
-        };
     }
 
     changeHandler = e => {
-        let { name, value } = e.target;
-        this.setState({ [name]: value });
-        this.props.searchPost(this.state.search); /* this is lifting the state */
-
+        let { value } = e.target;
+        this.props.searchPost(value); /* this is lifting the state */
     };
 
 

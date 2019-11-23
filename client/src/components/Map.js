@@ -75,7 +75,7 @@ class Map extends Component {
                   longitude={post.location.long}
                 >
                   <img
-                    className="location-icon"
+
                     onClick={() => {
                       this.setSelectedSpot(post);
                     }}
@@ -95,7 +95,7 @@ class Map extends Component {
               onClick={this.popUpHandler}
             >
               <p>{this.state.selectedSpot.postname}</p>
-              <img src={this.state.selectedSpot.imgUrl} alt="" />
+              <img className="location-icon" src={this.state.selectedSpot.imgUrl} alt="" />
             </Popup>
           ) : null}
 

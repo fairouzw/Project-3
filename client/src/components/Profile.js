@@ -105,8 +105,22 @@ class Profile extends Component {
         </form>
 
         <div className="my-posts">
-          <p> Posttitle {this.state.listOfPosts.map(p => <li key={p._id}>{p.postname}<br></br>{p.description}</li>)} !</p>
-          <img className="post-pic" src={this.state.listOfPosts.map(p => <p key={p._id}>{p.imgUrl}</p>)} alt=""></img>
+          <h5>My posts:</h5>
+        </div>
+        <div className="all-posts">
+          {this.state.listOfPosts.map(post => {
+            return (
+
+              <div className="one-post">
+                <br></br>
+                <h3 key={post._id}>Thing: {post.postname}</h3>
+                <div>Description: {post.description}</div>
+                <img className="post-pic" src={post.imgUrl} alt=""></img>
+                <br></br>
+              </div>
+
+            );
+          })}
         </div>
       </div>
     );

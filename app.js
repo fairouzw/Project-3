@@ -76,7 +76,7 @@ app.use("/api/posts", postRoutes);
 app.use("/api", require("./routes/file-upload-routes"));
 
 // catch 404 and forward to error handler
-app.use(function(req, res, next) {
+app.use("/api", function(req, res, next) {
   next(createError(404));
 });
 

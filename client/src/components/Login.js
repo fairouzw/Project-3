@@ -1,6 +1,26 @@
 import React, { Component } from "react";
-import { withRouter } from "react-router-dom";
+import { withRouter, Link } from "react-router-dom";
 import axios from "axios";
+import {
+  Button,
+  Card,
+  CardBody,
+  FormGroup,
+  Form,
+  Input,
+  InputGroupAddon,
+  InputGroupText,
+  InputGroup,
+  Container,
+  Row,
+  Col,
+  NavItem,
+  NavLink,
+  Nav
+} from "reactstrap";
+import "../assets/vendor/nucleo/css/nucleo.css"
+import "../assets/vendor/@fortawesome/fontawesome-free/css/all.min.css";
+import "../assets/css/argon-dashboard-react.css";
 
 class Login extends Component {
   constructor(props) {
@@ -35,75 +55,180 @@ class Login extends Component {
 
   render() {
     return (
-      <div>
-        <div className="container-fluid">
-          <div className="row no-gutter">
-            <div className="d-none d-md-flex col-md-4 col-lg-6 bg-image"></div>
-            <div className="col-md-8 col-lg-6">
-              <div className="login d-flex align-items-center py-5">
-                <div className="container">
-                  <div className="row">
-                    <div className="col-md-9 col-lg-8 mx-auto">
-                      <h3 className="login-heading mb-4">Welcome back!</h3>
-                      <div style={{ color: "red" }}>
-                        {" "}
-                        {this.state.errorMessage}
-                      </div>
-                      <form onSubmit={this.handleFormSubmit}>
-                        <div className="form-label-group">
-                          <input
-                            type="text"
-                            id="inputEmail"
-                            className="form-control"
-                            placeholder="Username"
-                            name="username"
-                            value={this.state.username}
-                            onChange={e => this.handleChange(e)}
-                            required
-                            autoFocus
-                          />
-                          <label htmlFor="inputEmail">Username</label>
-                        </div>
-
-                        <div className="form-label-group">
-                          <input
-                            type="password"
-                            id="inputPassword"
-                            className="form-control"
-                            placeholder="Password"
-                            name="password"
-                            value={this.state.password}
-                            onChange={e => this.handleChange(e)}
-                            required
-                          />
-                          <label htmlFor="inputPassword">Password</label>
-                        </div>
-
-                        <div className="custom-control custom-checkbox mb-3">
-                          <input
-                            type="checkbox"
-                            className="custom-control-input"
-                            id="customCheck1"
-                          />
-                        </div>
-                        <button
-                          className="btn btn-lg btn-primary btn-block btn-login text-uppercase font-weight-bold mb-2"
-                          type="submit"
-                        >
-                          Log in
-                        </button>
-                        <div className="text-center"></div>
-                      </form>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
+  
+<div>
+      <div className="main-content">
+      <div className="header bg-gradient-info py-7 py-lg-8">
+        <Container>
+          <div className="header-body text-center mb-7">
+            <Row className="justify-content-center">
+              <Col lg="5" md="6">
+                <h1 className="text-white">Welcome!</h1>
+                <p className="text-lead text-light">
+                  The catching slogan Lena suggested which I clearly forgot.
+                </p>
+              </Col>
+            </Row>
           </div>
+        </Container>
+        <div className="separator separator-bottom separator-skew zindex-100">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            preserveAspectRatio="none"
+            version="1.1"
+            viewBox="0 0 2560 100"
+            x="0"
+            y="0"
+          >
+            <polygon
+              className="fill-default"
+              points="2560 0 2560 100 0 100"
+            />
+          </svg>
         </div>
       </div>
-    );
-  }
+      {/* Page content */}
+      <Container className="mt--8 pb-5">
+        <Row className="justify-content-center">
+   
+   
+      {/* LOGIN FORM */}
+          <Col lg="5" md="7">
+          <Card className="light shadow border-0">
+          
+            <CardBody className="px-lg-5 py-lg-5">
+              <div className="text-center text-muted mb-4">
+
+                <small>Log in in with credentials</small>
+        
+              </div>
+              <Form onSubmit={this.handleFormSubmit} role="form">
+                <FormGroup className="mb-3">
+                  <InputGroup className="input-group-alternative">
+                    <InputGroupAddon style={{backgroundColor: "white"}} addonType="prepend">
+                      <InputGroupText>
+                        <i className="ni ni-circle-08" />
+                      </InputGroupText>
+                    </InputGroupAddon>
+
+                    <Input 
+                    placeholder="Username"
+                    name="username"
+                    value={this.state.username}
+                    onChange={e => this.handleChange(e)}
+                    />
+                  </InputGroup>
+                </FormGroup>
+                <FormGroup>
+                  <InputGroup className="input-group-alternative">
+                    <InputGroupAddon addonType="prepend">
+                      <InputGroupText>
+                        <i className="ni ni-lock-circle-open" />
+                      </InputGroupText>
+                    </InputGroupAddon>
+                    <Input 
+                    placeholder="Password" 
+                    type="password" 
+                    name="password"
+                    value={this.state.password}
+                    onChange={e => this.handleChange(e)} 
+                    />
+                  </InputGroup>
+                </FormGroup>
+               
+                <div style={{color: "red"}}>
+                 {this.state.errorMessage} 
+               </div>
+               
+                <div className="text-center">
+                  <Button 
+                  className="my-4" 
+                  color="primary" 
+                  type="submit">
+                    Log in
+                  </Button>
+                </div>
+              </Form>
+            </CardBody>
+          </Card>
+          <Row className="text -center mt-3">
+            {/* <Col xs="6">
+              <Link
+                className="text-light"
+              >
+                <small>Forgot password?</small>
+              </Link>
+            </Col> */}
+            <Col className="" xs="12">
+              <Link
+                className="text-dark"
+                to="/signup"
+              >
+                <small>Create new account</small>
+              </Link>
+            </Col>
+          </Row>
+        </Col>
+
+        </Row>
+      </Container>
+    </div>
+    <footer className="py-5">
+          <Container>
+            <Row className="align-items-center justify-content-xl-between">
+              <Col xl="6">
+                <div className="copyright text-center text-xl-left text-muted">
+                  © 2018{" "}
+                  <Link
+                    className="font-weight-bold ml-1"
+
+                  >
+                    Creative Tim
+                  </Link>
+                </div>
+              </Col>
+              <Col xl="6">
+                <Nav className="nav-footer justify-content-center justify-content-xl-end">
+                  <NavItem>
+                    <NavLink
+                     
+              
+                    >
+                      Creative Tim
+                    </NavLink>
+                  </NavItem>
+                  <NavItem>
+                    <NavLink
+                    
+             
+                    >
+                      About Us
+                    </NavLink>
+                  </NavItem>
+                  <NavItem>
+                    <NavLink
+                  
+                    >
+                      Blog
+                    </NavLink>
+                  </NavItem>
+                  <NavItem>
+                    <NavLink
+                     
+                    >
+                      MIT License
+                    </NavLink>
+                  </NavItem>
+                </Nav>
+              </Col>
+            </Row>
+          </Container>
+        </footer>
+        </div>
+        
+);
+}
 }
 
 export default withRouter(Login);
+

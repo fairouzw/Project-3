@@ -6,6 +6,11 @@ import * as serviceWorker from "./serviceWorker";
 import "bootstrap/dist/css/bootstrap.css";
 import { BrowserRouter } from "react-router-dom";
 import axios from "axios";
+import 'bootstrap/dist/css/bootstrap.min.css';
+
+import "../src/assets/vendor/nucleo/css/nucleo.css";
+import "../src/assets/vendor/@fortawesome/fontawesome-free/css/all.min.css";
+import "../src/assets/css/argon-dashboard-react.css";
 
 document.getElementById("root").innerText =
   "The React app has not connected to the backend yet.";

@@ -105,23 +105,22 @@ class Sidebar extends Component {
               </DropdownToggle>
               <DropdownMenu className="dropdown-menu-arrow" right>
                 <DropdownItem className="noti-title" header tag="div">
-                  <h6 className="text-overflow m-0">Welcome!</h6>
                 </DropdownItem>
                 <DropdownItem to="/profile" tag={Link}>
-                  <i className="ni ni-single-02" />
+                  <i className="ni ni-circle-08" />
                   <span>Account details</span>
                 </DropdownItem>
                 <DropdownItem to="" tag={Link}>
-                  <i className="ni ni-settings-gear-65" />
+                  <i className="ni ni-pin-3" />
                   <span>My Posts</span>
                 </DropdownItem>
                 <DropdownItem to="" tag={Link}>
-                  <i className="ni ni-support-16" />
+                  <i className="ni ni-favourite-28 " />
                   <span>My Favourites</span>
                 </DropdownItem>
                 <DropdownItem divider />
                 <DropdownItem /* href="#pablo" */ href="/" onClick={this.logoutUser}>
-                  <i className="ni ni-user-run" />
+                  <i className="ni ni-button-power" />
                   <span>Logout</span>
                 </DropdownItem>
               </DropdownMenu>
@@ -177,8 +176,15 @@ class Sidebar extends Component {
             <Nav className="mb-md-3" navbar>
               <NavItem>
                <NavLink tag={Link} to="/home">
-               <i className="ni ni-palette" />
+               <i className="ni ni-square-pin text-primary" />
                  Home
+                </NavLink>
+              </NavItem>
+           
+              <NavItem>
+               <NavLink tag={Link} to="/home">
+               <i className="ni ni-fat-add text-orange" />
+                 Create Post
                 </NavLink>
               </NavItem>
             </Nav>
@@ -190,19 +196,19 @@ class Sidebar extends Component {
             <Nav className="mb-md-3" navbar>
               <NavItem>
                 <NavLink tag={Link} to="/profile">
-                  <i className="ni ni-spaceship" />
+                  <i className="ni ni-circle-08 text-orange" />
                  Account details
                 </NavLink>
               </NavItem>
               <NavItem>
                 <NavLink tag={Link} to="">
-                  <i className="ni ni-palette" />
+                  <i className="ni ni-pin-3 text-blue" />
                   My Posts
                 </NavLink>
               </NavItem>
               <NavItem>
                 <NavLink to="">
-                  <i className="ni ni-ui-04" />
+                  <i className="ni ni-favourite-28 text-red" />
                 My Favourites
                 </NavLink>
               </NavItem>
@@ -211,7 +217,7 @@ class Sidebar extends Component {
             <Nav className="mb-md-3" navbar>
               <NavItem>
                <NavLink onClick={this.logoutUser} href="/">
-               <i className="ni ni-palette" />
+               <i className="ni ni-button-power text-yellow" />
                  Logout
                 </NavLink>
               </NavItem>

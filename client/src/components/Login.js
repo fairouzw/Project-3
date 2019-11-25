@@ -57,7 +57,7 @@ class Login extends Component {
     return (
   
 <div>
-      <div className="main-content">
+      <div style={{backgroundColor: "#172b4d"}} className="main-content">
       <div className="header bg-gradient-info py-7 py-lg-8">
         <Container>
           <div className="header-body text-center mb-7">
@@ -161,7 +161,7 @@ class Login extends Component {
             </Col> */}
             <Col className="" xs="12">
               <Link
-                className="text-dark"
+                className="text-light"
                 to="/signup"
               >
                 <small>Create new account</small>
@@ -173,8 +173,8 @@ class Login extends Component {
         </Row>
       </Container>
     </div>
-    <footer className="py-5">
-          <Container>
+    <footer style={{backgroundColor: "#172b4d"}} className="py-5">
+          <Container  >
             <Row className="align-items-center justify-content-xl-between">
               <Col xl="6">
                 <div className="copyright text-center text-xl-left text-muted">
@@ -188,7 +188,7 @@ class Login extends Component {
                 </div>
               </Col>
               <Col xl="6">
-                <Nav className="nav-footer justify-content-center justify-content-xl-end">
+                <Nav className="text-light nav-footer justify-content-center justify-content-xl-end">
                   <NavItem>
                     <NavLink
                      

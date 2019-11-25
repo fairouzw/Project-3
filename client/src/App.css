@@ -65,3 +65,7 @@
   margin: auto;
   background: white;
 }
+
+.addPadding {
+padding-left: 250px;
+}

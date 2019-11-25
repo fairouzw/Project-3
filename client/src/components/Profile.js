@@ -56,7 +56,7 @@ class Profile extends Component {
 
   render() {
     return (
-      <div>
+      <div className="addPadding">
         <br />
         <br />
         <br />

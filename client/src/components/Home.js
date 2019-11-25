@@ -7,6 +7,7 @@ import DisplayPost from "./DisplayPost";
 import SearchPost from "./SearchPost";
 import Popup from "./PopUp"
 
+
 class Home extends Component {
   constructor() {
     super();
@@ -60,7 +61,8 @@ class Home extends Component {
 
   render() {
     return (
-      <div>
+      <div className="addPadding">
+       
         <header className="masthead">
           <br />
           <br />

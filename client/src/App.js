@@ -7,7 +7,7 @@ import Start from "./components/Start";
 import Login from "./components/Login";
 import Signup from "./components/Signup";
 import Profile from "./components/Profile";
-import Navbar from "./components/Navbar";
+import Sidebar from "./components/Sidebar";
 import Home from "./components/Home";
 
 class App extends Component {
@@ -28,7 +28,7 @@ class App extends Component {
     return (
       <div className="App">
         {this.state.loggedInUser !== null ? (
-          <Navbar getUser={this.getTheUser} />
+          <Sidebar getUser={this.getTheUser} />
         ) : null}
         <Switch>
           <Route
@@ -71,20 +71,24 @@ class App extends Component {
             exact
             path="/home"
             render={() => (
+
               <Home
                 getUser={this.getTheUser}
                 userData={this.state.loggedInUser}
               />
+          
             )}
           />
           <Route
             exact
             path="/profile"
             render={() => (
+     
               <Profile
                 getUser={this.getTheUser}
                 userData={this.state.loggedInUser}
               />
+   
             )}
           />
         </Switch>

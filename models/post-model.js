@@ -6,6 +6,7 @@ const postSchema = new Schema(
   {
     imgUrl: String,
     location: { lat: Number, long: Number },
+    address: String,
     description: String,
     postname: String,
     owner: { type: Schema.Types.ObjectId, ref: "User" },

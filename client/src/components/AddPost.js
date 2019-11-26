@@ -1,23 +1,12 @@
 import React, { Component } from "react";
 import axios from "axios";
 
-
 function getLocation() {
   return new Promise((resolve, reject) => {
     navigator.geolocation.getCurrentPosition(position => {
-      axios
-        .get(
-          `https://api.mapbox.com/geocoding/v5/mapbox.places/${position.coords.longitude},${position.coords.latitude}.json?access_token=pk.eyJ1IjoibG9zLWxlbmEiLCJhIjoiY2szNHllYzI5MTZsOTNubzI1emZ2aHFiaSJ9.v7gsBidhvQm2T5EOb_GcGA`
-        )
-        .then(result=>{
-          console.log("result",result.data.features[0].place_name)
-        }).catch(error=>{
-          console.log("something is wrong with convert",error)
-        })
-      resolve(position.coords);
-    });
-  });
-}
+        resolve(position.coords);
+      });
+})}
 
 
 class AddPost extends Component {
@@ -54,20 +43,25 @@ class AddPost extends Component {
     event.preventDefault();
 
     const { description, postname } = this.state;
-    console.log("event.target")
-    console.log(event.target)
-    console.log(event.target.getElementsByClassName("imgUrl")[0])
+    // console.log("event.target")
+    // console.log(event.target)
+    // console.log(event.target.getElementsByClassName("imgUrl")[0])
 
-    this.handleFileUpload(event.target.getElementsByClassName("imgUrl")[0]).then(
+    this.handleFileUpload(event.target.getElementsByClassName("imgUrl")[0])
+    .then(
       imgUrl => {
         getLocation()
           .then(location => {
+            console.log("////",location)
+            axios.get(`https://api.mapbox.com/geocoding/v5/mapbox.places/${location.longitude},${location.latitude}.json?access_token=pk.eyJ1IjoibG9zLWxlbmEiLCJhIjoiY2szNHllYzI5MTZsOTNubzI1emZ2aHFiaSJ9.v7gsBidhvQm2T5EOb_GcGA`)
+        .then(result=>{
             return axios.post("/api/posts/new-post", {
               imgUrl,
               location: { lat: location.latitude, long: location.longitude },
               description,
-              postname
-            });
+              postname,
+              address: result.data.features[0].place_name
+            })
           })
           .then(() => {
             // this.props.getData();
@@ -78,6 +72,10 @@ class AddPost extends Component {
             });
           })
           .catch(error => console.log(error));
+        }).catch(error=>{
+          console.log("something is wrong with convert",error)
+        })
+            
       }
     );
   };
@@ -94,7 +92,7 @@ class AddPost extends Component {
   };
 
   render() {
-    console.log(this.location);
+
     return (
       <div className="container">
         <div className="row">
@@ -109,8 +107,7 @@ class AddPost extends Component {
                 name="postname"
                 value={this.state.postname}
                 onChange={this.handleChange}
-
-              // required
+              required
               // autoFocus
               />
             </div>
@@ -118,17 +115,6 @@ class AddPost extends Component {
 
             <div className="form-label-group">
               <input type="file" className="imgUrl" required/>
-              {/* <input
-                  id="inputEmail"
-                  className="form-control"
-                  placeholder="Image"
-                  name="imageUrl"
-                  value={this.state.imgUrl}
-                  onChange={this.handleChange}
-
-                  // required
-                  // autoFocus
-                /> */}
             </div>
             <label htmlFor="inputEmail">Description</label>
             <div className="form-label-group">
@@ -140,7 +126,6 @@ class AddPost extends Component {
                 name="description"
                 value={this.state.description}
                 onChange={this.handleChange}
-
               // required
               // autoFocus
               />

@@ -38,6 +38,7 @@ router.post("/new-post", (req, res, next) => {
   Post.create({
     imgUrl: req.body.imgUrl,
     location: req.body.location,
+    address: req.body.address,
     description: req.body.description,
     postname: req.body.postname,
     /* HAD TO UNCOMMENT THIS SO THAT THIS ROUTE WOULD WORK :) */
@@ -46,7 +47,7 @@ router.post("/new-post", (req, res, next) => {
     // likes: req.user._id,
     // expireDate: req.body.expireDate
   }).then(response => {
-    console.log("I am here. 1");
+    console.log("I am here. 1 new doc/////",response);
 
     res.json({ response });
   });

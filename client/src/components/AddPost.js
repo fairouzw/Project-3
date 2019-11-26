@@ -1,13 +1,24 @@
 import React, { Component } from "react";
 import axios from "axios";
 
+
 function getLocation() {
   return new Promise((resolve, reject) => {
     navigator.geolocation.getCurrentPosition(position => {
+      axios
+        .get(
+          `https://api.mapbox.com/geocoding/v5/mapbox.places/${position.coords.longitude},${position.coords.latitude}.json?access_token=pk.eyJ1IjoibG9zLWxlbmEiLCJhIjoiY2szNHllYzI5MTZsOTNubzI1emZ2aHFiaSJ9.v7gsBidhvQm2T5EOb_GcGA`
+        )
+        .then(result=>{
+          console.log("result",result.data.features[0].place_name)
+        }).catch(error=>{
+          console.log("something is wrong with convert",error)
+        })
       resolve(position.coords);
     });
   });
 }
+
 
 class AddPost extends Component {
   constructor() {
@@ -106,7 +117,7 @@ class AddPost extends Component {
             <label htmlFor="inputEmail">Upload an image</label>
 
             <div className="form-label-group">
-              <input type="file" className="imgUrl" />
+              <input type="file" className="imgUrl" required/>
               {/* <input
                   id="inputEmail"
                   className="form-control"
@@ -135,19 +146,6 @@ class AddPost extends Component {
               />
             </div>
             <label htmlFor="inputEmail">Location</label>
-            {/* <div className="form-label-group">
-                <input
-                  type="text"
-                  id="inputEmail"
-                  className="form-control"
-                  placeholder="search"
-                  name="location"
-                  value={this.state.location}
-                  onChange={this.handleChange}
-                  // required
-                  // autoFocus
-                />
-              </div> */}
             <br />
             <button
               className="btn btn-lg btn-primary btn-block btn-login text-uppercase font-weight-bold mb-2"

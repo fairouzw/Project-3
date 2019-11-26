@@ -43,8 +43,11 @@ class AddPost extends Component {
     event.preventDefault();
 
     const { description, postname } = this.state;
+    console.log("event.target")
+    console.log(event.target)
+    console.log(event.target.getElementsByClassName("imgUrl")[0])
 
-    this.handleFileUpload(document.getElementById("file-input")).then(
+    this.handleFileUpload(event.target.getElementsByClassName("imgUrl")[0]).then(
       imgUrl => {
         getLocation()
           .then(location => {
@@ -96,14 +99,14 @@ class AddPost extends Component {
                 value={this.state.postname}
                 onChange={this.handleChange}
 
-                // required
-                // autoFocus
+              // required
+              // autoFocus
               />
             </div>
             <label htmlFor="inputEmail">Upload an image</label>
 
             <div className="form-label-group">
-              <input type="file" id="file-input" />
+              <input type="file" className="imgUrl" />
               {/* <input
                   id="inputEmail"
                   className="form-control"
@@ -127,8 +130,8 @@ class AddPost extends Component {
                 value={this.state.description}
                 onChange={this.handleChange}
 
-                // required
-                // autoFocus
+              // required
+              // autoFocus
               />
             </div>
             <label htmlFor="inputEmail">Location</label>
@@ -149,6 +152,7 @@ class AddPost extends Component {
             <button
               className="btn btn-lg btn-primary btn-block btn-login text-uppercase font-weight-bold mb-2"
               type="submit"
+
             >
               POST
             </button>

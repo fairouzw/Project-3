@@ -21,6 +21,7 @@ class DisplayPost extends Component {
                                 <div>Description: {post.description}</div>
                                 <img className="post-pic" src={post.imgUrl} alt=""></img>
                                 <br></br>
+
                             </div>
 
                         );

@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import "../App.css";
-import AddPost from "./AddPost";
 import Map from "./Map";
 import axios from "axios";
 import DisplayPost from "./DisplayPost";
@@ -79,8 +78,6 @@ class Home extends Component {
               </div>
 
               <div className="col-6 col-md-4 py-3 px-lg-5">
-
-                <AddPost />
               </div>
 
             </div>

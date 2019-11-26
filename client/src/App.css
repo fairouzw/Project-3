@@ -54,18 +54,22 @@
   right: 0;
   bottom: 0;
   margin: auto;
-  background-color: rgba(0, 0, 0, 0.5);
+
+  backdrop-filter: blur(5px);
 }
 .popup_inner {
   position: absolute;
-  left: 25%;
+  left: 35%;
   right: 25%;
-  top: 25%;
-  bottom: 25%;
+  top: 5%;
+  bottom: 15%;
+  padding: 15px;
   margin: auto;
   background: white;
+  border: 3px solid white;
+  border-radius: 5px;
 }
 
 .addPadding {
-padding-left: 250px;
+  padding-left: 250px;
 }

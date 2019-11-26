@@ -1,6 +1,11 @@
 import React, { Component } from "react";
 import axios from "axios";
+
 import "../App.css";
+
+import UpdatePost from "./UpdatePost";
+// import UpdateProfile from "./UpdateProfile";
+
 
 
 import {
@@ -27,6 +32,7 @@ class Profile extends Component {
       username: this.props.userData.username,
       email: this.props.userData.email,
       listOfPosts: [],
+
     };
   }
 
@@ -65,6 +71,7 @@ class Profile extends Component {
       [name]: value
     });
   };
+
 
 
   render() {
@@ -352,13 +359,22 @@ class Profile extends Component {
           {this.state.listOfPosts.map(post => {
             return (
 
-              <div className="one-post">
+              <div className="one-post" key={post._id} >
                 <br></br>
                 <h3 key={post._id}>Thing: {post.postname}</h3>
                 <div>Description: {post.description}</div>
                 <img className="post-pic" src={post.imgUrl} alt=""></img>
+
                 <br></br>
+                <UpdatePost
+                  id={post._id}
+                  postname={post.postname}
+                  description={post.description}
+                // imgUrl={post.imgUrl}
+                > Test</UpdatePost>
+
               </div>
+
 
             );
           })}

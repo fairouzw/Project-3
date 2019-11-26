@@ -106,6 +106,7 @@ class Home extends Component {
               <div>
                 <DisplayPost posts={this.state.filteredListOfPosts}></DisplayPost>
               </div>
+
               All posts will be displayed here with search bar
             </h2>
 

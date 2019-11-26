@@ -57,7 +57,7 @@ router.post("/new-post", (req, res, next) => {
 });
 
 //PUT
-router.put("/posts/:id", (req, res, next) => {
+router.put("/:id", (req, res, next) => {
   const {
     imgUrl,
     location,

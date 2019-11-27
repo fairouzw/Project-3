@@ -4,6 +4,7 @@ var router = express.Router();
 let Post = require("../models/post-model");
 let User = require("../models/user-model");
 let Comment = require("../models/comment-model");
+const mongoose = require("mongoose");
 
 //GET all posts
 // /api/posts
@@ -47,7 +48,7 @@ router.post("/new-post", (req, res, next) => {
     // likes: req.user._id,
     // expireDate: req.body.expireDate
   }).then(response => {
-    console.log("I am here. 1 new doc/////",response);
+    console.log("I am here. 1 new doc/////", response);
 
     res.json({ response });
   });
@@ -88,6 +89,22 @@ router.put("/:id", (req, res, next) => {
     .then(() => {
       res.json({
         message: `Post data with ${req.params.id} has been updated successfully.`
+      });
+    })
+    .catch(err => {
+      res.json(err);
+    });
+});
+
+router.delete("/:id", (req, res, next) => {
+  if (!mongoose.Types.ObjectId.isValid(req.params.id)) {
+    res.status(400).json({ message: "Specified id is not valid" });
+    return;
+  }
+  Post.findByIdAndRemove(req.params.id)
+    .then(() => {
+      res.json({
+        message: `Project with ${req.params.id} is removed successfully.`
       });
     })
     .catch(err => {

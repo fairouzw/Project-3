@@ -372,7 +372,7 @@ class Profile extends Component {
                   id={post._id}
                   postname={post.postname}
                   description={post.description}
-                // imgUrl={post.imgUrl}
+                imgUrl={post.imgUrl}
                 > Test</UpdatePost>
 
               </div>

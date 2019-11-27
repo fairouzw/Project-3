@@ -1,11 +1,12 @@
 import React, { Component } from "react";
 import ReactMapGL, { Marker, Popup } from "react-map-gl";
+// import { relative } from "path";
 
 class Map extends Component {
   state = {
     viewport: {
-      width: "50vw",
-      height: "50vh",
+      width: "inherit",
+      height: "350px",
       latitude: 52.520008,
       longitude: 13.404954,
       zoom: 11
@@ -55,7 +56,7 @@ class Map extends Component {
     // console.log(this.props.posts);
 
     return (
-      <div>
+      <div >
         <ReactMapGL
           {...this.state.viewport}
           onViewportChange={this.customizeMap}
@@ -117,7 +118,7 @@ class Map extends Component {
                       </Popup>
                       ) : null}
         </ReactMapGL>
-      </div>
+        </div>
     );
   }
 }

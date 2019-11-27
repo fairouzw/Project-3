@@ -6,8 +6,6 @@ import "../App.css";
 import UpdatePost from "./UpdatePost";
 // import UpdateProfile from "./UpdateProfile";
 
-
-
 import {
   Button,
   Card,
@@ -72,14 +70,12 @@ class Profile extends Component {
     });
   };
 
-
-
   render() {
     return (
     <div className="main-content" ref="mainContent" >
       <UserHeader userName={this.state.username} />
       <Container className="mt--7" fluid>
-      
+
         <Row>
           <Col className="order-xl-2 mb-5 mb-xl-0" xl="4">
             <Card className="card-profile shadow">
@@ -87,15 +83,12 @@ class Profile extends Component {
               <Row className="justify-content-center">
                 <Col className="order-lg-2" lg="3">
                   <div className="card-profile-image">
-                  
                       {/* <img
                         alt="..."
                         className="rounded-circle"
                         src={require("../assets/img/theme/team-4-800x800.jpg")}
                       />
                    */}
-
-
                   </div>
                 </Col>
               </Row>

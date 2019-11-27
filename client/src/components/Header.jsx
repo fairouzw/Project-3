@@ -8,12 +8,19 @@ class Header extends React.Component {
   render() {
     return (
       <>
-        <div className=" header bg-gradient-info pb-8 pt-5 pt-md-8">
+        <div className="header  pb-8 pt-5 pt-md-8"
+         style={{
+          minHeight: "400px",
+          backgroundImage: "url(" + require("./adam-vradenburg-TK5I5L5JGxY-unsplash.jpg") + ")",
+          backgroundSize: "cover",
+          backgroundPosition: "center top"
+        }}>
           <Container fluid>
-            <div className="header-body">
+            <div className="header-body"
+             >
               {/* Card stats */}
               <Row>
-                <Col lg="6" xl="3">
+                {/* <Col lg="6" xl="3">
                   <Card className="card-stats mb-4 mb-xl-0">
                     <CardBody>
                       <Row>
@@ -130,7 +137,7 @@ class Header extends React.Component {
                       </p>
                     </CardBody>
                   </Card>
-                </Col>
+                </Col> */}
               </Row>
             </div>
           </Container>

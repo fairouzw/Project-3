@@ -65,9 +65,6 @@ class Login extends Component {
 
   render() {
     return (
-
-
-
       <div className="landing-page">
         <div className="main-content">
           <div className="header  py-7 py-lg-8">

@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import "../App.css";
 import Map from "./Map";
 import axios from "axios";
-import DisplayPost from "./DisplayPost";
+import DisplayPost from "./PostList";
 import SearchPost from "./SearchPost";
 import Popup from "./PopUp"
 

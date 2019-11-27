@@ -79,19 +79,23 @@ class Profile extends Component {
     <div className="main-content" ref="mainContent" >
       <UserHeader userName={this.state.username} />
       <Container className="mt--7" fluid>
+      
         <Row>
           <Col className="order-xl-2 mb-5 mb-xl-0" xl="4">
             <Card className="card-profile shadow">
+            <div className="avatar-circle"> <span className="initials">{this.state.username[0]}</span></div>
               <Row className="justify-content-center">
                 <Col className="order-lg-2" lg="3">
                   <div className="card-profile-image">
-                   
-                      <img
+                  
+                      {/* <img
                         alt="..."
                         className="rounded-circle"
                         src={require("../assets/img/theme/team-4-800x800.jpg")}
                       />
-                  
+                   */}
+
+
                   </div>
                 </Col>
               </Row>
@@ -126,21 +130,19 @@ class Profile extends Component {
                   </h3>
                   <div className="h5 font-weight-300">
                     <i className="ni location_pin mr-2" />
-                    Berlin, Germany
+                    Eberswalde, Germany
                   </div>
                   <div className="h5 mt-4">
                     <i className="ni business_briefcase-24 mr-2" />
-                    Chief Awesome Officer
+                    Schneiderin
                   </div>
                   <div>
                     <i className="ni education_hat mr-2" />
-                    Death Eater
+                    Habe immer Klamotten wegzugeben
                   </div>
                   <hr className="my-4" />
                   <p>
-                    Ryan — the name taken by Melbourne-raised, Brooklyn-based
-                    Nick Murphy — writes, performs and records all of his own
-                    music.
+                   Do we really nee some text here? We don't want user-description. Focus is on the post...
                   </p>
                   <a href="#pablo" onClick={e => e.preventDefault()}>
                     Show more

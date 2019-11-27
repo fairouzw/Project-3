@@ -73,3 +73,45 @@
 .addPadding {
   padding-left: 250px;
 }
+
+.landing-page {
+  /* The image used */
+  background-image: url("./components/Fernsehturm_claudio-schwarz-purzlbaum-pN684G33h.jpg");
+
+  /* Full height */
+  height: 100%;
+
+  /* Center and scale the image nicely */
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.city-banner {
+  font-size: 80px;
+  color: white;
+}
+
+.avatar-circle {
+  position: relative;
+  margin-left: auto;
+  margin-right: auto;
+  top: 25px; /* 25% of parent */
+
+  width: 220px;
+  height: 220px;
+  background-color: rgb(236, 233, 236);
+  text-align: center;
+  border-radius: 50%;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+}
+
+.initials {
+  position: relative;
+  top: 35px; /* 25% of parent */
+  font-size: 150px; /* 50% of parent */
+  line-height: 150px; /* 50% of parent */
+  color: #fff;
+  font-family: sans-serif;
+  font-weight: bold;
+}

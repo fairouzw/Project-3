@@ -27,25 +27,22 @@ class UserHeader extends React.Component {
         <div
           className="header pb-8 pt-5 pt-lg-8 d-flex align-items-center"
           style={{
-            minHeight: "600px",
-            backgroundImage:
-              "url(" + require("../assets/img/theme/profile-cover.jpg") + ")",
+            minHeight: "400px",
+            backgroundImage: "url(" + require("./profile-bg.jpg") + ")",
             backgroundSize: "cover",
             backgroundPosition: "center top"
           }}
         >
           {/* Mask */}
-          <span className="mask bg-gradient-default opacity-8" />
+          <span className="mask bg-gradient-default opacity-6" />
           {/* Header container */}
           <Container className="d-flex align-items-center" fluid>
             <Row>
               <Col lg="7" md="10">
-        <h4 className="display-3 text-white">Hello {this.props.userName}</h4>
-                <p className="text-white mt-0 mb-5">
-                  This is your profile page. You can see the progress you've
-                  made with your work and manage your projects or assigned tasks
-                </p>
-               
+                <h5 className="display-3 text-white">
+                  Hello {this.props.userName}
+                </h5>
+                <p className="text-white mt-0 mb-5">Stay fresh.</p>
               </Col>
             </Row>
           </Container>

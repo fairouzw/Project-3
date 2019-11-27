@@ -39,52 +39,50 @@ class UpdatePost extends Component {
     //             console.log("Error while uploading the file: ", err);
     //         });
     // };
-    handleFileUpload = target => {
-        console.log("The file to be uploaded is: ", target.files[0]);
 
+    handleFileUpload = (target) => {
+        console.log("The file to be uploaded is: ", target.files[0]);
         const uploadData = new FormData();
-        // imageUrl => this name has to be the same as in the model since we pass
-        // req.body to .create() method when creating a new thing in '/api/things/create' POST route
         uploadData.append("imgUrl", target.files[0]);
 
         return axios
             .post("/api/upload", uploadData)
             .then(response => {
-                console.log("response is: ", response);
-                // after the console.log we can see that response carries 'secure_url' which we can use to update the state
+                console.log("response is: ", response);
+                // after the console.log we can see that response carries 'secure_url' which we can use to update the state
                 return response.data.secure_url;
             })
             .catch(err => {
-                console.log("Error while uploading the file: ", err);
+                console.log("Error while uploading the file: ", err);
             });
     };
 
-
-    handleFormSubmit = event => {
+    handleFormSubmit = (event) => {
         event.preventDefault();
 
-        // this.state.editPostId = event.target._id;
+        // this.state.editPostId = event.target._id;
         console.log(this.state.postId);
 
         const { description, postname } = this.state;
-        {
-            return axios.put(`/api/posts/${this.state.postId}`, {
-
-                description,
-                postname
-            })
-
-                .then(() => {
-                    // this.props.getData();
-                    this.setState({
-                        imgUrl: "",
-                        description: "",
-                        postname: ""
-                    });
+        this.handleFileUpload(event.target.getElementsByClassName("imgUrl")[0])
+            .then(
+                imgUrl => {
+                    return axios.put(`/api/posts/${this.state.postId}`, {
+                        imgUrl,
+                        description,
+                        postname
+                    })
+                        .then(() => {
+                            // this.props.getData();
+                            this.setState({
+                                description: "",
+                                postname: ""
+                            });
+                        })
+                        .catch(error => console.log(error));
                 })
-                .catch(error => console.log(error));
-        }
     }
+
 
 
 
@@ -122,7 +120,7 @@ class UpdatePost extends Component {
                 <form onSubmit={this.handleFormSubmit} key={this.state._id}>
                     <input type='text' name='postname' value={this.state.postname} onChange={e => this.handleInputChange(e)} placeholder='Postname' />
                     <input name='description' type='text' value={this.state.description} onChange={e => this.handleInputChange(e)} placeholder='description' />
-                    {/* <input name='imgUrl' type='file' id="file-input" onChange={e => this.handleInputChange(e)} /> */}
+                    <input name='imgUrl' type='file' className="imgUrl" id="file-input" onChange={e => this.handleInputChange(e)} />
 
                     <button type='submit'>Save</button>
                     <button onClick={() => this.deletePost()}>Delete Post</button>

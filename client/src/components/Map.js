@@ -18,34 +18,30 @@ class Map extends Component {
     this.setState({ viewport: viewport });
   };
 
-  // setUserLocation = () => {
-  //   navigator.geolocation.getCurrentPosition(position => {
-  //     let setUserLocation = {
-  //       lat: position.coords.latitude,
-  //       long: position.coords.longitude
-  //     };
-  //     let newViewport = {
-  //       height: "70vh",
-  //       width: "70vw",
-  //       latitude: position.coords.latitude,
-  //       longitude: position.coords.longitude,
-  //       zoom: 16
-  //     };
-  //     this.setState({
-  //       viewport: newViewport,
-  //       userLocation: setUserLocation
-  //     });
-  //   });
-  // };
+  setUserLocation = () => {
+    navigator.geolocation.getCurrentPosition(position => {
+      let setUserLocation = {
+        lat: position.coords.latitude,
+        long: position.coords.longitude
+      };
+      let newViewport = {
+        height: "70vh",
+        width: "70vw",
+        latitude: position.coords.latitude,
+        longitude: position.coords.longitude,
+        zoom: 16
+      };
+      this.setState({
+        viewport: newViewport,
+        userLocation: setUserLocation
+      });
+    });
+  };
 
   setSelectedSpot = object => {
     this.setState({
       selectedSpot: object
     });
-  };
-
-  popUpHandler = e => {
-    console.log("target", e.target);
   };
 
   closePopup = () => {
@@ -87,34 +83,40 @@ class Map extends Component {
             );
           })}
 
-          {this.state.selectedSpot !== null ? (
-            <Popup
-              latitude={this.state.selectedSpot.location.lat}
-              longitude={this.state.selectedSpot.location.long}
-              onClose={this.closePopup}
-              onClick={this.popUpHandler}
-            >
-              <p>{this.state.selectedSpot.postname}</p>
-              <img className="location-icon" src={this.state.selectedSpot.imgUrl} alt="" />
-            </Popup>
-          ) : null}
 
-          {/* {Object.keys(this.state.userLocation).length !== 0 ? (
-              <Marker
-                latitude={this.state.userLocation.lat}
-                longitude={this.state.userLocation.long}
-              >
+          {Object.keys(this.state.userLocation).length !== 0 ? (
+            <Marker
+            latitude={this.state.userLocation.lat}
+            longitude={this.state.userLocation.long}
+            >
                 <img
                   className="location-icon"
-                  src={require("./icon.png")}
+                  src={require("./icons8-map-pin-48.png")}
                   alt="location"
-                />
+                  />
               </Marker>
-            ) : (
-              <div>Empty</div>
-            )} */}
+             ) : (
+               <div><p>Set your current location</p></div>
+               )} 
+              <button 
+              onClick={this.setUserLocation}
+              color="primary"
+              size="sm"
+              >  
+                 <i className="ni ni-pin-3" /> My location</button>
+            
+                  {this.state.selectedSpot !== null ? (
+                     <Popup
+                     latitude={this.state.selectedSpot.location.lat}
+                      longitude={this.state.selectedSpot.location.long}
+                      onClose={this.closePopup}
+                      onClick={this.setSelectedSpot}
+                      >
+                      <img className="location-icon" src={this.state.selectedSpot.imgUrl} alt="" />
+                     <p>{this.state.selectedSpot.postname}</p>
+                      </Popup>
+                      ) : null}
         </ReactMapGL>
-        <button onClick={this.setUserLocation}>Get Location!</button>
       </div>
     );
   }

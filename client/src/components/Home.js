@@ -61,10 +61,11 @@ class Home extends Component {
   render() {
     return (
       <div className="addPadding">
-       
+
         <header className="masthead">
           <br />
           <br />
+          <p>The streets are yours.</p>
           <br />
           <br />
           <br />

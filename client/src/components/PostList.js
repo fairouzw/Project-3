@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 
-class DisplayPost extends Component {
+class PostList extends Component {
 
 
 
@@ -20,6 +20,7 @@ class DisplayPost extends Component {
                                 <h3 key={post._id}>Thing: {post.postname}</h3>
                                 <div>Description: {post.description}</div>
                                 <img className="post-pic" src={post.imgUrl} alt=""></img>
+                                <p>{post.address}</p>
                                 <br></br>
 
                             </div>
@@ -38,7 +39,7 @@ class DisplayPost extends Component {
     }
 }
 
-export default DisplayPost;
+export default PostList;
 
 
 

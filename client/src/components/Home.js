@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import "../App.css";
 import Map from "./Map";
 import axios from "axios";
-import DisplayPost from "./DisplayPost";
+import PostList from "./PostList";
 import SearchPost from "./SearchPost";
 import Popup from "./PopUp"
 
@@ -101,7 +101,7 @@ class Home extends Component {
                 <SearchPost searchPost={this.searchResultPost} />
               </div>
               <div>
-                <DisplayPost posts={this.state.filteredListOfPosts}></DisplayPost>
+                <PostList posts={this.state.filteredListOfPosts}></PostList>
               </div>
 
               All posts will be displayed here with search bar

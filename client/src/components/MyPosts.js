@@ -7,13 +7,9 @@ import UpdatePost from "./UpdatePost";
 // import UpdateProfile from "./UpdateProfile";
 
 import {
-    Button,
     Card,
     CardHeader,
     CardBody,
-    FormGroup,
-    Form,
-    Input,
     Container,
     Row,
     Col
@@ -36,12 +32,9 @@ class MyPosts extends Component {
 
     getAllUserPosts = () => {
         axios.get(`/api/posts?owner_id=${this.props.userData._id}`).then(res => {
-
-
             this.setState({
                 listOfPosts: res.data
             });
-
         })
     }
 
@@ -161,6 +154,7 @@ class MyPosts extends Component {
                                                         postname={post.postname}
                                                         description={post.description}
                                                         imgUrl={post.imgUrl}
+                                                        getAllUserPosts={this.getAllUserPosts}
                                                     > Test</UpdatePost>
 
                                                 </div>

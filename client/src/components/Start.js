@@ -1,11 +1,7 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import "../App.css";
-import Background from './Fernsehturm_claudio-schwarz-purzlbaum-pN684G33h.jpg';
-
-
-
-
+// import Background from './Fernsehturm_claudio-schwarz-purzlbaum-pN684G33h.jpg';
 
 class Start extends Component {
   render() {

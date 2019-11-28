@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import ReactMapGL, { Marker, Popup } from "react-map-gl";
+import ReactMapGL, { Marker, Popup, GeolocateControl } from "react-map-gl";
 // import { relative } from "path";
 
 class Map extends Component {
@@ -9,7 +9,7 @@ class Map extends Component {
       height: "350px",
       latitude: 52.520008,
       longitude: 13.404954,
-      zoom: 11
+      zoom: 12
     },
     userLocation: {},
     selectedSpot: null
@@ -19,25 +19,25 @@ class Map extends Component {
     this.setState({ viewport: viewport });
   };
 
-  setUserLocation = () => {
-    navigator.geolocation.getCurrentPosition(position => {
-      let setUserLocation = {
-        lat: position.coords.latitude,
-        long: position.coords.longitude
-      };
-      let newViewport = {
-        height: "70vh",
-        width: "70vw",
-        latitude: position.coords.latitude,
-        longitude: position.coords.longitude,
-        zoom: 16
-      };
-      this.setState({
-        viewport: newViewport,
-        userLocation: setUserLocation
-      });
-    });
-  };
+  // setUserLocation = () => {
+  //   navigator.geolocation.getCurrentPosition(position => {
+  //     let setUserLocation = {
+  //       lat: position.coords.latitude,
+  //       long: position.coords.longitude
+  //     };
+  //     let newViewport = {
+  //       height: "70vh",
+  //       width: "70vw",
+  //       latitude: position.coords.latitude,
+  //       longitude: position.coords.longitude,
+  //       zoom: 16
+  //     };
+  //     this.setState({
+  //       viewport: newViewport,
+  //       userLocation: setUserLocation
+  //     });
+  //   });
+  // };
 
   setSelectedSpot = object => {
     this.setState({
@@ -84,8 +84,12 @@ class Map extends Component {
             );
           })}
 
+          <GeolocateControl 
+          positionOption={{enableHighAccuracy: true}}
+          trackUserLocation={true}
+          />
 
-          {Object.keys(this.state.userLocation).length !== 0 ? (
+          {/* {Object.keys(this.state.userLocation).length !== 0 ? (
             <Marker
             latitude={this.state.userLocation.lat}
             longitude={this.state.userLocation.long}
@@ -98,13 +102,13 @@ class Map extends Component {
               </Marker>
              ) : (
                <div><p>Set your current location</p></div>
-               )} 
-              <button 
+               )}  */}
+              {/* <button 
               onClick={this.setUserLocation}
               color="primary"
               size="sm"
               >  
-                 <i className="ni ni-pin-3" /> My location</button>
+                 <i className="ni ni-pin-3" /> My location</button> */}
             
                   {this.state.selectedSpot !== null ? (
                      <Popup

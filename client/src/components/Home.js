@@ -360,6 +360,7 @@ class Home extends Component {
           <button onClick={this.togglePopup}>show popup</button>
           {this.state.showPopup ?
             <Popup
+            posts={this.state.listOfPosts}
               text='Your next post:'
               closePopup={this.togglePopup}
             />
@@ -373,7 +374,7 @@ class Home extends Component {
                 <SearchPost searchPost={this.searchResultPost} />
               </div>
               <div>
-                <PostList posts={this.state.filteredListOfPosts}></PostList>
+                <PostList posts={this.state.filteredListOfPosts} ></PostList>
               </div>
             </h2>
           </div>

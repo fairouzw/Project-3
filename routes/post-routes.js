@@ -11,7 +11,7 @@ const mongoose = require("mongoose");
 // /api/posts?owner_id=12983761823515423
 router.get("/", (req, res, next) => {
   dbQuery = req.query.owner_id ? { owner: req.query.owner_id } : {}
-  Post.find(dbQuery)
+  Post.find(dbQuery).populate('comments')
     .then(allThePosts => {
       res.json(allThePosts);
     })
@@ -22,13 +22,9 @@ router.get("/", (req, res, next) => {
 
 // /api/posts/o1i72367458523dasdztr
 router.get("/:id", function (req, res, next) {
-  Post.findById(req.params.id).then(post => {
-    Comment.find({ post: post._id }).then(comments => {
-      // this can probably be done in a simpler/cleaner way -- please research
-      let p = { ...post._doc };
-      p.comments = comments;
-      res.json(p);
-    });
+  Post.findById(req.params.id).populate('comments').then(post => {
+
+    res.json(post);
   });
 });
 
@@ -44,6 +40,7 @@ router.post("/new-post", (req, res, next) => {
     postname: req.body.postname,
     /* HAD TO UNCOMMENT THIS SO THAT THIS ROUTE WOULD WORK :) */
     owner: req.user._id,
+    comments: req.body.comments,
     // categories: req.body.categories,
     // likes: req.user._id,
     // expireDate: req.body.expireDate

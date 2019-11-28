@@ -14,7 +14,7 @@ const postSchema = new Schema(
       type: String, // try to implement following category-tags
       enum: ["food", "electronics", "furniture", "clothes", "dishes"]
     },
-    //comments: [{ type: Schema.Types.ObjectId, ref: 'Comment' }],
+    comments: [{ type: Schema.Types.ObjectId, ref: 'Comment' }],
     likes: [{ type: Schema.Types.ObjectId, ref: "User" }],
     expireDate: {
       type: String

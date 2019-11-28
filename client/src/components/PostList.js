@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 
 class PostList extends Component {
+
+   
     render() {
         // console.log(this.state.userLocation);
         // console.log(this.props.posts);
@@ -16,6 +18,9 @@ class PostList extends Component {
                                 <div>Description: {post.description}</div>
                                 <img className="post-pic" src={post.imgUrl} alt=""></img>
                                 <p>{post.address}</p>
+                                <p>Comments:{post.comments.map((c) => {
+                                    return <h1>{c.comment}</h1>
+                                })}</p>
                                 <br></br>
                             </div>
                         );

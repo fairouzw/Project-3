@@ -13,6 +13,7 @@ var indexRouter = require("./routes/index");
 const authRoutes = require("./routes/auth-routes");
 const profRoutes = require("./routes/profile-routes");
 const postRoutes = require("./routes/post-routes");
+const commRoutes = require("./routes/comment-routes");
 
 var app = express();
 
@@ -73,6 +74,7 @@ app.use(passport.session());
 app.use("/api", authRoutes);
 app.use("/api", profRoutes);
 app.use("/api/posts", postRoutes);
+app.use("/api/comments", commRoutes);
 app.use("/api", require("./routes/file-upload-routes"));
 
 // catch 404 and forward to error handler

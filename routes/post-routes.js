@@ -62,10 +62,8 @@ router.post("/new-post", (req, res, next) => {
 router.put("/:id", (req, res, next) => {
   const {
     imgUrl,
-    location,
     description,
     postname,
-    owner,
     categories,
     likes,
     expireDate
@@ -78,10 +76,8 @@ router.put("/:id", (req, res, next) => {
 
   Post.findByIdAndUpdate(req.params.id, {
     imgUrl,
-    location,
     description,
     postname,
-    owner,
     categories,
     likes,
     expireDate

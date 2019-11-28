@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Link} from "react-router-dom";
+import { Link } from "react-router-dom";
 import axios from "axios";
 
 // reactstrap components
@@ -29,7 +29,7 @@ class Sidebar extends Component {
   state = {
     collapseOpen: false
   };
-  
+
   logoutUser = () => {
     axios
       .post("/api/logout")
@@ -54,10 +54,10 @@ class Sidebar extends Component {
   };
 
   render() {
-  
+
     return (
-    
-<Navbar
+
+      <Navbar
         className="navbar-vertical fixed-left navbar-light bg-white"
         expand="md"
         id="sidenav-main"
@@ -71,10 +71,10 @@ class Sidebar extends Component {
           >
             <span className="navbar-toggler-icon" />
           </button>
-       <br/>
-       Geht Noch Logo
+          <br />
+          Geht Noch Logo
        {/* <img src="./attraction-15.svg" alt=""> </img> */}
-         
+
           {/* User */}
           <Nav className="align-items-center d-md-none">
             <UncontrolledDropdown nav>
@@ -110,7 +110,7 @@ class Sidebar extends Component {
                   <i className="ni ni-circle-08" />
                   <span>Account details</span>
                 </DropdownItem>
-                <DropdownItem to="" tag={Link}>
+                <DropdownItem to="/my-posts" tag={Link}>
                   <i className="ni ni-pin-3" />
                   <span>My Posts</span>
                 </DropdownItem>
@@ -175,16 +175,16 @@ class Sidebar extends Component {
             {/* Navigation */}
             <Nav className="mb-md-3" navbar>
               <NavItem>
-               <NavLink tag={Link} to="/home">
-               <i className="ni ni-square-pin text-primary" />
-                 Home
+                <NavLink tag={Link} to="/home">
+                  <i className="ni ni-square-pin text-primary" />
+                  Home
                 </NavLink>
               </NavItem>
-           
+
               <NavItem>
-               <NavLink tag={Link} to="/home">
-               <i className="ni ni-fat-add text-orange" />
-                 Create Post
+                <NavLink tag={Link} to="/home">
+                  <i className="ni ni-fat-add text-orange" />
+                  Create Post
                 </NavLink>
               </NavItem>
             </Nav>
@@ -197,11 +197,11 @@ class Sidebar extends Component {
               <NavItem>
                 <NavLink tag={Link} to="/profile">
                   <i className="ni ni-circle-08 text-orange" />
-                 Account details
+                  Account details
                 </NavLink>
               </NavItem>
               <NavItem>
-                <NavLink tag={Link} to="">
+                <NavLink tag={Link} to="/my-posts">
                   <i className="ni ni-pin-3 text-blue" />
                   My Posts
                 </NavLink>
@@ -209,27 +209,26 @@ class Sidebar extends Component {
               <NavItem>
                 <NavLink to="">
                   <i className="ni ni-favourite-28 text-red" />
-                My Favourites
+                  My Favourites
                 </NavLink>
               </NavItem>
             </Nav>
             <hr className="my-3" />
             <Nav className="mb-md-3" navbar>
               <NavItem>
-               <NavLink onClick={this.logoutUser} href="/">
-               <i className="ni ni-button-power text-yellow" />
-                 Logout
+                <NavLink onClick={this.logoutUser} href="/">
+                  <i className="ni ni-button-power text-yellow" />
+                  Logout
                 </NavLink>
               </NavItem>
             </Nav>
           </Collapse>
         </Container>
       </Navbar>
-    
+
     );
   }
 }
 
 export default Sidebar;
 
-    

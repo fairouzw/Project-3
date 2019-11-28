@@ -9,6 +9,7 @@ import Signup from "./components/Signup";
 import Profile from "./components/Profile";
 import Sidebar from "./components/Sidebar";
 import Home from "./components/Home";
+import MyPosts from "./components/MyPosts";
 
 class App extends Component {
   constructor(props) {
@@ -76,30 +77,33 @@ class App extends Component {
                 getUser={this.getTheUser}
                 userData={this.state.loggedInUser}
               />
-          
+
             )}
           />
           <Route
             exact
             path="/profile"
             render={() => (
-     
+
               <Profile
                 getUser={this.getTheUser}
                 userData={this.state.loggedInUser}
               />
-   
-            )}
-          />
-          {/* <Route
-            exact
-            path="/my-posts"
-            render={() => (
-     
-   
+
             )}
           />
           <Route
+            exact
+            path="/my-posts"
+            render={() => (
+              <MyPosts
+                getUser={this.getTheUser}
+                userData={this.state.loggedInUser}
+              />
+
+            )}
+          />
+          {/* <Route
             exact
             path="/favourites"
             render={() => (

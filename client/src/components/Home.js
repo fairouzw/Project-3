@@ -42,7 +42,7 @@ class Home extends Component {
         listOfPosts: res.data,
         filteredListOfPosts: res.data
       });
-    });
+    })
   };
 
   componentDidMount = () => {
@@ -360,9 +360,10 @@ class Home extends Component {
           <button onClick={this.togglePopup}>show popup</button>
           {this.state.showPopup ?
             <Popup
-            posts={this.state.listOfPosts}
+              posts={this.state.listOfPosts}
               text='Your next post:'
               closePopup={this.togglePopup}
+              getAllPosts={this.getAllPosts}
             />
             : null
           }

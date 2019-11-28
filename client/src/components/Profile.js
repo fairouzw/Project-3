@@ -1,10 +1,6 @@
 import React, { Component } from "react";
 import axios from "axios";
-
 import "../App.css";
-
-import UpdatePost from "./UpdatePost";
-// import UpdateProfile from "./UpdateProfile";
 
 import {
   Button,
@@ -36,8 +32,6 @@ class Profile extends Component {
 
   getAllUserPosts = () => {
     axios.get(`/api/posts?owner_id=${this.props.userData._id}`).then(res => {
-
-
       this.setState({
         listOfPosts: res.data
       });
@@ -325,7 +319,6 @@ class Profile extends Component {
                       </Row>
                     </div>
                     {/* <hr className="my-4" />
-               
                   <h6 className="heading-small text-muted mb-4">About me</h6>
                   <div className="pl-lg-4">
                     <FormGroup>

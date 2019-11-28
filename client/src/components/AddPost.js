@@ -8,7 +8,6 @@ function getLocation() {
       });
 })}
 
-
 class AddPost extends Component {
   constructor() {
     super();
@@ -41,9 +40,10 @@ class AddPost extends Component {
 
   handleFormSubmit = event => {
     event.preventDefault();
-
+    console.log("i clicked")
     const { description, postname } = this.state;
-    // console.log("event.target")
+    // this.props.showPopup
+  
     // console.log(event.target)
     // console.log(event.target.getElementsByClassName("imgUrl")[0])
 
@@ -64,7 +64,8 @@ class AddPost extends Component {
             })
           })
           .then(() => {
-            // this.props.getData();
+            this.props.getAllPosts();
+            this.props.closePopup(event);
             this.setState({
               imgUrl: "",
               description: "",
@@ -74,8 +75,7 @@ class AddPost extends Component {
           .catch(error => console.log(error));
         }).catch(error=>{
           console.log("something is wrong with convert",error)
-        })
-            
+        })     
       }
     );
   };

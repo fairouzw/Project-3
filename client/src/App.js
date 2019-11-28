@@ -91,6 +91,22 @@ class App extends Component {
    
             )}
           />
+          {/* <Route
+            exact
+            path="/my-posts"
+            render={() => (
+     
+   
+            )}
+          />
+          <Route
+            exact
+            path="/favourites"
+            render={() => (
+    
+   
+            )}
+          /> */}
         </Switch>
       </div>
     );

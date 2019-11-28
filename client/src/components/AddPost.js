@@ -65,6 +65,7 @@ class AddPost extends Component {
           })
           .then(() => {
             this.props.getAllPosts();
+            this.props.closePopup(event);
             this.setState({
               imgUrl: "",
               description: "",

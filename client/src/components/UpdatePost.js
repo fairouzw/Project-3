@@ -10,12 +10,8 @@ class UpdatePost extends Component {
             imgUrl: this.props.imgUrl,
             description: this.props.description,
             postname: this.props.postname,
-
-
         };
     }
-
-
 
     handleFileUpload = (target) => {
         console.log("The file to be uploaded is: ", target.files[0]);
@@ -79,23 +75,19 @@ class UpdatePost extends Component {
     }
 
     deletePost = () => {
-
         axios.delete(`/api/posts/${this.state.postId}`)
             .then(res => {
                 console.log(res);
-                console.log(res.data);
-
-
+                if (res.status === 200) {
+                    this.props.getAllUserPosts()
+                } else {
+                    console.log("Delete function didn't work!")
+                }
             })
-            // .then(() => {
-            //     // this.props.getUser();
-            //     this.props.history.push("/profile");
-            // })
             .catch((err) => {
                 console.log(err)
             })
     }
-
     render() {
         return (
             <div>

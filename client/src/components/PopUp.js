@@ -6,7 +6,7 @@ class Popup extends Component {
             <div className='popup'>
                 <div className='popup_inner'>
                     <h1>{this.props.text}</h1>
-                    <AddPost />
+                    <AddPost  getAllPosts={this.props.getAllPosts} />
                     <button onClick={this.props.closePopup}>X</button>
                 </div>
             </div>

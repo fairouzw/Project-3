@@ -1,13 +1,7 @@
 import React, { Component } from "react";
 import axios from "axios";
 
-function getLocation() {
-    return new Promise((resolve, reject) => {
-        navigator.geolocation.getCurrentPosition(position => {
-            resolve(position.coords);
-        });
-    });
-}
+
 class UpdatePost extends Component {
     constructor(props) {
         super(props);
@@ -17,28 +11,11 @@ class UpdatePost extends Component {
             description: this.props.description,
             postname: this.props.postname,
 
+
         };
     }
 
-    // handleFileUpload = target => {
-    //     // console.log("The file to be uploaded is: ", target.files[0]);
 
-    //     const uploadData = new FormData();
-    //     // imageUrl => this name has to be the same as in the model since we pass
-    //     // req.body to .create() method when creating a new thing in '/api/things/create' POST route
-    //     uploadData.append("imgUrl", target.files[0]);
-
-    //     return axios
-    //         .put("/api/posts/${this.state.postId}", uploadData)
-    //         .then(response => {
-    //             console.log("response is: ", response);
-    //             // after the console.log we can see that response carries 'secure_url' which we can use to update the state
-    //             return response.data.secure_url;
-    //         })
-    //         .catch(err => {
-    //             console.log("Error while uploading the file: ", err);
-    //         });
-    // };
 
     handleFileUpload = (target) => {
         console.log("The file to be uploaded is: ", target.files[0]);
@@ -70,7 +47,8 @@ class UpdatePost extends Component {
                     return axios.put(`/api/posts/${this.state.postId}`, {
                         imgUrl,
                         description,
-                        postname
+                        postname,
+
                     })
                         .then(() => {
                             // this.props.getData();
@@ -82,9 +60,6 @@ class UpdatePost extends Component {
                         .catch(error => console.log(error));
                 })
     }
-
-
-
 
     // handleChange = event => {
     //     if (
@@ -106,9 +81,16 @@ class UpdatePost extends Component {
     deletePost = () => {
 
         axios.delete(`/api/posts/${this.state.postId}`)
-            .then(() => {
-                this.props.history.push('/posts'); // !!!         
+            .then(res => {
+                console.log(res);
+                console.log(res.data);
+
+
             })
+            // .then(() => {
+            //     // this.props.getUser();
+            //     this.props.history.push("/profile");
+            // })
             .catch((err) => {
                 console.log(err)
             })
@@ -123,9 +105,9 @@ class UpdatePost extends Component {
                     <input name='imgUrl' type='file' className="imgUrl" id="file-input" onChange={e => this.handleInputChange(e)} />
 
                     <button type='submit'>Save</button>
-                    <button onClick={() => this.deletePost()}>Delete Post</button>
-                </form>
 
+                </form>
+                <button onClick={() => this.deletePost()}>Delete Post</button>
             </div>
         )
     }

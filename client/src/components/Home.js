@@ -4,7 +4,9 @@ import Map from "./Map";
 import axios from "axios";
 import PostList from "./PostList";
 import SearchPost from "./SearchPost";
-import Popup from "./PopUp"
+import Popup from "./PopUp";
+import DisplayPost from './DisplayPost'
+
 
 // node.js library that concatenates classes (strings)
 // import classnames from "classnames";
@@ -30,7 +32,8 @@ class Home extends Component {
     this.state = {
       listOfPosts: [],
       filteredListOfPosts: [],
-      showPopup: false
+      showPopup: false,
+      selectedPost: null
     };
   }
 
@@ -73,6 +76,19 @@ class Home extends Component {
       showPopup: !this.state.showPopup
     });
   }
+
+  // displaySelected = (e) => {
+  //   e.prevent.default()
+  //   this.setState({
+  //     postDisplayCard: !this.state.postDisplayCard
+  //   })
+  //   }
+
+    // getSelectedPost = ({data}) => {
+    //   this.setState({
+    //     selectedPost: {data}
+    //   })
+    // }
   render() {
     return (
       <div className="main-content" ref="mainContent">
@@ -147,6 +163,7 @@ class Home extends Component {
              data={chartExample2.data}
              options={chartExample2.options}
            /> */}
+           <DisplayPost/>
          </div>
        </CardBody>
      </Card>

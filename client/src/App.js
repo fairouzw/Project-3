@@ -3,13 +3,13 @@ import { Switch, Route, Redirect } from "react-router-dom";
 import "./App.css";
 
 //pages
-import Start from "./components/Start";
-import Login from "./components/Login";
-import Signup from "./components/Signup";
-import Profile from "./components/Profile";
-import Sidebar from "./components/Sidebar";
-import Home from "./components/Home";
-import MyPosts from "./components/MyPosts";
+import Start from "./components/Auth/Start";
+import Login from "./components/Auth/Login";
+import Signup from "./components/Auth/Signup";
+import Profile from "./components/Profile/Profile";
+import Sidebar from "./components/Nav/Sidebar";
+import Home from "./components/Home/Home";
+import MyPosts from "./components/MyPosts/MyPosts";
 
 class App extends Component {
   constructor(props) {

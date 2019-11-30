@@ -44,7 +44,7 @@ class Map extends Component {
                     onClick={() => {
                       this.props.setSelectedPost(post);
                     }}
-                    src={require("./attraction-15.svg")}
+                    src={require("./icons/attraction-15.svg")}
                     alt="location"
                   />
                 </Marker>

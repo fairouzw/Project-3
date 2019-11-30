@@ -18,8 +18,8 @@ import {
   NavLink,
   Nav
 } from "reactstrap";
-import "../assets/vendor/nucleo/css/nucleo.css"
-import "../assets/vendor/@fortawesome/fontawesome-free/css/all.min.css";
+import "../../assets/vendor/nucleo/css/nucleo.css"
+import "../../assets/vendor/@fortawesome/fontawesome-free/css/all.min.css";
 
 
 class Login extends Component {

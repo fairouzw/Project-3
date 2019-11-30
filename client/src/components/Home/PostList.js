@@ -1,6 +1,6 @@
 import React, { Component } from "react";
-import AddComment from "./AddComment";
-import SinglePost from "./SinglePost"
+import AddComment from "../Posts/AddComment";
+import SinglePost from "../Posts/SinglePost"
 
 class PostList extends Component {
 

@@ -1,9 +1,9 @@
 import React, { Component } from "react";
 import axios from "axios";
 
-import "../App.css";
+import "../../App.css";
 
-import UpdatePost from "./UpdatePost";
+import UpdatePost from "../Posts/UpdatePost";
 // import UpdateProfile from "./UpdateProfile";
 
 import {
@@ -16,7 +16,7 @@ import {
 } from "reactstrap";
 // core components
 
-import UserHeader from "./UserHeader.jsx";
+import UserHeader from "../Profile/UserHeader.jsx";
 
 class MyPosts extends Component {
     constructor(props) {

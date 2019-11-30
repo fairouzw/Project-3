@@ -13,7 +13,7 @@ class PostList extends Component {
                 <h1>Check out what's out there:</h1>
                 <div className="all-posts">
                     {this.props.posts.map((post, idx) => {
-                        return (<SinglePost post={post} />
+                        return (<SinglePost key={idx} post={post} />
 
                             // <div key={idx} className="one-post">
                             //     <br></br>

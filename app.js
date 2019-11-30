@@ -54,7 +54,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "/client/build")));
 
-app.use("/", indexRouter);
+
 // app.use("/users", usersRouter);
 
 // session section
@@ -70,7 +70,7 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 //app.use
-
+app.use("/api", indexRouter);
 app.use("/api", authRoutes);
 app.use("/api", profRoutes);
 app.use("/api/posts", postRoutes);

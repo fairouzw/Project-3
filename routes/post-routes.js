@@ -53,8 +53,8 @@ router.get("/liked", (req, res, next) => {
 router.post("/:id/like", (req, res, next) => {
   Post.findByIdAndUpdate(req.params.id, {
     $addToSet: { likes: req.user._id }
-  }, { new: true }).then(response => {
-    console.log("I am here. 1 new doc/////", response);
+  }, { new: true }).then(post => {
+    console.log("I am here. 1 new doc/////", post);
 
     res.json({
       ...(post.toJSON()),

@@ -5,6 +5,16 @@ let Post = require("../models/post-model");
 let User = require("../models/user-model");
 let Comment = require("../models/comment-model");
 const mongoose = require("mongoose");
+const vision = require('@google-cloud/vision')
+
+const client = new vision.ImageAnnotatorClient({
+
+  projectId: process.env.GOOGLE_PROJECT_ID,
+  credentials: {
+    client_email: process.env.GOOGLE_CLIENT_EMAIL,
+    private_key: `${process.env.GOOGLE_PRIVATE_KEY.split("\\n").join("\n")}`
+  }
+});
 
 //GET all posts
 // /api/posts

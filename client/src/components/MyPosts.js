@@ -150,6 +150,7 @@ class MyPosts extends Component {
 
                                                     <br></br>
                                                     <UpdatePost
+                                                        posts={this.state.listOfPosts}
                                                         id={post._id}
                                                         postname={post.postname}
                                                         description={post.description}

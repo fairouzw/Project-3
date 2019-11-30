@@ -10,6 +10,7 @@ class UpdatePost extends Component {
             imgUrl: this.props.imgUrl,
             description: this.props.description,
             postname: this.props.postname,
+            listOfPosts: this.props.posts,
         };
     }
 
@@ -46,13 +47,23 @@ class UpdatePost extends Component {
                         postname,
 
                     })
+                        .then(res => {
+                            console.log(res);
+                            if (res.status === 200) {
+                                this.props.getAllUserPosts()
+                            } else {
+                                console.log("SAve function didn't work!")
+                            }
+                        })
                         .then(() => {
                             // this.props.getData();
                             this.setState({
-                                description: "",
-                                postname: ""
+                                description: this.props.description,
+                                postname: this.props.postname,
+                                imgUrl: this.props.imgUrl,
                             });
                         })
+
                         .catch(error => console.log(error));
                 })
     }

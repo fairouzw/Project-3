@@ -1,11 +1,12 @@
 import React, { Component } from "react";
-import "../App.css";
+import "../../App.css";
 import Map from "./Map";
 import axios from "axios";
 import PostList from "./PostList";
 import SearchPost from "./SearchPost";
-import Popup from "./PopUp";
-import DisplayPost from './DisplayPost'
+import Popup from "../Posts/PopUp";
+import DisplayPost from '../Posts/DisplayPost'
+import Header from "./Header.jsx";
 
 
 // node.js library that concatenates classes (strings)
@@ -24,7 +25,6 @@ import {
   Col
 } from "reactstrap";
 
-import Header from "./Header.jsx";
 
 class Home extends Component {
   constructor() {

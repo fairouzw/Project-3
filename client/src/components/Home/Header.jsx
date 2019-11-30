@@ -11,7 +11,7 @@ class Header extends React.Component {
         <div className="header  pb-8 pt-5 pt-md-8"
          style={{
           minHeight: "400px",
-          backgroundImage: "url(" + require("./adam-vradenburg-TK5I5L5JGxY-unsplash.jpg") + ")",
+          backgroundImage: "url(" + require("../../assets/img/berlin-pics/adam-vradenburg-TK5I5L5JGxY-unsplash.jpg") + ")",
           backgroundSize: "cover",
           backgroundPosition: "center top"
         }}>

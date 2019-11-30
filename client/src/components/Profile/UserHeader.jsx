@@ -12,7 +12,7 @@ class UserHeader extends React.Component {
           className="header pb-8 pt-5 pt-lg-8 d-flex align-items-center"
           style={{
             minHeight: "400px",
-            backgroundImage: "url(" + require("./adam-vradenburg-TK5I5L5JGxY-unsplash.jpg") + ")",
+            backgroundImage: "url(" + require("../../assets/img/berlin-pics/adam-vradenburg-TK5I5L5JGxY-unsplash.jpg") + ")",
             backgroundSize: "cover",
             backgroundPosition: "center top"
           }}

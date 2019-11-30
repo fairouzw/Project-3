@@ -11,8 +11,9 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import "../src/assets/vendor/nucleo/css/nucleo.css";
 import "../src/assets/vendor/@fortawesome/fontawesome-free/css/all.min.css";
 
+
 document.getElementById("root").innerText =
-  "The React app has not connected to the backend yet.";
+  "Loading...";
 
 axios
   .get("/api/checkuser")
@@ -25,7 +26,7 @@ axios
     );
   })
   .catch(err => {
-    alert("backend not running or /checkuser route not defined !");
+    console.log("backend not running or /checkuser route not defined !");
   });
 
 // If you want your app to work offline and load faster, you can change

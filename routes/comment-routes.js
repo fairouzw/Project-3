@@ -21,20 +21,20 @@ router.get('/:post_id', function (req, res, next) {
 });
 
 // POST /api/tasks
-router.post('/', (req, res, next) => {
+router.post('/new-comment', (req, res, next) => {
 
     // { project_id : '1i263516253gd5', title: 'Clean the room' }
 
     Comment.create({
-        post: req.body.post_id,
+        post: req.body.postId,
         owner: req.user,  //add later ._id
         comment: req.body.comment
     }).then((comment) => {
-        return Post.findByIdAndUpdate(req.body.post_id, { $push: { comments: comment } }, { new: true })
-    })
-        .then((posts) => {
-            res.json(posts)
+        return Post.findByIdAndUpdate(req.body.postId, { $push: { comments: comment } }, { new: true }).then(() => {
+            res.json(comment)
         })
+    })
+
 });
 
 

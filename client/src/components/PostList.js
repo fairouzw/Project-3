@@ -1,8 +1,10 @@
 import React, { Component } from "react";
+import AddComment from "./AddComment";
+import SinglePost from "./SinglePost"
 
 class PostList extends Component {
 
-   
+
     render() {
         // console.log(this.state.userLocation);
         // console.log(this.props.posts);
@@ -10,19 +12,21 @@ class PostList extends Component {
             <div>
                 <h1>Check out what's out there:</h1>
                 <div className="all-posts">
-                    {this.props.posts.map(post => {
-                        return (
-                            <div className="one-post">
-                                <br></br>
-                                <h3 key={post._id}>Thing: {post.postname}</h3>
-                                <div>Description: {post.description}</div>
-                                <img className="post-pic" src={post.imgUrl} alt=""></img>
-                                <p>{post.address}</p>
-                                <p>Comments:{post.comments.map((c) => {
-                                    return <h1>{c.comment}</h1>
-                                })}</p>
-                                <br></br>
-                            </div>
+                    {this.props.posts.map((post, idx) => {
+                        return (<SinglePost post={post} />
+
+                            // <div key={idx} className="one-post">
+                            //     <br></br>
+                            //     <h3 key={post._id}>Thing: {post.postname}</h3>
+                            //     <div>Description: {post.description}</div>
+                            //     <img className="post-pic" src={post.imgUrl} alt=""></img>
+                            //     <p>{post.address}</p>
+                            //     <p>Comments:{post.comments.map((c, idx) => {
+                            //         return (<span key={idx}>{c.comment}</span>)
+                            //     })}</p>
+                            //     <AddComment addComment={this.post} />
+                            //     <br></br>
+                            // </div>
                         );
                     })}
                 </div>

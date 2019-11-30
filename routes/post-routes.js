@@ -23,18 +23,71 @@ router.get("/", (req, res, next) => {
   dbQuery = req.query.owner_id ? { owner: req.query.owner_id } : {}
   Post.find(dbQuery).populate('comments')
     .then(allThePosts => {
-      res.json(allThePosts);
+      res.json(allThePosts.map(post => ({
+        ...(post.toJSON()),
+        likes: post.likes ? post.likes.length : 0,
+        hasLiked: post.likes ? post.likes.some(like => like.equals(req.user._id)) : false,
+      })));
+    })
+    .catch(err => {
+      res.status(500).json({ error: err.message });
+    });
+});
+
+//get likes
+router.get("/liked", (req, res, next) => {
+  console.log(req.user._id)
+  Post.find({ likes: req.user._id }).populate('comments')
+    .then(allThePosts => {
+      res.json(allThePosts.map(post => ({
+        ...(post.toJSON()),
+        likes: post.likes ? post.likes.length : 0,
+        hasLiked: post.likes ? post.likes.some(like => like.equals(req.user._id)) : false,
+      })));
     })
     .catch(err => {
       res.json(err);
     });
 });
 
+router.post("/:id/like", (req, res, next) => {
+  Post.findByIdAndUpdate(req.params.id, {
+    $addToSet: { likes: req.user._id }
+  }, { new: true }).then(response => {
+    console.log("I am here. 1 new doc/////", response);
+
+    res.json({
+      ...(post.toJSON()),
+      likes: post.likes ? post.likes.length : 0,
+      hasLiked: post.likes ? post.likes.some(like => like.equals(req.user._id)) : false,
+    });
+  });
+});
+
+router.delete("/:id/like", (req, res, next) => {
+  Post.findByIdAndUpdate(req.params.id, {
+    $pull: { likes: req.user._id }
+  }, { new: true }).then(response => {
+    console.log("I am here. 1 new doc/////", response);
+
+    res.json({
+      ...(post.toJSON()),
+      likes: post.likes ? post.likes.length : 0,
+      hasLiked: post.likes ? post.likes.some(like => like.equals(req.user._id)) : false,
+    });
+  });
+});
+
+
 // /api/posts/o1i72367458523dasdztr
 router.get("/:id", function (req, res, next) {
   Post.findById(req.params.id).populate('comments').then(post => {
 
-    res.json(post);
+    res.json({
+      ...(post.toJSON()),
+      likes: post.likes ? post.likes.length : 0,
+      hasLiked: post.likes ? post.likes.some(like => like.equals(req.user._id)) : false,
+    });
   });
 });
 
@@ -58,7 +111,13 @@ router.post("/new-post", (req, res, next) => {
   }).then(response => {
     console.log("I am here. 1 new doc/////", response);
 
-    res.json({ response });
+    res.json({
+      response: {
+        ...(response.toJSON()),
+        likes: response.likes ? response.likes.length : 0,
+        hasLiked: response.likes ? response.likes.some(like => like.equals(req.user._id)) : false,
+      }
+    });
   });
   // .catch(err => {
   //     //console.log('I am here. 2', err)

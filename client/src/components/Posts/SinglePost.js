@@ -30,6 +30,8 @@ class SinglePost extends Component {
                 <div>Description: {this.state.post.description}</div>
                 <img className="post-pic" src={this.state.post.imgUrl} alt=""></img>
                 <p>{this.state.post.address}</p>
+                <p>{this.state.post.likes}Likes</p>
+
                 <p>Comments:{this.state.comments.map((c, idx) => {
                     return (<span key={idx}>{c.comment}</span>)
                 })}</p>

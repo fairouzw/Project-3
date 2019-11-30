@@ -14,6 +14,31 @@ class UpdatePost extends Component {
         };
     }
 
+    updatePost = () => {
+
+        // this.state.editPostId = event.target._id;
+        console.log(this.state.postId);
+
+        const { description, postname, imgUrl } = this.state;
+
+        return axios.put(`/api/posts/${this.state.postId}`, {
+            imgUrl,
+            description,
+            postname,
+
+        })
+            .then(res => {
+                console.log(res);
+                if (res.status === 200) {
+                    this.props.getAllUserPosts()
+                } else {
+                    console.log("SAve function didn't work!")
+                }
+            })
+
+            .catch(error => console.log(error));
+    }
+
     handleFileUpload = (target) => {
         console.log("The file to be uploaded is: ", target.files[0]);
         const uploadData = new FormData();
@@ -24,7 +49,9 @@ class UpdatePost extends Component {
             .then(response => {
                 console.log("response is: ", response);
                 // after the console.log we can see that response carries 'secure_url' which we can use to update the state
-                return response.data.secure_url;
+                this.setState({
+                    imgUrl: response.data.secure_url
+                })
             })
             .catch(err => {
                 console.log("Error while uploading the file: ", err);
@@ -34,38 +61,19 @@ class UpdatePost extends Component {
     handleFormSubmit = (event) => {
         event.preventDefault();
 
-        // this.state.editPostId = event.target._id;
-        console.log(this.state.postId);
+        let imgUrlInput = event.target.getElementsByClassName("imgUrl")[0]
 
-        const { description, postname } = this.state;
-        this.handleFileUpload(event.target.getElementsByClassName("imgUrl")[0])
-            .then(
-                imgUrl => {
-                    return axios.put(`/api/posts/${this.state.postId}`, {
-                        imgUrl,
-                        description,
-                        postname,
+        console.log("image input files", imgUrlInput.files)
 
-                    })
-                        .then(res => {
-                            console.log(res);
-                            if (res.status === 200) {
-                                this.props.getAllUserPosts()
-                            } else {
-                                console.log("SAve function didn't work!")
-                            }
-                        })
-                        .then(() => {
-                            // this.props.getData();
-                            this.setState({
-                                description: this.props.description,
-                                postname: this.props.postname,
-                                imgUrl: this.props.imgUrl,
-                            });
-                        })
+        // checking if the user updated the picture.. if so we need to upload it first before updating the post
+        if (imgUrlInput.files.length > 0) {
+            this.handleFileUpload(event.target.getElementsByClassName("imgUrl")[0]).then(() => {
+                this.updatePost()
+            })
+        } else {
+            this.updatePost()
+        }
 
-                        .catch(error => console.log(error));
-                })
     }
 
     // handleChange = event => {

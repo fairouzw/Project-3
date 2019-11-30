@@ -42,42 +42,32 @@ class AddPost extends Component {
     event.preventDefault();
     console.log("i clicked")
     const { description, postname } = this.state;
-    // this.props.showPopup
-  
-    // console.log(event.target)
-    // console.log(event.target.getElementsByClassName("imgUrl")[0])
 
-    this.handleFileUpload(event.target.getElementsByClassName("imgUrl")[0])
-    .then(
-      imgUrl => {
-        getLocation()
-          .then(location => {
-            console.log("////",location)
-            axios.get(`https://api.mapbox.com/geocoding/v5/mapbox.places/${location.longitude},${location.latitude}.json?access_token=pk.eyJ1IjoibG9zLWxlbmEiLCJhIjoiY2szNHllYzI5MTZsOTNubzI1emZ2aHFiaSJ9.v7gsBidhvQm2T5EOb_GcGA`)
-        .then(result=>{
+    Promise.all([
+      this.handleFileUpload(event.target.getElementsByClassName("imgUrl")[0]),
+      getLocation()
+    ])
+      .then(([imgUrl, location]) => {
+        return axios.get(`https://api.mapbox.com/geocoding/v5/mapbox.places/${location.longitude},${location.latitude}.json?access_token=pk.eyJ1IjoibG9zLWxlbmEiLCJhIjoiY2szNHllYzI5MTZsOTNubzI1emZ2aHFiaSJ9.v7gsBidhvQm2T5EOb_GcGA`)
+          .then(result=>{
             return axios.post("/api/posts/new-post", {
               imgUrl,
               location: { lat: location.latitude, long: location.longitude },
               description,
               postname,
-              address: result.data.features[0].place_name
+              address: result.data.features[0].place_name,
             })
-          })
-          .then(() => {
-            this.props.getAllPosts();
-            this.props.closePopup(event);
-            this.setState({
-              imgUrl: "",
-              description: "",
-              postname: ""
-            });
-          })
-          .catch(error => console.log(error));
-        }).catch(error=>{
-          console.log("something is wrong with convert",error)
-        })     
-      }
-    );
+        }).then(() => {
+          this.props.getAllPosts();
+          this.props.closePopup(event);
+          this.setState({
+            imgUrl: "",
+            description: "",
+            postname: ""
+          });
+        });
+      })
+      .catch(error => console.log(error));
   };
 
   handleChange = event => {

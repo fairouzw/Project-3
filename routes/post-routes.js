@@ -5,16 +5,6 @@ let Post = require("../models/post-model");
 let User = require("../models/user-model");
 let Comment = require("../models/comment-model");
 const mongoose = require("mongoose");
-const vision = require('@google-cloud/vision')
-
-// const client = new vision.ImageAnnotatorClient({
-
-//   projectId: process.env.GOOGLE_PROJECT_ID,
-//   credentials: {
-//     client_email: process.env.GOOGLE_CLIENT_EMAIL,
-//     private_key: `${process.env.GOOGLE_PRIVATE_KEY.split("\\n").join("\n")}`
-//   }
-// });
 
 //GET all posts
 // /api/posts
@@ -88,20 +78,21 @@ router.get("/:id", function (req, res, next) {
       likes: post.likes ? post.likes.length : 0,
       hasLiked: post.likes ? post.likes.some(like => like.equals(req.user._id)) : false,
     });
+
+    res.json(post);
+
   });
 });
 
 // post /api/posts/new-post
 router.post("/new-post", (req, res, next) => {
   console.log("I am here.");
-  // { postname: 'Cups', description: '4 white cups' }
   Post.create({
     imgUrl: req.body.imgUrl,
     location: req.body.location,
     address: req.body.address,
     description: req.body.description,
     postname: req.body.postname,
-    /* HAD TO UNCOMMENT THIS SO THAT THIS ROUTE WOULD WORK :) */
     owner: req.user._id,
     tags: req.body.tags,
     comments: req.body.comments,
@@ -109,7 +100,7 @@ router.post("/new-post", (req, res, next) => {
     // likes: req.user._id,
     // expireDate: req.body.expireDate
   }).then(response => {
-    console.log("I am here. 1 new doc/////", response);
+    console.log("I am here. 1 new doc", response);
 
     res.json({
       response: {

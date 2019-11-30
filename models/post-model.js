@@ -10,6 +10,7 @@ const postSchema = new Schema(
     description: String,
     postname: String,
     owner: { type: Schema.Types.ObjectId, ref: "User" },
+    tags: Array,
     categories: {
       type: String, // try to implement following category-tags
       enum: ["food", "electronics", "furniture", "clothes", "dishes"]

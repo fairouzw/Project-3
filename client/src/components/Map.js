@@ -11,37 +11,18 @@ class Map extends Component {
       longitude: 13.404954,
       zoom: 12
     },
-    userLocation: {},
-    selectedSpot: null
- 
+    userLocation: {}
   };
 
   customizeMap = viewport => {
     this.setState({ viewport: viewport });
   };
 
-  setSelectedSpot = object => {
-    this.setState({
-      selectedSpot: object
-    });
-  };
-
   closePopup = () => {
-    this.setState({
-      selectedSpot: null
-    });
+  this.props.setSelectedPost(null)
   };
-
-  // selectedPost = () => {
-  //   // e.preventDefault()
-  //   this.props.getSelectedPost(this.state.selectedSpot) 
-   
-  // }
 
   render() {
-    // console.log(this.state.userLocation);
-    // console.log(this.props.posts);
-
     return (
       <div >
         <ReactMapGL
@@ -61,7 +42,7 @@ class Map extends Component {
                   <img
 
                     onClick={() => {
-                      this.setSelectedSpot(post);
+                      this.props.setSelectedPost(post);
                     }}
                     src={require("./attraction-15.svg")}
                     alt="location"
@@ -75,16 +56,15 @@ class Map extends Component {
           positionOption={{enableHighAccuracy: true}}
           trackUserLocation={true}
           />
-                  {this.state.selectedSpot !== null ? (
+                  {this.props.selectedPost !== null ? (
                      <Popup
-                     latitude={this.state.selectedSpot.location.lat}
-                      longitude={this.state.selectedSpot.location.long}
+                     latitude={this.props.selectedPost.location.lat}
+                      longitude={this.props.selectedPost.location.long}
                       onClose={this.closePopup}
-                      onClick={this.setSelectedSpot}
                       >
                       <div>
-                      <img className="location-icon" src={this.state.selectedSpot.imgUrl} alt="" />
-                     <p>{this.state.selectedSpot.postname}</p>
+                      <img className="location-icon" src={this.props.selectedPost.imgUrl} alt="" />
+                     <p>{this.props.selectedPost.postname}</p>
                      </div>
                       </Popup>
                       ) : null}

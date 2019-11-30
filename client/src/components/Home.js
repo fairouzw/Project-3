@@ -84,11 +84,12 @@ class Home extends Component {
   //   })
   //   }
 
-    // getSelectedPost = ({data}) => {
-    //   this.setState({
-    //     selectedPost: {data}
-    //   })
-    // }
+    setSelectedPost = (post) => {
+      this.setState({
+        selectedPost: post
+      })
+    }
+
   render() {
     return (
       <div className="main-content" ref="mainContent">
@@ -139,7 +140,7 @@ class Home extends Component {
        <CardBody>
          {/* Chart */}
          <div className="chart">
-          <Map posts={this.state.filteredListOfPosts} />
+          <Map setSelectedPost={this.setSelectedPost} selectedPost={this.state.selectedPost} posts={this.state.filteredListOfPosts} />
          </div>
        </CardBody>
      </Card>
@@ -163,7 +164,7 @@ class Home extends Component {
              data={chartExample2.data}
              options={chartExample2.options}
            /> */}
-           <DisplayPost/>
+           <DisplayPost selectedPost={this.state.selectedPost}/>
          </div>
        </CardBody>
      </Card>

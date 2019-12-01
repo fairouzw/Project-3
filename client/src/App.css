@@ -34,6 +34,12 @@
 .one-post {
   border: 1px solid rgb(200, 200, 200);
   width: 300px;
+  margin-left: 20px;
+  margin-right: 20px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  text-align: center;
+
 }
 
 .popup {

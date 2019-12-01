@@ -101,7 +101,6 @@ router.post("/new-post", (req, res, next) => {
     // expireDate: req.body.expireDate
   }).then(response => {
     console.log("I am here. 1 new doc", response);
-
     res.json({
       response: {
         ...(response.toJSON()),

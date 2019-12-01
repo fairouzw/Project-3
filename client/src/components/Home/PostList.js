@@ -3,22 +3,21 @@ import AddComment from "../Posts/AddComment";
 import SinglePost from "../Posts/SinglePost"
 
 import {
-    Card, Button, CardImg, CardTitle, CardText, CardDeck,
-    CardSubtitle, CardBody
+    CardDeck,
+    CardGroup,
+    Row
   } from 'reactstrap';
 
 class PostList extends Component {
 
     render() {
         return (       
-                <CardDeck>
-             
+                <Row style={{justifyContent: "center"}}>
                     {this.props.posts.map((post, idx) => {
                         return (
                         <SinglePost key={idx} post={post} />
                         )})}
-                
-                </CardDeck>
+                </Row>
         );
     }
 }

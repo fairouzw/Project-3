@@ -139,7 +139,7 @@ class Profile extends Component {
               </Card>
             </Col>
             <Col className="order-xl-1" xl="8">
-              <Card className="bg-secondary shadow">
+              <Card className="bg-light shadow">
                 <CardHeader className="bg-white border-0">
                   <Row className="align-items-center">
                     <Col xs="8">

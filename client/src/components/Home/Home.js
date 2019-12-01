@@ -8,16 +8,10 @@ import Popup from "../Posts/PopUp";
 import DisplayPost from '../Posts/DisplayPost'
 import Header from "./Header.jsx";
 
-
-// node.js library that concatenates classes (strings)
-// import classnames from "classnames";
-
 import {
-  Button,
   Card,
   CardHeader,
   CardBody,
-  Table,
   Container,
   Row,
   Col,
@@ -104,7 +98,11 @@ class Home extends Component {
        <CardBody>
          {/* DISPLAYED POST */}
          <div className="chart">
-           <DisplayPost selectedPost={this.state.selectedPost}/>
+  {this.state.selectedPost ?  <DisplayPost selectedPost={this.state.selectedPost} /> : 
+  <p> Select something on the map/Display an image/show something</p>
+  }
+
+         
          </div>
        </CardBody>
      </Card>
@@ -118,7 +116,9 @@ class Home extends Component {
       <h3 className="mb-0"> <SearchPost searchPost={this.searchResultPost} /></h3>
       </CardHeader>
     <CardBody>
+  
      <PostList posts={this.state.filteredListOfPosts} ></PostList>
+ 
    </CardBody>
      <CardFooter className="py-4">
                   <nav aria-label="...">

@@ -1,5 +1,16 @@
 import React, { Component } from "react";
 
+import {
+    FormGroup,
+    Form,
+    Input,
+    InputGroupAddon,
+    InputGroupText,
+    InputGroup,
+    Row,
+    Col
+  } from "reactstrap";
+
 class Search extends Component {
 
     changeHandler = e => {
@@ -8,26 +19,26 @@ class Search extends Component {
     };
 
 
-
     render() {
         return (
-            // <form onSubmit={this.handleFormSubmit}>
-
-            <div className="field is-grouped">
-                <p className="control is-expanded">
-                    <input
+            <InputGroup className="mb-4">
+                <InputGroupAddon addonType="prepend">
+                <InputGroupText>
+                <i className="ni ni-zoom-split-in" />
+                </InputGroupText>
+                </InputGroupAddon>
+           
+                    <Input
                         className="input"
                         type="text"
                         name="search"
-                        placeholder="search here"
+                        placeholder="Search Posts"
                         onChange={this.changeHandler}
-                    />
-                </p>
-            </div>
-
-            // </form>
+                    ></Input>
+           </InputGroup>
         );
     }
 }
 
 export default Search;
+

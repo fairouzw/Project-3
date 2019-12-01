@@ -2,6 +2,11 @@ import React, { Component } from "react";
 import AddComment from "./AddComment"
 import LikeButton from "./LikeButton"
 
+import {
+    Card, Button, CardImg, CardTitle, CardText, CardDeck,
+    CardSubtitle, CardBody
+  } from 'reactstrap';
+
 class SinglePost extends Component {
     constructor(props) {
         super(props);
@@ -29,10 +34,8 @@ class SinglePost extends Component {
     }
 
     render() {
-        // console.log(this.state.userLocation);
-        // console.log(this.props.posts);
         return (
-
+            
             <div key={this.state.post._id} className="one-post">
                 <br></br>
                 <h3 key={this.state.post._id}>Thing: {this.state.post.postname}</h3>
@@ -48,6 +51,7 @@ class SinglePost extends Component {
                 <br></br>
 
             </div>
+             
         );
     }
 }

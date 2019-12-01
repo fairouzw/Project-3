@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { withRouter } from "react-router-dom";
+import { withRouter, Link } from "react-router-dom";
 import axios from "axios";
 
 class Signup extends Component {
@@ -88,6 +88,9 @@ class Signup extends Component {
                           Sign up
                         </button>
                         <div className="text-center"></div>
+                        <div class="text-center">
+                        <Link class="small" to="/login">Already have an account?</Link>
+                        </div>
                       </form>
                     </div>
                   </div>

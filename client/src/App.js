@@ -10,6 +10,7 @@ import Profile from "./components/Profile/Profile";
 import Sidebar from "./components/Nav/Sidebar";
 import Home from "./components/Home/Home";
 import MyPosts from "./components/MyPosts/MyPosts";
+import MyFavourites from "./components/MyFavourites/MyFavourites"
 
 class App extends Component {
   constructor(props) {
@@ -103,14 +104,16 @@ class App extends Component {
 
             )}
           />
-          {/* <Route
+          <Route
             exact
             path="/favourites"
             render={() => (
-    
-   
+         <MyFavourites
+             getUser={this.getTheUser}
+            userData={this.state.loggedInUser}
+            />
             )}
-          /> */}
+            />
         </Switch>
       </div>
     );

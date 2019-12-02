@@ -3,16 +3,8 @@ import AddComment from "./AddComment"
 import LikeButton from "./LikeButton"
 
 import {
-    Card, 
-    Button, 
-    CardImg, 
-    CardTitle, 
-    CardText, 
-    CardDeck,
-    CardSubtitle, 
-    CardBody,
-    CardGroup,
-   
+    Card, Button, CardImg, CardTitle, CardText, CardDeck,
+    CardSubtitle, CardBody
   } from 'reactstrap';
 
 class SinglePost extends Component {
@@ -43,25 +35,21 @@ class SinglePost extends Component {
 
     render() {
         return (
-            <CardGroup>
-            <div key={this.state.post._id} className="one-post">
+            <div/*  key={this.props.post._id}  */className="one-post">
                 <br></br>
-            
-                <h3 key={this.state.post._id}>{this.state.post.postname}</h3>
-                <p>{this.state.post.address}</p>
-                <img className="post-pic" src={this.state.post.imgUrl} alt=""></img>
-                <div> {this.state.post.description}</div>
+                <h3 /* key={this.props.post._id} */>Thing: {this.props.post.postname}</h3>
+                <div>Description: {this.props.description}</div>
+                <img className="post-pic" src={this.props.post.imgUrl} alt=""></img>
+                <p>{this.props.post.address}</p>
                 <p>{this.state.likes}Likes</p>
                 <LikeButton addLike={this.addLikeHandler} post={this.state.post} />
                 <p>Comments:{this.state.comments.map((c, idx) => {
                     return (<span key={idx}>{c.comment}</span>)
                 })}</p>
-                <div style={{alignItems: "center"}}>
                 <AddComment addComment={this.addCommentHandler} post={this.state.post} />
-                </div>
                 <br></br>
             </div>
-             </CardGroup>
+             
         );
     }
 }

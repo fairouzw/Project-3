@@ -1,11 +1,8 @@
 import React, { Component } from "react";
 import AddComment from "./AddComment"
 import LikeButton from "./LikeButton"
+import moment from "moment";
 
-import {
-    Card, Button, CardImg, CardTitle, CardText, CardDeck,
-    CardSubtitle, CardBody
-  } from 'reactstrap';
 
 class SinglePost extends Component {
     constructor(props) {
@@ -34,6 +31,7 @@ class SinglePost extends Component {
     }
 
     render() {
+        var timeAgo = moment(this.props.post.createdAt).fromNow()
         return (
             <div/*  key={this.props.post._id}  */className="one-post">
                 <br></br>
@@ -41,6 +39,8 @@ class SinglePost extends Component {
                 <div>Description: {this.props.description}</div>
                 <img className="post-pic" src={this.props.post.imgUrl} alt=""></img>
                 <p>{this.props.post.address}</p>
+              <p> Posted <span className="date timeago" title={ timeAgo }>{ timeAgo }</span> </p>
+
                 <p>{this.state.likes}Likes</p>
                 <LikeButton addLike={this.addLikeHandler} post={this.state.post} />
                 <p>Comments:{this.state.comments.map((c, idx) => {

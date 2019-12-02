@@ -207,7 +207,7 @@ class Sidebar extends Component {
                 </NavLink>
               </NavItem>
               <NavItem>
-                <NavLink to="">
+                <NavLink tag={Link} to="/favourites">
                   <i className="ni ni-favourite-28 text-red" />
                   My Favourites
                 </NavLink>

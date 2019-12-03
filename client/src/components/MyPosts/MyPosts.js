@@ -139,30 +139,32 @@ class MyPosts extends Component {
                                 <CardBody>
 
                                     <div className="all-posts">
-                                        {this.state.listOfPosts.map(post => {
-                                            return (
+                                        <Row style={{ justifyContent: "center" }}>
+                                            {this.state.listOfPosts.map(post => {
+                                                return (
 
-                                                <div className="one-post" key={post._id} >
-                                                    <br></br>
-                                                    <h3 key={post._id}>Thing: {post.postname}</h3>
-                                                    <div>Description: {post.description}</div>
-                                                    <img className="post-pic" src={post.imgUrl} alt=""></img>
+                                                    <div className="one-post" key={post._id} >
+                                                        <br></br>
+                                                        <h3 key={post._id}>Thing: {post.postname}</h3>
+                                                        <div>Description: {post.description}</div>
+                                                        <img className="post-pic" src={post.imgUrl} alt=""></img>
 
-                                                    <br></br>
-                                                    <UpdatePost
-                                                        posts={this.state.listOfPosts}
-                                                        id={post._id}
-                                                        postname={post.postname}
-                                                        description={post.description}
-                                                        imgUrl={post.imgUrl}
-                                                        getAllUserPosts={this.getAllUserPosts}
-                                                    > Test</UpdatePost>
+                                                        <br></br>
+                                                        <UpdatePost
+                                                            posts={this.state.listOfPosts}
+                                                            id={post._id}
+                                                            postname={post.postname}
+                                                            description={post.description}
+                                                            imgUrl={post.imgUrl}
+                                                            getAllUserPosts={this.getAllUserPosts}
+                                                        > Test</UpdatePost>
 
-                                                </div>
+                                                    </div>
 
 
-                                            );
-                                        })}
+                                                );
+                                            })}
+                                        </Row>
                                     </div>
 
                                     {/* <Form onSubmit={this.handleFormSubmit}>

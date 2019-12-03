@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import AddComment from "./AddComment"
 import LikeButton from "./LikeButton"
 import moment from "moment";
+import axios from "axios"
 
 
 class SinglePost extends Component {
@@ -11,7 +12,7 @@ class SinglePost extends Component {
             // userData: this.props.userData,
             post: this.props.post,
             comments: this.props.post.comments,
-            likes: this.props.post.likes
+
 
         };
     }
@@ -22,12 +23,29 @@ class SinglePost extends Component {
             comments: [...this.state.comments, newComment]
         })
     }
-    addLikeHandler = (newLike) => {
-        console.log('ding dong')
-        // // task : re-render the project list including the new project
-        this.setState({
-            likes: this.state.likes + 1
-        })
+
+
+    toggleLike = (event) => {
+
+        console.log(this.state.postId);
+        const { post } = this.state
+        if (!this.state.post.hasLiked) {
+            return axios.post(`/api/posts/${this.state.post._id}/like`, { post })
+                .then(response => {
+                    this.setState({
+                        post: response.data
+                    })
+                })
+                .catch(error => console.log(error));
+        } else {
+            return axios.delete(`/api/posts/${this.state.post._id}/like`, { post })
+                .then(response => {
+                    this.setState({
+                        post: response.data
+                    })
+                })
+                .catch(error => console.log(error));
+        }
     }
 
     render() {
@@ -41,10 +59,10 @@ class SinglePost extends Component {
                 <p>{this.props.post.address}</p>
                 <p> Posted <span className="date timeago" title={timeAgo}>{timeAgo}</span> </p>
 
-                <p>{this.state.likes}Likes</p>
-                <LikeButton addLike={this.addLikeHandler} post={this.state.post} />
+                <p>{this.state.post.likes}Likes</p>
+                <LikeButton toggleLike={this.toggleLike} post={this.state.post} />
                 <p><span className="comment">Comments:</span>{this.state.comments.map((c, idx) => {
-                    return (<span key={idx}>"{c.comment}" <span className="comment">by</span> {c.owner}</span>)
+                    return (<span key={idx}>"{c.comment}" <span className="comment">by</span> {c.owner.username}</span>)
                 })}</p>
                 <AddComment addComment={this.addCommentHandler} post={this.state.post} />
                 <br></br>

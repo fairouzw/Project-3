@@ -11,7 +11,14 @@ const mongoose = require("mongoose");
 // /api/posts?owner_id=12983761823515423
 router.get("/", (req, res, next) => {
   dbQuery = req.query.owner_id ? { owner: req.query.owner_id } : {}
-  Post.find(dbQuery).populate('comments')
+  Post.find(dbQuery).populate('comments').populate({
+    path: 'owner',
+    model: 'Comment',
+    populate: {
+      path: 'username',
+      model: 'User'
+    }
+  })
     .then(allThePosts => {
       res.json(allThePosts.map(post => ({
         ...(post.toJSON()),
@@ -57,8 +64,8 @@ router.post("/:id/like", (req, res, next) => {
 router.delete("/:id/like", (req, res, next) => {
   Post.findByIdAndUpdate(req.params.id, {
     $pull: { likes: req.user._id }
-  }, { new: true }).then(response => {
-    console.log("I am here. 1 new doc/////", response);
+  }, { new: true }).then(post => {
+    console.log("I am here. 1 new doc/////", post);
 
     res.json({
       ...(post.toJSON()),

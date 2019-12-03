@@ -11,14 +11,15 @@ const mongoose = require("mongoose");
 // /api/posts?owner_id=12983761823515423
 router.get("/", (req, res, next) => {
   dbQuery = req.query.owner_id ? { owner: req.query.owner_id } : {}
-  Post.find(dbQuery).populate('comments').populate({
-    path: 'owner',
-    model: 'Comment',
-    populate: {
-      path: 'username',
-      model: 'User'
-    }
-  })
+  Post.find(dbQuery)
+    .populate({
+      path: 'comments',
+      // model: 'Comment',
+      populate: {
+        path: 'owner',
+        // model: 'User'
+      }
+    })
     .then(allThePosts => {
       res.json(allThePosts.map(post => ({
         ...(post.toJSON()),

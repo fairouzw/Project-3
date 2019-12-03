@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import axios from "axios";
 import "../../App.css";
 
-class LikeButton extends React.Component {
+class LikeButton extends Component {
     constructor(props) {
         super(props);
         this.state = {

@@ -17,7 +17,7 @@ class SinglePost extends Component {
     }
 
     addCommentHandler = (newComment) => {
-        // // task : re-render the project list including the new project
+        // // comment : re-render the post list including the new post
         this.setState({
             comments: [...this.state.comments, newComment]
         })
@@ -33,23 +33,23 @@ class SinglePost extends Component {
     render() {
         var timeAgo = moment(this.props.post.createdAt).fromNow()
         return (
-            <div/*  key={this.props.post._id}  */className="one-post">
+            <div/*  key={this.props.post._id}  */ className="one-post">
                 <br></br>
-                <h3 /* key={this.props.post._id} */>Thing: {this.props.post.postname}</h3>
-                <div>Description: {this.props.description}</div>
+                <h3 /* key={this.props.post._id} */>{this.props.post.postname}</h3>
+                <div>Details: {this.props.description}</div>
                 <img className="post-pic" src={this.props.post.imgUrl} alt=""></img>
                 <p>{this.props.post.address}</p>
-              <p> Posted <span className="date timeago" title={ timeAgo }>{ timeAgo }</span> </p>
+                <p> Posted <span className="date timeago" title={timeAgo}>{timeAgo}</span> </p>
 
                 <p>{this.state.likes}Likes</p>
                 <LikeButton addLike={this.addLikeHandler} post={this.state.post} />
-                <p>Comments:{this.state.comments.map((c, idx) => {
-                    return (<span key={idx}>{c.comment}</span>)
+                <p><span className="comment">Comments:</span>{this.state.comments.map((c, idx) => {
+                    return (<span key={idx}>"{c.comment}" <span className="comment">by</span> {c.owner}</span>)
                 })}</p>
                 <AddComment addComment={this.addCommentHandler} post={this.state.post} />
                 <br></br>
             </div>
-             
+
         );
     }
 }

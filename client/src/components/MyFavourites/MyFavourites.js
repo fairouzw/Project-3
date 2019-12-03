@@ -25,6 +25,7 @@ class MyFavourites extends Component {
 
   getAllPosts = () => {
     axios.get(`/api/posts`).then(res => {
+      console.log("hello")
       // console.log(res.data);
       /* pagination ?limit=50 */
       this.setState({
@@ -55,9 +56,10 @@ class MyFavourites extends Component {
                     <div>{this.state.listOfPosts.map((post, idx) => {
                       if (post.hasLiked) {
                         return (
-                          <SinglePost key={idx} post={post} />
+                          <SinglePost key={idx} post={post} getAllPosts={this.getAllPosts} />
                         )
                       } else {
+
                       }
                     })} </div>
                   </Row>

@@ -26,6 +26,7 @@ class Profile extends Component {
       username: this.props.userData.username,
       email: this.props.userData.email,
       listOfPosts: [],
+      counter: 0
 
     };
   }
@@ -33,7 +34,8 @@ class Profile extends Component {
   getAllUserPosts = () => {
     axios.get(`/api/posts?owner_id=${this.props.userData._id}`).then(res => {
       this.setState({
-        listOfPosts: res.data
+        listOfPosts: res.data,
+
       });
 
     })
@@ -63,8 +65,21 @@ class Profile extends Component {
       [name]: value
     });
   };
+  getFavouritesNumber = () => {
+    const hasLikedList = []
+    const postList = [...this.state.listOfPosts];
+
+    postList.forEach((post, idx) => {
+      if (post.hasLiked) {
+        hasLikedList.push(post)
+        return hasLikedList.length
+      }
+    })
+
+  }
 
   render() {
+
     return (
       <div className="main-content" ref="mainContent" >
         <UserHeader userName={this.state.username} />
@@ -104,8 +119,9 @@ class Profile extends Component {
                           <span className="description">Likes</span>
                         </div>
                         <div>
-                          <span className="heading">0</span>
-                          <span className="description">Favourites</span>
+                          <span className="heading">{this.getFavouritesNumber}</span>
+                          <span className="description">
+                            Favourites</span>
                         </div>
                       </div>
                     </div>

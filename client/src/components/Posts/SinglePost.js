@@ -40,6 +40,7 @@ class SinglePost extends Component {
         } else {
             return axios.delete(`/api/posts/${this.state.post._id}/like`, { post })
                 .then(response => {
+                    this.props.getAllPosts()
                     this.setState({
                         post: response.data
                     })

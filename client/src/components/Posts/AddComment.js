@@ -2,15 +2,11 @@ import React, { Component } from "react";
 import axios from "axios";
 
 import {
-    FormGroup,
-    Form,
     Input,
     InputGroupAddon,
     InputGroupText,
     InputGroup,
-    Row,
-    Col 
-  } from 'reactstrap';
+} from 'reactstrap';
 
 class AddComment extends Component {
     constructor(props) {
@@ -21,8 +17,6 @@ class AddComment extends Component {
             post: this.props.post
         };
     }
-
-
 
     handleFormSubmit = event => {
         event.preventDefault();
@@ -74,30 +68,30 @@ class AddComment extends Component {
 
         return (
             <div className="container">
-                
-                    <form onSubmit={this.handleFormSubmit}>
-                       {/*  <label htmlFor="inputEmail">Title/Caption</label> */}
-                       <InputGroup className="mb-4">
-                       <InputGroupAddon addonType="prepend">
-                        <InputGroupText>
-                        {/* <i className="ni ni-zoom-split-in" />{} */}
-                        <i className="far fa-comments"></i>
-                        </InputGroupText>
+
+                <form onSubmit={this.handleFormSubmit}>
+                    {/*  <label htmlFor="inputEmail">Title/Caption</label> */}
+                    <InputGroup className="mb-4">
+                        <InputGroupAddon addonType="prepend">
+                            <InputGroupText>
+                                {/* <i className="ni ni-zoom-split-in" />{} */}
+                                <i className="far fa-comments"></i>
+                            </InputGroupText>
                         </InputGroupAddon>
-                       
-                            <Input
-                                type="text"
-                                id="comment"
-                                className="form-control"
-                                Placeholder=" Write a comment"
-                                name="comment"
-                                value={this.state.comment}
-                                onChange={this.handleChange}
-                            // required
-                            // autoFocus
-                            />
-                            </InputGroup>
-                            <div>
+
+                        <Input
+                            type="text"
+                            id="comment"
+                            className="form-control"
+                            placeholder=" Write a comment"
+                            name="comment"
+                            value={this.state.comment}
+                            onChange={this.handleChange}
+                        // required
+                        // autoFocus
+                        />
+                    </InputGroup>
+                    <div>
                         <button
                             className="btn btn-sm btn-primary btn-block btn-login text-uppercase font-weight-bold mb-2"
                             type="submit"
@@ -105,11 +99,11 @@ class AddComment extends Component {
                         >
                             Add Comment
                         </button>
-                        </div>
-                      
-                    </form>
-                    {/* <button onClick={() => this.deleteComment()}>Delete Post</button> */}
-     
+                    </div>
+
+                </form>
+                {/* <button onClick={() => this.deleteComment()}>Delete Post</button> */}
+
             </div>
         );
     }

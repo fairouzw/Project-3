@@ -39,7 +39,6 @@
   margin-top: 20px;
   margin-bottom: 20px;
   text-align: center;
-
 }
 
 .popup {
@@ -132,7 +131,10 @@
     box-shadow: 3px 3px 22px 4px rgba(0, 0, 0, 0.1);
   }
 }
-
+.comment {
+  color: lightslategray;
+  font-size: 0.9em;
+}
 /* SIGN-UP SAMPLE STARTS */
 
 :root {
@@ -146,7 +148,7 @@
 }
 
 .bg-image {
-  background-image: url('../src/assets/img/berlin-pics/Fernsehturm_claudio-schwarz-purzlbaum-pN684G33h.jpg');
+  background-image: url("../src/assets/img/berlin-pics/Fernsehturm_claudio-schwarz-purzlbaum-pN684G33h.jpg");
   background-size: cover;
   background-position: center;
 }
@@ -167,14 +169,14 @@
   margin-bottom: 1rem;
 }
 
-.form-label-group>input,
-.form-label-group>label {
+.form-label-group > input,
+.form-label-group > label {
   padding: var(--input-padding-y) var(--input-padding-x);
   height: auto;
   border-radius: 2rem;
 }
 
-.form-label-group>label {
+.form-label-group > label {
   position: absolute;
   top: 0;
   left: 0;
@@ -187,8 +189,8 @@
   cursor: text;
   /* Match the input under the label */
   border: 1px solid transparent;
-  border-radius: .25rem;
-  transition: all .1s ease-in-out;
+  border-radius: 0.25rem;
+  transition: all 0.1s ease-in-out;
 }
 
 .form-label-group input::-webkit-input-placeholder {
@@ -216,7 +218,7 @@
   padding-bottom: calc(var(--input-padding-y) / 3);
 }
 
-.form-label-group input:not(:placeholder-shown)~label {
+.form-label-group input:not(:placeholder-shown) ~ label {
   padding-top: calc(var(--input-padding-y) / 3);
   padding-bottom: calc(var(--input-padding-y) / 3);
   font-size: 12px;
@@ -227,7 +229,7 @@
 -------------------------------------------------- */
 
 @supports (-ms-ime-align: auto) {
-  .form-label-group>label {
+  .form-label-group > label {
     display: none;
   }
   .form-label-group input::-ms-input-placeholder {

@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
 import Header from '../Home/Header'
+import axios from 'axios'
+import SinglePost from "../Posts/SinglePost"
 // reactstrap components
 import {
   Card,
@@ -13,20 +15,53 @@ import {
   Row
 } from "reactstrap";
 
- class MyFavourites extends Component {
+class MyFavourites extends Component {
+  constructor() {
+    super();
+    this.state = {
+      listOfPosts: [],
+    };
+  }
+
+  getAllPosts = () => {
+    axios.get(`/api/posts`).then(res => {
+      // console.log(res.data);
+      /* pagination ?limit=50 */
+      this.setState({
+        listOfPosts: res.data,
+      });
+    })
+  };
+
+  componentDidMount = () => {
+    this.getAllPosts();
+  };
+
+
   render() {
     return (
       <div className="main-content" ref="mainContent" >
-          <Header />
-         <Container className="mt--7" fluid>
+        <Header />
+        <Container className="mt--7" fluid>
           {/* Table */}
-          <Row>
+          <Row className="mt-5">
             <div className="col">
               <Card className="shadow">
                 <CardHeader className="border-0">
                   <h3 className="mb-0">My Favourites</h3>
                 </CardHeader>
-               <CardBody> </CardBody>
+                <CardBody>
+                  <Row style={{ justifyContent: "center" }}>
+                    <div>{this.state.listOfPosts.map((post, idx) => {
+                      if (post.hasLiked) {
+                        return (
+                          <SinglePost key={idx} post={post} />
+                        )
+                      } else {
+                      }
+                    })} </div>
+                  </Row>
+                </CardBody>
                 <CardFooter className="py-4">
                   <nav aria-label="...">
                     <Pagination
@@ -82,7 +117,7 @@ import {
               </Card>
             </div>
           </Row>
-        
+
         </Container>
       </div>
     )

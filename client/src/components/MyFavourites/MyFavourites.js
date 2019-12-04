@@ -53,15 +53,14 @@ class MyFavourites extends Component {
                 </CardHeader>
                 <CardBody>
                   <Row style={{ justifyContent: "center" }}>
-                    <div>{this.state.listOfPosts.map((post, idx) => {
+                    {this.state.listOfPosts.map((post, idx) => {
                       if (post.hasLiked) {
                         return (
                           <SingleFavPost key={idx} post={post} getAllPosts={this.getAllPosts} />
                         )
                       } else {
-
                       }
-                    })} </div>
+                    })}
                   </Row>
                 </CardBody>
                 <CardFooter className="py-4">

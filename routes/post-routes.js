@@ -81,7 +81,6 @@ router.delete("/:id/like", (req, res, next) => {
 // /api/posts/o1i72367458523dasdztr
 router.get("/:id", function (req, res, next) {
   Post.findById(req.params.id).populate('comments').then(post => {
-
     res.json({
       ...(post.toJSON()),
       likes: post.likes ? post.likes.length : 0,

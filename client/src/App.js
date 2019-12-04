@@ -11,6 +11,7 @@ import Sidebar from "./components/Nav/Sidebar";
 import Home from "./components/Home/Home";
 import MyPosts from "./components/MyPosts/MyPosts";
 import MyFavourites from "./components/MyFavourites/MyFavourites"
+import PostOnMap from "./components/MyFavourites/PostOnMap"
 
 class App extends Component {
   constructor(props) {
@@ -114,6 +115,12 @@ class App extends Component {
             />
             )}
             />
+            <Route exact path="/posts/:id"  render={() => (
+         <PostOnMap
+             getUser={this.getTheUser}
+            userData={this.state.loggedInUser}
+            />
+            )} />
         </Switch>
       </div>
     );

@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import Header from '../Home/Header'
 import axios from 'axios'
-import SinglePost from "../Posts/SinglePost"
+import SingleFavPost from "./SingleFavPost"
 // reactstrap components
 import {
   Card,
@@ -56,7 +56,7 @@ class MyFavourites extends Component {
                     <div>{this.state.listOfPosts.map((post, idx) => {
                       if (post.hasLiked) {
                         return (
-                          <SinglePost key={idx} post={post} getAllPosts={this.getAllPosts} />
+                          <SingleFavPost key={idx} post={post} getAllPosts={this.getAllPosts} />
                         )
                       } else {
 

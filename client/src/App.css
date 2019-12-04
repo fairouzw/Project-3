@@ -137,6 +137,9 @@
 }
 /* SIGN-UP SAMPLE STARTS */
 
+.owner {
+  color: rgb(85, 124, 240);
+}
 :root {
   --input-padding-x: 1.5rem;
   --input-padding-y: 0.75rem;

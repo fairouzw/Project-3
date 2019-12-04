@@ -12,6 +12,7 @@ const mongoose = require("mongoose");
 router.get("/", (req, res, next) => {
   dbQuery = req.query.owner_id ? { owner: req.query.owner_id } : {}
   Post.find(dbQuery)
+    .populate('owner')
     .populate({
       path: 'comments',
       // model: 'Comment',

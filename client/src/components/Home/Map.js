@@ -7,9 +7,9 @@ class Map extends Component {
     viewport: {
       width: "inherit",
       height: "350px",
-      latitude: 52.520008,
-      longitude: 13.404954,
-      zoom: 12
+      latitude: 52.5035239,
+      longitude: 13.407602899999999,
+      zoom: 11
     },
     userLocation: {}
   };

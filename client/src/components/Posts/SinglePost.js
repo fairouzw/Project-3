@@ -55,6 +55,7 @@ class SinglePost extends Component {
             <div/*  key={this.props.post._id}  */ className="one-post">
                 <br></br>
                 <h3 /* key={this.props.post._id} */>{this.props.post.postname}</h3>
+                <p>posted by<div className="owner"> {this.props.post.owner.username}</div></p>
                 <div>Details: {this.props.description}</div>
                 <img className="post-pic" src={this.props.post.imgUrl} alt=""></img>
                 <p>{this.props.post.address}</p>
@@ -63,7 +64,7 @@ class SinglePost extends Component {
                 <p>{this.state.post.likes}Likes</p>
                 <LikeButton toggleLike={this.toggleLike} post={this.state.post} />
                 <p><span className="comment">Comments:</span>{this.state.comments.map((c, idx) => {
-                    return (<span key={idx}>"{c.comment}" <span className="comment">by</span> {c.owner.username}</span>)
+                    return (<span key={idx}>"{c.comment}" <span className="comment">by</span> <div className="owner">{c.owner.username}</div></span>)
                 })}</p>
                 <AddComment addComment={this.addCommentHandler} post={this.state.post} />
                 <br></br>

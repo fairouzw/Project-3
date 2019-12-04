@@ -13,7 +13,6 @@ class SingleFavPost extends Component {
         post: this.props.post,
         comments: this.props.post.comments,
 
-
     };
 
   }

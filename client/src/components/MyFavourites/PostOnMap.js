@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
 import "../../App.css";
-import Map from "../Home/Map";
 import DisplayPost from '../Posts/DisplayPost'
 import Header from "../Home/Header";
+import FavMap from './FavMap';
 
 import {
   Card,
@@ -33,7 +33,7 @@ import {
      <Card className="bg-gradient-secondary shadow">
          {/* MAP */}
          <div className="chart">
-          <Map setSelectedPost={this.setSelectedPost} selectedPost={this.state.selectedPost} posts={this.state.filteredListOfPosts} />
+          <FavMap setSelectedPost={this.setSelectedPost} selectedPost={this.state.selectedPost} posts={this.state.filteredListOfPosts} />
          </div>
      </Card>
    </Col>

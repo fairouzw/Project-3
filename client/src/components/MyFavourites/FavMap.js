@@ -1,4 +1,7 @@
-import React, { Component } from 'react'
+import React, { Component } from "react";
+import ReactMapGL, { Marker, Popup, GeolocateControl } from "react-map-gl";
+import axios from "axios";
+import { withRouter } from "react-router-dom";
 
 class FavMap extends Component {
   state = {
@@ -9,82 +12,91 @@ class FavMap extends Component {
       longitude: 13.407602899999999,
       zoom: 11
     },
-    userLocation: {}
+    userLocation: {},
+    selectedPost: true,
+    postname: "",
+    imgUrl: ""
   };
 
-  // componentDidMount() {
-  //   this.getSinglePost();
-  // }
+  componentDidMount() {
+    this.getSinglePost();
+  }
 
-  // getSingleProject = () => {
-  //   const { params } = this.props.match;
-  //   axios
-  //     .get(`http://localhost:5000/api/post/${params.id}`, {
-  //     })
-  //     .then(responseFromApi => {
-  //       const thePost = responseFromApi.data;
-  //       this.setState(thePost);
-  //     })
-  //     .catch(err => {
-  //       console.log(err);
-  //     });
-  // };
+  getSinglePost = () => {
+    const id = this.props.match.params.id;
+    console.log("params", id);
+    axios
+      .get(`/api/posts/${id}`)
+      .then(response => {
+        console.log("responsefromapi", response.data);
+        this.setState({
+          viewport: {
+            width: "inherit",
+            height: "350px",
+            latitude: response.data.location.lat,
+            longitude: response.data.location.long,
+            zoom: 11
+          },
+          postname: response.data.postname,
+          imgUrl: response.data.imgUrl
+        });
+      })
+      .catch(err => {
+        console.log("something went wrong", err);
+      });
+  };
 
   customizeMap = viewport => {
     this.setState({ viewport: viewport });
   };
 
-  closePopup = () => {
-    this.props.setSelectedPost(null)
-  };
+  showPopUp = () => [
+    this.setState({
+      selectedPost: !this.state.selectedPost
+    })
+  ];
+
   render() {
+    console.log("Mir", this.props);
     return (
-      <div >
+      <div>
         <ReactMapGL
           {...this.state.viewport}
           onViewportChange={this.customizeMap}
           mapStyle="mapbox://styles/los-lena/ck34ysrdu0fd61cqhbk6ai0fc"
           mapboxApiAccessToken="pk.eyJ1IjoibG9zLWxlbmEiLCJhIjoiY2szNHllYzI5MTZsOTNubzI1emZ2aHFiaSJ9.v7gsBidhvQm2T5EOb_GcGA"
         >
-         
-                <Marker
-                  key={post._id}
-                  latitude={post.location.lat}
-                  longitude={post.location.long}
-                >
-                  <img
-
-                    onClick={() => {
-                      this.props.setSelectedPost(post);
-                    }}
-                    src={require("./icons/attraction-15.svg")}
-                    alt="location"
-                  />
-                </Marker>
-    
-            );
-          })}
+          <Marker
+            latitude={this.state.viewport.latitude}
+            longitude={this.state.viewport.longitude}
+          >
+            <img
+              onClick={this.showPopUp}
+              src={require("../Home/icons/attraction-15.svg")}
+              alt="location"
+            />
+          </Marker>
 
           <GeolocateControl
             positionOption={{ enableHighAccuracy: true }}
             trackUserLocation={true}
           />
-          {this.props.selectedPost !== null ? (
+          {this.state.selectedPost === false ? (
             <Popup
-              latitude={this.props.selectedPost.location.lat}
-              longitude={this.props.selectedPost.location.long}
-              onClose={this.closePopup}
+              latitude={this.state.viewport.latitude}
+              longitude={this.state.viewport.longitude}
+              onClose={this.showPopUp}
             >
               <div>
-                <img className="location-icon" src={this.props.selectedPost.imgUrl} alt="" />
-                <p>{this.props.selectedPost.postname}</p>
+                <img className="location-icon" src={this.state.imgUrl} alt="" />
+                <p>{this.state.postname}</p>
               </div>
             </Popup>
           ) : null}
         </ReactMapGL>
       </div>
-    )
+    );
   }
 }
 
-export default FavMap
+export default withRouter(FavMap);

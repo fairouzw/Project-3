@@ -56,6 +56,7 @@ class Home extends Component {
     console.log(this.state.listOfPosts)
 
     postList.forEach(p => {
+
       console.log(p.postname)
       if (p.postname.toLowerCase().includes(search.toLowerCase())) {
         results.push(p)
@@ -73,54 +74,54 @@ class Home extends Component {
     });
   }
 
-    setSelectedPost = (post) => {
-      this.setState({
-        selectedPost: post
-      })
-    }
+  setSelectedPost = (post) => {
+    this.setState({
+      selectedPost: post
+    })
+  }
 
   render() {
     return (
       <div className="main-content" ref="mainContent">
-    <Header />
- <Container className="mt--7" fluid>
- <Row>
-   <Col className="mb-5 mb-xl-0" xl="8">
-     <Card className="bg-gradient-secondary shadow">
-         {/* MAP */}
-         <div className="chart">
-          <Map setSelectedPost={this.setSelectedPost} selectedPost={this.state.selectedPost} posts={this.state.filteredListOfPosts} />
-         </div>
-     </Card>
-   </Col>
-   <Col xl="4">
-     <Card className="bg-gradient-secondary shadow">
-       <CardBody>
-         {/* DISPLAYED POST */}
-         <div className="chart">
-  {this.state.selectedPost ?  <DisplayPost selectedPost={this.state.selectedPost} /> : 
-  <p> Select something on the map/Display an image/show something</p>
-  }
+        <Header />
+        <Container className="mt--7" fluid>
+          <Row>
+            <Col className="mb-5 mb-xl-0" xl="8">
+              <Card className="bg-gradient-secondary shadow">
+                {/* MAP */}
+                <div className="chart">
+                  <Map setSelectedPost={this.setSelectedPost} selectedPost={this.state.selectedPost} posts={this.state.filteredListOfPosts} />
+                </div>
+              </Card>
+            </Col>
+            <Col xl="4">
+              <Card className="bg-gradient-secondary shadow">
+                <CardBody>
+                  {/* DISPLAYED POST */}
+                  <div className="chart">
+                    {this.state.selectedPost ? <DisplayPost selectedPost={this.state.selectedPost} /> :
+                      <p> Select something on the map/Display an image/show something</p>
+                    }
 
-         
-         </div>
-       </CardBody>
-     </Card>
-   </Col>
- </Row>
- <Row className="mt-5" >
-   <div className="col">
-     <Card className="shadow">
-     <CardHeader className="border-0">
-       <br/>
-      <h3 className="mb-0"> <SearchPost searchPost={this.searchResultPost} /></h3>
-      </CardHeader>
-    <CardBody>
-  
-     <PostList posts={this.state.filteredListOfPosts} ></PostList>
- 
-   </CardBody>
-     <CardFooter className="py-4">
+
+                  </div>
+                </CardBody>
+              </Card>
+            </Col>
+          </Row>
+          <Row className="mt-5" >
+            <div className="col">
+              <Card className="shadow">
+                <CardHeader className="border-0">
+                  <br />
+                  <h3 className="mb-0"> <SearchPost searchPost={this.searchResultPost} /></h3>
+                </CardHeader>
+                <CardBody>
+
+                  <PostList posts={this.state.filteredListOfPosts} ></PostList>
+
+                </CardBody>
+                <CardFooter className="py-4">
                   <nav aria-label="...">
                     <Pagination
                       className="pagination justify-content-end mb-0"
@@ -172,39 +173,39 @@ class Home extends Component {
                     </Pagination>
                   </nav>
                 </CardFooter>
-                </Card>
-   </div>
- </Row>
-</Container>
-{/* ORIGINAL CONTENT */}
-      <div className="addPadding">
-        <header className="masthead">
-          <p>The streets are yours.</p>
-          <div className="container h-100 px-lg-5">
-            <div className="row mx-lg-n5">
-              <div className="col-12 col-md-8 py-3 px-lg-5">
-                {/* this.state.filteredListOfPosts */}
-              </div>
-              <div className="col-6 col-md-4 py-3 px-lg-5">
+              </Card>
+            </div>
+          </Row>
+        </Container>
+        {/* ORIGINAL CONTENT */}
+        <div className="addPadding">
+          <header className="masthead">
+            <p>The streets are yours.</p>
+            <div className="container h-100 px-lg-5">
+              <div className="row mx-lg-n5">
+                <div className="col-12 col-md-8 py-3 px-lg-5">
+                  {/* this.state.filteredListOfPosts */}
+                </div>
+                <div className="col-6 col-md-4 py-3 px-lg-5">
+                </div>
               </div>
             </div>
+          </header>
+          <div className='popup-button'>
+            <h1>Add Post</h1>
+            <button onClick={this.togglePopup}>show popup</button>
+            {this.state.showPopup ?
+              <Popup
+                posts={this.state.listOfPosts}
+                text='Your next post:'
+                closePopup={this.togglePopup}
+                getAllPosts={this.getAllPosts}
+              />
+              : null
+            }
           </div>
-        </header>
-        <div className='popup-button'>
-          <h1>Add Post</h1>
-          <button onClick={this.togglePopup}>show popup</button>
-          {this.state.showPopup ?
-            <Popup
-              posts={this.state.listOfPosts}
-              text='Your next post:'
-              closePopup={this.togglePopup}
-              getAllPosts={this.getAllPosts}
-            />
-            : null
-          }
-        </div>
 
-      </div>
+        </div>
       </div>
     );
   }

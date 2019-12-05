@@ -10,8 +10,9 @@ import Profile from "./components/Profile/Profile";
 import Sidebar from "./components/Nav/Sidebar";
 import Home from "./components/Home/Home";
 import MyPosts from "./components/MyPosts/MyPosts";
-import MyFavourites from "./components/MyFavourites/MyFavourites"
-import PostOnMap from "./components/MyFavourites/PostOnMap"
+import MyFavourites from "./components/MyFavourites/MyFavourites";
+import PostOnMap from "./components/MyFavourites/PostOnMap";
+import Messages from "./components/messages/Messages";
 
 class App extends Component {
   constructor(props) {
@@ -109,18 +110,29 @@ class App extends Component {
             exact
             path="/favourites"
             render={() => (
-         <MyFavourites
-             getUser={this.getTheUser}
-            userData={this.state.loggedInUser}
-            />
+              <MyFavourites
+                getUser={this.getTheUser}
+                userData={this.state.loggedInUser}
+              />
             )}
+          />
+          <Route exact path="/posts/:id" render={() => (
+            <PostOnMap
+              getUser={this.getTheUser}
+              userData={this.state.loggedInUser}
             />
-            <Route exact path="/posts/:id"  render={() => (
-         <PostOnMap
-             getUser={this.getTheUser}
-            userData={this.state.loggedInUser}
-            />
-            )} />
+          )} />
+          <Route
+            exact
+            path="/messages"
+            render={() => (
+              <Messages
+                getUser={this.getTheUser}
+                userData={this.state.loggedInUser}
+              />
+
+            )}
+          />
         </Switch>
       </div>
     );

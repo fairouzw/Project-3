@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import ReactMapGL, { Marker, Popup, GeolocateControl } from "react-map-gl";
-import axios from "axios";
 import { withRouter } from "react-router-dom";
 
 class FavMap extends Component {
@@ -8,9 +7,9 @@ class FavMap extends Component {
     viewport: {
       width: "inherit",
       height: "350px",
-      latitude: 52.5035239,
-      longitude: 13.407602899999999,
-      zoom: 11
+      latitude: this.props.selectedPost.location.lat,
+      longitude: this.props.selectedPost.location.long,
+      zoom: 20
     },
     userLocation: {},
     selectedPost: true,
@@ -18,33 +17,30 @@ class FavMap extends Component {
     imgUrl: ""
   };
 
-  componentDidMount() {
-    this.getSinglePost();
-  }
 
-  getSinglePost = () => {
-    const id = this.props.match.params.id;
-    console.log("params", id);
-    axios
-      .get(`/api/posts/${id}`)
-      .then(response => {
-        console.log("responsefromapi", response.data);
-        this.setState({
-          viewport: {
-            width: "inherit",
-            height: "350px",
-            latitude: response.data.location.lat,
-            longitude: response.data.location.long,
-            zoom: 11
-          },
-          postname: response.data.postname,
-          imgUrl: response.data.imgUrl
-        });
-      })
-      .catch(err => {
-        console.log("something went wrong", err);
-      });
-  };
+  // getSinglePost = () => {
+  //   const id = this.props.match.params.id;
+  //   console.log("params", id);
+  //   axios
+  //     .get(`/api/posts/${id}`)
+  //     .then(response => {
+  //       console.log("responsefromapi", response.data);
+  //       this.setState({
+  //         viewport: {
+  //           width: "inherit",
+  //           height: "350px",
+  //           latitude: response.data.location.lat,
+  //           longitude: response.data.location.long,
+  //           zoom: 11
+  //         },
+  //         postname: response.data.postname,
+  //         imgUrl: response.data.imgUrl
+  //       });
+  //     })
+  //     .catch(err => {
+  //       console.log("something went wrong", err);
+  //     });
+  // };
 
   customizeMap = viewport => {
     this.setState({ viewport: viewport });
@@ -88,8 +84,8 @@ class FavMap extends Component {
               onClose={this.showPopUp}
             >
               <div>
-                <img className="location-icon" src={this.state.imgUrl} alt="" />
-                <p>{this.state.postname}</p>
+                <img className="location-icon" src={this.props.selectedPost.imgUrl} alt="" />
+                <p>{this.props.selectedPost.postname}</p>
               </div>
             </Popup>
           ) : null}
@@ -99,4 +95,4 @@ class FavMap extends Component {
   }
 }
 
-export default withRouter(FavMap);
+export default FavMap;

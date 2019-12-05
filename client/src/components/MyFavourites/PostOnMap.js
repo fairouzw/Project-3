@@ -3,6 +3,8 @@ import "../../App.css";
 import DisplayPost from '../Posts/DisplayPost'
 import Header from "../Home/Header";
 import FavMap from './FavMap';
+import axios from 'axios'
+import { withRouter } from "react-router-dom";
 
 import {
   Card,
@@ -19,10 +21,28 @@ import {
     this.state = {
       listOfPosts: [],
       filteredListOfPosts: [],
-      showPopup: false,
       selectedPost: null
     };
   }
+
+  componentDidMount() {
+    this.getSinglePost();
+  }
+
+  getSinglePost = () => {
+    const id = this.props.match.params.id;
+    axios
+      .get(`/api/posts/${id}`)
+      .then(response => {
+        this.setState({
+          selectedPost: response.data
+        });
+      })
+      .catch(err => {
+        console.log("something went wrong", err);
+      });
+  };
+
   render() {
     return (
       <div className="main-content" ref="mainContent">
@@ -33,7 +53,9 @@ import {
      <Card className="bg-gradient-secondary shadow">
          {/* MAP */}
          <div className="chart">
-          <FavMap setSelectedPost={this.setSelectedPost} selectedPost={this.state.selectedPost} posts={this.state.filteredListOfPosts} />
+
+           {this.state.selectedPost ? <FavMap selectedPost={this.state.selectedPost} posts={this.state.filteredListOfPosts} /> : <p>Loading...</p> }
+          
          </div>
      </Card>
    </Col>
@@ -57,4 +79,4 @@ import {
   }
 }
 
-export default PostDetails
+export default withRouter(PostDetails);

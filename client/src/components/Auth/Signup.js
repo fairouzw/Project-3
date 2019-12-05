@@ -8,6 +8,7 @@ class Signup extends Component {
     this.state = {
       username: "",
       password: "",
+      email: "",
       errorMessage: null
     };
   }
@@ -89,7 +90,7 @@ class Signup extends Component {
                         </button>
                         <div className="text-center"></div>
                         <div class="text-center">
-                        <Link class="small" to="/login">Already have an account?</Link>
+                          <Link class="small" to="/login">Already have an account?</Link>
                         </div>
                       </form>
                     </div>

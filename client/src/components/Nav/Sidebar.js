@@ -114,9 +114,13 @@ class Sidebar extends Component {
                   <i className="ni ni-pin-3" />
                   <span>My Posts</span>
                 </DropdownItem>
-                <DropdownItem to="" tag={Link}>
+                <DropdownItem to="/favourites" tag={Link}>
                   <i className="ni ni-favourite-28 " />
                   <span>My Favourites</span>
+                </DropdownItem>
+                <DropdownItem to="/messages" tag={Link}>
+                  <i className="ni ni-email-83 " />
+                  <span>Messages</span>
                 </DropdownItem>
                 <DropdownItem divider />
                 <DropdownItem /* href="#pablo" */ href="/" onClick={this.logoutUser}>
@@ -210,6 +214,12 @@ class Sidebar extends Component {
                 <NavLink tag={Link} to="/favourites">
                   <i className="ni ni-favourite-28 text-red" />
                   My Favourites
+                </NavLink>
+              </NavItem>
+              <NavItem>
+                <NavLink tag={Link} to="/messages">
+                  <i className="ni ni-email-83 text-green" />
+                  Messages
                 </NavLink>
               </NavItem>
             </Nav>

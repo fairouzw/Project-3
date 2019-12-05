@@ -1,11 +1,211 @@
-import React from 'react'
+
+import axios from "axios";
+
+import React, { Component } from "react";
+import "../../App.css";
+import MessageList from "./MessageList";
+// import SearchPost from "./SearchPost";
+// import Popup from "../Posts/PopUp";
+// import DisplayPost from '../Posts/DisplayPost'
+import Header from "../Home/Header.jsx";
+
+import {
+    Card,
+    CardHeader,
+    CardBody,
+    Container,
+    Row,
+    Col,
+    Pagination,
+    PaginationLink,
+    PaginationItem,
+    CardFooter
+} from "reactstrap";
 
 
-class Messages extends React.Component {
+class Messages extends Component {
+    constructor() {
+        super();
+        this.state = {
+            listOfMessages: [],
+            filteredListOfMessages: [],
+            showPopup: false,
+            selectedMessage: null
+        };
+    }
+
+    getAllMessagesOfLoggedInUser = () => {
+        axios.get(`/api/messages`).then(res => {
+            // console.log(res.data);
+            /* pagination ?limit=50 */
+            this.setState({
+                listOfMessages: res.data,
+                filteredListOfMessages: res.data
+            });
+        })
+    };
+
+    componentDidMount = () => {
+        this.getAllMessagesOfLoggedInUser();
+    };
+
+    // searchResultPost = search => {
+
+    //     // const results = postList.filter ... (that's what's actually happening here)
+    //     const results = [];
+    //     const postList = [...this.state.listOfPosts];
+    //     console.log(this.state.listOfPosts)
+
+    //     postList.forEach(p => {
+
+    //         console.log(p.postname)
+    //         if (p.postname.toLowerCase().includes(search.toLowerCase())) {
+    //             results.push(p)
+    //         }
+    //     });
+
+    //     this.setState({ filteredListOfPosts: results })
+    //     console.log(results)
+    // };
+
+    togglePopup = event => {
+        event.preventDefault();
+        this.setState({
+            showPopup: !this.state.showPopup
+        });
+    }
+
+    setSelectedMessage = (message) => {
+        this.setState({
+            selectedMessage: message
+        })
+    }
+
     render() {
         return (
-            <div>Display Messages here</div>
-        )
+            <div className="main-content" ref="mainContent">
+                <Header />
+                <Container className="mt--7" fluid>
+                    <Row>
+
+                        <Col xl="4">
+                            <Card className="bg-gradient-secondary shadow">
+                                <CardBody>
+                                    {/* DISPLAYED POST */}
+                                    {/* <div className="chart">
+                                        {this.state.selectedMessage ? <DisplayPost selectedMessage={this.state.selectedMessage} /> :
+                                            <p> Select something on the map/Display an image/show something</p>
+                                        }
+
+
+                                    </div> */}
+                                </CardBody>
+                            </Card>
+                        </Col>
+                    </Row>
+                    <Row className="mt-5" >
+                        <div className="col">
+                            <Card className="shadow">
+                                {/* <CardHeader className="border-0">
+                                    <br />
+                                    <h3 className="mb-0"> <SearchPost searchPost={this.searchResultPost} /></h3>
+                                </CardHeader> */}
+                                <CardBody>
+
+                                    <MessageList messages={this.state.listOfMessages} ></MessageList>
+
+                                </CardBody>
+                                <CardFooter className="py-4">
+                                    <nav aria-label="...">
+                                        <Pagination
+                                            className="pagination justify-content-end mb-0"
+                                            listClassName="justify-content-end mb-0"
+                                        >
+                                            <PaginationItem className="disabled">
+                                                <PaginationLink
+                                                    href="#pablo"
+                                                    onClick={e => e.preventDefault()}
+                                                    tabIndex="-1"
+                                                >
+                                                    <i className="fas fa-angle-left" />
+                                                    <span className="sr-only">Previous</span>
+                                                </PaginationLink>
+                                            </PaginationItem>
+                                            <PaginationItem className="active">
+                                                <PaginationLink
+                                                    href="#pablo"
+                                                    onClick={e => e.preventDefault()}
+                                                >
+                                                    1
+                        </PaginationLink>
+                                            </PaginationItem>
+                                            <PaginationItem>
+                                                <PaginationLink
+                                                    href="#pablo"
+                                                    onClick={e => e.preventDefault()}
+                                                >
+                                                    2 <span className="sr-only">(current)</span>
+                                                </PaginationLink>
+                                            </PaginationItem>
+                                            <PaginationItem>
+                                                <PaginationLink
+                                                    href="#pablo"
+                                                    onClick={e => e.preventDefault()}
+                                                >
+                                                    3
+                        </PaginationLink>
+                                            </PaginationItem>
+                                            <PaginationItem>
+                                                <PaginationLink
+                                                    href="#pablo"
+                                                    onClick={e => e.preventDefault()}
+                                                >
+                                                    <i className="fas fa-angle-right" />
+                                                    <span className="sr-only">Next</span>
+                                                </PaginationLink>
+                                            </PaginationItem>
+                                        </Pagination>
+                                    </nav>
+                                </CardFooter>
+                            </Card>
+                        </div>
+                    </Row>
+                </Container>
+                {/* ORIGINAL CONTENT */}
+                <div className="addPadding">
+                    <header className="masthead">
+                        <p>The streets are yours.</p>
+                        <div className="container h-100 px-lg-5">
+                            <div className="row mx-lg-n5">
+                                <div className="col-12 col-md-8 py-3 px-lg-5">
+                                    {/* this.state.filteredListOfPosts */}
+                                </div>
+                                <div className="col-6 col-md-4 py-3 px-lg-5">
+                                </div>
+                            </div>
+                        </div>
+                    </header>
+                    {/* <div className='popup-button'>
+                        <h1>Add Post</h1>
+                        <button onClick={this.togglePopup}>show popup</button>
+                        {this.state.showPopup ?
+                            <Popup
+                                posts={this.state.listOfPosts}
+                                text='Your next post:'
+                                closePopup={this.togglePopup}
+                                getAllPosts={this.getAllPosts}
+                            />
+                            : null
+                        }
+                    </div> */}
+
+                </div>
+            </div>
+        );
     }
 }
-export default Messages
+
+export default Messages;
+
+
+

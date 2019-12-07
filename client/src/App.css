@@ -135,11 +135,26 @@
   color: lightslategray;
   font-size: 0.9em;
 }
-/* SIGN-UP SAMPLE STARTS */
-
 .owner {
   color: rgb(85, 124, 240);
 }
+.received {
+  background: rgb(175, 245, 169);
+
+  padding: 5px 22%;
+  border: 1px solid grey;
+  border-radius: 5px;
+}
+
+.sent {
+  background: rgb(241, 206, 172);
+  padding: 5px 20%;
+  border: 1px solid grey;
+  border-radius: 5px;
+}
+
+/* SIGN-UP SAMPLE STARTS */
+
 :root {
   --input-padding-x: 1.5rem;
   --input-padding-y: 0.75rem;

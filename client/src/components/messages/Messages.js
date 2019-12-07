@@ -5,7 +5,7 @@ import React, { Component } from "react";
 import "../../App.css";
 import MessageList from "./MessageList";
 // import SearchPost from "./SearchPost";
-// import Popup from "../Posts/PopUp";
+import MessagePopup from "./MessagePopup";
 // import DisplayPost from '../Posts/DisplayPost'
 import Header from "../Home/Header.jsx";
 
@@ -27,27 +27,47 @@ class Messages extends Component {
     constructor() {
         super();
         this.state = {
-            listOfMessages: [],
+            listOfReceivedMessages: [],
+            listOfSentMessages: [],
             filteredListOfMessages: [],
-            showPopup: false,
+            showMessagePopup: false,
             selectedMessage: null
         };
     }
 
-    getAllMessagesOfLoggedInUser = () => {
-        axios.get(`/api/messages`).then(res => {
+
+
+    getAllSentMessagesOfLoggedInUser = () => {
+        axios.get(`/api/messages/sent`).then(res => {
             // console.log(res.data);
             /* pagination ?limit=50 */
             this.setState({
-                listOfMessages: res.data,
+
+                listOfSentMessages: res.data,
+
+            });
+        })
+    };
+
+
+
+    getAllReceivedMessagesOfLoggedInUser = () => {
+        axios.get(`/api/messages/rec`).then(res => {
+            // console.log(res.data);
+            /* pagination ?limit=50 */
+            this.setState({
+                listOfReceivedMessages: res.data,
+
                 filteredListOfMessages: res.data
             });
         })
     };
 
     componentDidMount = () => {
-        this.getAllMessagesOfLoggedInUser();
+        this.getAllReceivedMessagesOfLoggedInUser();
+        this.getAllSentMessagesOfLoggedInUser();
     };
+
 
     // searchResultPost = search => {
 
@@ -68,18 +88,18 @@ class Messages extends Component {
     //     console.log(results)
     // };
 
-    togglePopup = event => {
+    toggleMessagePopup = event => {
         event.preventDefault();
         this.setState({
-            showPopup: !this.state.showPopup
+            showMessagePopup: !this.state.showMessagePopup
         });
     }
 
-    setSelectedMessage = (message) => {
-        this.setState({
-            selectedMessage: message
-        })
-    }
+    // setSelectedMessage = (message) => {
+    //     this.setState({
+    //         selectedMessage: message
+    //     })
+    // }
 
     render() {
         return (
@@ -112,7 +132,13 @@ class Messages extends Component {
                                 </CardHeader> */}
                                 <CardBody>
 
-                                    <MessageList messages={this.state.listOfMessages} ></MessageList>
+                                    <div><h2><span className="received">INBOX</span></h2>
+                                        <MessageList messages={this.state.listOfReceivedMessages} ></MessageList>
+                                    </div>
+
+                                    <div><h2><span className="sent">OUTBOX</span></h2>
+                                        <MessageList messages={this.state.listOfSentMessages} ></MessageList>
+                                    </div>
 
                                 </CardBody>
                                 <CardFooter className="py-4">
@@ -185,19 +211,7 @@ class Messages extends Component {
                             </div>
                         </div>
                     </header>
-                    {/* <div className='popup-button'>
-                        <h1>Add Post</h1>
-                        <button onClick={this.togglePopup}>show popup</button>
-                        {this.state.showPopup ?
-                            <Popup
-                                posts={this.state.listOfPosts}
-                                text='Your next post:'
-                                closePopup={this.togglePopup}
-                                getAllPosts={this.getAllPosts}
-                            />
-                            : null
-                        }
-                    </div> */}
+
 
                 </div>
             </div>

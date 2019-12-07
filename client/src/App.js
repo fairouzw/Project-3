@@ -13,6 +13,7 @@ import MyPosts from "./components/MyPosts/MyPosts";
 import MyFavourites from "./components/MyFavourites/MyFavourites";
 import PostOnMap from "./components/MyFavourites/PostOnMap";
 import Messages from "./components/messages/Messages";
+import AddMessage from "./components/messages/AddMessage"
 
 class App extends Component {
   constructor(props) {
@@ -127,6 +128,17 @@ class App extends Component {
             path="/messages"
             render={() => (
               <Messages
+                getUser={this.getTheUser}
+                userData={this.state.loggedInUser}
+              />
+
+            )}
+          />
+          <Route
+            exact
+            path="/messages/new-message/:id"
+            render={() => (
+              <AddMessage
                 getUser={this.getTheUser}
                 userData={this.state.loggedInUser}
               />

@@ -5,17 +5,20 @@ class Map extends Component {
 
   state = {
     viewport: {
-      width: "inherit",
+      width: "100%",
       height: "350px",
       latitude: 52.5035239,
       longitude: 13.407602899999999,
-      zoom: 11
+      zoom: 14
     },
     userLocation: {}
   };
 
   customizeMap = viewport => {
-    this.setState({ viewport: viewport });
+    this.setState({ viewport: {
+      ...viewport,
+      width: "100%",
+    } });
   };
 
   closePopup = () => {

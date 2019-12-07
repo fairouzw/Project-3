@@ -171,15 +171,15 @@ class Profile extends Component {
                     </h3>
                     <div className="h5 font-weight-300">
                       <i className="ni location_pin mr-2" />
-                      Eberswalde, Germany
+                      Berlin, Germany
                   </div>
                     <div className="h5 mt-4">
                       <i className="ni business_briefcase-24 mr-2" />
-                      Schneiderin
+                      Test
                   </div>
                     <div>
                       <i className="ni education_hat mr-2" />
-                      Habe immer Klamotten wegzugeben
+                      Test
                   </div>
                     <hr className="my-4" />
                     <p>

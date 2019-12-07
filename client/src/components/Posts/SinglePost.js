@@ -2,7 +2,8 @@ import React, { Component } from "react";
 import AddComment from "./AddComment"
 import LikeButton from "./LikeButton"
 import moment from "moment";
-import axios from "axios"
+import axios from "axios";
+import { withRouter, Link } from "react-router-dom";
 
 
 class SinglePost extends Component {
@@ -50,12 +51,14 @@ class SinglePost extends Component {
     }
 
     render() {
+        console.log(this.props.post.owner._id)
         var timeAgo = moment(this.props.post.createdAt).fromNow()
         return (
             <div/*  key={this.props.post._id}  */ className="one-post">
                 <br></br>
                 <h3 /* key={this.props.post._id} */>{this.props.post.postname}</h3>
-                <p>posted by<span className="owner"> {this.props.post.owner.username}</span></p>
+                <p>posted by</p>  <Link to={`/messages/new-message/${this.props.post.owner._id}`}  ><p> <span className="owner"> {this.props.post.owner.username}</span></p></Link>
+
                 <div>Details: {this.props.description}</div>
                 <img className="post-pic" src={this.props.post.imgUrl} alt=""></img>
                 <p>{this.props.post.address}</p>

@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import ReactMapGL, { Marker, Popup, GeolocateControl } from "react-map-gl";
-import { withRouter } from "react-router-dom";
 
 class FavMap extends Component {
   state = {

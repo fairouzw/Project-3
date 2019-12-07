@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import axios from "axios";
 import "../../App.css";
 import Header from "../Home/Header.jsx";
-import { withRouter } from "react-router-dom";
+import { withRouter, Link } from "react-router-dom";
 
 import {
     Card,
@@ -25,10 +25,26 @@ class AddMessage extends Component {
             subject: "",
             content: "",
             recipient: "",
+            recipientData: "",
 
         };
     }
 
+    getRecipientUsername = () => {
+        const rec = this.props.match.params.id;
+        axios.get(`/api/messages/new-message/${rec}`).then(res => {
+
+            this.setState({
+
+                recipientData: res.data,
+
+            });
+        })
+    };
+
+    componentDidMount() {
+        this.getRecipientUsername()
+    }
 
     handleFormSubmit = event => {
         const recId = this.props.match.params.id;
@@ -85,6 +101,7 @@ class AddMessage extends Component {
 
                         <Col xl="4">
                             <Card className="bg-gradient-secondary shadow">
+                                <h1>Send Message to {this.state.recipientData.username} </h1>
                                 <CardBody>
                                     <div className="container">
                                         <div className="row">
@@ -109,7 +126,7 @@ class AddMessage extends Component {
                                                     <input
                                                         type="textarea"
                                                         id="inputEmail"
-                                                        // className="form-control"
+                                                        className="form-control"
                                                         placeholder="your message comes here"
                                                         name="content"
                                                         value={this.state.content}
@@ -129,6 +146,11 @@ class AddMessage extends Component {
             </button>
                                                 <div className="text-center"></div>
                                             </form>
+
+                                            <Link to={`/home`} ><p><span className="owner"> Back Home</span></p></Link>
+                                            <br></br>
+                                            <Link to={`/messages`} ><p><span className="owner"> Back to Messages</span></p></Link>
+
                                         </div>
                                     </div>
                                 </CardBody>

@@ -41,6 +41,20 @@ router.get("/:id", (req, res, next) => {
         });
 });
 
+router.get("/new-message/:id", (req, res, next) => {
+    User.findById(req.params.id)
+        .then(response => {
+            res.status(200).json(response);
+        })
+        .catch(err => {
+            res.json(err);
+        });
+
+
+})
+
+
+
 // router.post("/new-message/:id", (req, res, next) => {
 //     if (!mongoose.Types.ObjectId.isValid(req.params.id)) {
 //       res.status(400).json({ message: "Specified id is not valid" });

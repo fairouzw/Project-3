@@ -2,7 +2,7 @@ import React, { Component } from "react";
 // import AddComment from "./AddComment"
 // import LikeButton from "./LikeButton"
 import moment from "moment";
-import MessagePopup from "./MessagePopup";
+
 import { Link } from "react-router-dom";
 
 

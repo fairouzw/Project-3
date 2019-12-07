@@ -5,7 +5,6 @@ import React, { Component } from "react";
 import "../../App.css";
 import MessageList from "./MessageList";
 // import SearchPost from "./SearchPost";
-import MessagePopup from "./MessagePopup";
 // import DisplayPost from '../Posts/DisplayPost'
 import Header from "../Home/Header.jsx";
 

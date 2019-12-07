@@ -33,8 +33,7 @@ class AddMessage extends Component {
     getRecipientUsername = () => {
         const rec = this.props.match.params.id;
         axios.get(`/api/messages/new-message/${rec}`).then(res => {
-            // console.log(res.data);
-            /* pagination ?limit=50 */
+
             this.setState({
 
                 recipientData: res.data,

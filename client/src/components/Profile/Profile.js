@@ -26,6 +26,8 @@ class Profile extends Component {
       username: this.props.userData.username,
       email: this.props.userData.email,
       listOfPosts: [],
+      likesNumber: 0,
+      hasLikedList: [],
       counter: 0
 
     };
@@ -35,14 +37,14 @@ class Profile extends Component {
     axios.get(`/api/posts?owner_id=${this.props.userData._id}`).then(res => {
       this.setState({
         listOfPosts: res.data,
-
       });
-
+      this.getLikesNumber(res.data);
     })
   }
 
   componentDidMount = () => {
     this.getAllUserPosts();
+    this.getAllPosts()
   };
 
 
@@ -65,18 +67,54 @@ class Profile extends Component {
       [name]: value
     });
   };
-  getFavouritesNumber = () => {
-    const hasLikedList = []
-    const postList = [...this.state.listOfPosts];
 
-    postList.forEach((post, idx) => {
-      if (post.hasLiked) {
-        hasLikedList.push(post)
-        return hasLikedList.length
-      }
+  getAllPosts = () => {
+    axios.get(`/api/posts`).then(res => {
+      this.setState({
+        listOfLikePosts: res.data,
+      });
+      this.getFavouritesNumber(res.data);
     })
-
   }
+  getFavouritesNumber = (listOfLikePosts) => {
+
+    const hasLikedList = []
+    console.log(listOfLikePosts)
+    console.log(hasLikedList)
+    listOfLikePosts.forEach((post) => {
+      if (post.hasLiked) {
+
+        hasLikedList.push(post)
+
+      }
+
+    })
+    this.setState({
+      hasLikedList: hasLikedList
+    });
+  }
+
+
+  getLikesNumber = (b) => {
+
+    let likesNumber = 0
+    console.log(b)
+
+    b.forEach((post) => {
+      console.log(post)
+      likesNumber += post.likes
+
+
+    })
+    this.setState({
+
+      likesNumber: likesNumber
+    });
+  }
+
+
+
+
 
   render() {
 
@@ -115,11 +153,11 @@ class Profile extends Component {
                           <span className="description">Posts</span>
                         </div>
                         <div>
-                          <span className="heading">0</span>
+                          <span className="heading">{this.state.likesNumber}</span>
                           <span className="description">Likes</span>
                         </div>
                         <div>
-                          <span className="heading">{this.getFavouritesNumber}</span>
+                          <span className="heading">{this.state.hasLikedList.length}</span>
                           <span className="description">
                             Favourites</span>
                         </div>

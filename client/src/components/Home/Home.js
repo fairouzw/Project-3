@@ -5,7 +5,7 @@ import axios from "axios";
 import PostList from "./PostList";
 import SearchPost from "./SearchPost";
 import Popup from "../Posts/PopUp";
-import DisplayPost from '../Posts/DisplayPost'
+import DisplayPost from "../Posts/DisplayPost";
 import Header from "./Header.jsx";
 
 import {
@@ -20,7 +20,6 @@ import {
   PaginationItem,
   CardFooter
 } from "reactstrap";
-
 
 class Home extends Component {
   constructor() {
@@ -41,7 +40,7 @@ class Home extends Component {
         listOfPosts: res.data,
         filteredListOfPosts: res.data
       });
-    })
+    });
   };
 
   componentDidMount = () => {
@@ -49,22 +48,29 @@ class Home extends Component {
   };
 
   searchResultPost = search => {
-
     // const results = postList.filter ... (that's what's actually happening here)
     const results = [];
     const postList = [...this.state.listOfPosts];
-    console.log(this.state.listOfPosts)
+    console.log(this.state.listOfPosts);
 
     postList.forEach(p => {
+      p.tags.map(i => {
+        if (i.toLowerCase().includes(search.toLowerCase())) {
+          return results.push(p);
+        }
+      });
 
-      console.log(p.postname)
       if (p.postname.toLowerCase().includes(search.toLowerCase())) {
-        results.push(p)
-      }
+        results.push(p);
+      } 
+
+      if (p.description.toLowerCase().includes(search.toLowerCase())) {
+        results.push(p);
+      } 
+
     });
 
-    this.setState({ filteredListOfPosts: results })
-    console.log(results)
+    this.setState({ filteredListOfPosts: results });
   };
 
   togglePopup = event => {
@@ -72,13 +78,13 @@ class Home extends Component {
     this.setState({
       showPopup: !this.state.showPopup
     });
-  }
+  };
 
-  setSelectedPost = (post) => {
+  setSelectedPost = post => {
     this.setState({
       selectedPost: post
-    })
-  }
+    });
+  };
 
   render() {
     return (
@@ -90,7 +96,11 @@ class Home extends Component {
               <Card className="bg-gradient-secondary shadow">
                 {/* MAP */}
                 <div className="chart">
-                  <Map setSelectedPost={this.setSelectedPost} selectedPost={this.state.selectedPost} posts={this.state.filteredListOfPosts} />
+                  <Map
+                    setSelectedPost={this.setSelectedPost}
+                    selectedPost={this.state.selectedPost}
+                    posts={this.state.filteredListOfPosts}
+                  />
                 </div>
               </Card>
             </Col>
@@ -99,27 +109,32 @@ class Home extends Component {
                 <CardBody>
                   {/* DISPLAYED POST */}
                   <div className="chart">
-                    {this.state.selectedPost ? <DisplayPost selectedPost={this.state.selectedPost} /> :
-                      <p> Select something on the map/Display an image/show something</p>
-                    }
-
-
+                    {this.state.selectedPost ? (
+                      <DisplayPost selectedPost={this.state.selectedPost} />
+                    ) : (
+                      <p>
+                        {" "}
+                        Select something on the map/Display an image/show
+                        something
+                      </p>
+                    )}
                   </div>
                 </CardBody>
               </Card>
             </Col>
           </Row>
-          <Row className="mt-5" >
+          <Row className="mt-5">
             <div className="col">
               <Card className="shadow">
                 <CardHeader className="border-0">
                   <br />
-                  <h3 className="mb-0"> <SearchPost searchPost={this.searchResultPost} /></h3>
+                  <h3 className="mb-0">
+                    {" "}
+                    <SearchPost searchPost={this.searchResultPost} />
+                  </h3>
                 </CardHeader>
                 <CardBody>
-
-                  <PostList posts={this.state.filteredListOfPosts} ></PostList>
-
+                  <PostList posts={this.state.filteredListOfPosts}></PostList>
                 </CardBody>
                 <CardFooter className="py-4">
                   <nav aria-label="...">
@@ -186,25 +201,22 @@ class Home extends Component {
                 <div className="col-12 col-md-8 py-3 px-lg-5">
                   {/* this.state.filteredListOfPosts */}
                 </div>
-                <div className="col-6 col-md-4 py-3 px-lg-5">
-                </div>
+                <div className="col-6 col-md-4 py-3 px-lg-5"></div>
               </div>
             </div>
           </header>
-          <div className='popup-button'>
+          <div className="popup-button">
             <h1>Add Post</h1>
             <button onClick={this.togglePopup}>show popup</button>
-            {this.state.showPopup ?
+            {this.state.showPopup ? (
               <Popup
                 posts={this.state.listOfPosts}
-                text='Your next post:'
+                text="Your next post:"
                 closePopup={this.togglePopup}
                 getAllPosts={this.getAllPosts}
               />
-              : null
-            }
+            ) : null}
           </div>
-
         </div>
       </div>
     );
@@ -212,4 +224,3 @@ class Home extends Component {
 }
 
 export default Home;
-

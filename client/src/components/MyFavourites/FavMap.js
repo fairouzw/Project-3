@@ -6,7 +6,7 @@ class FavMap extends Component {
   state = {
     viewport: {
       width: "inherit",
-      height: "350px",
+      height: "600px",
       latitude: this.props.selectedPost.location.lat,
       longitude: this.props.selectedPost.location.long,
       zoom: 20
@@ -17,33 +17,11 @@ class FavMap extends Component {
     imgUrl: ""
   };
 
-
-  // getSinglePost = () => {
-  //   const id = this.props.match.params.id;
-  //   console.log("params", id);
-  //   axios
-  //     .get(`/api/posts/${id}`)
-  //     .then(response => {
-  //       console.log("responsefromapi", response.data);
-  //       this.setState({
-  //         viewport: {
-  //           width: "inherit",
-  //           height: "350px",
-  //           latitude: response.data.location.lat,
-  //           longitude: response.data.location.long,
-  //           zoom: 11
-  //         },
-  //         postname: response.data.postname,
-  //         imgUrl: response.data.imgUrl
-  //       });
-  //     })
-  //     .catch(err => {
-  //       console.log("something went wrong", err);
-  //     });
-  // };
-
   customizeMap = viewport => {
-    this.setState({ viewport: viewport });
+    this.setState({ viewport: {
+      ...viewport,
+      width: "100%",
+    } });
   };
 
   showPopUp = () => [
@@ -53,7 +31,7 @@ class FavMap extends Component {
   ];
 
   render() {
-    console.log("Mir", this.props);
+ 
     return (
       <div>
         <ReactMapGL
@@ -76,6 +54,7 @@ class FavMap extends Component {
           <GeolocateControl
             positionOption={{ enableHighAccuracy: true }}
             trackUserLocation={true}
+            zoom="18"
           />
           {this.state.selectedPost === false ? (
             <Popup

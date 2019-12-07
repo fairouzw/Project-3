@@ -48,7 +48,6 @@ class Home extends Component {
   };
 
   searchResultPost = search => {
-    // const results = postList.filter ... (that's what's actually happening here)
     const results = [];
     const postList = [...this.state.listOfPosts];
     console.log(this.state.listOfPosts);
@@ -62,12 +61,11 @@ class Home extends Component {
 
       if (p.postname.toLowerCase().includes(search.toLowerCase())) {
         results.push(p);
-      } 
+      }
 
       if (p.description.toLowerCase().includes(search.toLowerCase())) {
         results.push(p);
-      } 
-
+      }
     });
 
     this.setState({ filteredListOfPosts: results });
@@ -92,36 +90,26 @@ class Home extends Component {
         <Header />
         <Container className="mt--7" fluid>
           <Row>
-            <Col className="mb-5 mb-xl-0" xl="8">
-              <Card className="bg-gradient-secondary shadow">
+            <Col xl={this.state.selectedPost !== null ? 8 : 12} style={{ transition: "all ease 0.4s"}}>
+              <Card className="shadow border-0">
                 {/* MAP */}
-                <div className="chart">
                   <Map
                     setSelectedPost={this.setSelectedPost}
                     selectedPost={this.state.selectedPost}
                     posts={this.state.filteredListOfPosts}
                   />
-                </div>
               </Card>
             </Col>
-            <Col xl="4">
-              <Card className="bg-gradient-secondary shadow">
-                <CardBody>
-                  {/* DISPLAYED POST */}
-                  <div className="chart">
-                    {this.state.selectedPost ? (
+            {this.state.selectedPost !== null ? (
+              <Col xl="4">
+                <Card className="shadow border-0">
+                  <CardBody>
+                    {/* DISPLAYED POST */}
                       <DisplayPost selectedPost={this.state.selectedPost} />
-                    ) : (
-                      <p>
-                        {" "}
-                        Select something on the map/Display an image/show
-                        something
-                      </p>
-                    )}
-                  </div>
-                </CardBody>
-              </Card>
-            </Col>
+                  </CardBody>
+                </Card>
+              </Col>
+            ) : null}
           </Row>
           <Row className="mt-5">
             <div className="col">
@@ -198,9 +186,7 @@ class Home extends Component {
             <p>The streets are yours.</p>
             <div className="container h-100 px-lg-5">
               <div className="row mx-lg-n5">
-                <div className="col-12 col-md-8 py-3 px-lg-5">
-                  {/* this.state.filteredListOfPosts */}
-                </div>
+                <div className="col-12 col-md-8 py-3 px-lg-5"></div>
                 <div className="col-6 col-md-4 py-3 px-lg-5"></div>
               </div>
             </div>

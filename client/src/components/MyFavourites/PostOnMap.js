@@ -48,27 +48,21 @@ import {
       <div className="main-content" ref="mainContent">
     <Header />
  <Container className="mt--7" fluid>
+
  <Row>
    <Col className="mb-5 mb-xl-0" xl="8">
      <Card className="bg-gradient-secondary shadow">
          {/* MAP */}
-         <div className="chart">
-
            {this.state.selectedPost ? <FavMap selectedPost={this.state.selectedPost} posts={this.state.filteredListOfPosts} /> : <p>Loading...</p> }
-          
-         </div>
      </Card>
    </Col>
    <Col xl="4">
      <Card className="bg-gradient-secondary shadow">
        <CardBody>
          {/* DISPLAYED POST */}
-         <div className="chart">
   {this.state.selectedPost ?  <DisplayPost selectedPost={this.state.selectedPost} /> : 
   <p> Select something on the map/Display an image/show something</p>
   }
-
-         </div>
        </CardBody>
      </Card>
    </Col>

@@ -12,8 +12,6 @@ class SinglePost extends Component {
         this.state = {
             post: this.props.post,
             comments: this.props.post.comments,
-
-
         };
     }
 
@@ -25,8 +23,7 @@ class SinglePost extends Component {
 
 
     toggleLike = (event) => {
-
-        console.log(this.state.postId);
+        console.log("!!!!!!", this.props.post.hasLiked);
         const { post } = this.state
         if (!this.state.post.hasLiked) {
             return axios.post(`/api/posts/${this.state.post._id}/like`, { post })
@@ -39,7 +36,6 @@ class SinglePost extends Component {
         } else {
             return axios.delete(`/api/posts/${this.state.post._id}/like`, { post })
                 .then(response => {
-                    this.props.getAllPosts()
                     this.setState({
                         post: response.data
                     })

@@ -182,15 +182,6 @@ class Home extends Component {
         </Container>
         {/* ORIGINAL CONTENT */}
         <div className="addPadding">
-          <header className="masthead">
-            <p>The streets are yours.</p>
-            <div className="container h-100 px-lg-5">
-              <div className="row mx-lg-n5">
-                <div className="col-12 col-md-8 py-3 px-lg-5"></div>
-                <div className="col-6 col-md-4 py-3 px-lg-5"></div>
-              </div>
-            </div>
-          </header>
           <div className="popup-button">
             <h1>Add Post</h1>
             <button onClick={this.togglePopup}>show popup</button>

@@ -64,7 +64,7 @@ class SingleFavPost extends Component {
                 <p>{this.state.post.likes}Likes</p>
                 <LikeButton toggleLike={this.toggleLike} post={this.state.post} />
                 <p>{this.state.comments.map((c, idx) => {
-                    return (<span key={idx}><div className="owner">{c.owner.username} <i className="far fa-comment"></i> :</div> <span className="comment"> {c.comment} </span> </span>)
+                    return (<div key={idx} className="owner">{c.owner.username} <i className="far fa-comment"></i> : <span className="comment"> {c.comment} </span> </div>)
                 })}</p>
                 <AddComment addComment={this.addCommentHandler} post={this.state.post} />
             

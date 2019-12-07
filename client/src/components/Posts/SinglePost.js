@@ -60,18 +60,17 @@ class SinglePost extends Component {
                 <img className="post-pic" src={this.props.post.imgUrl} alt=""></img>
                 <p>{this.props.post.address}</p>
                 <p> Posted <span className="date timeago" title={timeAgo}>{timeAgo}</span> </p>
-
                 <p>{this.state.post.likes}Likes</p>
                 <LikeButton toggleLike={this.toggleLike} post={this.state.post} />
-
-                <p><span className="comment">Comments:</span>{this.state.comments.map((c, idx) => {
-                    return (<span key={idx}>"{c.comment}" <span className="comment">by</span> <span className="owner">{c.owner.username}</span></span>)
-
+                <p>{this.state.comments.map((c, idx) => {
+                    return (<div key={idx} className="owner">{c.owner.username} <i className="far fa-comment"></i> : <span className="comment"> {c.comment} </span> </div>)
                 })}</p>
                 <AddComment addComment={this.addCommentHandler} post={this.state.post} />
-                <br></br>
+                <br/>
+               <p>Tags: {this.props.post.tags.map(tag => {
+                   return ` ${tag} ,` 
+               })}</p> 
             </div>
-
         );
     }
 }

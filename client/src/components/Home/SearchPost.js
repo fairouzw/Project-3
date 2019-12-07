@@ -14,7 +14,6 @@ class Search extends Component {
         this.props.searchPost(value); /* this is lifting the state */
     };
 
-
     render() {
         return (
             <InputGroup className="mb-4">

@@ -1,15 +1,17 @@
 import React, { Component } from "react";
 import ReactMapGL, { Marker, Popup, GeolocateControl } from "react-map-gl";
+import { inheritInnerComments } from "@babel/types";
 
 class Map extends Component {
 
   state = {
     viewport: {
       width: "100%",
-      height: "350px",
+      height: "600px",
       latitude: 52.5035239,
       longitude: 13.407602899999999,
-      zoom: 14
+      zoom: 14,
+      borderRadius: "inherit"
     },
     userLocation: {}
   };

@@ -59,9 +59,9 @@ class SinglePost extends Component {
                 <p> Posted <span className="date timeago" title={timeAgo}>{timeAgo}</span> </p>
                 <p>{this.state.post.likes}Likes</p>
                 <LikeButton toggleLike={this.toggleLike} post={this.state.post} />
-                <p>{this.state.comments.map((c, idx) => {
+                <div>{this.state.comments.map((c, idx) => {
                     return (<div key={idx} className="owner">{c.owner.username} <i className="far fa-comment"></i> : <span className="comment"> {c.comment} </span> </div>)
-                })}</p>
+                })}</div>
                 <AddComment addComment={this.addCommentHandler} post={this.state.post} />
                 <br />
                 <p>Tags: {this.props.post.tags.map(tag => {

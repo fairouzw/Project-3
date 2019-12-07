@@ -4,7 +4,7 @@ import moment from "moment";
 import { Link } from "react-router-dom";
 
 
-class SingleMessage extends Component {
+class SingleOutMessage extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -22,11 +22,12 @@ class SingleMessage extends Component {
             <div className="one-post">
                 <br></br>
                 <h3>{this.props.message.subject}</h3>
-
-                <div>sent by
+                <div>sent to <Link to={`/messages/new-message/${this.state.message.recipient._id}`} ><p><span className="owner"> {this.props.message.recipient.username}</span></p></Link>
+                </div>
+                {/* <div>sent by
                     <Link to={`/messages/new-message/${this.state.message.sender._id}`} ><p><span className="owner"> {this.props.message.sender.username}</span></p></Link>
 
-                </div>
+                </div> */}
                 <div>Content: {this.props.message.content}</div>
 
                 <p>{this.props.message.read}</p>
@@ -38,7 +39,7 @@ class SingleMessage extends Component {
     }
 }
 
-export default SingleMessage;
+export default SingleOutMessage;
 
 
 

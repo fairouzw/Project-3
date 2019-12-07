@@ -3,6 +3,7 @@ import axios from "axios";
 import React, { Component } from "react";
 import "../../App.css";
 import MessageList from "./MessageList";
+import MessageOutList from "./MessageOutList";
 import Header from "../Home/Header.jsx";
 
 import {
@@ -112,7 +113,7 @@ class Messages extends Component {
                                     </div>
 
                                     <div><h2><span className="sent">OUTBOX</span></h2>
-                                        <MessageList messages={this.state.listOfSentMessages} ></MessageList>
+                                        <MessageOutList messages={this.state.listOfSentMessages} ></MessageOutList>
                                     </div>
 
                                 </CardBody>

@@ -127,9 +127,9 @@
   height: 40px;
   width: 100px;
   transition: box-shadow 0.3s;
-  &:hover {
+  /* &:hover {
     box-shadow: 3px 3px 22px 4px rgba(0, 0, 0, 0.1);
-  }
+  } */
 }
 .comment {
   color: lightslategray;
@@ -153,6 +153,9 @@
   border-radius: 5px;
 }
 
+.fav-pic {
+  height: 250px;
+}
 /* SIGN-UP SAMPLE STARTS */
 
 :root {

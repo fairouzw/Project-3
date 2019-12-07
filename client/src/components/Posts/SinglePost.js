@@ -3,14 +3,13 @@ import AddComment from "./AddComment"
 import LikeButton from "./LikeButton"
 import moment from "moment";
 import axios from "axios";
-import { withRouter, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 
 class SinglePost extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            // userData: this.props.userData,
             post: this.props.post,
             comments: this.props.post.comments,
 
@@ -19,7 +18,6 @@ class SinglePost extends Component {
     }
 
     addCommentHandler = (newComment) => {
-        // // comment : re-render the post list including the new post
         this.setState({
             comments: [...this.state.comments, newComment]
         })
@@ -69,10 +67,10 @@ class SinglePost extends Component {
                     return (<div key={idx} className="owner">{c.owner.username} <i className="far fa-comment"></i> : <span className="comment"> {c.comment} </span> </div>)
                 })}</p>
                 <AddComment addComment={this.addCommentHandler} post={this.state.post} />
-                <br/>
-               <p>Tags: {this.props.post.tags.map(tag => {
-                   return ` ${tag} ,` 
-               })}</p> 
+                <br />
+                <p>Tags: {this.props.post.tags.map(tag => {
+                    return ` ${tag} ,`
+                })}</p>
             </div>
         );
     }

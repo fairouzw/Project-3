@@ -1,6 +1,4 @@
 import React, { Component } from "react";
-// import AddComment from "./AddComment"
-// import LikeButton from "./LikeButton"
 import moment from "moment";
 
 import { Link } from "react-router-dom";
@@ -17,7 +15,6 @@ class SingleMessage extends Component {
     }
 
 
-
     render() {
         console.log(this.state.message.sender._id)
         var timeAgo = moment(this.props.message.createdAt).fromNow()
@@ -26,7 +23,7 @@ class SingleMessage extends Component {
                 <br></br>
                 <h3>{this.props.message.subject}</h3>
                 <div>sent by
-                    <Link to={`/messages/new-message/${this.state.message.sender._id}`} recipientId={this.state.message.sender._id} ><p><span className="owner"> {this.props.message.sender.username}</span></p></Link>
+                    <Link to={`/messages/new-message/${this.state.message.sender._id}`} ><p><span className="owner"> {this.props.message.sender.username}</span></p></Link>
 
                 </div>
                 <div>Content: {this.props.message.content}</div>

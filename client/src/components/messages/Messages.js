@@ -1,11 +1,8 @@
 
 import axios from "axios";
-
 import React, { Component } from "react";
 import "../../App.css";
 import MessageList from "./MessageList";
-// import SearchPost from "./SearchPost";
-// import DisplayPost from '../Posts/DisplayPost'
 import Header from "../Home/Header.jsx";
 
 import {
@@ -34,29 +31,20 @@ class Messages extends Component {
         };
     }
 
-
-
     getAllSentMessagesOfLoggedInUser = () => {
         axios.get(`/api/messages/sent`).then(res => {
-            // console.log(res.data);
-            /* pagination ?limit=50 */
+
             this.setState({
-
                 listOfSentMessages: res.data,
-
             });
         })
     };
 
-
-
     getAllReceivedMessagesOfLoggedInUser = () => {
         axios.get(`/api/messages/rec`).then(res => {
-            // console.log(res.data);
-            /* pagination ?limit=50 */
+
             this.setState({
                 listOfReceivedMessages: res.data,
-
                 filteredListOfMessages: res.data
             });
         })
@@ -87,12 +75,7 @@ class Messages extends Component {
     //     console.log(results)
     // };
 
-    toggleMessagePopup = event => {
-        event.preventDefault();
-        this.setState({
-            showMessagePopup: !this.state.showMessagePopup
-        });
-    }
+
 
     // setSelectedMessage = (message) => {
     //     this.setState({
@@ -110,14 +93,7 @@ class Messages extends Component {
                         <Col xl="4">
                             <Card className="bg-gradient-secondary shadow">
                                 <CardBody>
-                                    {/* DISPLAYED POST */}
-                                    {/* <div className="chart">
-                                        {this.state.selectedMessage ? <DisplayPost selectedMessage={this.state.selectedMessage} /> :
-                                            <p> Select something on the map/Display an image/show something</p>
-                                        }
 
-
-                                    </div> */}
                                 </CardBody>
                             </Card>
                         </Col>

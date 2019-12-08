@@ -55,7 +55,7 @@ class SingleFavPost extends Component {
                 <h3>{this.props.post.postname}</h3>
                 <p>posted by</p>  <Link to={`/messages/new-message/${this.props.post.owner._id}`}  ><p> <span className="owner"> {this.props.post.owner.username}</span></p></Link>
 
-                <div>Details: {this.props.description}</div>
+                <div>{this.props.description}</div>
                 <img className="post-pic" src={this.props.post.imgUrl} alt=""></img>
                 <p>{this.props.post.address}</p>
                 <p> Posted <span className="date timeago" title={timeAgo}>{timeAgo}</span> </p>

@@ -7,6 +7,8 @@ import SearchPost from "./SearchPost";
 import Popup from "../Posts/PopUp";
 import DisplayPost from "../Posts/DisplayPost";
 import Header from "./Header.jsx";
+import Modals from "./Modals";
+
 
 import {
   Card,
@@ -92,6 +94,12 @@ class Home extends Component {
           <Row>
             <Col xl={this.state.selectedPost !== null ? 8 : 12} style={{ transition: "all ease 0.4s"}}>
               <Card className="shadow border-0">
+              <CardHeader>
+              <Modals
+               posts={this.state.listOfPosts}
+               getAllPosts={this.getAllPosts}
+               closePopup={this.togglePopup}
+               /> </CardHeader>
                 {/* MAP */}
                   <Map
                     setSelectedPost={this.setSelectedPost}
@@ -192,7 +200,7 @@ class Home extends Component {
                 closePopup={this.togglePopup}
                 getAllPosts={this.getAllPosts}
               />
-            ) : null}
+              ) : null}
           </div>
         </div>
       </div>

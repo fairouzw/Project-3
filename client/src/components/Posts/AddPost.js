@@ -86,10 +86,10 @@ class AddPost extends Component {
 
     return (
       <div className="container">
-        <div className="row">
+        <div className="row text-center" style={{justifyContent: "center"}}>
           <form onSubmit={this.handleFormSubmit}>
-            <label htmlFor="inputEmail">Title/Caption</label>
-            <div className="form-label-group">
+            <label  htmlFor="inputEmail">Title/Caption</label>
+            <div className="modal-title">
               <input
                 type="text"
                 id="inputEmail"
@@ -102,16 +102,22 @@ class AddPost extends Component {
               // autoFocus
               />
             </div>
+            <br/>
             <label htmlFor="inputEmail">Upload an image</label>
-
-            <div className="form-label-group">
-              <input type="file" className="imgUrl" required/>
+            <div className="modal-title">
+              <input 
+              type="file" 
+              className="imgUrl" 
+              primary
+              required/>
             </div>
+            <br/>
             <label htmlFor="inputEmail">Description</label>
-            <div className="form-label-group">
+            <div className="modal-title">
               <input
-                type="text"
-                id="inputEmail"
+                type="textarea"
+                rows="3"
+                id="exampleFormControlTextarea1"
                 className="form-control"
                 placeholder="Write something"
                 name="description"
@@ -121,16 +127,16 @@ class AddPost extends Component {
               // autoFocus
               />
             </div>
-            <label htmlFor="inputEmail">Location</label>
-            <br />
+            <br/>
+             <div>
             <button
               className="btn btn-lg btn-primary btn-block btn-login text-uppercase font-weight-bold mb-2"
               type="submit"
-
             >
               POST
             </button>
             <div className="text-center"></div>
+            </div>
           </form>
         </div>
       </div>

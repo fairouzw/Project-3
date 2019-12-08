@@ -159,6 +159,12 @@
 .fav-pic {
   height: 250px;
 }
+.up-but {
+  background-color: rgb(245, 187, 62);
+}
+.del-but {
+  background-color: red;
+}
 /* SIGN-UP SAMPLE STARTS */
 
 :root {

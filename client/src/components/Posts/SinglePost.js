@@ -50,9 +50,13 @@ class SinglePost extends Component {
         return (
             <div className="one-post">
                 <br></br>
-                <h3 >{this.props.post.postname}</h3>
-                <div>posted by <Link to={`/messages/new-message/${this.props.post.owner._id}`} >  <span className="owner"> {this.props.post.owner.username} <i className="ni ni-email-83 text-blue"/> </span></Link> </div>
-                <div>{this.props.description}</div>
+
+
+                <h3>{this.props.post.postname}</h3>
+                <p>posted by</p>  <Link to={`/messages/new-message/${this.props.post.owner._id}`}  ><p> <span className="owner"> {this.props.post.owner.username}</span></p></Link>
+
+                <div>Details: {this.props.post.description}</div>
+
                 <img className="post-pic" src={this.props.post.imgUrl} alt=""></img>
                 <p>{this.props.post.address}</p>
                 <p> Posted <span className="date timeago" title={timeAgo}>{timeAgo}</span> </p>

@@ -112,13 +112,16 @@ class UpdatePost extends Component {
             <div>
                 <form onSubmit={this.handleFormSubmit} key={this.state._id}>
                     <input type='text' name='postname' value={this.state.postname} onChange={e => this.handleInputChange(e)} placeholder='Postname' />
-                    <input name='description' type='text' value={this.state.description} onChange={e => this.handleInputChange(e)} placeholder='description' />
-                    <input name='imgUrl' type='file' className="imgUrl" id="file-input" onChange={e => this.handleInputChange(e)} />
 
-                    <button type='submit'>Save</button>
+                    <p> <input name='description' type='text' value={this.state.description} onChange={e => this.handleInputChange(e)} placeholder='description' />
+                    </p>
+
+                    <p>Update image: <input name='imgUrl' type='file' className="imgUrl" id="file-input" onChange={e => this.handleInputChange(e)} />
+                    </p>
+                    <button className="btn btn-primary btn-sm  btn-login text-uppercase font-weight-bold mb-2" type='submit'>update post</button>
 
                 </form>
-                <button onClick={() => this.deletePost()}>Delete Post</button>
+                <button className="btn btn-sm btn-outline-danger btn-login text-uppercase font-weight-bold mb-2" onClick={() => this.deletePost()}>Delete post</button>
             </div>
         )
     }

@@ -48,12 +48,11 @@ class SinglePost extends Component {
         console.log(this.props.post.owner._id)
         var timeAgo = moment(this.props.post.createdAt).fromNow()
         return (
-            <div/*  key={this.props.post._id}  */ className="one-post">
+            <div className="one-post">
                 <br></br>
-                <h3 /* key={this.props.post._id} */>{this.props.post.postname}</h3>
-                <p>posted by</p>  <Link to={`/messages/new-message/${this.props.post.owner._id}`}  ><p> <span className="owner"> {this.props.post.owner.username}</span></p></Link>
-
-                <div>Details: {this.props.description}</div>
+                <h3 >{this.props.post.postname}</h3>
+                <div>posted by <Link to={`/messages/new-message/${this.props.post.owner._id}`} >  <span className="owner"> {this.props.post.owner.username} <i className="ni ni-email-83 text-blue"/> </span></Link> </div>
+                <div>{this.props.description}</div>
                 <img className="post-pic" src={this.props.post.imgUrl} alt=""></img>
                 <p>{this.props.post.address}</p>
                 <p> Posted <span className="date timeago" title={timeAgo}>{timeAgo}</span> </p>

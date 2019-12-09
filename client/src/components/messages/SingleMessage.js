@@ -16,9 +16,11 @@ class SingleMessage extends Component {
 
 
     render() {
+
         console.log(this.state.message.sender._id)
         var timeAgo = moment(this.props.message.createdAt).fromNow()
         return (
+
             <div className="one-post">
                 <br></br>
                 <h3>{this.props.message.subject}</h3>

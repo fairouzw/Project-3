@@ -116,6 +116,11 @@
   height: 350px;
 }
 
+.mapboxgl-ctrl-group {
+  width: 30px; 
+  margin: 10px 0 0 10px;
+}
+
 .like {
   color: #2d58e6;
   outline: none;

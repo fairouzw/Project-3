@@ -4,7 +4,7 @@ import LikeButton from "./LikeButton"
 import moment from "moment";
 import axios from "axios";
 import { Link } from "react-router-dom";
-
+import { Badge } from "reactstrap";
 
 class SinglePost extends Component {
     constructor(props) {
@@ -57,14 +57,19 @@ class SinglePost extends Component {
                 <p>{this.props.post.address}</p>
                 <p> Posted <span className="date timeago" title={timeAgo}>{timeAgo}</span> </p>
                 <LikeButton likeCounter={this.state.post.likes} toggleLike={this.toggleLike} post={this.state.post} />
+                <br/>
+                <br/>
                 <div>{this.state.comments.map((c, idx) => {
                     return (<div key={idx} className="owner">{c.owner.username} <i className="far fa-comment"></i> : <span className="comment"> {c.comment} </span> </div>)
                 })}</div>
+                <br/>
                 <AddComment addComment={this.addCommentHandler} post={this.state.post} />
                 <br />
-                <p>Tags: {this.props.post.tags.map(tag => {
-                    return ` ${tag} ,`
-                })}</p>
+                {this.props.post.tags.map(tag => {
+                   return  <Badge color="primary" pill>
+                    {tag}
+                  </Badge>
+                })}
             </div>
         );
     }

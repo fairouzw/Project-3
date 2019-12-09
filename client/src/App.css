@@ -116,6 +116,11 @@
   height: 350px;
 }
 
+.marker-icon {
+  width: 18px;
+  height: 30px;
+}
+
 .mapboxgl-ctrl-group {
   width: 30px; 
   margin: 10px 0 0 10px;

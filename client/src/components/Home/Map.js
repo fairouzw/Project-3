@@ -47,12 +47,12 @@ class Map extends Component {
                   longitude={post.location.long}
                 >
                   <img
-
                     onClick={() => {
                       this.props.setSelectedPost(post);
                     }}
-                    src={require("./icons/attraction-15.svg")}
-                    alt="location"
+                    src={require("./icons/google-location.jpg")}
+                    alt="location-icon"
+                    className="marker-icon"
                   />
                 </Marker>
               </div>

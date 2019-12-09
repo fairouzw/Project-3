@@ -47,8 +47,9 @@ class FavMap extends Component {
           >
             <img
               onClick={this.showPopUp}
-              src={require("../Home/icons/attraction-15.svg")}
-              alt="location"
+              src={require("../Home/icons/google-location.jpg")}
+              alt="location-icon"
+              className="marker-icon"
             />
           </Marker>
 

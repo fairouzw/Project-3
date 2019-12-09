@@ -8,7 +8,7 @@ class FavMap extends Component {
       height: "600px",
       latitude: this.props.selectedPost.location.lat,
       longitude: this.props.selectedPost.location.long,
-      zoom: 20
+      zoom: 16
     },
     userLocation: {},
     selectedPost: true,
@@ -17,10 +17,12 @@ class FavMap extends Component {
   };
 
   customizeMap = viewport => {
-    this.setState({ viewport: {
-      ...viewport,
-      width: "100%",
-    } });
+    this.setState({
+      viewport: {
+        ...viewport,
+        width: "100%",
+      }
+    });
   };
 
   showPopUp = () => [
@@ -30,7 +32,7 @@ class FavMap extends Component {
   ];
 
   render() {
- 
+
     return (
       <div>
         <ReactMapGL

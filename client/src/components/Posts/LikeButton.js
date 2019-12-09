@@ -7,9 +7,10 @@ class LikeButton extends Component {
         let buttonText = this.props.post.hasLiked ? 'Unlike' : 'Like';
         return (
             <button onClick={this.props.toggleLike} className="like">
-                <i className="fa fa-heart"></i>&nbsp;
-          {buttonText}</button>
+               {this.props.likeCounter}  <i className="fa fa-heart"></i> &nbsp;
+        {buttonText}</button>
         );
     }
 }
 export default LikeButton;
+

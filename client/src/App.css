@@ -159,11 +159,11 @@
 .fav-pic {
   height: 250px;
 }
-.up-but {
-  background-color: rgb(245, 187, 62);
+.startbtn {
+  padding: 0px 10px;
 }
-.del-but {
-  background-color: red;
+.startpad {
+  margin: 0px 300px;
 }
 /* SIGN-UP SAMPLE STARTS */
 

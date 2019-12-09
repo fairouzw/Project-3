@@ -28,7 +28,7 @@ class Messages extends Component {
             listOfSentMessages: [],
             filteredListOfMessages: [],
             showMessagePopup: false,
-            selectedMessage: null
+            selectedMessage: null,
         };
     }
 
@@ -108,11 +108,11 @@ class Messages extends Component {
                                 </CardHeader> */}
                                 <CardBody>
 
-                                    <div><h2><span className="received">INBOX</span></h2>
+                                    <div> <button type="button" className="btn btn-outline-success btn-lg btn-block"><h2>INBOX</h2></button>
                                         <MessageList messages={this.state.listOfReceivedMessages} ></MessageList>
                                     </div>
 
-                                    <div><h2><span className="sent">OUTBOX</span></h2>
+                                    <div><button type="button" className="btn btn-outline-secondary btn-lg btn-block"><h2>OUTBOX</h2></button>
                                         <MessageOutList messages={this.state.listOfSentMessages} ></MessageOutList>
                                     </div>
 

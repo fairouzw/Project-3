@@ -21,17 +21,20 @@ class Start extends Component {
           <br />
           <br />
           <br />
-          {/* // how to make the buttons transparent?? */}
-          <Link to="/signup">
-            <button className="btn btn-lg btn-primary btn-block btn-login text-uppercase font-weight-bold mb-2">
-              Sign up
+          <div className="startpad">
+            {/* // how to make the buttons transparent?? */}
+            <Link to="/signup">
+              <button className="btn btn-lg btn-light btn-block btn-login text-uppercase font-weight-bold mb-2">
+                Sign up
           </button>
-          </Link>
-          <Link to="/login">
-            <button className="btn btn-lg btn-primary btn-block btn-login text-uppercase font-weight-bold mb-2">
-              Login
+            </Link>
+
+            <Link to="/login">
+              <button className="btn btn-lg btn-light btn-block btn-login text-uppercase font-weight-bold mb-2">
+                Login
           </button>
-          </Link>
+            </Link>
+          </div>
           <br />
           <br />
           <br />

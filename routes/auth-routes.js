@@ -51,6 +51,8 @@ authRoutes.post("/signup", (req, res, next) => {
       password: hashPass,
       email: email,
       favourites: favourites,
+      city: city,
+      country: country,
       posts: posts,
       follows: follows
     });

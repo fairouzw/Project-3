@@ -72,7 +72,7 @@ class Login extends Component {
               <div className="header-body text-center mb-7">
                 <Row className="justify-content-center">
                   <Col lg="5" md="6">
-                    <h1 className="text-white">Die Stadt ist frei.</h1>
+                    <h1 className="text-white">The city is free.</h1>
                     {/* <p className="text-lead text-light">
                   The catching slogan Lena suggested which I clearly forgot.
                 </p> */}

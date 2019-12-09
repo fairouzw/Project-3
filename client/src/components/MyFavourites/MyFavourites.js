@@ -49,7 +49,7 @@ class MyFavourites extends Component {
             <div className="col">
               <Card className="shadow">
                 <CardHeader className="border-0">
-                  <h3 className="mb-0">My Favourites</h3>
+                  <button type="button" className="btn btn-outline-danger btn-lg btn-block"> <h3 className="mb-0">My Favourites</h3></button>
                 </CardHeader>
                 <CardBody>
                   <Row style={{ justifyContent: "center" }}>

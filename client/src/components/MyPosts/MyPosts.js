@@ -76,11 +76,11 @@ class MyPosts extends Component {
                             <Card className="shadow">
                                 <CardHeader className="border-0">
                                     {/* <br /> */}
-                                    <h3 className="mb-0">
+                                    <button type="button" className="btn btn-outline-primary btn-lg btn-block"> <h3 className="mb-0">
                                         {" "}
                                         {/* <SearchPost searchPost={this.searchResultPost} /> */}
                                         All My Posts
-                  </h3>
+                  </h3></button>
                                 </CardHeader>
                                 <CardBody>
                                     <div className="all-posts">

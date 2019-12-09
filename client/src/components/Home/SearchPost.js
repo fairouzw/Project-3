@@ -27,7 +27,7 @@ class Search extends Component {
                     className="input"
                     type="text"
                     name="search"
-                    placeholder="Search Posts"
+                    placeholder="Search Finds"
                     onChange={this.changeHandler}
                 ></Input>
             </InputGroup>

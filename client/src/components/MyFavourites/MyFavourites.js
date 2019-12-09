@@ -56,7 +56,9 @@ class MyFavourites extends Component {
                     {this.state.listOfPosts.map((post, idx) => {
                       if (post.hasLiked) {
                         return (
+                        
                           <SingleFavPost key={idx} post={post} getAllPosts={this.getAllPosts} />
+                        
                         )
                       } else {
                       }

@@ -94,7 +94,7 @@ class Home extends Component {
           <Row>
             <Col xl={this.state.selectedPost !== null ? 8 : 12} style={{ transition: "all ease 0.4s"}}>
               <Card className="shadow border-0">
-              <CardHeader>
+              <CardHeader > 
               <Modals
                posts={this.state.listOfPosts}
                getAllPosts={this.getAllPosts}
@@ -189,7 +189,7 @@ class Home extends Component {
           </Row>
         </Container>
         {/* ORIGINAL CONTENT */}
-        <div className="addPadding">
+     {/*    <div className="addPadding">
           <div className="popup-button">
             <h1>Add Post</h1>
             <button onClick={this.togglePopup}>show popup</button>
@@ -202,7 +202,7 @@ class Home extends Component {
               />
               ) : null}
           </div>
-        </div>
+        </div> */}
       </div>
     );
   }

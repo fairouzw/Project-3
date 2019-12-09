@@ -4,7 +4,7 @@ import LikeButton from "./LikeButton"
 import moment from "moment";
 import axios from "axios";
 import { Link } from "react-router-dom";
-import { Badge } from "reactstrap";
+import { Badge, Card, CardTitle, CardImg } from "reactstrap";
 
 class SinglePost extends Component {
     constructor(props) {
@@ -48,29 +48,30 @@ class SinglePost extends Component {
         console.log(this.props.post.owner._id)
         var timeAgo = moment(this.props.post.createdAt).fromNow()
         return (
+            <Card>
             <div className="one-post">
-                <br></br>
-                <h3>{this.props.post.postname}</h3>
+                <CardImg style={{height:"250px", width:"100%"}} className="post-pic"src={this.props.post.imgUrl} alt=""></CardImg>
+            
+                <h5>{this.props.post.postname}</h5>
                 posted by<Link to={`/messages/new-message/${this.props.post.owner._id}`}> <span className="owner"> {this.props.post.owner.username} <i className="ni ni-email-83 text-blue" /> </span> </Link>
                 <div>{this.props.post.description}</div>
-                <img className="post-pic" src={this.props.post.imgUrl} alt=""></img>
                 <p>{this.props.post.address}</p>
                 <p> Posted <span className="date timeago" title={timeAgo}>{timeAgo}</span> </p>
                 <LikeButton likeCounter={this.state.post.likes} toggleLike={this.toggleLike} post={this.state.post} />
                 <br/>
-                <br/>
+                <hr/>
                 <div>{this.state.comments.map((c, idx) => {
                     return (<div key={idx} className="owner">{c.owner.username} <i className="far fa-comment"></i> : <span className="comment"> {c.comment} </span> </div>)
                 })}</div>
                 <br/>
                 <AddComment addComment={this.addCommentHandler} post={this.state.post} />
-                <br />
                 {this.props.post.tags.map(tag => {
                    return  <Badge color="primary" pill>
                     {tag}
                   </Badge>
                 })}
             </div>
+            </Card>
         );
     }
 }

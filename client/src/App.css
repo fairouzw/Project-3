@@ -122,15 +122,32 @@
   background: #fff;
   border: none;
   font-family: "Montserrat", sans-serif;
-  font-size: 1.1em;
+  font-size: 0.9em;
   box-shadow: 0 0 22px 4px rgba(0, 0, 0, 0.1);
   height: 40px;
   width: 100px;
-  transition: box-shadow 0.3s;
+  /* transition: box-shadow 0.3s; */
   /* &:hover {
     box-shadow: 3px 3px 22px 4px rgba(0, 0, 0, 0.1);
   } */
 }
+
+.unlike {
+  color: white;
+  outline-color: #2d58e6;
+  background: #fff;
+  border: #2d58e6;
+  font-family: "Montserrat", sans-serif;
+  font-size: 1.1em;
+  box-shadow: 0 0 22px 4px rgba(0, 0, 0, 0.1);
+  height: 40px;
+  width: 100px;
+  /* transition: box-shadow 0.3s; */
+  /* &:hover {
+    box-shadow: 3px 3px 22px 4px rgba(0, 0, 0, 0.1);
+  } */
+}
+
 .comment {
   color: lightslategray;
   font-size: 0.9em;

@@ -59,12 +59,14 @@ class SingleFavPost extends Component {
                 <p>{this.props.post.address}</p>
                 <p> Posted <span className="date timeago" title={timeAgo}>{timeAgo}</span> </p>
                 <LikeButton likeCounter={this.state.post.likes} toggleLike={this.toggleLike} post={this.state.post} />
+               <br/>
+               <br/>
+
                 <p>{this.state.comments.map((c, idx) => {
                     return (<div key={idx} className="owner">{c.owner.username} <i className="far fa-comment"></i> : <span className="comment"> {c.comment} </span> </div>)
                 })}</p>
                 <AddComment addComment={this.addCommentHandler} post={this.state.post} />
                 <Link to={`/posts/${this.props.post._id}`}><p>See post on map</p></Link>
-
             </div>
         )
     }

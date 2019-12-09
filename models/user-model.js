@@ -6,6 +6,8 @@ const userSchema = new Schema(
     username: String,
     email: String,
     password: String,
+    city: String,
+    country: String,
     // posts: [{ type: Schema.Types.ObjectId, ref: "post" }],
     follows: {
       type: String, // try to implement following category-tags

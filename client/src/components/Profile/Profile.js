@@ -25,6 +25,8 @@ class Profile extends Component {
       // userData: this.props.userData,
       username: this.props.userData.username,
       email: this.props.userData.email,
+      city: this.props.userData.city,
+      country: this.props.userData.country,
       listOfPosts: [],
       likesNumber: 0,
       hasLikedList: [],
@@ -50,10 +52,10 @@ class Profile extends Component {
 
   handleFormSubmit = event => {
     event.preventDefault();
-    const { username, email } = this.state;
+    const { username, email, city, country } = this.state;
 
     axios
-      .put(`/api/profiles/${this.props.userData._id}`, { username, email })
+      .put(`/api/profiles/${this.props.userData._id}`, { username, email, city, country })
       .then(() => {
         // this.props.getUser();
         this.props.history.push("/profile");
@@ -171,23 +173,18 @@ class Profile extends Component {
                     </h3>
                     <div className="h5 font-weight-300">
                       <i className="ni location_pin mr-2" />
-                      Berlin, Germany
-                  </div>
-                    <div className="h5 mt-4">
+                      {this.state.city}, {this.state.country}
+                    </div>
+                    {/* <div className="h5 mt-4">
                       <i className="ni business_briefcase-24 mr-2" />
                       Test
-                  </div>
-                    <div>
-                      <i className="ni education_hat mr-2" />
-                      Test
-                  </div>
+                  </div> */}
+
                     <hr className="my-4" />
-                    <p>
+                    {/* <p>
                       Do we really nee some text here? We don't want user-description. Focus is on the post...
-                  </p>
-                    <a href="#pablo" onClick={e => e.preventDefault()}>
-                      Show more
-                  </a>
+                  </p> */}
+
                   </div>
                 </CardBody>
               </Card>
@@ -255,16 +252,19 @@ class Profile extends Component {
                           <FormGroup>
                             <label
                               className="form-control-label"
-                              htmlFor="input-first-name"
+                              htmlFor="input-city"
                             >
-                              First name
+                              City
                           </label>
                             <Input
                               className="form-control-alternative"
-                              defaultValue="Lucky"
-                              id="input-first-name"
-                              placeholder="First name"
+                              defaultValue="Berlin"
+                              id="input-city"
+                              placeholder="City"
                               type="text"
+                              name="city"
+                              value={this.state.city}
+                              onChange={this.handleChange}
                             />
                           </FormGroup>
                         </Col>
@@ -272,16 +272,19 @@ class Profile extends Component {
                           <FormGroup>
                             <label
                               className="form-control-label"
-                              htmlFor="input-last-name"
+                              htmlFor="input-country"
                             >
-                              Last name
+                              Country
                           </label>
                             <Input
                               className="form-control-alternative"
-                              defaultValue="Jesse"
-                              id="input-last-name"
-                              placeholder="Last name"
+                              defaultValue="Germany"
+                              id="input-country"
+                              placeholder="Country"
                               type="text"
+                              name="country"
+                              value={this.state.country}
+                              onChange={this.handleChange}
                             />
                           </FormGroup>
                         </Col>
@@ -296,82 +299,7 @@ class Profile extends Component {
                     </div>
                     <hr className="my-4" />
                     {/* Address */}
-                    <h6 className="heading-small text-muted mb-4">
-                      Contact information
-                  </h6>
-                    <div className="pl-lg-4">
-                      <Row>
-                        <Col md="12">
-                          <FormGroup>
-                            <label
-                              className="form-control-label"
-                              htmlFor="input-address"
-                            >
-                              Address
-                          </label>
-                            <Input
-                              className="form-control-alternative"
-                              defaultValue="Bld Mihail Kogalniceanu, nr. 8 Bl 1, Sc 1, Ap 09"
-                              id="input-address"
-                              placeholder="Home Address"
-                              type="text"
-                            />
-                          </FormGroup>
-                        </Col>
-                      </Row>
-                      <Row>
-                        <Col lg="4">
-                          <FormGroup>
-                            <label
-                              className="form-control-label"
-                              htmlFor="input-city"
-                            >
-                              City
-                          </label>
-                            <Input
-                              className="form-control-alternative"
-                              defaultValue="New York"
-                              id="input-city"
-                              placeholder="City"
-                              type="text"
-                            />
-                          </FormGroup>
-                        </Col>
-                        <Col lg="4">
-                          <FormGroup>
-                            <label
-                              className="form-control-label"
-                              htmlFor="input-country"
-                            >
-                              Country
-                          </label>
-                            <Input
-                              className="form-control-alternative"
-                              defaultValue="United States"
-                              id="input-country"
-                              placeholder="Country"
-                              type="text"
-                            />
-                          </FormGroup>
-                        </Col>
-                        <Col lg="4">
-                          <FormGroup>
-                            <label
-                              className="form-control-label"
-                              htmlFor="input-country"
-                            >
-                              Postal code
-                          </label>
-                            <Input
-                              className="form-control-alternative"
-                              id="input-postal-code"
-                              placeholder="Postal code"
-                              type="number"
-                            />
-                          </FormGroup>
-                        </Col>
-                      </Row>
-                    </div>
+
                     {/* <hr className="my-4" />
                   <h6 className="heading-small text-muted mb-4">About me</h6>
                   <div className="pl-lg-4">

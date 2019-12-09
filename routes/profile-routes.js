@@ -31,7 +31,7 @@ router.get("/profiles/:id", (req, res, next) => {
 
 //PUT
 router.put("/profiles/:id", (req, res, next) => {
-  const { username, email, favourites, posts, follows } = req.body;
+  const { username, email, city, country, favourites, posts, follows } = req.body;
 
   if (!mongoose.Types.ObjectId.isValid(req.params.id)) {
     res.status(400).json({ message: "Specified id is not valid" });
@@ -41,6 +41,8 @@ router.put("/profiles/:id", (req, res, next) => {
   User.findByIdAndUpdate(req.params.id, {
     username,
     email,
+    city,
+    country,
     favourites,
     posts,
     follows

@@ -73,7 +73,7 @@ class Sidebar extends Component {
           </button>
           <br />
           Geht Noch Logo
-       {/* <img src="./attraction-15.svg" alt=""> </img> */}
+          {/* <img src="../Home/icons/finder-logo.png" alt=""> </img> */}
 
           {/* User */}
           <Nav className="align-items-center d-md-none">

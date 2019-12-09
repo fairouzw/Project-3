@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import ReactMapGL, { Marker, Popup, GeolocateControl } from "react-map-gl";
+import ReactMapGL, { Marker, Popup, GeolocateControl, NavigationControl } from "react-map-gl";
 import { inheritInnerComments } from "@babel/types";
 
 class Map extends Component {
@@ -62,7 +62,9 @@ class Map extends Component {
           <GeolocateControl
             positionOption={{ enableHighAccuracy: true }}
             trackUserLocation={true}
+            
           />
+          <NavigationControl/>
           {this.props.selectedPost !== null ? (
             <Popup
               latitude={this.props.selectedPost.location.lat}

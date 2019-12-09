@@ -11,7 +11,7 @@ class FavMap extends Component {
       zoom: 16
     },
     userLocation: {},
-    selectedPost: true,
+    selectedPost: false,
     postname: "",
     imgUrl: ""
   };

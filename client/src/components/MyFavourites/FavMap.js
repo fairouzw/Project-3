@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import ReactMapGL, { Marker, Popup, GeolocateControl } from "react-map-gl";
+import ReactMapGL, { Marker, Popup, GeolocateControl, NavigationControl } from "react-map-gl";
 
 class FavMap extends Component {
   state = {
@@ -57,6 +57,7 @@ class FavMap extends Component {
             trackUserLocation={true}
             zoom="18"
           />
+            <NavigationControl/>
           {this.state.selectedPost === false ? (
             <Popup
               latitude={this.state.viewport.latitude}

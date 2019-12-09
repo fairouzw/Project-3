@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import axios from "axios";
 import "../../App.css";
+import Avatar from 'react-avatar';
 
 import {
   Button,
@@ -112,10 +113,6 @@ class Profile extends Component {
     });
   }
 
-
-
-
-
   render() {
 
     return (
@@ -136,6 +133,9 @@ class Profile extends Component {
                         className="rounded-circle"
                         src={require("../../assets/img/theme/team-4-800x800.jpg")}
                       />
+
+                        {/* <Avatar className="rounded-circle" name="Foo Bar"/> */}
+
                     </div>
                   </Col>
                 </Row>

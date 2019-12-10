@@ -321,3 +321,19 @@
 .icon-message {
   margin-left: 5px;
 }
+
+
+.card-avatar-image
+{position:relative}
+
+.card-avatar-image 
+{max-width:180px;
+  border-radius:.375rem;
+  transform:translate(-50%, -30%);
+  position:absolute;
+  left:50%;
+  transition:all 0.15s ease}
+
+.card-avatar-image:hover
+{transform:
+  translate(-50%, -33%)}

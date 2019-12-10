@@ -55,7 +55,7 @@ class SingleFavPost extends Component {
             <div className="one-post">
                 <CardImg /* top width="100%"  */style={{height:"250px", width:"100%"}} className="post-pic" src={this.props.post.imgUrl} alt=""></CardImg>
                 <CardTitle >{this.props.post.postname}</CardTitle>
-              <p>  posted by<Link to={`/messages/new-message/${this.props.post.owner._id}`}> <span className="owner"> {this.props.post.owner.username} <i className="ni ni-email-83 text-blue" /> </span> </Link> </p>
+                <div className="posted-by-container"><div className="posted-by-box"> posted by <Link to={`/messages/new-message/${this.props.post.owner._id}`}> <span className="owner icon-text">{this.props.post.owner.username}  <i className="ni ni-email-83 text-blue icon-message" /></span> </Link></div></div>
                 <div>{this.props.description}</div>
                 <Link to={`/posts/${this.props.post._id}`}><p>{this.props.post.address}</p></Link>
                 <p> Posted <span className="date timeago" title={timeAgo}>{timeAgo}</span> </p>

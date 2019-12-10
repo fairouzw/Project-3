@@ -87,9 +87,16 @@ class Messages extends Component {
     render() {
         return (
             <div className="main-content" ref="mainContent">
-                <Header />
+                {/* <Header /> */}
+                <div className="header  pb-8 pt-5 pt-md-8"
+                    style={{
+                        minHeight: "400px",
+                        backgroundImage: "url(" + require("../Home/icons/imm016_N16.jpg") + ")",
+                        backgroundSize: "cover",
+                        backgroundPosition: "center top"
+                    }}></div>
                 <Container className="mt--7" fluid>
-                    <Row>
+                    {/* <Row>
 
                         <Col xl="4">
                             <Card className="bg-gradient-secondary shadow">
@@ -98,7 +105,7 @@ class Messages extends Component {
                                 </CardBody>
                             </Card>
                         </Col>
-                    </Row>
+                    </Row> */}
                     <Row className="mt-5" >
                         <div className="col">
                             <Card className="shadow">

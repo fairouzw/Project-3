@@ -12,6 +12,7 @@ import "../src/assets/vendor/nucleo/css/nucleo.css";
 import "../src/assets/vendor/@fortawesome/fontawesome-free/css/all.min.css";
 
 
+
 document.getElementById("root").innerText =
   "Loading...";
 

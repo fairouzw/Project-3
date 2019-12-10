@@ -127,12 +127,12 @@
 }
 
 .like {
-  color: #2d58e6;
-  outline: none;
-  background: #fff;
+  color: black;
+  /* outline: none; */
+  /* background: #fff; */
   border: none;
-  font-family: "Montserrat", sans-serif;
-  font-size: 0.9em;
+  /* font-family: "Montserrat", sans-serif; */
+  font-size: 1.0em;
   box-shadow: 0 0 22px 4px rgba(0, 0, 0, 0.1);
   height: 40px;
   width: 100px;
@@ -298,3 +298,24 @@
 }
 
 /* SIGN UP ENDS */
+
+.icon-text {
+  display: flex;
+  align-items: center;
+  margin-left: 7px;
+}
+
+.posted-by-box {
+  display: flex;
+  align-items: center;
+}
+
+.posted-by-container {
+  display: flex;
+  justify-content: space-around;
+  
+}
+
+.icon-message {
+margin-left: 5px;
+}

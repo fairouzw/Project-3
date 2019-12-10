@@ -1,12 +1,14 @@
 import React, { Component } from "react";
 import axios from "axios";
+import { Button } from "reactstrap";
 
 function getLocation() {
   return new Promise((resolve, reject) => {
     navigator.geolocation.getCurrentPosition(position => {
-        resolve(position.coords);
-      });
-})}
+      resolve(position.coords);
+    });
+  });
+}
 
 class AddPost extends Component {
   constructor() {
@@ -31,7 +33,7 @@ class AddPost extends Component {
       .then(response => {
         console.log("response is: ", response);
         // after the console.log we can see that response carries 'secure_url' which we can use to update the state
-        return { url: response.data.secure_url, tags: response.data.tags }
+        return { url: response.data.secure_url, tags: response.data.tags };
       })
       .catch(err => {
         console.log("Error while uploading the file: ", err);
@@ -40,7 +42,7 @@ class AddPost extends Component {
 
   handleFormSubmit = event => {
     event.preventDefault();
-    console.log("i clicked")
+    console.log("i clicked");
     const { description, postname } = this.state;
 
     Promise.all([
@@ -48,8 +50,11 @@ class AddPost extends Component {
       getLocation()
     ])
       .then(([imgUploadResult, location]) => {
-        return axios.get(`https://api.mapbox.com/geocoding/v5/mapbox.places/${location.longitude},${location.latitude}.json?access_token=pk.eyJ1IjoibG9zLWxlbmEiLCJhIjoiY2szNHllYzI5MTZsOTNubzI1emZ2aHFiaSJ9.v7gsBidhvQm2T5EOb_GcGA`)
-          .then(result=>{
+        return axios
+          .get(
+            `https://api.mapbox.com/geocoding/v5/mapbox.places/${location.longitude},${location.latitude}.json?access_token=pk.eyJ1IjoibG9zLWxlbmEiLCJhIjoiY2szNHllYzI5MTZsOTNubzI1emZ2aHFiaSJ9.v7gsBidhvQm2T5EOb_GcGA`
+          )
+          .then(result => {
             return axios.post("/api/posts/new-post", {
               imgUrl: imgUploadResult.url,
               location: { lat: location.latitude, long: location.longitude },
@@ -57,16 +62,17 @@ class AddPost extends Component {
               postname,
               address: result.data.features[0].place_name,
               tags: imgUploadResult.tags
-            })
-        }).then(() => {
-          this.props.getAllPosts();
-          this.props.closePopup(event);
-          this.setState({
-            imgUrl: "",
-            description: "",
-            postname: ""
+            });
+          })
+          .then(() => {
+            this.props.getAllPosts();
+            this.props.closePopup(event);
+            this.setState({
+              imgUrl: "",
+              description: "",
+              postname: ""
+            });
           });
-        });
       })
       .catch(error => console.log(error));
   };
@@ -83,12 +89,11 @@ class AddPost extends Component {
   };
 
   render() {
-
     return (
       <div className="container">
-        <div className="row text-center" style={{justifyContent: "center"}}>
+        <div className="row text-center" style={{ justifyContent: "center" }}>
           <form onSubmit={this.handleFormSubmit}>
-            <label  htmlFor="inputEmail">Title/Caption</label>
+            <label htmlFor="inputEmail">Title/Caption</label>
             <div className="modal-title">
               <input
                 type="text"
@@ -98,20 +103,16 @@ class AddPost extends Component {
                 name="postname"
                 value={this.state.postname}
                 onChange={this.handleChange}
-              required
-              // autoFocus
+                required
+                // autoFocus
               />
             </div>
-            <br/>
+            <br />
             <label htmlFor="inputEmail">Upload an image</label>
             <div className="modal-title">
-              <input 
-              type="file" 
-              className="imgUrl" 
-              primary
-              required/>
+              <input type="file" className="imgUrl" primary required />
             </div>
-            <br/>
+            <br />
             <label htmlFor="inputEmail">Description</label>
             <div className="modal-title">
               <input
@@ -123,20 +124,18 @@ class AddPost extends Component {
                 name="description"
                 value={this.state.description}
                 onChange={this.handleChange}
-              // required
-              // autoFocus
+                // required
+                // autoFocus
               />
             </div>
-            <br/>
-             <div>
-            <button
-              className="btn btn-lg btn-primary btn-block btn-login text-uppercase font-weight-bold mb-2"
-              type="submit"
-            >
-              POST
-            </button>
-            <div className="text-center"></div>
-            </div>
+            <br />
+            
+              <div style={{ justifyContent: "center", marginBottom: "20px" }}>
+                <Button color="primary" type="submit">
+                  Post Find
+                </Button>
+              </div>
+            
           </form>
         </div>
       </div>

@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
+import Modals from "../Home/Modals";
 
 // reactstrap components
 import {
@@ -185,6 +186,11 @@ class Sidebar extends Component {
                 </NavLink>
               </NavItem>
 
+
+              <Modals
+               posts={this.state.listOfPosts}
+               postAdded={this.props.postAdded}
+               /> 
               <NavItem>
                 <NavLink tag={Link} to="/home">
                   <i className="ni ni-fat-add text-orange" />

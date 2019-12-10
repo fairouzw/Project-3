@@ -17,6 +17,17 @@ import {
     CardFooter
 } from "reactstrap";
 
+import {
+    FormGroup,
+    Form,
+    Input,
+    InputGroupAddon,
+    InputGroupText,
+    InputGroup,
+
+
+} from "reactstrap";
+
 class AddMessage extends Component {
 
     constructor() {
@@ -94,68 +105,146 @@ class AddMessage extends Component {
         console.log(this.props.recipient)
         console.log('miR', this.props)
         return (
+
             <div className="main-content" ref="mainContent">
                 <Header />
-                <Container className="mt--7" fluid>
+                <Container className="mt--7" fluid style={{ justifyContent: "center" }}>
                     <Row>
 
-                        <Col xl="4">
+                        <Col xl="8">
                             <Card className="bg-gradient-secondary shadow">
-                                <h1>Send Message to {this.state.recipientData.username} </h1>
-                                <CardBody>
+                                <h3>Send Message to {this.state.recipientData.username} </h3>
+                                <CardBody style={{ justifyContent: "center" }}>
                                     <div className="container">
                                         <div className="row">
+
                                             <form onSubmit={this.handleFormSubmit}>
-                                                <label htmlFor="inputEmail">Subject</label>
-                                                <div className="form-label-group">
-                                                    <input
-                                                        type="text"
-                                                        id="inputEmail"
-                                                        className="form-control"
-                                                        placeholder="subject"
-                                                        name="subject"
-                                                        value={this.state.subject}
-                                                        onChange={this.handleChange}
-                                                        required
-                                                    // autoFocus
-                                                    />
-                                                </div>
+                                                <div className="text-center">
+                                                    <Col md="50" style={{ justifyContent: "center" }}>
+                                                        <label htmlFor="subject"></label>
+                                                        <FormGroup style={{ justifyContent: "center" }}>
+                                                            <Input
+                                                                id="subject"
+                                                                placeholder="subject"
+                                                                type="text"
+                                                                name="subject"
+                                                                value={this.state.subject}
+                                                                onChange={this.handleChange}
+                                                                required
 
-                                                <label htmlFor="inputEmail">Content</label>
-                                                <div className="form-label-group">
-                                                    <input
-                                                        type="textarea"
-                                                        id="inputEmail"
-                                                        className="form-control"
-                                                        placeholder="your message comes here"
-                                                        name="content"
-                                                        value={this.state.content}
-                                                        onChange={this.handleChange}
-                                                        required
-                                                    // autoFocus
-                                                    />
-                                                </div>
+                                                            />
+                                                        </FormGroup>
+                                                    </Col>
+                                                    <Col md="50" style={{ justifyContent: "center" }}>
+                                                        <label htmlFor="content">Content:</label>
+                                                        <FormGroup>
+                                                            <div className="form-label-group">
+                                                                <Input
+                                                                    id="content"
+                                                                    placeholder="your text"
+                                                                    type="textarea"
+                                                                    name="content"
+                                                                    value={this.state.content}
+                                                                    onChange={this.handleChange}
+                                                                    required
 
-                                                <br />
-                                                <button
-                                                    className="btn btn-lg btn-primary btn-block btn-login text-uppercase font-weight-bold mb-2"
-                                                    type="submit"
+                                                                />
+                                                            </div>
+                                                        </FormGroup>
+                                                    </Col>
 
-                                                >
-                                                    SEND
+                                                    <br />
+                                                    <button
+                                                        className="btn btn-lg btn-primary btn-block btn-login text-uppercase font-weight-bold mb-2"
+                                                        type="submit"
+
+                                                    >
+                                                        SEND
             </button>
-                                                <div className="text-center"></div>
+
+
+                                                    <Link to={`/home`} ><p><span className="owner"> Back Home</span></p></Link>
+                                                    <br></br>
+                                                    <Link to={`/messages`} ><p><span className="owner"> Back to Messages</span></p></Link>
+                                                </div>
                                             </form>
 
-                                            <Link to={`/home`} ><p><span className="owner"> Back Home</span></p></Link>
-                                            <br></br>
-                                            <Link to={`/messages`} ><p><span className="owner"> Back to Messages</span></p></Link>
+
 
                                         </div>
                                     </div>
                                 </CardBody>
                             </Card>
                         </Col>
+
+                        {/* <>
+                            <Form>
+                                <Row>
+                                    <Col md="6">
+                                        <FormGroup>
+                                            <Input
+                                                id="exampleFormControlInput1"
+                                                placeholder="name@example.com"
+                                                type="email"
+                                            />
+                                        </FormGroup>
+                                    </Col>
+                                    <Col md="6">
+                                        <FormGroup>
+                                            <Input disabled placeholder="Regular" type="textarea" />
+                                        </FormGroup>
+                                    </Col>
+                                </Row>
+                                <Row>
+                                    <Col md="6">
+                                        <FormGroup>
+                                            <InputGroup className="mb-4">
+                                                <InputGroupAddon addonType="prepend">
+                                                    <InputGroupText>
+                                                        <i className="ni ni-zoom-split-in" />
+                                                    </InputGroupText>
+                                                </InputGroupAddon>
+                                                <Input placeholder="Search" type="text" />
+                                            </InputGroup>
+                                        </FormGroup>
+                                    </Col>
+                                    <Col md="6">
+                                        <FormGroup>
+                                            <InputGroup className="mb-4">
+                                                <Input placeholder="Birthday" type="text" />
+                                                <InputGroupAddon addonType="append">
+                                                    <InputGroupText>
+                                                        <i className="ni ni-zoom-split-in" />
+                                                    </InputGroupText>
+                                                </InputGroupAddon>
+                                            </InputGroup>
+                                        </FormGroup>
+                                    </Col>
+                                </Row>
+                                <Row>
+                                    <Col md="6">
+                                        <FormGroup className="has-success">
+                                            <Input
+                                                className="is-valid"
+                                                placeholder="Success"
+                                                type="text"
+                                            />
+                                        </FormGroup>
+                                    </Col>
+                                    <Col md="6">
+                                        <FormGroup className="has-danger">
+                                            <Input
+                                                className="is-invalid"
+                                                placeholder="Error Input"
+                                                type="email"
+                                            />
+                                        </FormGroup>
+                                    </Col>
+                                </Row>
+                            </Form>
+                        </> */}
+
+
                     </Row>
                 </Container>
 

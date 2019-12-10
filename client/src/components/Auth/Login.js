@@ -72,7 +72,17 @@ class Login extends Component {
               <div className="header-body text-center mb-7">
                 <Row className="justify-content-center">
                   <Col lg="5" md="6">
-                    <h1 className="text-white">The city is free.</h1>
+                    {/* <h1 className="text-white">The city is free.</h1> */}
+                    <br></br>
+                    <br></br>
+                    <br></br>
+                    <br></br>
+                    <br></br>
+                    <br></br>
+                    <br></br>
+                    <br></br>
+                    <br></br>
+                    <br></br>
                     {/* <p className="text-lead text-light">
                   The catching slogan Lena suggested which I clearly forgot.
                 </p> */}
@@ -103,7 +113,7 @@ class Login extends Component {
 
               {/* LOGIN FORM */}
               <Col lg="5" md="7">
-                <Card className="light shadow border-0">
+                <Card className="light border-0" style={{ backgroundColor: "transparent" }} >
 
                   <CardBody className="px-lg-5 py-lg-5">
                     <div className="text-center text-muted mb-4">

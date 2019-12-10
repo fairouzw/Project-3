@@ -49,16 +49,16 @@ class MyFavourites extends Component {
             <div className="col">
               <Card className="shadow">
                 <CardHeader className="border-0">
-                  <button type="button" className="btn btn-outline-danger btn-lg btn-block"> <h3 className="mb-0">My Favourites</h3></button>
+                  <button type="button" className="btn btn-danger btn-lg btn-block"> <h3 className="mb-0">My Favourites</h3></button>
                 </CardHeader>
                 <CardBody>
                   <Row style={{ justifyContent: "center" }}>
                     {this.state.listOfPosts.map((post, idx) => {
                       if (post.hasLiked) {
                         return (
-                        
+
                           <SingleFavPost key={idx} post={post} getAllPosts={this.getAllPosts} />
-                        
+
                         )
                       } else {
                       }

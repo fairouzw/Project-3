@@ -3,31 +3,26 @@ import axios from "axios";
 import "../../App.css";
 import Header from "../Home/Header.jsx";
 import { withRouter, Link } from "react-router-dom";
-import Avatar from 'react-avatar';
+import Avatar from "react-avatar";
 
 import {
-
-    Card,
-    CardHeader,
-    CardBody,
-    Container,
-    Row,
-    Col,
-    Pagination,
-    PaginationLink,
-    PaginationItem,
-    CardFooter,
-    Button,
-
-    FormGroup,
-    Form,
-    Input,
-    InputGroupAddon,
-    InputGroupText,
-    InputGroup,
-
-
-
+  Card,
+  CardHeader,
+  CardBody,
+  Container,
+  Row,
+  Col,
+  Pagination,
+  PaginationLink,
+  PaginationItem,
+  CardFooter,
+  Button,
+  FormGroup,
+  Form,
+  Input,
+  InputGroupAddon,
+  InputGroupText,
+  InputGroup
 } from "reactstrap";
 
 class AddMessage extends Component {
@@ -114,38 +109,33 @@ class AddMessage extends Component {
         content,
         recipient: recId
       })
-      .then(
-        response => {
-            this.props.history.push("/messages")
-          this.setState({
-            subject: "",
-            content: "",
+      .then(response => {
+        this.props.history.push("/messages");
+        this.setState({
+          subject: "",
+          content: "",
 
-            recipient: "",
-            recipientData: "",
-            listOfPosts: [],
-            likesNumber: 0,
-            hasLikedList: [],
+          recipient: "",
+          recipientData: "",
+          listOfPosts: [],
+          likesNumber: 0,
+          hasLikedList: []
+        });
+      });
+  };
 
-        };
-    }
+  handleChange = event => {
+    const { name, value } = event.target;
+    this.setState({ [name]: value });
+  };
 
+  render() {
+    console.log(this.props.recipient);
+    console.log("miR", this.props);
+    return (
+      <div className="main-content" ref="mainContent">
+        {/* <Header /> */}
 
-
-    handleChange = event => {
-
-        const { name, value } = event.target;
-        this.setState({ [name]: value });
-    };
-
-    render() {
-        console.log(this.props.recipient)
-        console.log('miR', this.props)
-        return (
-
-            <div className="main-content" ref="mainContent">
-                {/* <Header /> */}
-               
         <div
           className="header  pb-8 pt-5 pt-md-8"
           style={{
@@ -160,18 +150,11 @@ class AddMessage extends Component {
           <Row>
             <Col className="order-xl-2 mb-5 mb-xl-0" xl="4">
               <Card className="card-profile shadow">
-                {/* Beautiful code, I'm sorry for commenting it out for now. */}
-                {/* <div className="avatar-circle"> <span className="initials">{this.state.username[0]}</span></div> */}
                 <Row className="justify-content-center">
                   <Col className="order-lg-2" lg="3">
-                    <div className="card-profile-image">
-                      <img
-                        alt="..."
-                        className="rounded-circle"
-                        src={require("../../assets/img/theme/team-4-800x800.jpg")}
-                      />
+                    <div className="card-avatar-image">
 
-                      {/* <Avatar className="rounded-circle" name="Foo Bar"/> */}
+                      <Avatar color="green" size="175" className="rounded-circle" name={this.state.recipientData.username}/>
                     </div>
                   </Col>
                 </Row>
@@ -207,89 +190,74 @@ class AddMessage extends Component {
                     <h3>{this.state.recipientData.username}</h3>
                     <div className="h5 font-weight-300">
                       <i className="ni location_pin mr-2" />
-                      {this.state.recipientData.city},{" "}
+                      {this.state.recipientData.city}{" "}
                       {this.state.recipientData.country}
                     </div>
-                 
 
                     <hr className="my-4" />
+                  </div>
+                </CardBody>
+              </Card>
+            </Col>
+            <Col xl="8">
+              <Card className="bg-success shadow">
+                <CardHeader>
+                  <h3>Send Message to {this.state.recipientData.username}</h3>{" "}
+                </CardHeader>
+                <CardBody
+                  style={{ justifyContent: "center" }}
+                  className="bg-gradient-secondary shadow"
+                >
+                  <form onSubmit={this.handleFormSubmit}>
+                    <div className="text-center">
+                      <Col md="50" style={{ justifyContent: "center" }}>
+                        <label htmlFor="subject">Subject:</label>
+                        <FormGroup style={{ justifyContent: "center" }}>
+                          <Input
+                            id="subject"
+                            placeholder="subject"
+                            type="text"
+                            name="subject"
+                            value={this.state.subject}
+                            onChange={this.handleChange}
+                            required
+                          />
+                        </FormGroup>
+                      </Col>
+                      <Col md="50" style={{ justifyContent: "center" }}>
+                        <label htmlFor="content">Content:</label>
+                        <FormGroup>
+                          <Input
+                            id="content"
+                            placeholder="your text"
+                            type="textarea"
+                            name="content"
+                            value={this.state.content}
+                            onChange={this.handleChange}
+                            required
+                            className="form-control-alternative"
+                            rows="3"
+                          />
+                        </FormGroup>
+                      </Col>
 
-                   
-
-
-                                    </div>
-                                </CardBody>
-                            </Card>
-                        </Col>
-                        <Col xl="8">
-                            <Card className="bg-success shadow">
-                                <CardHeader><h3>Send Message to {this.state.recipientData.username}</h3> </CardHeader>
-                                <CardBody style={{ justifyContent: "center" }} className="bg-gradient-secondary shadow">
-
-
-                                    <form onSubmit={this.handleFormSubmit}>
-                                        <div className="text-center">
-                                            <Col md="50" style={{ justifyContent: "center" }}>
-                                                <label htmlFor="subject">Subject:</label>
-                                                <FormGroup style={{ justifyContent: "center" }}>
-                                                    <Input
-                                                        id="subject"
-                                                        placeholder="subject"
-                                                        type="text"
-                                                        name="subject"
-                                                        value={this.state.subject}
-                                                        onChange={this.handleChange}
-                                                        required
-
-                                                    />
-                                                </FormGroup>
-                                            </Col>
-                                            <Col md="50" style={{ justifyContent: "center" }}>
-                                                <label htmlFor="content">Content:</label>
-                                                <FormGroup>
-
-                                                    <Input
-                                                        id="content"
-                                                        placeholder="your text"
-                                                        type="textarea"
-                                                        name="content"
-                                                        value={this.state.content}
-                                                        onChange={this.handleChange}
-                                                        required
-                                                        className="form-control-alternative"
-
-                                                        rows="3"
-
-                                                    />
-
-                                                </FormGroup>
-                                            </Col>
-
-                                            <br />
-                                            <div className="marge-addmess">
-                                                <Button color="success" block size="lg"
-                                                    className="shadow btn-login text-uppercase font-weight-bold mb-2"
-                                                    type="submit"
-
-                                                >
-                                                    SEND
-            </Button>
-
-                                            </div>
-                                        </div>
-                                    </form>
-
-
-
-
-                                </CardBody>
-                            </Card>
-                        </Col>
-
-                        
-
-
-            
+                      <br />
+                      <div className="marge-addmess">
+                        <Button
+                          color="success"
+                          block
+                          size="lg"
+                          className="shadow btn-login text-uppercase font-weight-bold mb-2"
+                          type="submit"
+                        >
+                          SEND
+                        </Button>
+                      </div>
+                    </div>
+                  </form>
+                </CardBody>
+              </Card>
+            </Col>
           </Row>
         </Container>
       </div>

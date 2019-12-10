@@ -133,16 +133,11 @@ class Profile extends Component {
           <Row>
             <Col className="order-xl-2 mb-5 mb-xl-0" xl="4">
               <Card className="card-profile shadow">
-                {/* Beautiful code, I'm sorry for commenting it out for now. */}
-                {/* <div className="avatar-circle"> <span className="initials">{this.state.username[0]}</span></div> */}
+             
                 <Row className="justify-content-center">
                   <Col className="order-lg-2" lg="3">
                     <div className="card-avatar-image">
-                      {/* <img
-                        alt="..."
-                        className="rounded-circle"
-                        src={require("../../assets/img/theme/team-4-800x800.jpg")}
-                      /> */}
+                  
                       <Avatar color="#ffc107" size="175" className="rounded-circle" name={this.state.username} />
                     </div>
                   </Col>

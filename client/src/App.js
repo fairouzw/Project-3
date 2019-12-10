@@ -19,7 +19,8 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      loggedInUser: this.props.user
+      loggedInUser: this.props.user,
+      postAddedCount: 0
     };
   }
 
@@ -29,11 +30,17 @@ class App extends Component {
     });
   };
 
+  postAddedHandler = () => {
+    this.setState({
+      postAddedCount: this.state.postAddedCount + 1
+    })
+  }
+
   render() {
     return (
       <div className="App">
         {this.state.loggedInUser !== null ? (
-          <Sidebar getUser={this.getTheUser} />
+          <Sidebar getUser={this.getTheUser} postAdded={this.postAddedHandler} />
         ) : null}
         <Switch>
           <Route
@@ -78,6 +85,7 @@ class App extends Component {
             render={() => (
 
               <Home
+                key={this.state.postAddedCount} // force re/renders Home if post has been added
                 getUser={this.getTheUser}
                 userData={this.state.loggedInUser}
               />

@@ -48,7 +48,7 @@ class Modals extends React.Component {
           </div>
           <div className="modal-body">
 
-        <AddPost getAllPosts={this.props.getAllPosts} 
+        <AddPost getAllPosts={this.props.postAdded} 
         closePopup={this.toggleModal}
         />
           </div>

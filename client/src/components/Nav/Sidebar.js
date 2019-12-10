@@ -22,13 +22,15 @@ import {
   Nav,
   Container,
   Row,
-  Col
+  Col,
+  Badge
 } from "reactstrap";
 
 
 class Sidebar extends Component {
   state = {
-    collapseOpen: false
+    collapseOpen: false,
+    numberUnreadMessages: 0,
   };
 
   logoutUser = () => {
@@ -53,6 +55,23 @@ class Sidebar extends Component {
       collapseOpen: false
     });
   };
+  getAllReceivedUnreadMessagesOfLoggedInUser = () => {
+    axios.get(`/api/messages/unread`).then(res => {
+
+      this.setState({
+        numberUnreadMessages: res.data.count,
+
+      });
+    })
+  };
+
+  resetUnreadMessages = () => {
+    this.setState({ numberUnreadMessages: 0 });
+  }
+
+  componentDidMount = () => {
+    this.getAllReceivedUnreadMessagesOfLoggedInUser();
+  };
 
   render() {
 
@@ -73,7 +92,7 @@ class Sidebar extends Component {
             <span className="navbar-toggler-icon" />
           </button>
           <br />
-          Geht Noch Logo
+          <h1>Finder</h1>
           {/* <img src="../Home/icons/finder-logo.png" alt=""> </img> */}
 
           {/* User */}
@@ -223,9 +242,10 @@ class Sidebar extends Component {
                 </NavLink>
               </NavItem>
               <NavItem>
-                <NavLink tag={Link} to="/messages">
+                <NavLink tag={Link} to="/messages" onClick={this.resetUnreadMessages}>
                   <i className="ni ni-email-83 text-green" />
                   Messages
+                  {this.state.numberUnreadMessages == 0 ? <p></p> : <Badge>{this.state.numberUnreadMessages}</Badge>}
                 </NavLink>
               </NavItem>
             </Nav>

@@ -5,11 +5,12 @@ const passport = require("passport");
 const bcrypt = require("bcryptjs");
 
 const User = require("../models/user-model");
+const Message = require("../models/message-model");
 
 // /api/checkuser
 authRoutes.get("/checkuser", (req, res, next) => {
   if (req.user) {
-    res.json({ userDoc: req.user, unreadMessages: 0 });
+    res.json({ userDoc: req.user });
   } else {
     res.json({ userDoc: null });
   }

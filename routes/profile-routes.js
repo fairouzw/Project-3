@@ -57,4 +57,16 @@ router.put("/profiles/:id", (req, res, next) => {
     });
 });
 
+router.delete('/profiles/:id/delete', (req, res, next) => {
+  User.findByIdAndRemove(req.params.id)
+    .then(() => {
+      res.json({
+        message: `Project with ${req.params.id} is removed successfully.`
+      });
+    })
+    .catch(err => {
+      res.json(err);
+    });
+});
+
 module.exports = router;

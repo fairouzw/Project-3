@@ -115,6 +115,17 @@ class Profile extends Component {
     });
   }
 
+  // deleteAccount = () => {
+  //   axios.delete(`/api/profiles/${this.props.userData._id}/delete`)
+  //     .then(() => {
+  //       // this.setState({ loggedInUser: null });
+  //       // this.props.getUser(null);
+  //     })
+  //     .catch(error => {
+  //       console.log("not able to delete account", error)
+  //     })
+  // }
+
   render() {
 
     return (
@@ -181,6 +192,8 @@ class Profile extends Component {
                   </div> */}
 
                     <hr className="my-4" />
+
+                    {/* <button type="submit" className="btn btn-danger" onClick={() => this.deleteAccount()}>Delete Account</button> */}
                     {/* <p>
                       Do we really nee some text here? We don't want user-description. Focus is on the post...
                   </p> */}

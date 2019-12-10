@@ -20,8 +20,13 @@ router.get("/sent", (req, res, next) => {
 router.get("/rec", (req, res, next) => {
     Message.find({ recipient: req.user._id }).populate('recipient').populate('sender')
         .then(allRecipientMessages => {
+            allRecipientMessages.filter(message => message.read == null).forEach(message => {
+                console.log(message._id);
+                Message.findByIdAndUpdate(message._id, { read: new Date() }).exec();
+            })
             res.json(allRecipientMessages);
-        })
+        }
+        )
         .catch(err => {
             res.json(err);
         });

@@ -9,7 +9,7 @@ const User = require("../models/user-model");
 // /api/checkuser
 authRoutes.get("/checkuser", (req, res, next) => {
   if (req.user) {
-    res.json({ userDoc: req.user });
+    res.json({ userDoc: req.user, unreadMessages: 0 });
   } else {
     res.json({ userDoc: null });
   }

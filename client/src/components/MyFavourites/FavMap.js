@@ -42,8 +42,8 @@ class FavMap extends Component {
           mapboxApiAccessToken="pk.eyJ1IjoibG9zLWxlbmEiLCJhIjoiY2szNHllYzI5MTZsOTNubzI1emZ2aHFiaSJ9.v7gsBidhvQm2T5EOb_GcGA"
         >
           <Marker
-            latitude={this.state.viewport.latitude}
-            longitude={this.state.viewport.longitude}
+            latitude={this.props.selectedPost.location.lat}
+            longitude={this.props.selectedPost.location.long}
           >
             <img
               onClick={this.showPopUp}
@@ -61,8 +61,8 @@ class FavMap extends Component {
             <NavigationControl/>
           {this.state.selectedPost === false ? (
             <Popup
-              latitude={this.state.viewport.latitude}
-              longitude={this.state.viewport.longitude}
+            latitude={this.props.selectedPost.location.lat}
+            longitude={this.props.selectedPost.location.long}
               onClose={this.showPopUp}
             >
               <div>

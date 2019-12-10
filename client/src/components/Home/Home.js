@@ -4,7 +4,7 @@ import Map from "./Map";
 import axios from "axios";
 import PostList from "./PostList";
 import SearchPost from "./SearchPost";
-import Popup from "../Posts/PopUp";
+// import Popup from "../Posts/PopUp";
 import DisplayPost from "../Posts/DisplayPost";
 import Header from "./Header.jsx";
 import Modals from "./Modals";
@@ -95,11 +95,13 @@ class Home extends Component {
             <Col xl={this.state.selectedPost !== null ? 8 : 12} style={{ transition: "all ease 0.4s"}}>
               <Card className="shadow border-0">
               <CardHeader > 
+            
               <Modals
                posts={this.state.listOfPosts}
                getAllPosts={this.getAllPosts}
-               closePopup={this.togglePopup}
-               /> </CardHeader>
+               /> 
+       
+               </CardHeader>
                 {/* MAP */}
                   <Map
                     setSelectedPost={this.setSelectedPost}

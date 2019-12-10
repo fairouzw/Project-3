@@ -106,8 +106,6 @@ class Profile extends Component {
     b.forEach((post) => {
       console.log(post)
       likesNumber += post.likes
-
-
     })
     this.setState({
 
@@ -132,7 +130,6 @@ class Profile extends Component {
       <div className="main-content" ref="mainContent" >
         <UserHeader userName={this.state.username} />
         <Container className="mt--7" fluid>
-
           <Row>
             <Col className="order-xl-2 mb-5 mb-xl-0" xl="4">
               <Card className="card-profile shadow">
@@ -146,15 +143,12 @@ class Profile extends Component {
                         className="rounded-circle"
                         src={require("../../assets/img/theme/team-4-800x800.jpg")}
                       />
-
                       {/* <Avatar className="rounded-circle" name="Foo Bar"/> */}
-
                     </div>
                   </Col>
                 </Row>
                 <CardHeader className="text-center border-0 pt-8 pt-md-4 pb-0 pb-md-4">
                   <div className="d-flex justify-content-between">
-
                   </div>
                 </CardHeader>
                 <CardBody className="pt-0 pt-md-4">

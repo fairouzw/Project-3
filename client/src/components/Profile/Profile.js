@@ -143,7 +143,7 @@ class Profile extends Component {
                         className="rounded-circle"
                         src={require("../../assets/img/theme/team-4-800x800.jpg")}
                       /> */}
-                      <Avatar color="green" size="175" className="rounded-circle" name={this.state.username}/>
+                      <Avatar color="#ffc107" size="175" className="rounded-circle" name={this.state.username} />
                     </div>
                   </Col>
                 </Row>
@@ -178,7 +178,7 @@ class Profile extends Component {
                     </h3>
                     <div className="h5 font-weight-300">
                       <i className="ni location_pin mr-2" />
-                      {this.state.city}, {this.state.country}
+                      {this.state.city}  {this.state.country}
                     </div>
                     {/* <div className="h5 mt-4">
                       <i className="ni business_briefcase-24 mr-2" />
@@ -199,15 +199,10 @@ class Profile extends Component {
             <Col className="order-xl-1" xl="8">
               <Card className="bg-light shadow">
                 <CardHeader className="bg-white border-0">
-                  <Row className="align-items-center">
-                    <Col xs="8">
 
-                      <button type="button" className="btn btn-warning btn-lg btn-block"> <h3 className="mb-0">Account Details</h3></button>
-                    </Col>
-                    <Col className="text-right" xs="4">
 
-                    </Col>
-                  </Row>
+                  <button type="button" className="btn btn-warning btn-lg btn-block"> <h3 className="mb-0">My Account</h3></button>
+
                 </CardHeader>
                 <CardBody>
                   <Form onSubmit={this.handleFormSubmit}>

@@ -3,6 +3,7 @@ import axios from "axios";
 import "../../App.css";
 import Header from "../Home/Header.jsx";
 import { withRouter, Link } from "react-router-dom";
+import Avatar from 'react-avatar';
 
 import {
     Card,
@@ -14,10 +15,9 @@ import {
     Pagination,
     PaginationLink,
     PaginationItem,
-    CardFooter
-} from "reactstrap";
+    CardFooter,
+    Button,
 
-import {
     FormGroup,
     Form,
     Input,
@@ -181,15 +181,13 @@ class AddMessage extends Component {
                                 {/* <div className="avatar-circle"> <span className="initials">{this.state.username[0]}</span></div> */}
                                 <Row className="justify-content-center">
                                     <Col className="order-lg-2" lg="3">
-                                        <div className="card-profile-image">
-                                            <img
-                                                alt="..."
-                                                className="rounded-circle"
-                                                src={require("../../assets/img/theme/team-4-800x800.jpg")}
-                                            />
-
-                                            {/* <Avatar className="rounded-circle" name="Foo Bar"/> */}
-
+                                        <div className="card-avatar-image">
+                                            {/* <img
+                        alt="..."
+                        className="rounded-circle"
+                        src={require("../../assets/img/theme/team-4-800x800.jpg")}
+                      /> */}
+                                            <Avatar color="green" size="175" className="rounded-circle" name={this.state.recipientData.username} />
                                         </div>
                                     </Col>
                                 </Row>
@@ -225,7 +223,7 @@ class AddMessage extends Component {
                                         </h3>
                                         <div className="h5 font-weight-300">
                                             <i className="ni location_pin mr-2" />
-                                            {this.state.recipientData.city}, {this.state.recipientData.country}
+                                            {this.state.recipientData.city} {this.state.recipientData.country}
                                         </div>
                                         {/* <div className="h5 mt-4">
                       <i className="ni business_briefcase-24 mr-2" />
@@ -289,18 +287,14 @@ class AddMessage extends Component {
 
                                             <br />
                                             <div className="marge-addmess">
-                                                <button
-                                                    className="btn btn-lg btn-success shadow btn-block btn-login text-uppercase font-weight-bold mb-2"
+                                                <Button color="success" block size="lg"
+                                                    className="shadow btn-login text-uppercase font-weight-bold mb-2"
                                                     type="submit"
 
                                                 >
                                                     SEND
-            </button>
+            </Button>
 
-
-
-                                                <Link to={`/messages`} ><p><span className="btn btn-lg btn-outline-success shadow btn-block btn-login text-uppercase font-weight-bold mb-2"> Back to Messages</span></p></Link>
-                                                <Link to={`/home`} ><p><span className="btn btn-lg btn-outline-primary shadow btn-block btn-login text-uppercase font-weight-bold mb-2"> Back Home</span></p></Link>
                                             </div>
                                         </div>
                                     </form>

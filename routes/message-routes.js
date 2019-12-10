@@ -17,6 +17,12 @@ router.get("/sent", (req, res, next) => {
         });
 })
 
+router.get("/unread", (req, res, next) => {
+    Message.count({ read: null, recipient: req.user._id }).then(count => {
+        res.json({ count });
+    });
+});
+
 router.get("/rec", (req, res, next) => {
     Message.find({ recipient: req.user._id }).populate('recipient').populate('sender')
         .then(allRecipientMessages => {
@@ -87,6 +93,7 @@ router.post('/new-message/:id', (req, res, next) => {
         read: req.body.read,
         recipient: req.body.recipient,
         sender: req.user,
+        read: null,
 
     }).then((message) => {
 

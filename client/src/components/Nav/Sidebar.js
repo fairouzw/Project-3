@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import Modals from "../Home/Modals";
+import logo from '../Home/icons/finder-logo.png';
 
 // reactstrap components
 import {
@@ -92,8 +93,7 @@ class Sidebar extends Component {
             <span className="navbar-toggler-icon" />
           </button>
           <br />
-          <h1>Finder</h1>
-          {/* <img src="../Home/icons/finder-logo.png" alt=""> </img> */}
+          <img className="logo-size" src={logo} alt="" />
 
           {/* User */}
           <Nav className="align-items-center d-md-none">
@@ -128,7 +128,7 @@ class Sidebar extends Component {
                 </DropdownItem>
                 <DropdownItem to="/profile" tag={Link}>
                   <i className="ni ni-circle-08" />
-                  <span>Account details</span>
+                  <span>My Account</span>
                 </DropdownItem>
                 <DropdownItem to="/my-posts" tag={Link}>
                   <i className="ni ni-pin-3" />
@@ -206,12 +206,12 @@ class Sidebar extends Component {
               </NavItem>
 
 
-              
+
               <NavItem>
-              <Modals
-               posts={this.state.listOfPosts}
-               postAdded={this.props.postAdded}
-               /> 
+                <Modals
+                  posts={this.state.listOfPosts}
+                  postAdded={this.props.postAdded}
+                />
               </NavItem>
             </Nav>
             {/* Divider */}
@@ -223,7 +223,7 @@ class Sidebar extends Component {
               <NavItem>
                 <NavLink tag={Link} to="/profile">
                   <i className="ni ni-circle-08 text-orange" />
-                  Account details
+                  My Account
                 </NavLink>
               </NavItem>
               <NavItem>
@@ -241,8 +241,8 @@ class Sidebar extends Component {
               <NavItem>
                 <NavLink tag={Link} to="/messages" onClick={this.resetUnreadMessages}>
                   <i className="ni ni-email-83 text-green" />
-                  Messages
-                  {this.state.numberUnreadMessages == 0 ? <p></p> : <Badge>{this.state.numberUnreadMessages}</Badge>}
+                  My Messages
+                  {this.state.numberUnreadMessages == 0 ? <p></p> : <p>   <Badge color="success">{this.state.numberUnreadMessages}</Badge> </p>}
                 </NavLink>
               </NavItem>
             </Nav>

@@ -3,27 +3,31 @@ import axios from "axios";
 import "../../App.css";
 import Header from "../Home/Header.jsx";
 import { withRouter, Link } from "react-router-dom";
+import Avatar from 'react-avatar';
 
 import {
-  Card,
-  CardHeader,
-  CardBody,
-  Container,
-  Row,
-  Col,
-  Pagination,
-  PaginationLink,
-  PaginationItem,
-  CardFooter
-} from "reactstrap";
 
-import {
-  FormGroup,
-  Form,
-  Input,
-  InputGroupAddon,
-  InputGroupText,
-  InputGroup
+    Card,
+    CardHeader,
+    CardBody,
+    Container,
+    Row,
+    Col,
+    Pagination,
+    PaginationLink,
+    PaginationItem,
+    CardFooter,
+    Button,
+
+    FormGroup,
+    Form,
+    Input,
+    InputGroupAddon,
+    InputGroupText,
+    InputGroup,
+
+
+
 } from "reactstrap";
 
 class AddMessage extends Component {
@@ -116,35 +120,32 @@ class AddMessage extends Component {
           this.setState({
             subject: "",
             content: "",
-            recipient: ""
-          });
-        }
 
-        //     () => {
-        //     this.props.getAllMessagesOfLoggedInUser()
-        //     this.props.closeMessagePopup(event);
-        //     this.setState({
-        //         subject: "",
-        //         content: ""
+            recipient: "",
+            recipientData: "",
+            listOfPosts: [],
+            likesNumber: 0,
+            hasLikedList: [],
 
-        //     })
+        };
+    }
 
-        //         .catch(error => console.log(error));
-        // }
-      );
-  };
 
-  handleChange = event => {
-    const { name, value } = event.target;
-    this.setState({ [name]: value });
-  };
 
-  render() {
-    console.log(this.props.recipient);
-    console.log("miR", this.props);
-    return (
-      <div className="main-content" ref="mainContent">
-        {/* <Header /> */}
+    handleChange = event => {
+
+        const { name, value } = event.target;
+        this.setState({ [name]: value });
+    };
+
+    render() {
+        console.log(this.props.recipient)
+        console.log('miR', this.props)
+        return (
+
+            <div className="main-content" ref="mainContent">
+                {/* <Header /> */}
+               
         <div
           className="header  pb-8 pt-5 pt-md-8"
           style={{
@@ -209,161 +210,86 @@ class AddMessage extends Component {
                       {this.state.recipientData.city},{" "}
                       {this.state.recipientData.country}
                     </div>
-                    {/* <div className="h5 mt-4">
-                      <i className="ni business_briefcase-24 mr-2" />
-                      Test
-                  </div> */}
+                 
 
                     <hr className="my-4" />
 
-                    {/* <button type="submit" className="btn btn-danger" onClick={() => this.deleteAccount()}>Delete Account</button> */}
-                    {/* <p>
-                      Do we really nee some text here? We don't want user-description. Focus is on the post...
-                  </p> */}
-                  </div>
-                </CardBody>
-              </Card>
-            </Col>
-            <Col xl="8">
-              <Card className="bg-success shadow">
-                <CardHeader>
-                  <h3>Send Message to {this.state.recipientData.username}</h3>{" "}
-                </CardHeader>
-                <CardBody
-                  style={{ justifyContent: "center" }}
-                  className="bg-gradient-secondary shadow"
-                >
-                  <form onSubmit={this.handleFormSubmit}>
-                    <div className="text-center">
-                      <Col md="50" style={{ justifyContent: "center" }}>
-                        <label htmlFor="subject">Subject:</label>
-                        <FormGroup style={{ justifyContent: "center" }}>
-                          <Input
-                            id="subject"
-                            placeholder="subject"
-                            type="text"
-                            name="subject"
-                            value={this.state.subject}
-                            onChange={this.handleChange}
-                            required
-                          />
-                        </FormGroup>
-                      </Col>
-                      <Col md="50" style={{ justifyContent: "center" }}>
-                        <label htmlFor="content">Content:</label>
-                        <FormGroup>
-                          <Input
-                            id="content"
-                            placeholder="your text"
-                            type="textarea"
-                            name="content"
-                            value={this.state.content}
-                            onChange={this.handleChange}
-                            required
-                            className="form-control-alternative"
-                            rows="3"
-                          />
-                        </FormGroup>
-                      </Col>
+                   
 
-                      <br />
-                      <div className="marge-addmess">
-                        <button
-                          className="btn btn-lg btn-success shadow btn-block btn-login text-uppercase font-weight-bold mb-2"
-                          type="submit"
-                        >
-                          SEND
-                        </button>
 
-                        <Link to={`/messages`}>
-                          <p>
-                            <span className="btn btn-lg btn-outline-success shadow btn-block btn-login text-uppercase font-weight-bold mb-2">
-                              {" "}
-                              Back to Messages
-                            </span>
-                          </p>
-                        </Link>
-                        <Link to={`/home`}>
-                          <p>
-                            <span className="btn btn-lg btn-outline-primary shadow btn-block btn-login text-uppercase font-weight-bold mb-2">
-                              {" "}
-                              Back Home
-                            </span>
-                          </p>
-                        </Link>
-                      </div>
-                    </div>
-                  </form>
-                </CardBody>
-              </Card>
-            </Col>
+                                    </div>
+                                </CardBody>
+                            </Card>
+                        </Col>
+                        <Col xl="8">
+                            <Card className="bg-success shadow">
+                                <CardHeader><h3>Send Message to {this.state.recipientData.username}</h3> </CardHeader>
+                                <CardBody style={{ justifyContent: "center" }} className="bg-gradient-secondary shadow">
 
-            {/* <>
-                            <Form>
-                                <Row>
-                                    <Col md="6">
-                                        <FormGroup>
-                                            <Input
-                                                id="exampleFormControlInput1"
-                                                placeholder="name@example.com"
-                                                type="email"
-                                            />
-                                        </FormGroup>
-                                    </Col>
-                                    <Col md="6">
-                                        <FormGroup>
-                                            <Input disabled placeholder="Regular" type="textarea" />
-                                        </FormGroup>
-                                    </Col>
-                                </Row>
-                                <Row>
-                                    <Col md="6">
-                                        <FormGroup>
-                                            <InputGroup className="mb-4">
-                                                <InputGroupAddon addonType="prepend">
-                                                    <InputGroupText>
-                                                        <i className="ni ni-zoom-split-in" />
-                                                    </InputGroupText>
-                                                </InputGroupAddon>
-                                                <Input placeholder="Search" type="text" />
-                                            </InputGroup>
-                                        </FormGroup>
-                                    </Col>
-                                    <Col md="6">
-                                        <FormGroup>
-                                            <InputGroup className="mb-4">
-                                                <Input placeholder="Birthday" type="text" />
-                                                <InputGroupAddon addonType="append">
-                                                    <InputGroupText>
-                                                        <i className="ni ni-zoom-split-in" />
-                                                    </InputGroupText>
-                                                </InputGroupAddon>
-                                            </InputGroup>
-                                        </FormGroup>
-                                    </Col>
-                                </Row>
-                                <Row>
-                                    <Col md="6">
-                                        <FormGroup className="has-success">
-                                            <Input
-                                                className="is-valid"
-                                                placeholder="Success"
-                                                type="text"
-                                            />
-                                        </FormGroup>
-                                    </Col>
-                                    <Col md="6">
-                                        <FormGroup className="has-danger">
-                                            <Input
-                                                className="is-invalid"
-                                                placeholder="Error Input"
-                                                type="email"
-                                            />
-                                        </FormGroup>
-                                    </Col>
-                                </Row>
-                            </Form>
-                        </> */}
+
+                                    <form onSubmit={this.handleFormSubmit}>
+                                        <div className="text-center">
+                                            <Col md="50" style={{ justifyContent: "center" }}>
+                                                <label htmlFor="subject">Subject:</label>
+                                                <FormGroup style={{ justifyContent: "center" }}>
+                                                    <Input
+                                                        id="subject"
+                                                        placeholder="subject"
+                                                        type="text"
+                                                        name="subject"
+                                                        value={this.state.subject}
+                                                        onChange={this.handleChange}
+                                                        required
+
+                                                    />
+                                                </FormGroup>
+                                            </Col>
+                                            <Col md="50" style={{ justifyContent: "center" }}>
+                                                <label htmlFor="content">Content:</label>
+                                                <FormGroup>
+
+                                                    <Input
+                                                        id="content"
+                                                        placeholder="your text"
+                                                        type="textarea"
+                                                        name="content"
+                                                        value={this.state.content}
+                                                        onChange={this.handleChange}
+                                                        required
+                                                        className="form-control-alternative"
+
+                                                        rows="3"
+
+                                                    />
+
+                                                </FormGroup>
+                                            </Col>
+
+                                            <br />
+                                            <div className="marge-addmess">
+                                                <Button color="success" block size="lg"
+                                                    className="shadow btn-login text-uppercase font-weight-bold mb-2"
+                                                    type="submit"
+
+                                                >
+                                                    SEND
+            </Button>
+
+                                            </div>
+                                        </div>
+                                    </form>
+
+
+
+
+                                </CardBody>
+                            </Card>
+                        </Col>
+
+                        
+
+
+            
           </Row>
         </Container>
       </div>

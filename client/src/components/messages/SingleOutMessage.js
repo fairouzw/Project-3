@@ -31,7 +31,7 @@ class SingleOutMessage extends Component {
                 <div>Content: {this.props.message.content}</div>
 
                 <p>{this.props.message.read}</p>
-                <p> Posted <span className="date timeago" title={timeAgo}>{timeAgo}</span> </p>
+                <p> sent <span className="date timeago" title={timeAgo}>{timeAgo}</span> </p>
                 <br></br>
             </div>
 

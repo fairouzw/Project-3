@@ -1,4 +1,3 @@
-
 import React from "react";
 
 // reactstrap components
@@ -9,10 +8,11 @@ class UserHeader extends React.Component {
     return (
       <>
         <div
-          className="header pb-8 pt-5 pt-lg-8 d-flex align-items-center"
+          className="header  pb-8 pt-5 pt-md-8"
           style={{
             minHeight: "400px",
-            backgroundImage: "url(" + require("../../assets/img/berlin-pics/adam-vradenburg-TK5I5L5JGxY-unsplash.jpg") + ")",
+            backgroundImage:
+              "url(" + require("../Home/icons/profile-fresh.jpg") + ")",
             backgroundSize: "cover",
             backgroundPosition: "center top"
           }}

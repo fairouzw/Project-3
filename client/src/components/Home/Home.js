@@ -93,20 +93,13 @@ class Home extends Component {
         <Container className="mt--7" fluid>
           <Row>
             <Col xl={this.state.selectedPost !== null ? 8 : 12} style={{ transition: "all ease 0.4s"}}>
-              <Card className="shadow border-0">
-              <CardHeader > 
-            
-              {/* <Modals
-               posts={this.state.listOfPosts}
-               getAllPosts={this.getAllPosts}
-               />  */}
-       
-               </CardHeader>
+              <Card style={{borderRadius: "25px"}} className="shadow border-0">
                 {/* MAP */}
                   <Map
                     setSelectedPost={this.setSelectedPost}
                     selectedPost={this.state.selectedPost}
                     posts={this.state.filteredListOfPosts}
+                    
                   />
               </Card>
             </Col>
@@ -190,21 +183,6 @@ class Home extends Component {
             </div>
           </Row>
         </Container>
-        {/* ORIGINAL CONTENT */}
-     {/*    <div className="addPadding">
-          <div className="popup-button">
-            <h1>Add Post</h1>
-            <button onClick={this.togglePopup}>show popup</button>
-            {this.state.showPopup ? (
-              <Popup
-                posts={this.state.listOfPosts}
-                text="Your next post:"
-                closePopup={this.togglePopup}
-                getAllPosts={this.getAllPosts}
-              />
-              ) : null}
-          </div>
-        </div> */}
       </div>
     );
   }

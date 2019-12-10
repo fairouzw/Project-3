@@ -96,10 +96,10 @@ class Home extends Component {
               <Card className="shadow border-0">
               <CardHeader > 
             
-              <Modals
+              {/* <Modals
                posts={this.state.listOfPosts}
                getAllPosts={this.getAllPosts}
-               /> 
+               />  */}
        
                </CardHeader>
                 {/* MAP */}

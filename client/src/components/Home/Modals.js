@@ -4,6 +4,7 @@ import AddPost from '../Posts/AddPost'
 import {
   Button,
   Modal,
+  NavLink
 } from "reactstrap";
 
 class Modals extends React.Component {
@@ -19,13 +20,21 @@ class Modals extends React.Component {
     return (
       <>
         {/* Button trigger modal */}
-        <Button
+        {/* <Button
           color="primary"
           type="button"
           onClick={() => this.toggleModal("exampleModal")}
         >
           Create a Post
-        </Button>
+        </Button> */}
+
+        
+                <NavLink  onClick={() => this.toggleModal("exampleModal")}>
+                  <i className="ni ni-fat-add text-orange" />
+                  Create Post
+                </NavLink>
+
+
         {/* Modal */}
         <Modal
           className="modal-dialog-centered"
@@ -53,6 +62,8 @@ class Modals extends React.Component {
         />
           </div>
           <div className="modal-footer">
+
+         
             <Button
               color="secondary"
               data-dismiss="modal"

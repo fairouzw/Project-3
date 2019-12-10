@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import axios from "axios";
 import "../../App.css";
-// import Avatar from 'react-avatar';
+import Avatar from 'react-avatar';
 
 import {
   Button,
@@ -137,13 +137,13 @@ class Profile extends Component {
                 {/* <div className="avatar-circle"> <span className="initials">{this.state.username[0]}</span></div> */}
                 <Row className="justify-content-center">
                   <Col className="order-lg-2" lg="3">
-                    <div className="card-profile-image">
-                      <img
+                    <div className="card-avatar-image">
+                      {/* <img
                         alt="..."
                         className="rounded-circle"
                         src={require("../../assets/img/theme/team-4-800x800.jpg")}
-                      />
-                      {/* <Avatar className="rounded-circle" name="Foo Bar"/> */}
+                      /> */}
+                      <Avatar color="green" size="175" className="rounded-circle" name={this.state.username}/>
                     </div>
                   </Col>
                 </Row>

@@ -187,15 +187,12 @@ class Sidebar extends Component {
               </NavItem>
 
 
+              
+              <NavItem>
               <Modals
                posts={this.state.listOfPosts}
                postAdded={this.props.postAdded}
                /> 
-              <NavItem>
-                <NavLink tag={Link} to="/home">
-                  <i className="ni ni-fat-add text-orange" />
-                  Create Post
-                </NavLink>
               </NavItem>
             </Nav>
             {/* Divider */}

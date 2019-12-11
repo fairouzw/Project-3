@@ -4,7 +4,7 @@ import AddComment from "../Posts/AddComment";
 import LikeButton from "../Posts/LikeButton";
 import moment from "moment";
 import axios from "axios";
-import { Card, CardImg, CardTitle } from "reactstrap";
+import { Card, CardImg, CardTitle, CardHeader, CardText, CardBody, CardFooter, Badge } from "reactstrap";
 
 class SingleFavPost extends Component {
   constructor(props) {
@@ -50,6 +50,21 @@ class SingleFavPost extends Component {
     var timeAgo = moment(this.props.post.createdAt).fromNow();
     return (
       <Card>
+      <CardHeader> 
+      <div className="posted-by-container">
+              <div className="posted-by-box">
+                {/* posted by */}  <i className="ni ni-single-02 text-blue" />
+                <Link to={`/messages/new-message/${this.props.post.owner._id}`}>
+                  {" "}
+                  <span className="owner icon-text">
+                    {this.props.post.owner.username}{" "}
+                    <i className="ni ni-email-83 text-blue icon-message" />
+                  </span>{" "}
+                </Link>
+              </div>
+            </div>
+      </CardHeader>
+
         <div className="one-post">
           <CardImg
             style={{
@@ -60,21 +75,9 @@ class SingleFavPost extends Component {
             src={this.props.post.imgUrl}
             alt=""
           ></CardImg>
+           <CardBody style={{ textAlign: "center" }}>
           <CardTitle>{this.props.post.postname}</CardTitle>
-          <div className="posted-by-container">
-            <div className="posted-by-box">
-              {" "}
-              posted by{" "}
-              <Link to={`/messages/new-message/${this.props.post.owner._id}`}>
-                {" "}
-                <span className="owner icon-text">
-                  {this.props.post.owner.username}{" "}
-                  <i className="ni ni-email-83 text-blue icon-message" />
-                </span>{" "}
-              </Link>
-            </div>
-          </div>
-          <div>{this.props.description}</div>
+          <CardText >{this.props.description}
           <Link to={`/posts/${this.props.post._id}`}>
             <p>{this.props.post.address}</p>
           </Link>
@@ -86,12 +89,14 @@ class SingleFavPost extends Component {
             </span>{" "}
           </p>
           <LikeButton
+            style={{ textAlign: "center" }}
             likeCounter={this.state.post.likes}
             toggleLike={this.toggleLike}
             post={this.state.post}
           />
-          <br />
+         
           <hr />
+          </CardText>
           <p>
             {this.state.comments.map((c, idx) => {
               return (
@@ -102,10 +107,20 @@ class SingleFavPost extends Component {
               );
             })}
           </p>
+          </CardBody>
           <AddComment
             addComment={this.addCommentHandler}
             post={this.state.post}
           />
+            <CardFooter>
+            {this.props.post.tags.map(tag => {
+              return (
+                <Badge color="primary" pill>
+                  {tag}
+                </Badge>
+              );
+            })}
+          </CardFooter>
         </div>
       </Card>
     );

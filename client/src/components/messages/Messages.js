@@ -126,7 +126,7 @@ class Messages extends Component {
                                     </div>
 
                                 </CardBody>
-                                <CardFooter className="py-4">
+                                {/* <CardFooter className="py-4">
                                     <nav aria-label="...">
                                         <Pagination
                                             className="pagination justify-content-end mb-0"
@@ -177,28 +177,13 @@ class Messages extends Component {
                                             </PaginationItem>
                                         </Pagination>
                                     </nav>
-                                </CardFooter>
+                                </CardFooter> */}
                             </Card>
                         </div>
                     </Row>
                 </Container>
                 {/* ORIGINAL CONTENT */}
-                <div className="addPadding">
-                    <header className="masthead">
-                        <p>The streets are yours.</p>
-                        <div className="container h-100 px-lg-5">
-                            <div className="row mx-lg-n5">
-                                <div className="col-12 col-md-8 py-3 px-lg-5">
-                                    {/* this.state.filteredListOfPosts */}
-                                </div>
-                                <div className="col-6 col-md-4 py-3 px-lg-5">
-                                </div>
-                            </div>
-                        </div>
-                    </header>
 
-
-                </div>
             </div >
         );
     }

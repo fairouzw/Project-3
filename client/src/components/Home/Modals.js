@@ -1,7 +1,6 @@
 import React from "react";
 import AddPost from "../Posts/AddPost";
-// reactstrap components
-import { Button, Modal, NavLink } from "reactstrap";
+import { Modal, NavLink } from "reactstrap";
 
 class Modals extends React.Component {
   state = {

@@ -4,7 +4,7 @@ import LikeButton from "./LikeButton"
 import moment from "moment";
 import axios from "axios";
 import { Link } from "react-router-dom";
-import { Badge, Card, CardTitle, CardImg } from "reactstrap";
+import { Badge, Card, CardImg } from "reactstrap";
 
 class SinglePost extends Component {
     constructor(props) {
@@ -50,7 +50,7 @@ class SinglePost extends Component {
         return (
             <Card>
             <div className="one-post">
-                <CardImg style={{height:"200px", width:"80%"}} className="post-pic"src={this.props.post.imgUrl} alt=""></CardImg>
+                <CardImg style={{height:"200px", objectFit: "contain"}} className="post-pic"src={this.props.post.imgUrl} alt=""></CardImg>
             
                 <h5>{this.props.post.postname}</h5>
                <div className="posted-by-container"><div className="posted-by-box"> posted by <Link to={`/messages/new-message/${this.props.post.owner._id}`}> <span className="owner icon-text">{this.props.post.owner.username}  <i className="ni ni-email-83 text-blue icon-message" /></span> </Link></div></div>

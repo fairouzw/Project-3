@@ -64,11 +64,11 @@ class Home extends Component {
       });
 
       if (p.postname.toLowerCase().includes(search.toLowerCase())) {
-        results.push(p);
+       return results.push(p);
       }
 
       if (p.description.toLowerCase().includes(search.toLowerCase())) {
-        results.push(p);
+        return results.push(p);
       }
     });
 

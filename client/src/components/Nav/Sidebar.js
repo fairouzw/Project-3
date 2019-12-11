@@ -7,16 +7,11 @@ import logo from '../Home/icons/finder-logo.png';
 // reactstrap components
 import {
   Collapse,
-  DropdownMenu,
-  DropdownItem,
-  UncontrolledDropdown,
-  DropdownToggle,
   Form,
   Input,
   InputGroupAddon,
   InputGroupText,
   InputGroup,
-  Media,
   Navbar,
   NavItem,
   NavLink,
@@ -186,7 +181,7 @@ class Sidebar extends Component {
                 <NavLink tag={Link} to="/messages" onClick={this.resetUnreadMessages}>
                   <i className="ni ni-email-83 text-green" />
                   My Messages
-                  {this.state.numberUnreadMessages == 0 ? <p></p> : <p>   <Badge color="success">{this.state.numberUnreadMessages}</Badge> </p>}
+                  {this.state.numberUnreadMessages === 0 ? <p></p> : <p>   <Badge color="success">{this.state.numberUnreadMessages}</Badge> </p>}
                 </NavLink>
               </NavItem>
             </Nav>

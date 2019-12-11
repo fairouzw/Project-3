@@ -22,7 +22,8 @@
 }
 
 .location-icon {
-  height: 60px;
+  height: 150px;
+  object-fit: contain;
 }
 
 .post-pic {

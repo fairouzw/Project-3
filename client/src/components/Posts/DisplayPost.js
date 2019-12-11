@@ -1,12 +1,12 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-import { Badge, Card, CardTitle, CardImg } from "reactstrap";
+import { Card, CardImg } from "reactstrap";
 class DisplayPost extends Component {
   render() {
       return (
         <Card >
           <div className="one-post">
-          <CardImg style={{height:"200px", width:"80%"}} className="post-pic" src={this.props.selectedPost.imgUrl} alt="" />
+          <CardImg style={{height:"200px", objectFit: "contain"}} className="post-pic" src={this.props.selectedPost.imgUrl} alt="" />
           <p>{this.props.selectedPost.postname}</p>
           <p>{this.props.selectedPost.address}</p>
           <div>

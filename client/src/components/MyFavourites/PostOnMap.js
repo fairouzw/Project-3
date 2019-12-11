@@ -6,7 +6,7 @@ import FavMap from "./FavMap";
 import axios from "axios";
 import { withRouter } from "react-router-dom";
 
-import { Card, CardBody, Container, Row, Col } from "reactstrap";
+import { Card, Container, Row, Col } from "reactstrap";
 
 class PostDetails extends Component {
   constructor() {

@@ -109,6 +109,7 @@ class App extends Component {
             path="/my-posts"
             render={() => (
               <MyPosts
+                key={this.state.postAddedCount}
                 getUser={this.getTheUser}
                 userData={this.state.loggedInUser}
               />

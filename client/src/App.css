@@ -32,14 +32,22 @@
 /* .all-posts {
   display: flex;
 } */
-.one-post {
+.one-post-con {
   /* border: 1px solid rgb(200, 200, 200); */
-  width: 300px;
+  display: flex;
+  flex-direction: row;
   margin-left: 20px;
   margin-right: 20px;
   margin-top: 20px;
   margin-bottom: 10px;
-  text-align: center;
+  text-align: left;
+}
+.single-post {
+  /* border: 1px solid rgb(200, 200, 200); */
+  display: flex;
+}
+.single-post-margin {
+  margin-left: 40px;
 }
 
 .popup {

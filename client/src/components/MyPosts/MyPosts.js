@@ -56,31 +56,40 @@ class MyPosts extends Component {
   };
 
 
-  handleChange = e => {
-    const { name, value } = e.target;
-    this.setState({
-      [name]: value
-    });
-  };
+    render() {
+        return (
+            <div className="main-content" ref="mainContent">
+                {/* <UserHeader userName={this.state.username} /> */}
+                <div className="header  pb-8 pt-5 pt-md-8"
+                    style={{
+                        minHeight: "400px",
+                        backgroundImage: "url(" + require("../Home/icons/myposts.jpg") + ")",
+                        backgroundSize: "cover",
+                        backgroundPosition: "center top"
+                    }}></div>
+                <Container className="mt--7" fluid>
+                    <Row className="mt-5">
+                        <div className="col">
+                            <Card className="shadow">
+                                <CardHeader className="border-0">
+                                    <Button
+                                        style={{ "backgroundColor": 'tortilla', "border-color": "tortilla" }}
+                                        block
+                                        size="lg"> <h3 className="mb-0">My Posts</h3></Button>
+                                    {/* <button
+                                        type="button"
+                                        className="btn btn-primary btn-lg btn-block"
+                                    >
+                                        {" "}
+                                        <h3 className="mb-0">
+                                            {" "}
+                                            {/* <SearchPost searchPost={this.searchResultPost} /> */}
+                                    {/* My Posts
 
-  render() {
-    return (
-      <div className="main-content" ref="mainContent">
-        <UserHeader userName={this.state.username} />
-        <Container className="mt--7" fluid>
-          <Row className="mt-5">
-            <div className="col">
-              <Card className="shadow">
-                <CardHeader className="border-0">
-                  <button
-                    type="button"
-                    className="btn btn-primary btn-lg btn-block"
-                  >
-                    {" "}
-                    <h3 className="mb-0">
-                      {" "}
-                      {/* <SearchPost searchPost={this.searchResultPost} /> */}
+
+*/}
                       All My Posts
+
                     </h3>
                   </button>
                 </CardHeader>

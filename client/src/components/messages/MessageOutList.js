@@ -2,20 +2,22 @@ import React, { Component } from "react";
 import SingleOutMessage from "./SingleOutMessage"
 
 import {
-    Row
+    Row,
+    ListGroup,
+    ListGroupItem
 } from 'reactstrap';
 
 class MessageList extends Component {
 
     render() {
         return (
-            <Row style={{ justifyContent: "center" }}>
+            <ListGroup style={{ justifyContent: "center" }}>
                 {this.props.messages.map((message, idx) => {
                     return (
-                        <SingleOutMessage key={idx} message={message} />
+                        <ListGroupItem> <SingleOutMessage key={idx} message={message} /></ListGroupItem>
                     )
                 })}
-            </Row>
+            </ListGroup>
         );
     }
 }

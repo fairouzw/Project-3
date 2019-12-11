@@ -172,7 +172,7 @@ class Sidebar extends Component {
               </NavItem>
               <NavItem>
                 <NavLink tag={Link} to="/my-posts">
-                  <i className="ni ni-pin-3 text-blue" />
+                  <i className="ni ni-pin-3 text-tortilla" />
                   My Posts
                 </NavLink>
               </NavItem>

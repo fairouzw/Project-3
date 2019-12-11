@@ -80,7 +80,7 @@ class MyPosts extends Component {
                             <Card className="shadow">
                                 <CardHeader className="border-0">
                                     <Button
-                                        style={{ "backgroundColor": '#6375E8', "border-color": "#6375E8" }}
+                                        style={{ "backgroundColor": 'tortilla', "border-color": "tortilla" }}
                                         block
                                         size="lg"> <h3 className="mb-0">My Posts</h3></Button>
                                     {/* <button

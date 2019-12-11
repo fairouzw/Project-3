@@ -6,21 +6,18 @@ import UserHeader from "../Profile/UserHeader.jsx";
 
 import {
 
-  Card,
-  CardImg,
-  CardHeader,
-  CardBody,
-  Container,
-  Row,
-  Pagination,
-  PaginationLink,
-  PaginationItem,
+    Card,
+    CardImg,
+    CardHeader,
+    CardBody,
+    Container,
+    Row,
+    Pagination,
+    PaginationLink,
+    PaginationItem,
     Button,
     Col,
-    CardFooter,
-    Pagination,
-
-
+    CardFooter
 } from "reactstrap";
 // core components
 

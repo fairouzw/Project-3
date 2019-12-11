@@ -47,7 +47,7 @@ class FavMap extends Component {
           >
             <img
               onClick={this.showPopUp}
-              src={require("../Home/icons/google-location.jpg")}
+              src={require("../Home/icons/blue.png")}
               alt="location-icon"
               className="marker-icon"
             />
@@ -58,11 +58,11 @@ class FavMap extends Component {
             trackUserLocation={true}
             zoom="18"
           />
-            <NavigationControl/>
+          <NavigationControl />
           {this.state.selectedPost === false ? (
             <Popup
-            latitude={this.props.selectedPost.location.lat}
-            longitude={this.props.selectedPost.location.long}
+              latitude={this.props.selectedPost.location.lat}
+              longitude={this.props.selectedPost.location.long}
               onClose={this.showPopUp}
             >
               <div>

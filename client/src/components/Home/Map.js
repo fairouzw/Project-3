@@ -41,7 +41,7 @@ class Map extends Component {
     return (
       <div >
 
-       
+
         <ReactMapGL
           {...this.state.viewport}
           onViewportChange={this.customizeMap}
@@ -60,7 +60,7 @@ class Map extends Component {
                     onClick={() => {
                       this.props.setSelectedPost(post);
                     }}
-                    src={require("./icons/google-location.jpg")}
+                    src={require("./icons/blue.png")}
                     alt="location-icon"
                     className="marker-icon"
                   />
@@ -72,9 +72,9 @@ class Map extends Component {
           <GeolocateControl
             positionOption={{ enableHighAccuracy: true }}
             trackUserLocation={true}
-            
+
           />
-          <NavigationControl/>
+          <NavigationControl />
           {this.props.selectedPost !== null ? (
             <Popup
               latitude={this.props.selectedPost.location.lat}
@@ -87,8 +87,8 @@ class Map extends Component {
               </div>
             </Popup>
           ) : null}
-  </ReactMapGL> 
-        
+        </ReactMapGL>
+
       </div>
     );
   }

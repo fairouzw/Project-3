@@ -21,10 +21,10 @@ class SingleOutMessage extends Component {
         return (
             <div className="single-post">
                 <div className="one-post-con">
-
-                    <div className="single-post-margin"> Subject:<h3>{this.props.message.subject}</h3></div>
-                    <div className="single-post-margin">sent to <Link to={`/messages/new-message/${this.state.message.recipient._id}`} ><p><h4><span className="owner"> {this.props.message.recipient.username}</span></h4></p></Link>
+                    <div className="single-post-margin">Sent to <Link to={`/messages/new-message/${this.state.message.recipient._id}`} ><p><h3><span className="owner"> {this.props.message.recipient.username}</span></h3></p></Link>
                     </div>
+                    <div className="single-post-margin"> Subject:<h2>{this.props.message.subject}</h2></div>
+
                     {/* <div>sent by
                     <Link to={`/messages/new-message/${this.state.message.sender._id}`} ><p><span className="owner"> {this.props.message.sender.username}</span></p></Link>
                 </div> */}

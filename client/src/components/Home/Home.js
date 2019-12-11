@@ -4,11 +4,10 @@ import Map from "./Map";
 import axios from "axios";
 import PostList from "./PostList";
 import SearchPost from "./SearchPost";
-// import Popup from "../Posts/PopUp";
 import DisplayPost from "../Posts/DisplayPost";
 import Header from "./Header.jsx";
-import Modals from "./Modals";
-
+import Loader from "react-loader-spinner";
+import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
 
 import {
   Card,
@@ -47,6 +46,9 @@ class Home extends Component {
 
   componentDidMount = () => {
     this.getAllPosts();
+    this.setState({
+      isLoading: false
+    });
   };
 
   searchResultPost = search => {
@@ -92,24 +94,37 @@ class Home extends Component {
         <Header />
         <Container className="mt--7" fluid>
           <Row>
-            <Col xl={this.state.selectedPost !== null ? 8 : 12} style={{ transition: "all ease 0.4s"}}>
-              <Card style={{borderRadius: "25px"}} className="shadow border-0">
+            <Col
+              xl={this.state.selectedPost !== null ? 8 : 12}
+              style={{ transition: "all ease 0.4s" }}
+            >
+              <Card
+                style={{ borderRadius: "25px" }}
+                className="shadow border-0"
+              >
                 {/* MAP */}
+                {this.state.isLoading ? (
+                  <Loader
+                    type="Oval"
+                    color="blue"
+                    height={100}
+                    width={100}
+                    timeout={5000}
+                  />
+                ) : (
                   <Map
                     setSelectedPost={this.setSelectedPost}
                     selectedPost={this.state.selectedPost}
                     posts={this.state.filteredListOfPosts}
-                    
                   />
+                )}
               </Card>
             </Col>
             {this.state.selectedPost !== null ? (
               <Col xl="4">
                 <Card className="shadow border-0">
-                  <CardBody>
-                    {/* DISPLAYED POST */}
-                      <DisplayPost selectedPost={this.state.selectedPost} />
-                  </CardBody>
+                  {/* DISPLAYED POST */}
+                  <DisplayPost selectedPost={this.state.selectedPost} />
                 </Card>
               </Col>
             ) : null}

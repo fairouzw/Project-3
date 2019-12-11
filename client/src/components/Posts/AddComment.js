@@ -8,14 +8,15 @@ class AddComment extends Component {
     super(props);
     this.state = {
       comment: "",
-      postId: this.props.post._id,
-      post: this.props.post
+      post: this.props.post,
+      postId: this.props.post._id
     };
   }
 
   handleFormSubmit = event => {
     event.preventDefault();
     const { comment, postId } = this.state;
+
     axios
       .post("/api/comments/new-comment", { comment, postId })
       .then(response => {
@@ -64,14 +65,6 @@ class AddComment extends Component {
                  </Button>
         </InputGroupAddon>
           </InputGroup>
-          {/* <div>
-            <button
-              className="btn btn-sm btn-primary btn-block btn-login text-uppercase font-weight-bold mb-2"
-              type="submit"
-            >
-              Add Comment
-            </button>
-          </div> */}
         </form>
       </div>
     );

@@ -2,21 +2,13 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import "../../App.css";
 import {
-  Button,
   Card,
   CardBody,
   FormGroup,
   Form,
-  Input,
-  InputGroupAddon,
-  InputGroupText,
-  InputGroup,
   Container,
   Row,
   Col,
-  NavItem,
-  NavLink,
-  Nav
 } from "reactstrap";
 import "../../assets/vendor/nucleo/css/nucleo.css"
 import "../../assets/vendor/@fortawesome/fontawesome-free/css/all.min.css";

@@ -4,15 +4,12 @@ import React, { Component } from "react";
 import "../../App.css";
 import MessageList from "./MessageList";
 import MessageOutList from "./MessageOutList";
-import Header from "../Home/Header.jsx";
 
 import {
     Card,
-    CardHeader,
     CardBody,
     Container,
     Row,
-    Col,
     Pagination,
     PaginationLink,
     PaginationItem,

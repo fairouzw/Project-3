@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import ReactMapGL, { Marker, Popup, GeolocateControl, NavigationControl } from "react-map-gl";
-import { inheritInnerComments } from "@babel/types";
+// import Loader from 'react-loader-spinner'
+// import "react-loader-spinner/dist/loader/css/react-spinner-loader.css"
 
 class Map extends Component {
 
@@ -13,7 +14,8 @@ class Map extends Component {
       zoom: 11,
       borderRadius: "inherit"
     },
-    userLocation: {}
+    userLocation: {},
+    isLoading: true
   };
 
   customizeMap = viewport => {
@@ -29,9 +31,17 @@ class Map extends Component {
     this.props.setSelectedPost(null)
   };
 
+  // componentDidMount = () => {
+  //   this.setState({
+  //     isLoading: false }
+  //   )
+  // }
+
   render() {
     return (
       <div >
+
+       
         <ReactMapGL
           {...this.state.viewport}
           onViewportChange={this.customizeMap}
@@ -77,7 +87,8 @@ class Map extends Component {
               </div>
             </Popup>
           ) : null}
-        </ReactMapGL>
+  </ReactMapGL> 
+        
       </div>
     );
   }

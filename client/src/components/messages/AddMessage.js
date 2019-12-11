@@ -14,7 +14,7 @@ import {
   Button,
   FormGroup,
   Input,
-  
+
 } from "reactstrap";
 
 class AddMessage extends Component {
@@ -122,8 +122,7 @@ class AddMessage extends Component {
   };
 
   render() {
-    console.log(this.props.recipient);
-    console.log("miR", this.props);
+
     return (
       <div className="main-content" ref="mainContent">
         {/* <Header /> */}
@@ -146,7 +145,7 @@ class AddMessage extends Component {
                   <Col className="order-lg-2" lg="3">
                     <div className="card-avatar-image">
 
-                      <Avatar color="green" size="175" className="rounded-circle" name={this.state.recipientData.username}/>
+                      <Avatar color="#B0CBE0" size="175" className="rounded-circle" name={this.state.recipientData.username} />
                     </div>
                   </Col>
                 </Row>
@@ -192,8 +191,8 @@ class AddMessage extends Component {
               </Card>
             </Col>
             <Col xl="8">
-              <Card className="bg-success shadow">
-                <CardHeader>
+              <Card className="shadow">
+                <CardHeader className="border-0">
                   <h3>Send Message to {this.state.recipientData.username}</h3>{" "}
                 </CardHeader>
                 <CardBody
@@ -236,10 +235,8 @@ class AddMessage extends Component {
                       <br />
                       <div className="marge-addmess">
                         <Button
-                          color="success"
-                          block
-                          size="lg"
-                          className="shadow btn-login text-uppercase font-weight-bold mb-2"
+                          id="btn-submit"
+                          className="shadow btn-login btn-block text-uppercase font-weight-bold mb-2"
                           type="submit"
                         >
                           SEND

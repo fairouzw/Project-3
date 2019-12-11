@@ -142,7 +142,7 @@ class Sidebar extends Component {
             <Nav className="mb-md-3" navbar>
               <NavItem>
                 <NavLink tag={Link} to="/home">
-                  <i className="ni ni-square-pin text-primary" />
+                  <i className="ni ni-square-pin" />
                   Home
                 </NavLink>
               </NavItem>
@@ -156,30 +156,30 @@ class Sidebar extends Component {
             {/* Divider */}
             <hr className="my-3" />
             {/* Heading */}
-            <h6 className="navbar-heading text-muted">My Profile</h6>
+            <h6 className="navbar-heading ">My Profile</h6>
             {/* Navigation */}
             <Nav className="mb-md-3" navbar>
               <NavItem>
                 <NavLink tag={Link} to="/profile">
-                  <i className="ni ni-circle-08 text-warning" />
+                  <i className="ni ni-circle-08 " />
                   My Account
                 </NavLink>
               </NavItem>
               <NavItem>
                 <NavLink tag={Link} to="/my-posts">
-                  <i className="ni ni-pin-3 text-blue" />
+                  <i className="ni ni-pin-3" />
                   My Posts
                 </NavLink>
               </NavItem>
               <NavItem>
                 <NavLink tag={Link} to="/favourites">
-                  <i className="ni ni-favourite-28 text-red" />
+                  <i className="ni ni-favourite-28 " />
                   My Favourites
                 </NavLink>
               </NavItem>
               <NavItem>
                 <NavLink tag={Link} to="/messages" onClick={this.resetUnreadMessages}>
-                  <i className="ni ni-email-83 text-green" />
+                  <i className="ni ni-email-83 " />
                   My Messages
                   {this.state.numberUnreadMessages === 0 ? <p></p> : <p>   <Badge color="success">{this.state.numberUnreadMessages}</Badge> </p>}
                 </NavLink>
@@ -189,7 +189,7 @@ class Sidebar extends Component {
             <Nav className="mb-md-3" navbar>
               <NavItem>
                 <NavLink onClick={this.logoutUser} href="/">
-                  <i className="ni ni-button-power text-yellow" />
+                  <i className="ni ni-button-power text-warning" />
                   Logout
                 </NavLink>
               </NavItem>

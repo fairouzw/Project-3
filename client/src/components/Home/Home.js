@@ -64,7 +64,7 @@ class Home extends Component {
       });
 
       if (p.postname.toLowerCase().includes(search.toLowerCase())) {
-       return results.push(p);
+        return results.push(p);
       }
 
       if (p.description.toLowerCase().includes(search.toLowerCase())) {
@@ -95,7 +95,7 @@ class Home extends Component {
         <div className="header  pb-8 pt-5 pt-md-8"
           style={{
             minHeight: "400px",
-            backgroundImage: "url(" + require("../Home/icons/kreuzung.jpg") + ")",
+            backgroundImage: "url(" + require("../Home/icons/julia-solonina-J-g3s9eHsMM-unsplash.jpg") + ")",
             backgroundSize: "cover",
             backgroundPosition: "center top"
           }}></div>
@@ -149,7 +149,7 @@ class Home extends Component {
                 <CardBody>
                   <PostList posts={this.state.filteredListOfPosts}></PostList>
                 </CardBody>
-                <CardFooter className="py-4">
+                {/* <CardFooter className="py-4">
                   <nav aria-label="...">
                     <Pagination
                       className="pagination justify-content-end mb-0"
@@ -200,11 +200,12 @@ class Home extends Component {
                       </PaginationItem>
                     </Pagination>
                   </nav>
-                </CardFooter>
+                </CardFooter> */}
               </Card>
             </div>
           </Row>
         </Container>
+        <footer>Photo by Julia Solonina on Unsplash</footer>
       </div>
     );
   }

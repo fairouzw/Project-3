@@ -9,6 +9,7 @@ import {
     Button,
     Card,
     CardBody,
+    CardHeader,
     Container,
     Row,
     Pagination,
@@ -83,7 +84,9 @@ class Messages extends Component {
     // }
 
     render() {
+        console.log(this.state.listOfReceivedMessages)
         return (
+
             <div className="main-content" ref="mainContent">
                 {/* <Header /> */}
                 <div className="header  pb-8 pt-5 pt-md-8"
@@ -113,17 +116,29 @@ class Messages extends Component {
                                 </CardHeader> */}
                                 <CardBody>
 
-                                    <Button
-                                        style={{ "backgroundColor": '#38CD8B', "border-color": "#38CD8B" }}
-                                        block
-                                        size="lg"> <h3 className="mb-0">My Messages</h3></Button>
-                                    <div>
-                                        <MessageList messages={this.state.listOfReceivedMessages} ></MessageList>
-                                    </div>
+                                    {this.state.listOfReceivedMessages.length == 0 ? <h3 >You have received no messages so far.</h3> :
+                                        (<div><CardHeader className="border-0">
+                                            <h3 className="mb-0">My Messages (Inbox)</h3>
+                                        </CardHeader>
+
+                                            <div>
+                                                <MessageList messages={this.state.listOfReceivedMessages} ></MessageList></div></div>)
+
+                                    }
+
                                     <br></br>
-                                    <div><button type="button" className="btn btn-secondary btn-lg btn-block"><h3>Outbox</h3></button>
-                                        <MessageOutList messages={this.state.listOfSentMessages} ></MessageOutList>
-                                    </div>
+                                    {this.state.listOfSentMessages.length == 0 ? <h3 >You've been writing no wrote no messages so far.</h3> :
+                                        (<div> <CardHeader className="border-0" fgColor="#195D8C">
+                                            <h3 className="mb-0" fgColor="#195D8C">My Messages (Outbox)</h3>
+                                        </CardHeader>
+
+                                            <div>
+                                                <MessageOutList messages={this.state.listOfSentMessages} ></MessageOutList>
+                                            </div></div>)
+
+                                    }
+
+
 
                                 </CardBody>
                                 {/* <CardFooter className="py-4">
@@ -182,6 +197,7 @@ class Messages extends Component {
                         </div>
                     </Row>
                 </Container>
+                <footer>Photo by Lena Lau</footer>
                 {/* ORIGINAL CONTENT */}
 
             </div >

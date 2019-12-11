@@ -1,23 +1,26 @@
-
 import React from "react";
 
 // reactstrap components
-import {Container, Row } from "reactstrap";
+import { Container, Row } from "reactstrap";
 
 class Header extends React.Component {
   render() {
     return (
       <>
-        <div className="header  pb-8 pt-5 pt-md-8"
-         style={{
-          minHeight: "400px",
-          backgroundImage: "url(" + require("../../assets/img/berlin-pics/adam-vradenburg-TK5I5L5JGxY-unsplash.jpg") + ")",
-          backgroundSize: "cover",
-          backgroundPosition: "center top"
-        }}>
+        <div
+          className="header  pb-8 pt-5 pt-md-8"
+          style={{
+            minHeight: "400px",
+            backgroundImage:
+              "url(" +
+              require("../Home/icons/marvin-meyer-ZwIQUXKns40-unsplash.jpg") +
+              ")",
+            backgroundSize: "cover",
+            backgroundPosition: "center top"
+          }}
+        >
           <Container fluid>
-            <div className="header-body"
-             >
+            <div className="header-body">
               {/* Card stats */}
               <Row>
                 {/* <Col lg="6" xl="3">

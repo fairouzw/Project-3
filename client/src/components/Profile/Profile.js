@@ -138,7 +138,7 @@ class Profile extends Component {
                   <Col className="order-lg-2" lg="3">
                     <div className="card-avatar-image">
 
-                      <Avatar color="#ffc107" fgColor="#323256" size="175" className="rounded-circle" name={this.state.username} />
+                      <Avatar color="#FE9D49" fgColor="#195d8c" size="175" className="rounded-circle" name={this.state.username} />
                     </div>
                   </Col>
                 </Row>
@@ -196,9 +196,7 @@ class Profile extends Component {
                 <CardHeader className="bg-white border-0">
 
 
-                  <Button color="warning"
-                    block
-                    size="lg"> <h3 className="mb-0">My Account</h3></Button>
+                  <h3>My Account</h3>
 
                 </CardHeader>
                 <CardBody>
@@ -289,13 +287,15 @@ class Profile extends Component {
                           </FormGroup>
                         </Col>
                       </Row>
-                      <Button
-                        color="primary"
-                        size="sm"
-                        type="submit"
-                      >
-                        Save
+                      <div className="marge-addmess">
+                        <Button
+                          id="btn-submit"
+                          className="shadow btn-login text-uppercase font-weight-bold "
+                          type="submit"
+                        >
+                          Save
                     </Button>
+                      </div>
                     </div>
                     <hr className="my-4" />
                     {/* Address */}
@@ -321,7 +321,7 @@ class Profile extends Component {
             </Col>
           </Row>
         </Container>
-        <footer>Photo by Lena Lau</footer>
+        <footer>Photo by Anastasia Dulgier</footer>
 
 
       </div>

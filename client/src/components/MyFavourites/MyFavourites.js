@@ -40,20 +40,25 @@ class MyFavourites extends Component {
     return (
       <div className="main-content" ref="mainContent" >
         {/* <Header /> */}
-        <div className="header  pb-8 pt-5 pt-md-8"
+        <div
+          className="header  pb-8 pt-5 pt-md-8"
           style={{
             minHeight: "400px",
-            backgroundImage: "url(" + require("../Home/icons/myfav.jpg") + ")",
+            backgroundImage:
+              "url(" +
+              require("../Home/icons/eric-ward-P6NhhvGIL9k-unsplash.jpg") +
+              ")",
             backgroundSize: "cover",
             backgroundPosition: "center top"
-          }}></div>
+          }}
+        ></div>
         <Container className="mt--7" fluid>
           {/* Table */}
           <Row className="mt-5">
             <div className="col">
               <Card className="shadow">
                 <CardHeader className="border-0">
-                  <button type="button" className="btn btn-danger btn-lg btn-block"> <h3 className="mb-0">My Favourites</h3></button>
+                  <h3 className="mb-0">My Favourites</h3>
                 </CardHeader>
                 <CardBody>
                     {this.state.listOfPosts.length === 0 ? <h4>You haven't liked anything yet.</h4> : 
@@ -80,7 +85,7 @@ class MyFavourites extends Component {
           </Row>
 
         </Container>
-        <footer>Photo by Lena Lau</footer>
+        <footer>Photo by Eric Ward</footer>
       </div>
 
     )

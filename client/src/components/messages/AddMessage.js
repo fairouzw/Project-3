@@ -1,8 +1,7 @@
 import React, { Component } from "react";
 import axios from "axios";
 import "../../App.css";
-import Header from "../Home/Header.jsx";
-import { withRouter, Link } from "react-router-dom";
+import { withRouter } from "react-router-dom";
 import Avatar from "react-avatar";
 
 import {
@@ -12,17 +11,10 @@ import {
   Container,
   Row,
   Col,
-  Pagination,
-  PaginationLink,
-  PaginationItem,
-  CardFooter,
   Button,
   FormGroup,
-  Form,
   Input,
-  InputGroupAddon,
-  InputGroupText,
-  InputGroup
+  
 } from "reactstrap";
 
 class AddMessage extends Component {
@@ -102,7 +94,7 @@ class AddMessage extends Component {
     const recId = this.props.match.params.id;
     event.preventDefault();
     console.log("i clicked");
-    const { subject, content, recipient } = this.state;
+    const { subject, content } = this.state;
     axios
       .post(`/api/messages/new-message/${recId}`, {
         subject,

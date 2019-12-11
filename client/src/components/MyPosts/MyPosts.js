@@ -17,7 +17,7 @@ import {
     PaginationItem,
     Button,
     Col,
-    CardFooter
+    CardFooter,
 } from "reactstrap";
 // core components
 

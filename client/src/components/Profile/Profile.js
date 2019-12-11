@@ -321,7 +321,7 @@ class Profile extends Component {
             </Col>
           </Row>
         </Container>
-
+        <footer>Photo by Lena Lau</footer>
 
 
       </div>

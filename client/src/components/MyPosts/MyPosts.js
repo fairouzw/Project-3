@@ -186,7 +186,7 @@ class MyPosts extends Component {
                         </div>
                     </Row>
                 </Container>
-                <footer>Photo by Dimitris Chatzieleftheriou on Unsplash</footer>
+                <footer>Photo by Lena Lau</footer>
             </div>
         );
     }

@@ -60,7 +60,7 @@ class MyFavourites extends Component {
                 </CardHeader>
                 <CardBody>
                   <Row style={{ justifyContent: "center" }}>
-                  
+
                     {this.state.listOfPosts.map((post, idx) => {
                       if (post.hasLiked) {
                         return (
@@ -71,7 +71,7 @@ class MyFavourites extends Component {
                       } else {
                       }
                     })}
-                  
+
                   </Row>
                 </CardBody>
                 <CardFooter className="py-4">
@@ -131,7 +131,7 @@ class MyFavourites extends Component {
           </Row>
 
         </Container>
-        <footer>Photo by Anastase Maragos on Unsplash</footer>
+        <footer>Photo by Lena Lau</footer>
       </div>
 
     )

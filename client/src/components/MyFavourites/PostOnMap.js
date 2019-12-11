@@ -57,12 +57,12 @@ class PostDetails extends Component {
             </Col>
             <Col xl="4">
               <Card className="bg-gradient-secondary shadow">
-                <CardBody>
+                
                   {/* DISPLAYED POST */}
                   {this.state.selectedPost ? (
                     <DisplayPost selectedPost={this.state.selectedPost} />
                   ) : null}
-                </CardBody>
+               
               </Card>
             </Col>
           </Row>

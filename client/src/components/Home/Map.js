@@ -39,13 +39,13 @@ class Map extends Component {
 
   render() {
     return (
-
+      <div>
         <ReactMapGL
           {...this.state.viewport}
           onViewportChange={this.customizeMap}
           mapStyle="mapbox://styles/los-lena/ck34ysrdu0fd61cqhbk6ai0fc"
           mapboxApiAccessToken="pk.eyJ1IjoibG9zLWxlbmEiLCJhIjoiY2szNHllYzI5MTZsOTNubzI1emZ2aHFiaSJ9.v7gsBidhvQm2T5EOb_GcGA"
-       
+
         >
           {this.props.posts.map((post, idx) => {
             return (

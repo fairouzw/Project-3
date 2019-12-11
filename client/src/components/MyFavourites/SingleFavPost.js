@@ -110,6 +110,7 @@ class SingleFavPost extends Component {
       </Card>
     );
   }
+
 }
 
 export default SingleFavPost;

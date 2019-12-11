@@ -39,13 +39,13 @@ class Map extends Component {
 
   render() {
     return (
-      <div  >
+      <div>
         <ReactMapGL
           {...this.state.viewport}
           onViewportChange={this.customizeMap}
           mapStyle="mapbox://styles/los-lena/ck34ysrdu0fd61cqhbk6ai0fc"
           mapboxApiAccessToken="pk.eyJ1IjoibG9zLWxlbmEiLCJhIjoiY2szNHllYzI5MTZsOTNubzI1emZ2aHFiaSJ9.v7gsBidhvQm2T5EOb_GcGA"
-       
+
         >
           {this.props.posts.map((post, idx) => {
             return (
@@ -59,7 +59,7 @@ class Map extends Component {
                     onClick={() => {
                       this.props.setSelectedPost(post);
                     }}
-                    src={require("./icons/google-location.jpg")}
+                    src={require("./icons/blue.png")}
                     alt="location-icon"
                     className="marker-icon"
                   />
@@ -71,9 +71,9 @@ class Map extends Component {
           <GeolocateControl
             positionOption={{ enableHighAccuracy: true }}
             trackUserLocation={true}
-            
+
           />
-          <NavigationControl/>
+          <NavigationControl />
           {this.props.selectedPost !== null ? (
             <Popup
               latitude={this.props.selectedPost.location.lat}
@@ -86,8 +86,8 @@ class Map extends Component {
               </div>
             </Popup>
           ) : null}
-  </ReactMapGL> 
-        
+        </ReactMapGL>
+
       </div>
     );
   }

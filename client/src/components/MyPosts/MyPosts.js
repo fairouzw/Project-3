@@ -5,16 +5,22 @@ import UpdatePost from "../Posts/UpdatePost";
 import UserHeader from "../Profile/UserHeader.jsx";
 
 import {
+
   Card,
   CardImg,
   CardHeader,
   CardBody,
   Container,
   Row,
-  CardFooter,
   Pagination,
   PaginationLink,
-  PaginationItem
+  PaginationItem,
+    Button,
+    Col,
+    CardFooter,
+    Pagination,
+
+
 } from "reactstrap";
 // core components
 
@@ -51,6 +57,7 @@ class MyPosts extends Component {
       })
       .catch(error => console.log(error));
   };
+
 
   handleChange = e => {
     const { name, value } = e.target;
@@ -129,6 +136,7 @@ class MyPosts extends Component {
                         >
                           <i className="fas fa-angle-left" />
                           <span className="sr-only">Previous</span>
+
                         </PaginationLink>
                       </PaginationItem>
                       <PaginationItem className="active">
@@ -138,6 +146,7 @@ class MyPosts extends Component {
                         >
                           1
                         </PaginationLink>
+
                       </PaginationItem>
                       <PaginationItem>
                         <PaginationLink
@@ -168,6 +177,7 @@ class MyPosts extends Component {
                   </nav>
                 </CardFooter>
               </Card>
+
             </div>
           </Row>
         </Container>

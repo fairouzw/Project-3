@@ -133,12 +133,12 @@ class Profile extends Component {
           <Row>
             <Col className="order-xl-2 mb-5 mb-xl-0" xl="4">
               <Card className="card-profile shadow">
-             
+
                 <Row className="justify-content-center">
                   <Col className="order-lg-2" lg="3">
                     <div className="card-avatar-image">
-                  
-                      <Avatar color="#ffc107" size="175" className="rounded-circle" name={this.state.username} />
+
+                      <Avatar color="#ffc107" fgColor="#323256" size="175" className="rounded-circle" name={this.state.username} />
                     </div>
                   </Col>
                 </Row>
@@ -196,7 +196,9 @@ class Profile extends Component {
                 <CardHeader className="bg-white border-0">
 
 
-                  <button type="button" className="btn btn-warning btn-lg btn-block"> <h3 className="mb-0">My Account</h3></button>
+                  <Button color="warning"
+                    block
+                    size="lg"> <h3 className="mb-0">My Account</h3></Button>
 
                 </CardHeader>
                 <CardBody>
@@ -256,7 +258,7 @@ class Profile extends Component {
                           </label>
                             <Input
                               className="form-control-alternative"
-                              defaultValue="Berlin"
+
                               id="input-city"
                               placeholder="City"
                               type="text"
@@ -276,7 +278,7 @@ class Profile extends Component {
                           </label>
                             <Input
                               className="form-control-alternative"
-                              defaultValue="Germany"
+
                               id="input-country"
                               placeholder="Country"
                               type="text"
@@ -319,7 +321,7 @@ class Profile extends Component {
             </Col>
           </Row>
         </Container>
-
+        <footer>Photo by Lena Lau</footer>
 
 
       </div>

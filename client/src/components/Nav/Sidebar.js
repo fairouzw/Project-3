@@ -91,7 +91,7 @@ class Sidebar extends Component {
           <img className="logo-size" src={logo} alt="" />
 
           {/* User */}
-         
+
           {/* Collapse */}
           <Collapse navbar isOpen={this.state.collapseOpen}>
             {/* Collapse header */}
@@ -161,7 +161,7 @@ class Sidebar extends Component {
             <Nav className="mb-md-3" navbar>
               <NavItem>
                 <NavLink tag={Link} to="/profile">
-                  <i className="ni ni-circle-08 text-orange" />
+                  <i className="ni ni-circle-08 text-warning" />
                   My Account
                 </NavLink>
               </NavItem>

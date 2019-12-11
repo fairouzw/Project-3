@@ -205,6 +205,10 @@
   height: auto;
   margin-right: 50px;
 }
+
+.marge-userheader {
+  margin-left: 20px;
+}
 /* SIGN-UP SAMPLE STARTS */
 
 :root {

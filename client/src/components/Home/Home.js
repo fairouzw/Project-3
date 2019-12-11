@@ -91,7 +91,14 @@ class Home extends Component {
   render() {
     return (
       <div className="main-content" ref="mainContent">
-        <Header />
+        {/* <Header /> */}
+        <div className="header  pb-8 pt-5 pt-md-8"
+          style={{
+            minHeight: "400px",
+            backgroundImage: "url(" + require("../Home/icons/kreuzung.jpg") + ")",
+            backgroundSize: "cover",
+            backgroundPosition: "center top"
+          }}></div>
         <Container className="mt--7" fluid>
           <Row>
             <Col
@@ -112,12 +119,12 @@ class Home extends Component {
                     timeout={5000}
                   />
                 ) : (
-                  <Map
-                    setSelectedPost={this.setSelectedPost}
-                    selectedPost={this.state.selectedPost}
-                    posts={this.state.filteredListOfPosts}
-                  />
-                )}
+                    <Map
+                      setSelectedPost={this.setSelectedPost}
+                      selectedPost={this.state.selectedPost}
+                      posts={this.state.filteredListOfPosts}
+                    />
+                  )}
               </Card>
             </Col>
             {this.state.selectedPost !== null ? (

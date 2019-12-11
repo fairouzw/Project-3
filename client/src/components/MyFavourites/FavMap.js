@@ -38,7 +38,7 @@ class FavMap extends Component {
         <ReactMapGL
           {...this.state.viewport}
           onViewportChange={this.customizeMap}
-          mapStyle="mapbox://styles/los-lena/ck34ysrdu0fd61cqhbk6ai0fc"
+          mapStyle="mapbox://styles/los-lena/ck41oz6ad08sn1cqjts63kbke"
           mapboxApiAccessToken="pk.eyJ1IjoibG9zLWxlbmEiLCJhIjoiY2szNHllYzI5MTZsOTNubzI1emZ2aHFiaSJ9.v7gsBidhvQm2T5EOb_GcGA"
         >
           <Marker

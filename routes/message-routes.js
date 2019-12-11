@@ -9,9 +9,12 @@ const mongoose = require("mongoose");
 
 router.get("/sent", (req, res, next) => {
     Message.find({ sender: req.user._id }).populate('sender').populate('recipient')
+
         .then(allSenderMessages => {
+            allSenderMessages.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt))
             res.json(allSenderMessages);
         })
+
         .catch(err => {
             res.json(err);
         });
@@ -26,6 +29,7 @@ router.get("/unread", (req, res, next) => {
 router.get("/rec", (req, res, next) => {
     Message.find({ recipient: req.user._id }).populate('recipient').populate('sender')
         .then(allRecipientMessages => {
+            allRecipientMessages.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt))
             allRecipientMessages.filter(message => message.read == null).forEach(message => {
                 console.log(message._id);
                 Message.findByIdAndUpdate(message._id, { read: new Date() }).exec();

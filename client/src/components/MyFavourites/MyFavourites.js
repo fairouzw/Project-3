@@ -8,9 +8,6 @@ import {
   CardHeader,
   CardFooter,
   CardBody,
-  Pagination,
-  PaginationItem,
-  PaginationLink,
   Container,
   Row
 } from "reactstrap";
@@ -59,8 +56,8 @@ class MyFavourites extends Component {
                   <button type="button" className="btn btn-danger btn-lg btn-block"> <h3 className="mb-0">My Favourites</h3></button>
                 </CardHeader>
                 <CardBody>
+                    {this.state.listOfPosts.length === 0 ? <h4>You haven't liked anything yet.</h4> : 
                   <Row style={{ justifyContent: "center" }}>
-
                     {this.state.listOfPosts.map((post, idx) => {
                       if (post.hasLiked) {
                         return (
@@ -73,58 +70,10 @@ class MyFavourites extends Component {
                     })}
 
                   </Row>
+                  }
                 </CardBody>
                 <CardFooter className="py-4">
-                  <nav aria-label="...">
-                    <Pagination
-                      className="pagination justify-content-end mb-0"
-                      listClassName="justify-content-end mb-0"
-                    >
-                      <PaginationItem className="disabled">
-                        <PaginationLink
-                          href="#pablo"
-                          onClick={e => e.preventDefault()}
-                          tabIndex="-1"
-                        >
-                          <i className="fas fa-angle-left" />
-                          <span className="sr-only">Previous</span>
-                        </PaginationLink>
-                      </PaginationItem>
-                      <PaginationItem className="active">
-                        <PaginationLink
-                          href="#pablo"
-                          onClick={e => e.preventDefault()}
-                        >
-                          1
-                        </PaginationLink>
-                      </PaginationItem>
-                      <PaginationItem>
-                        <PaginationLink
-                          href="#pablo"
-                          onClick={e => e.preventDefault()}
-                        >
-                          2 <span className="sr-only">(current)</span>
-                        </PaginationLink>
-                      </PaginationItem>
-                      <PaginationItem>
-                        <PaginationLink
-                          href="#pablo"
-                          onClick={e => e.preventDefault()}
-                        >
-                          3
-                        </PaginationLink>
-                      </PaginationItem>
-                      <PaginationItem>
-                        <PaginationLink
-                          href="#pablo"
-                          onClick={e => e.preventDefault()}
-                        >
-                          <i className="fas fa-angle-right" />
-                          <span className="sr-only">Next</span>
-                        </PaginationLink>
-                      </PaginationItem>
-                    </Pagination>
-                  </nav>
+                
                 </CardFooter>
               </Card>
             </div>

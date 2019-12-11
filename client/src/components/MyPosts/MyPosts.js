@@ -5,19 +5,15 @@ import UpdatePost from "../Posts/UpdatePost";
 import UserHeader from "../Profile/UserHeader.jsx";
 
 import {
-
-    Card,
-    CardImg,
-    CardHeader,
-    CardBody,
-    Container,
-    Row,
-    Pagination,
-    PaginationLink,
-    PaginationItem,
-    Button,
-    Col,
-    CardFooter,
+  Card,
+  CardImg,
+  CardText,
+  CardBody,
+  Container,
+  Row,
+  CardHeader,
+  CardTitle,
+  CardFooter
 } from "reactstrap";
 // core components
 
@@ -55,7 +51,6 @@ class MyPosts extends Component {
       .catch(error => console.log(error));
   };
 
-
   handleChange = e => {
     const { name, value } = e.target;
     this.setState({
@@ -77,104 +72,57 @@ class MyPosts extends Component {
                     className="btn btn-primary btn-lg btn-block"
                   >
                     {" "}
-                    <h3 className="mb-0">
-                      {" "}
-                      {/* <SearchPost searchPost={this.searchResultPost} /> */}
-                      All My Posts
-                    </h3>
+                    <h3 className="mb-0"> All My Posts</h3>
                   </button>
                 </CardHeader>
-                <CardBody>
+                <Card>
                   <div className="all-posts">
-                    <Row style={{ justifyContent: "center" }}>
-                      {this.state.listOfPosts.map(post => {
-                        return (
-                          <Card>
-                            <div className="one-post" key={post._id}>
-                              <CardImg
-                                className="post-pic"
-                                src={post.imgUrl}
-                                alt=""
-                                style={{ height: "250px", objectFit: "contain"}}
-                              />
-                              <br></br>
-                              <h3 key={post._id}>{post.postname}</h3>
-                              <div>{post.description}</div>
-                              <br></br>
-                              <UpdatePost
-                                posts={this.state.listOfPosts}
-                                id={post._id}
-                                postname={post.postname}
-                                description={post.description}
-                                imgUrl={post.imgUrl}
-                                getAllUserPosts={this.getAllUserPosts}
-                              >
-                                {" "}
-                                Test
-                              </UpdatePost>
-                            </div>
-                          </Card>
-                        );
-                      })}
-                    </Row>
+                    {this.state.listOfPosts.length === 0 ? (
+                      <h4>You have no posts yet.</h4>
+                    ) : (
+                      <Row style={{ justifyContent: "center" }}>
+                        {this.state.listOfPosts.map(post => {
+                          return (
+                            <Card>
+                              <div className="one-post" key={post._id}>
+                                <CardImg
+                                  className="post-pic"
+                                  src={post.imgUrl}
+                                  alt=""
+                                  style={{
+                                    height: "250px",
+                                    objectFit: "contain"
+                                  }}
+                                />
+                                <CardBody style={{ textAlign: "center" }} >
+                                  <CardTitle key={post._id}>
+                                    {post.postname}
+                                  </CardTitle>
+                                  <CardText>
+                                    <div>{post.description}</div>
+                                    <UpdatePost
+                                      posts={this.state.listOfPosts}
+                                      id={post._id}
+                                      postname={post.postname}
+                                      description={post.description}
+                                      imgUrl={post.imgUrl}
+                                      getAllUserPosts={this.getAllUserPosts}
+                                    >
+                                      {" "}
+                                      Test
+                                    </UpdatePost>
+                                  </CardText>
+                                </CardBody>
+                              </div>
+                            </Card>
+                          );
+                        })}
+                      </Row>
+                    )}
                   </div>
-                </CardBody>
-                <CardFooter className="py-4">
-                  <nav aria-label="...">
-                    <Pagination
-                      className="pagination justify-content-end mb-0"
-                      listClassName="justify-content-end mb-0"
-                    >
-                      <PaginationItem className="disabled">
-                        <PaginationLink
-                          href="#pablo"
-                          onClick={e => e.preventDefault()}
-                          tabIndex="-1"
-                        >
-                          <i className="fas fa-angle-left" />
-                          <span className="sr-only">Previous</span>
-
-                        </PaginationLink>
-                      </PaginationItem>
-                      <PaginationItem className="active">
-                        <PaginationLink
-                          href="#pablo"
-                          onClick={e => e.preventDefault()}
-                        >
-                          1
-                        </PaginationLink>
-
-                      </PaginationItem>
-                      <PaginationItem>
-                        <PaginationLink
-                          href="#pablo"
-                          onClick={e => e.preventDefault()}
-                        >
-                          2 <span className="sr-only">(current)</span>
-                        </PaginationLink>
-                      </PaginationItem>
-                      <PaginationItem>
-                        <PaginationLink
-                          href="#pablo"
-                          onClick={e => e.preventDefault()}
-                        >
-                          3
-                        </PaginationLink>
-                      </PaginationItem>
-                      <PaginationItem>
-                        <PaginationLink
-                          href="#pablo"
-                          onClick={e => e.preventDefault()}
-                        >
-                          <i className="fas fa-angle-right" />
-                          <span className="sr-only">Next</span>
-                        </PaginationLink>
-                      </PaginationItem>
-                    </Pagination>
-                  </nav>
-                </CardFooter>
+                </Card>
+                <CardFooter className="py-4"></CardFooter>
               </Card>
-
             </div>
           </Row>
         </Container>

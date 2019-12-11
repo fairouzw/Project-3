@@ -4,6 +4,8 @@ import "../../App.css";
 import UpdatePost from "../Posts/UpdatePost";
 
 import {
+
+    Button,
     Card,
     CardImg,
     CardHeader,
@@ -64,13 +66,24 @@ class MyPosts extends Component {
     render() {
         return (
             <div className="main-content" ref="mainContent">
-                <UserHeader userName={this.state.username} />
+                {/* <UserHeader userName={this.state.username} /> */}
+                <div className="header  pb-8 pt-5 pt-md-8"
+                    style={{
+                        minHeight: "400px",
+                        backgroundImage: "url(" + require("../Home/icons/myposts.jpg") + ")",
+                        backgroundSize: "cover",
+                        backgroundPosition: "center top"
+                    }}></div>
                 <Container className="mt--7" fluid>
                     <Row className="mt-5">
                         <div className="col">
                             <Card className="shadow">
                                 <CardHeader className="border-0">
-                                    <button
+                                    <Button
+                                        style={{ "backgroundColor": '#6375E8', "border-color": "#6375E8" }}
+                                        block
+                                        size="lg"> <h3 className="mb-0">My Posts</h3></Button>
+                                    {/* <button
                                         type="button"
                                         className="btn btn-primary btn-lg btn-block"
                                     >
@@ -78,9 +91,9 @@ class MyPosts extends Component {
                                         <h3 className="mb-0">
                                             {" "}
                                             {/* <SearchPost searchPost={this.searchResultPost} /> */}
-                                            All My Posts
+                                    {/* My Posts
                     </h3>
-                                    </button>
+                                    </button> */}
                                 </CardHeader>
                                 <CardBody>
                                     <div className="all-posts">
@@ -173,6 +186,7 @@ class MyPosts extends Component {
                         </div>
                     </Row>
                 </Container>
+                <footer>Photo by Dimitris Chatzieleftheriou on Unsplash</footer>
             </div>
         );
     }

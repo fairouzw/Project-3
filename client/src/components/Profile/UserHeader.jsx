@@ -12,24 +12,27 @@ class UserHeader extends React.Component {
           style={{
             minHeight: "400px",
             backgroundImage:
-              "url(" + require("../Home/icons/profile-fresh.jpg") + ")",
+              "url(" + require("../Home/icons/myaccount.jpg") + ")",
             backgroundSize: "cover",
             backgroundPosition: "center top"
           }}
         >
           {/* Mask */}
-          <span className="mask bg-gradient-default opacity-6" />
+          {/* <span className="mask bg-gradient-default opacity-96" /> */}
           {/* Header container */}
-          <Container className="d-flex align-items-center" fluid>
-            <Row>
-              <Col lg="9" md="10">
-                <h5 className="display-3 text-white">
-                  Hello {this.props.userName}
-                </h5>
-                <p className="text-white mt-0 mb-5">Stay fresh.</p>
-              </Col>
-            </Row>
-          </Container>
+          <div className="marge-userheader">
+            <Container className="d-flex align-items-center" fluid>
+              <Row>
+                <Col>
+                  {/* <h5 className="display-3 text-white">
+                    <br></br>Hi 
+                    {this.props.userName}.
+                  </h5> */}
+                  {/* <p className="text-white mt-0 mb-5">Stay free. Stay fresh.</p> */}
+                </Col>
+              </Row>
+            </Container>
+          </div>
         </div>
       </>
     );

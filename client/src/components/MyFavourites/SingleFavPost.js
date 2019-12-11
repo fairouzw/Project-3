@@ -52,23 +52,23 @@ class SingleFavPost extends Component {
         var timeAgo = moment(this.props.post.createdAt).fromNow()
         return (
             <Card>
-            <div className="one-post">
-                <CardImg /* top width="100%"  */style={{height:"250px", width:"100%"}} className="post-pic" src={this.props.post.imgUrl} alt=""></CardImg>
-                <CardTitle >{this.props.post.postname}</CardTitle>
-                <div className="posted-by-container"><div className="posted-by-box"> posted by <Link to={`/messages/new-message/${this.props.post.owner._id}`}> <span className="owner icon-text">{this.props.post.owner.username}  <i className="ni ni-email-83 text-blue icon-message" /></span> </Link></div></div>
-                <div>{this.props.description}</div>
-                <Link to={`/posts/${this.props.post._id}`}><p>{this.props.post.address}</p></Link>
-                <p> Posted <span className="date timeago" title={timeAgo}>{timeAgo}</span> </p>
-                <LikeButton likeCounter={this.state.post.likes} toggleLike={this.toggleLike} post={this.state.post} />
-               <br/>
-                <hr/>
-                <p>{this.state.comments.map((c, idx) => {
-                    return (<div key={idx} className="owner">{c.owner.username} <i className="far fa-comment"></i> : <span className="comment"> {c.comment} </span> </div>)
-                })}</p>
-                <AddComment addComment={this.addCommentHandler} post={this.state.post} />
-               
-             </div>
-             </Card>
+                <div className="one-post">
+                    <CardImg /* top width="100%"  */ style={{ height: "250px", width: "100%" }} className="post-pic" src={this.props.post.imgUrl} alt=""></CardImg>
+                    <CardTitle >{this.props.post.postname}</CardTitle>
+                    <div className="posted-by-container"><div className="posted-by-box"> posted by <Link to={`/messages/new-message/${this.props.post.owner._id}`}> <span className="owner icon-text">{this.props.post.owner.username}  <i className="ni ni-email-83 text-blue icon-message" /></span> </Link></div></div>
+                    <div>{this.props.description}</div>
+                    <Link to={`/posts/${this.props.post._id}`}><p>{this.props.post.address}</p></Link>
+                    <p> Posted <span className="date timeago" title={timeAgo}>{timeAgo}</span> </p>
+                    <LikeButton likeCounter={this.state.post.likes} toggleLike={this.toggleLike} post={this.state.post} />
+                    <br />
+                    <hr />
+                    <div>{this.state.comments.map((c, idx) => {
+                        return (<div key={idx} className="owner">{c.owner.username} <i className="far fa-comment"></i> : <span className="comment"> {c.comment} </span> </div>)
+                    })}</div>
+                    <AddComment addComment={this.addCommentHandler} post={this.state.post} />
+
+                </div>
+            </Card>
         )
     }
 }

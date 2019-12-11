@@ -42,7 +42,14 @@ class MyFavourites extends Component {
   render() {
     return (
       <div className="main-content" ref="mainContent" >
-        <Header />
+        {/* <Header /> */}
+        <div className="header  pb-8 pt-5 pt-md-8"
+          style={{
+            minHeight: "400px",
+            backgroundImage: "url(" + require("../Home/icons/myfav.jpg") + ")",
+            backgroundSize: "cover",
+            backgroundPosition: "center top"
+          }}></div>
         <Container className="mt--7" fluid>
           {/* Table */}
           <Row className="mt-5">
@@ -124,7 +131,9 @@ class MyFavourites extends Component {
           </Row>
 
         </Container>
+        <footer>Photo by Anastase Maragos on Unsplash</footer>
       </div>
+
     )
   }
 }

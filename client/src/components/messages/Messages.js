@@ -7,6 +7,7 @@ import MessageOutList from "./MessageOutList";
 import Header from "../Home/Header.jsx";
 
 import {
+    Button,
     Card,
     CardHeader,
     CardBody,
@@ -115,11 +116,15 @@ class Messages extends Component {
                                 </CardHeader> */}
                                 <CardBody>
 
-                                    <div> <button type="button" className="btn btn-success btn-lg btn-block"><h3>INBOX</h3></button>
+                                    <Button
+                                        style={{ "backgroundColor": '#38CD8B', "border-color": "#38CD8B" }}
+                                        block
+                                        size="lg"> <h3 className="mb-0">My Messages</h3></Button>
+                                    <div>
                                         <MessageList messages={this.state.listOfReceivedMessages} ></MessageList>
                                     </div>
                                     <br></br>
-                                    <div><button type="button" className="btn btn-secondary btn-lg btn-block"><h3>OUTBOX</h3></button>
+                                    <div><button type="button" className="btn btn-secondary btn-lg btn-block"><h3>Outbox</h3></button>
                                         <MessageOutList messages={this.state.listOfSentMessages} ></MessageOutList>
                                     </div>
 
@@ -197,7 +202,7 @@ class Messages extends Component {
 
 
                 </div>
-            </div>
+            </div >
         );
     }
 }

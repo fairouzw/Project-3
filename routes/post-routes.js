@@ -22,7 +22,7 @@ router.get("/", (req, res, next) => {
       }
     })
     .then(allThePosts => {
-
+      allThePosts.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt))
       res.json(allThePosts.map(post => ({
         ...(post.toJSON()),
         likes: post.likes ? post.likes.length : 0,

@@ -104,6 +104,9 @@
   background-repeat: no-repeat;
   background-size: cover;
 }
+.logo-start {
+  width: 345px;
+}
 .city-banner {
   font-size: 80px;
   color: white;

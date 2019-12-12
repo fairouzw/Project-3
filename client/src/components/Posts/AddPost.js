@@ -104,7 +104,7 @@ class AddPost extends Component {
                 value={this.state.postname}
                 onChange={this.handleChange}
                 required
-                // autoFocus
+              // autoFocus
               />
             </div>
             <br />
@@ -124,18 +124,18 @@ class AddPost extends Component {
                 name="description"
                 value={this.state.description}
                 onChange={this.handleChange}
-                // required
-                // autoFocus
+              // required
+              // autoFocus
               />
             </div>
             <br />
-            
-              <div style={{ justifyContent: "center", marginBottom: "20px" }}>
-                <Button color="primary" type="submit">
-                  Post Find
+
+            <div style={{ justifyContent: "center", marginBottom: "20px" }}>
+              <Button id="btn-comment" type="submit">
+                Post Find
                 </Button>
-              </div>
-            
+            </div>
+
           </form>
         </div>
       </div>

@@ -14,7 +14,7 @@ class DisplayPost extends Component {
           <div className="posted-by-container">
             <div className="posted-by-box">
               {/* posted by */}  <i className="ni ni-single-02 text-blue" />
-              <Link to={`/messages/new-message/${this.props.selectedPost.owner}`}>
+              <Link to={`/messages/new-message/${this.props.selectedPost.owner._id}}`}>
                 {" "}
                 <span className="owner icon-text">
                   {this.props.selectedPost.owner.username}{" "}

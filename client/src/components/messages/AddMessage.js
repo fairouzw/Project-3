@@ -3,6 +3,7 @@ import axios from "axios";
 import "../../App.css";
 import { withRouter } from "react-router-dom";
 import Avatar from "react-avatar";
+import Footer from '../Footer/Footer'
 
 import {
   Card,
@@ -249,6 +250,7 @@ class AddMessage extends Component {
             </Col>
           </Row>
         </Container>
+        <Footer> </Footer>
       </div>
     );
   }

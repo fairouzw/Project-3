@@ -5,7 +5,7 @@ import Header from "../Home/Header";
 import FavMap from "./FavMap";
 import axios from "axios";
 import { withRouter } from "react-router-dom";
-import Loader from "react-loader-spinner";
+import Footer from "../Footer/Footer";
 
 import { Card, Container, Row, Col, Spinner } from "reactstrap";
 
@@ -68,6 +68,7 @@ class PostDetails extends Component {
             </Col>
           </Row>
         </Container>
+        <Footer> </Footer>
       </div>
     );
   }

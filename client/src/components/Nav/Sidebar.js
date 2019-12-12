@@ -181,7 +181,7 @@ class Sidebar extends Component {
                 <NavLink tag={Link} to="/messages" onClick={this.resetUnreadMessages}>
                   <i className="ni ni-email-83 " />
                   My Messages
-                  {this.state.numberUnreadMessages === 0 ? <p></p> : <p>   <Badge color="success">{this.state.numberUnreadMessages}</Badge> </p>}
+                  {this.state.numberUnreadMessages === 0 ? <p></p> : <p>   <Badge fgColor="#195d8c">{this.state.numberUnreadMessages}</Badge> </p>}
                 </NavLink>
               </NavItem>
             </Nav>

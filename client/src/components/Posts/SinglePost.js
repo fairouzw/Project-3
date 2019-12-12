@@ -83,14 +83,14 @@ class SinglePost extends Component {
             <CardTitle style={{ textAlign: "center" }} > {this.props.post.postname} </CardTitle>
             <CardText style={{ textAlign: "center" }}>
               <div>{this.props.post.description}</div>
-              <p style={{ textAlign: "center" }}>{this.props.post.address}</p>
-              <p style={{ textAlign: "center" }}>
+              <div><p style={{ textAlign: "center" }}>{this.props.post.address}</p></div><br />
+              <div> <p style={{ textAlign: "center" }}>
                 {" "}
                 Posted{" "}
                 <span className="date timeago" title={timeAgo}>
                   {timeAgo}
                 </span>{" "}
-              </p>
+              </p></div>
               <div style={{ textAlign: "center" }}>
                 <LikeButton
                   likeCounter={this.state.post.likes}
@@ -98,7 +98,7 @@ class SinglePost extends Component {
                   post={this.state.post}
                 />
               </div>
-              <hr />
+              <div>  <hr /></div>
             </CardText>
             <div>
               {this.state.comments.map((c, idx) => {
@@ -116,9 +116,9 @@ class SinglePost extends Component {
             post={this.state.post}
           />
           <CardFooter>
-            {this.props.post.tags.map(tag => {
+            {this.props.post.tags.map((tag, idx) => {
               return (
-                <Badge color="primary" pill>
+                <Badge key={idx} color="primary" pill>
                   {tag}
                 </Badge>
               );

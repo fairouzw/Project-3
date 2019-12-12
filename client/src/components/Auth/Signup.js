@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { withRouter, Link } from "react-router-dom";
 import axios from "axios";
+import logo from '../Home/icons/finder-logo.png';
 
 class Signup extends Component {
   constructor(props) {
@@ -47,6 +48,7 @@ class Signup extends Component {
                 <div className="container">
                   <div className="row">
                     <div className="col-md-9 col-lg-8 mx-auto">
+                      <img className="logo-start" src={logo} alt="" />
                       <h3 className="login-heading mb-4">Welcome!</h3>
                       <div style={{ color: "red" }}>
                         {" "}
@@ -82,8 +84,8 @@ class Signup extends Component {
                           <label htmlFor="inputPassword">Password</label>
                         </div>
 
-                        <button
-                          className="btn btn-lg btn-primary btn-block btn-login text-uppercase font-weight-bold mb-2"
+                        <button id="btn-submit"
+                          className="btn btn-lg btn-block btn-login text-uppercase font-weight-bold mb-2"
                           type="submit"
                         >
                           Sign up

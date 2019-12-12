@@ -4,20 +4,32 @@ import SingleOutMessage from "./SingleOutMessage"
 import {
     Row,
     ListGroup,
-    ListGroupItem
+    ListGroupItem,
+    Table
 } from 'reactstrap';
 
 class MessageList extends Component {
 
     render() {
         return (
-            <ListGroup style={{ justifyContent: "center" }}>
+            <Table className="align-items-center table-flush" responsive>
+                    <thead className="thead-light">
+                    <tr>
+                      <th scope="col">Sent to:</th>
+                      <th scope="col">Subject:</th>
+                      <th scope="col">Message:</th>
+                      <th scope="col">Read:</th>
+                      <th scope="col">Sent at:</th>
+                    </tr>
+                    </thead>
+                    <tbody>
                 {this.props.messages.map((message, idx) => {
                     return (
-                        <ListGroupItem> <SingleOutMessage key={idx} message={message} /></ListGroupItem>
+                        <SingleOutMessage key={idx} message={message} />
                     )
                 })}
-            </ListGroup>
+                </tbody>
+            </Table>
         );
     }
 }

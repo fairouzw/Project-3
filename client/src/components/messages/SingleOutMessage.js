@@ -19,22 +19,21 @@ class SingleOutMessage extends Component {
         console.log(this.state.message.sender._id)
         var timeAgo = moment(this.props.message.createdAt).fromNow()
         return (
-            <div className="single-post">
-                <div className="one-post-con">
-                    <div className="single-post-margin">Sent to <Link to={`/messages/new-message/${this.state.message.recipient._id}`} ><p><h3><span className="owner"> {this.props.message.recipient.username}</span></h3></p></Link>
-                    </div>
-                    <div className="single-post-margin"> Subject:<h2>{this.props.message.subject}</h2></div>
-
-                    {/* <div>sent by
-                    <Link to={`/messages/new-message/${this.state.message.sender._id}`} ><p><span className="owner"> {this.props.message.sender.username}</span></p></Link>
-                </div> */}
-                    <div className="single-post-margin">Content: {this.props.message.content}</div>
-
-                    <div className="single-post-margin"> <p> {this.props.message.read == null ? <p style={{ color: "red" }}>message unread</p> : <span style={{ color: "green" }}>message read</span>}</p></div>
-                    <div className="single-post-margin"><p> sent <span className="date timeago" title={timeAgo}>{timeAgo}</span> </p></div>
-
-                </div>
-            </div>
+          <tr>
+                <th scope="row">
+                  <Link to={`/messages/new-message/${this.state.message.recipient._id}`} > <p> <i className="ni ni-email-83 owner icon-message" /> <span className="owner"> {this.props.message.recipient.username}</span>
+                </p>
+                  </Link>
+                </th>
+                 <td>
+                    <div>{this.props.message.subject}</div>
+                 </td>
+                    <td>
+                    <div>{this.props.message.content}</div>
+                    </td>
+                    <td ><p> {this.props.message.read == null ? <p style={{ color: "red" }}>unread</p> : <span style={{ color: "green" }}><i className="fa fa-check text-green"></i></span>}</p></td>
+                    <td><p><span className="date timeago" title={timeAgo}>{timeAgo}</span> </p></td>
+           </tr>  
         );
     }
 }

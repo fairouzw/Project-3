@@ -2,22 +2,31 @@ import React, { Component } from "react";
 import SingleMessage from "./SingleMessage"
 
 import {
-    Row,
-    ListGroup,
-    ListGroupItem
+    Table
 } from 'reactstrap';
 
 class MessageList extends Component {
 
     render() {
         return (
-            <ListGroup style={{ justifyContent: "center" }}>
+            <Table className="align-items-center table-flush" responsive>
+            <thead className="thead-light">
+            <tr>
+                      <th scope="col">Sender:</th>
+                      <th scope="col">Subject:</th>
+                      <th scope="col">Message:</th>
+                      {/* <th scope="col">Read at:</th> */}
+                      <th scope="col">Sent at:</th>
+                    </tr>
+            </thead>
+            <tbody>
                 {this.props.messages.map((message, idx) => {
                     return (
-                        <ListGroupItem> <SingleMessage key={idx} message={message} /></ListGroupItem>
+                        <SingleMessage key={idx} message={message} />
                     )
                 })}
-            </ListGroup>
+            </tbody>
+            </Table>
         );
     }
 }

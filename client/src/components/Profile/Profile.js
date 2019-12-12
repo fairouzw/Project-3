@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import axios from "axios";
 import "../../App.css";
 import Avatar from 'react-avatar';
+import Footer from '../Footer/Footer'
 
 import {
   Button,
@@ -321,7 +322,8 @@ class Profile extends Component {
             </Col>
           </Row>
         </Container>
-        <footer>Photo by Anastasia Dulgier</footer>
+        {/* <footer>Photo by Anastasia Dulgier</footer> */}
+        <Footer> </Footer>
 
 
       </div>

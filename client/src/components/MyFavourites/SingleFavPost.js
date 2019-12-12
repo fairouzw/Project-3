@@ -75,9 +75,9 @@ class SingleFavPost extends Component {
             src={this.props.post.imgUrl}
             alt=""
           ></CardImg>
-           <CardBody style={{ textAlign: "center" }}>
-          <CardTitle>{this.props.post.postname}</CardTitle>
-          <CardText >{this.props.description}
+           <CardBody >
+          <CardTitle style={{ textAlign: "center" }}>{this.props.post.postname}</CardTitle>
+          <CardText style={{ textAlign: "center" }}>{this.props.description}
           <Link to={`/posts/${this.props.post._id}`}>
             <p>{this.props.post.address}</p>
           </Link>

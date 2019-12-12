@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import Header from '../Home/Header'
 import axios from 'axios'
 import SingleFavPost from "./SingleFavPost"
+import Footer from '../Footer/Footer'
 // reactstrap components
 import {
   Card,
@@ -85,7 +86,8 @@ class MyFavourites extends Component {
           </Row>
 
         </Container>
-        <footer>Photo by Eric Ward</footer>
+        <Footer></Footer>
+        {/* <footer>Photo by Eric Ward</footer> */}
       </div>
 
     )

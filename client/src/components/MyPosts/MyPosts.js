@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import axios from "axios";
 import "../../App.css";
 import UpdatePost from "../Posts/UpdatePost";
-import UserHeader from "../Profile/UserHeader.jsx";
+import Footer from '../Footer/Footer'
 
 import {
   CardTitle,
@@ -13,11 +13,6 @@ import {
   CardHeader,
   Container,
   Row,
-  Pagination,
-  PaginationLink,
-  PaginationItem,
-  Button,
-  Col,
   CardFooter,
 
 } from "reactstrap";
@@ -146,7 +141,8 @@ class MyPosts extends Component {
             </div>
           </Row>
         </Container>
-        <p>Photo by Lena Lau</p>
+        {/* <p>Photo by Lena Lau</p> */}
+        <Footer> </Footer>
       </div>
     );
   }

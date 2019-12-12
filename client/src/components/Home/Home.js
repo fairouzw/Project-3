@@ -5,8 +5,8 @@ import axios from "axios";
 import PostList from "./PostList";
 import SearchPost from "./SearchPost";
 import DisplayPost from "../Posts/DisplayPost";
-import Header from "./Header.jsx";
 import Loader from "react-loader-spinner";
+import Footer from '../Footer/Footer'
 import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
 
 import {
@@ -16,9 +16,6 @@ import {
   Container,
   Row,
   Col,
-  Pagination,
-  PaginationLink,
-  PaginationItem,
   CardFooter
 } from "reactstrap";
 
@@ -201,11 +198,14 @@ class Home extends Component {
                     </Pagination>
                   </nav>
                 </CardFooter> */}
+                <CardFooter> </CardFooter>
               </Card>
             </div>
           </Row>
         </Container>
-        <footer>Photo by Julia Solonina on Unsplash</footer>
+
+        <Footer> </Footer>
+        {/* <footer>Photo by Julia Solonina on Unsplash</footer> */}
       </div>
     );
   }

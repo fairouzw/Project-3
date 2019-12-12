@@ -4,6 +4,7 @@ import React, { Component } from "react";
 import "../../App.css";
 import MessageList from "./MessageList";
 import MessageOutList from "./MessageOutList";
+import Footer from '../Footer/Footer'
 
 import {
     Button,
@@ -197,9 +198,9 @@ class Messages extends Component {
                         </div>
                     </Row>
                 </Container>
-                <footer>Photo by Lena Lau</footer>
+                {/* <footer>Photo by Lena Lau</footer> */}
                 {/* ORIGINAL CONTENT */}
-
+<Footer> </Footer>
             </div >
         );
     }

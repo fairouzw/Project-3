@@ -83,7 +83,8 @@ class SinglePost extends Component {
             <CardTitle style={{ textAlign: "center" }} > {this.props.post.postname} </CardTitle>
             <CardText style={{ textAlign: "center" }}>
               <div>{this.props.post.description}</div>
-              <div><p style={{ textAlign: "center" }}>{this.props.post.address}</p></div><br />
+              <Link to={`/posts/${this.props.post._id}`}><p style={{ textAlign: "center" }}>{this.props.post.address}</p> </Link>
+              <br />
               <div> <p style={{ textAlign: "center" }}>
                 {" "}
                 Posted{" "}

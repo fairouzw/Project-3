@@ -5,8 +5,9 @@ import Header from "../Home/Header";
 import FavMap from "./FavMap";
 import axios from "axios";
 import { withRouter } from "react-router-dom";
+import Loader from "react-loader-spinner";
 
-import { Card, Container, Row, Col } from "reactstrap";
+import { Card, Container, Row, Col, Spinner } from "reactstrap";
 
 class PostDetails extends Component {
   constructor() {
@@ -51,7 +52,7 @@ class PostDetails extends Component {
                     posts={this.state.filteredListOfPosts}
                   />
                 ) : (
-                  <p>Loading...</p>
+                 <div style={{textAlign: "center"}}> <Spinner style={{ width: '3rem', height: '3rem' }} /></div>
                 )}
               </Card>
             </Col>

@@ -87,9 +87,7 @@ class Messages extends Component {
     render() {
         console.log(this.state.listOfReceivedMessages)
         return (
-
             <div className="main-content" ref="mainContent">
-                {/* <Header /> */}
                 <div className="header  pb-8 pt-5 pt-md-8"
                     style={{
                         minHeight: "400px",
@@ -97,111 +95,41 @@ class Messages extends Component {
                         backgroundSize: "cover",
                         backgroundPosition: "center top"
                     }}></div>
-                <Container className="mt--7" fluid>
-                    {/* <Row>
-
-                        <Col xl="4">
-                            <Card className="bg-gradient-secondary shadow">
-                                <CardBody>
-
-                                </CardBody>
-                            </Card>
-                        </Col>
-                    </Row> */}
-                    <Row className="mt-5" >
-                        <div className="col">
-                            <Card className="shadow">
-                                {/* <CardHeader className="border-0">
-                                    <br />
-                                    <h3 className="mb-0"> <SearchPost searchPost={this.searchResultPost} /></h3>
-                                </CardHeader> */}
-                                <CardBody>
+                 <Container className="mt--7" fluid>
+                <Row >
+                <div className="col">
+                <Card className="shadow">
 
                                     {this.state.listOfReceivedMessages.length == 0 ? <h3 >You have received no messages so far.</h3> :
                                         (<div><CardHeader className="border-0">
                                             <h3 className="mb-0">My Messages (Inbox)</h3>
-                                        </CardHeader>
+                                            </CardHeader>
 
                                             <div>
-                                                <MessageList messages={this.state.listOfReceivedMessages} ></MessageList></div></div>)
-
+                                                <MessageList messages={this.state.listOfReceivedMessages} ></MessageList></div></div>
+                                                
+                                                )
                                     }
 
+                                    </Card>
+                                    <Card className="shadow">
                                     <br></br>
-                                    {this.state.listOfSentMessages.length == 0 ? <h3 >You've been writing no wrote no messages so far.</h3> :
+                                    {this.state.listOfSentMessages.length == 0 ? <h3 >Yout have no messages in your outbox.</h3> :
                                         (<div> <CardHeader className="border-0" fgColor="#195D8C">
                                             <h3 className="mb-0" fgColor="#195D8C">My Messages (Outbox)</h3>
-                                        </CardHeader>
+                                                 </CardHeader>
 
                                             <div>
                                                 <MessageOutList messages={this.state.listOfSentMessages} ></MessageOutList>
                                             </div></div>)
 
                                     }
-
-
-
-                                </CardBody>
-                                {/* <CardFooter className="py-4">
-                                    <nav aria-label="...">
-                                        <Pagination
-                                            className="pagination justify-content-end mb-0"
-                                            listClassName="justify-content-end mb-0"
-                                        >
-                                            <PaginationItem className="disabled">
-                                                <PaginationLink
-                                                    href="#pablo"
-                                                    onClick={e => e.preventDefault()}
-                                                    tabIndex="-1"
-                                                >
-                                                    <i className="fas fa-angle-left" />
-                                                    <span className="sr-only">Previous</span>
-                                                </PaginationLink>
-                                            </PaginationItem>
-                                            <PaginationItem className="active">
-                                                <PaginationLink
-                                                    href="#pablo"
-                                                    onClick={e => e.preventDefault()}
-                                                >
-                                                    1
-                        </PaginationLink>
-                                            </PaginationItem>
-                                            <PaginationItem>
-                                                <PaginationLink
-                                                    href="#pablo"
-                                                    onClick={e => e.preventDefault()}
-                                                >
-                                                    2 <span className="sr-only">(current)</span>
-                                                </PaginationLink>
-                                            </PaginationItem>
-                                            <PaginationItem>
-                                                <PaginationLink
-                                                    href="#pablo"
-                                                    onClick={e => e.preventDefault()}
-                                                >
-                                                    3
-                        </PaginationLink>
-                                            </PaginationItem>
-                                            <PaginationItem>
-                                                <PaginationLink
-                                                    href="#pablo"
-                                                    onClick={e => e.preventDefault()}
-                                                >
-                                                    <i className="fas fa-angle-right" />
-                                                    <span className="sr-only">Next</span>
-                                                </PaginationLink>
-                                            </PaginationItem>
-                                        </Pagination>
-                                    </nav>
-                                </CardFooter> */}
                             </Card>
                         </div>
-                    </Row>
+                 </Row>
                 </Container>
-                {/* <footer>Photo by Lena Lau</footer> */}
-                {/* ORIGINAL CONTENT */}
-<Footer> </Footer>
-            </div >
+                <Footer> </Footer>
+                </div>
         );
     }
 }

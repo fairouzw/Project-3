@@ -13,7 +13,7 @@ class Header extends React.Component {
             minHeight: "400px",
             backgroundImage:
               "url(" +
-              require("../Home/icons/marvin-meyer-ZwIQUXKns40-unsplash.jpg") +
+              require("../Home/icons/julia-solonina-J-g3s9eHsMM-unsplash.jpg") +
               ")",
             backgroundSize: "cover",
             backgroundPosition: "center top"

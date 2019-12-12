@@ -10,6 +10,7 @@ class UpdatePost extends Component {
             imgUrl: this.props.imgUrl,
             description: this.props.description,
             postname: this.props.postname,
+            likes: this.props.likes,
             listOfPosts: this.props.posts
         };
     }
@@ -17,6 +18,7 @@ class UpdatePost extends Component {
     updatePost = () => {
         // this.state.editPostId = event.target._id;
         console.log(this.state.postId);
+        console.log(this.state.likes);
 
         const { description, postname, imgUrl } = this.state;
 
@@ -24,16 +26,21 @@ class UpdatePost extends Component {
             .put(`/api/posts/${this.state.postId}`, {
                 imgUrl,
                 description,
-                postname
+                postname,
+
+
+
             })
             .then(res => {
                 console.log(res);
                 if (res.status === 200) {
                     this.props.getAllUserPosts();
+                    this.setState({ likes: this.props.likes })
                 } else {
                     console.log("SAve function didn't work!");
                 }
             })
+
 
             .catch(error => console.log(error));
     };

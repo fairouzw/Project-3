@@ -92,7 +92,7 @@ class Home extends Component {
         <div className="header  pb-8 pt-5 pt-md-8"
           style={{
             minHeight: "400px",
-            backgroundImage: "url(" + require("../Home/icons/julia-solonina-J-g3s9eHsMM-unsplash.jpg") + ")",
+            backgroundImage: "url(" + require("../../assets/img/berlin-pics/anastasia-dulgier-KX8xURPbkcM-unsplash_copy.jpg") + ")",
             backgroundSize: "cover",
             backgroundPosition: "center top"
           }}></div>

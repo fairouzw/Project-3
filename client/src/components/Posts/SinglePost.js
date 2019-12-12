@@ -118,7 +118,7 @@ class SinglePost extends Component {
           <CardFooter>
             {this.props.post.tags.map((tag, idx) => {
               return (
-                <Badge key={idx} color="primary" pill>
+                <Badge key={idx} id="btn-badge" pill>
                   {tag}
                 </Badge>
               );

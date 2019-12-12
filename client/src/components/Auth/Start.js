@@ -19,6 +19,7 @@ class Start extends Component {
   render() {
     return (
       <div className="landing-page">
+
         <div className="main-content">
           <br></br>
           <br></br>
@@ -26,7 +27,8 @@ class Start extends Component {
           <br></br>
           <br></br>
           <br></br>
-          <img className="logo-start" src={logo} alt="" />
+          <div className="city-banner">The city is free.</div>
+
           <div className="header  py-7 py-lg-8">
             <Container>
               <div className="header-body text-center mb-7">
@@ -108,6 +110,7 @@ class Start extends Component {
             </Row>
           </Container>
         </div>
+        {/* <div className="start-element-white"> <img className="logo-start" src={logo} alt="" /></div> */}
       </div>
 
 

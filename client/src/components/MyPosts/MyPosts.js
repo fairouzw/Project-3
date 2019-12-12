@@ -119,6 +119,7 @@ class MyPosts extends Component {
                                         id={post._id}
                                         postname={post.postname}
                                         description={post.description}
+                                        likes={post.likes}
                                         imgUrl={post.imgUrl}
                                         getAllUserPosts={this.getAllUserPosts}
                                       >

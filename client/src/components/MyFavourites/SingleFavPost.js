@@ -50,20 +50,20 @@ class SingleFavPost extends Component {
     var timeAgo = moment(this.props.post.createdAt).fromNow();
     return (
       <Card>
-      <CardHeader> 
-      <div className="posted-by-container">
-              <div className="posted-by-box">
-                {/* posted by */}  <i className="ni ni-single-02 text-blue" />
-                <Link to={`/messages/new-message/${this.props.post.owner._id}`}>
-                  {" "}
-                  <span className="owner icon-text">
-                    {this.props.post.owner.username}{" "}
-                    <i className="ni ni-email-83 text-blue icon-message" />
-                  </span>{" "}
-                </Link>
-              </div>
+        <CardHeader>
+          <div className="posted-by-container">
+            <div className="posted-by-box">
+              {/* posted by */}  <i className="ni ni-single-02 text-blue" />
+              <Link to={`/messages/new-message/${this.props.post.owner._id}`}>
+                {" "}
+                <span className="owner icon-text">
+                  {this.props.post.owner.username}{" "}
+                  <i className="ni ni-email-83 text-blue icon-message" />
+                </span>{" "}
+              </Link>
             </div>
-      </CardHeader>
+          </div>
+        </CardHeader>
 
         <div className="one-post">
           <CardImg
@@ -75,47 +75,47 @@ class SingleFavPost extends Component {
             src={this.props.post.imgUrl}
             alt=""
           ></CardImg>
-           <CardBody >
-          <CardTitle style={{ textAlign: "center" }}>{this.props.post.postname}</CardTitle>
-          <CardText style={{ textAlign: "center" }}>{this.props.description}
-          <Link to={`/posts/${this.props.post._id}`}>
-            <p>{this.props.post.address}</p>
-          </Link>
-          <p>
-            {" "}
-            Posted{" "}
-            <span className="date timeago" title={timeAgo}>
-              {timeAgo}
-            </span>{" "}
-          </p>
-          <LikeButton
-            style={{ textAlign: "center" }}
-            likeCounter={this.state.post.likes}
-            toggleLike={this.toggleLike}
-            post={this.state.post}
-          />
-         
-          <hr />
-          </CardText>
-          <p>
-            {this.state.comments.map((c, idx) => {
-              return (
-                <div key={idx} className="owner">
-                  {c.owner.username} <i className="far fa-comment"></i> :{" "}
-                  <span className="comment"> {c.comment} </span>{" "}
-                </div>
-              );
-            })}
-          </p>
+          <CardBody >
+            <CardTitle style={{ textAlign: "center" }}>{this.props.post.postname}</CardTitle>
+            <CardText style={{ textAlign: "center" }}>{this.props.description}
+              <Link to={`/posts/${this.props.post._id}`}>
+                <p id="btn-address">{this.props.post.address}</p>
+              </Link>
+              <p>
+                {" "}
+                Posted{" "}
+                <span className="date timeago" title={timeAgo}>
+                  {timeAgo}
+                </span>{" "}
+              </p>
+              <LikeButton
+                style={{ textAlign: "center" }}
+                likeCounter={this.state.post.likes}
+                toggleLike={this.toggleLike}
+                post={this.state.post}
+              />
+
+              <hr />
+            </CardText>
+            <p>
+              {this.state.comments.map((c, idx) => {
+                return (
+                  <div key={idx} className="owner">
+                    {c.owner.username} <i className="far fa-comment"></i> :{" "}
+                    <span className="comment"> {c.comment} </span>{" "}
+                  </div>
+                );
+              })}
+            </p>
           </CardBody>
           <AddComment
             addComment={this.addCommentHandler}
             post={this.state.post}
           />
-            <CardFooter>
+          <CardFooter>
             {this.props.post.tags.map(tag => {
               return (
-                <Badge color="primary" pill>
+                <Badge id="btn-badge" pill>
                   {tag}
                 </Badge>
               );

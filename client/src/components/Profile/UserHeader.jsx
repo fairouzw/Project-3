@@ -13,7 +13,7 @@ class UserHeader extends React.Component {
             minHeight: "400px",
             backgroundImage:
               "url(" +
-              require("../../assets/img/berlin-pics/anastasia-dulgier-KX8xURPbkcM-unsplash_copy.jpg") +
+              require("../Home/icons/christian-l-dpWdMEUcKZY-unsplash.jpg") +
               ")",
             backgroundSize: "cover",
             backgroundPosition: "center top"

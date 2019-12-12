@@ -13,12 +13,12 @@ class DisplayPost extends Component {
         <CardHeader>
           <div className="posted-by-container">
             <div className="posted-by-box">
-              {/* posted by */}  <i className="ni ni-single-02 text-blue" />
-              <Link to={`/messages/new-message/${this.props.selectedPost.owner._id}}`}>
+              {/* posted by */}  <i id="btn-fg" className="ni ni-single-02" />
+              <Link to={`/messages/new-message/${this.props.selectedPost.owner}`}>
                 {" "}
                 <span className="owner icon-text">
                   {this.props.selectedPost.owner.username}{" "}
-                  <i className="ni ni-email-83 text-blue icon-message" />
+                  <i id="btn-fg" className="ni ni-email-83 icon-message" />
                 </span>{" "}
               </Link>
             </div>
@@ -43,7 +43,7 @@ class DisplayPost extends Component {
           <CardFooter style={{ textAlign: "center" }}>
             {this.props.selectedPost.tags.map(tag => {
               return (
-                <Badge color="primary" pill>
+                <Badge id="btn-badge" pill>
                   {tag}
                 </Badge>
               );

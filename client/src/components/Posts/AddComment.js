@@ -57,13 +57,13 @@ class AddComment extends Component {
               onChange={this.handleChange}
             />
             <InputGroupAddon addonType="append">
-              <Button 
-                 className="text-uppercase font-weight-bold"
-                 color="primary"
-                 type="submit"
-                 >Add
+              <Button
+                className="text-uppercase font-weight-bold"
+                id="btn-comment"
+                type="submit"
+              >Add
                  </Button>
-        </InputGroupAddon>
+            </InputGroupAddon>
           </InputGroup>
         </form>
       </div>

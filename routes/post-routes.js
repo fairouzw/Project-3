@@ -80,16 +80,17 @@ router.delete("/:id/like", (req, res, next) => {
 
 // /api/posts/o1i72367458523dasdztr
 router.get("/:id", function (req, res, next) {
-  Post.findById(req.params.id).populate('comments').then(post => {
-    res.json({
-      ...(post.toJSON()),
-      likes: post.likes ? post.likes.length : 0,
-      hasLiked: post.likes ? post.likes.some(like => like.equals(req.user._id)) : false,
+  Post.findById(req.params.id).populate('comments').populate('owner')
+    .then(post => {
+      res.json({
+        ...(post.toJSON()),
+        likes: post.likes ? post.likes.length : 0,
+        hasLiked: post.likes ? post.likes.some(like => like.equals(req.user._id)) : false,
+      });
+
+      res.json(post);
+
     });
-
-    res.json(post);
-
-  });
 });
 
 // post /api/posts/new-post

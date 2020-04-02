@@ -55,12 +55,26 @@ class Signup extends Component {
                         {this.state.errorMessage}
                       </div>
                       <form onSubmit={this.handleFormSubmit}>
+                        
+                      <div className="form-label-group">
+                          <input
+                            type="text"
+                            id="inputEmail"
+                            className="form-control"
+                            name="email"
+                            onChange={e => this.handleChange(e)}
+                            value={this.state.email}
+                            required="required"
+                            autoFocus
+                          />
+                          <label htmlFor="inputEmail">Email</label>
+                        </div>
+                        
                         <div className="form-label-group">
                           <input
                             type="text"
                             id="inputEmail"
                             className="form-control"
-                            placeholder="Username"
                             name="username"
                             onChange={e => this.handleChange(e)}
                             value={this.state.username}
@@ -75,7 +89,6 @@ class Signup extends Component {
                             type="password"
                             id="inputPassword"
                             className="form-control"
-                            placeholder="Password"
                             name="password"
                             onChange={e => this.handleChange(e)}
                             value={this.state.password}
@@ -92,7 +105,7 @@ class Signup extends Component {
                         </button>
                         <div className="text-center"></div>
                         <div class="text-center">
-                          <Link class="small" to="/login">Already have an account?</Link>
+                        <span class="small"> Already have an account? </span>  <Link class="small" to="/login"> Log-in here</Link>
                         </div>
                       </form>
                     </div>

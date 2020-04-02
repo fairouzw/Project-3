@@ -20,8 +20,8 @@ authRoutes.get("/checkuser", (req, res, next) => {
 authRoutes.post("/signup", (req, res, next) => {
   const { username, password, city, country, email, favourites, posts, follows } = req.body;
 
-  if (!username || !password) {
-    res.status(400).json({ message: "Provide username and password" });
+  if (!username || !password || !email) {
+    res.status(400).json({ message: "Please provide a valid email address, username and password" });
     return;
   }
 
@@ -33,14 +33,14 @@ authRoutes.post("/signup", (req, res, next) => {
     return;
   }
 
-  User.findOne({ username }, (err, foundUser) => {
+  User.findOne({ email }, (err, foundUser) => {
     if (err) {
       res.status(500).json({ message: "Username check went bad." });
       return;
     }
 
     if (foundUser) {
-      res.status(400).json({ message: "Username taken. Choose another one." });
+      res.status(400).json({ message: "This account already exists. Log in or choose another one." });
       return;
     }
 

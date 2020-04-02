@@ -61,7 +61,6 @@ class Login extends Component {
                             type="text"
                             id="inputEmail"
                             className="form-control"
-                            placeholder="Username"
                             name="username"
                             onChange={e => this.handleChange(e)}
                             value={this.state.username}
@@ -76,7 +75,6 @@ class Login extends Component {
                             type="password"
                             id="inputPassword"
                             className="form-control"
-                            placeholder="Password"
                             name="password"
                             onChange={e => this.handleChange(e)}
                             value={this.state.password}
@@ -93,7 +91,7 @@ class Login extends Component {
                       </button>
                         <div className="text-center"></div>
                         <div class="text-center">
-                          <Link class="small" to="/signup">Don't have an account?</Link>
+                        <span class="small">Don't have an account? </span><Link class="small" to="/signup"> Sign up here</Link>
                         </div>
                       </form>
                     </div>

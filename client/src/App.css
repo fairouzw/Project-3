@@ -18,7 +18,8 @@
 }
 
 .App-link {
-  color: #09d3ac;
+  color: #fe9d49;
+
 }
 
 .location-icon {
@@ -401,3 +402,5 @@ i {
 .card-avatar-image:hover {
   transform: translate(-50%, -33%);
 }
+
+

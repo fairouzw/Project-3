@@ -2,8 +2,6 @@ var express = require("express");
 var router = express.Router();
 
 let Post = require("../models/post-model");
-let User = require("../models/user-model");
-let Comment = require("../models/comment-model");
 const mongoose = require("mongoose");
 
 //GET all posts
@@ -54,8 +52,6 @@ router.post("/:id/like", (req, res, next) => {
   Post.findByIdAndUpdate(req.params.id, {
     $addToSet: { likes: req.user._id }
   }, { new: true }).then(post => {
-    console.log("I am here. 1 new doc/////", post);
-
     res.json({
       ...(post.toJSON()),
       likes: post.likes ? post.likes.length : 0,
@@ -68,8 +64,6 @@ router.delete("/:id/like", (req, res, next) => {
   Post.findByIdAndUpdate(req.params.id, {
     $pull: { likes: req.user._id }
   }, { new: true }).then(post => {
-    console.log("I am here. 1 new doc/////", post);
-
     res.json({
       ...(post.toJSON()),
       likes: post.likes ? post.likes.length : 0,
@@ -107,7 +101,6 @@ router.post("/new-post", (req, res, next) => {
     tags: req.body.tags,
     comments: req.body.comments,
     // categories: req.body.categories,
-    // likes: req.user._id,
     // expireDate: req.body.expireDate
   }).then(response => {
     console.log("I am here. 1 new doc", response);
@@ -120,7 +113,6 @@ router.post("/new-post", (req, res, next) => {
     });
   });
   // .catch(err => {
-  //     //console.log('I am here. 2', err)
   //     res.json(JSON.stringify(err.message));
   // })
 });
@@ -131,13 +123,10 @@ router.put("/:id", (req, res, next) => {
     imgUrl,
     description,
     postname,
-    categories,
-    likes,
-    expireDate
   } = req.body;
 
   if (!mongoose.Types.ObjectId.isValid(req.params.id)) {
-    res.status(400).json({ message: "Specified id is not valid" });
+     res.status(400).json({ message: "Specified id is not valid" });
     return;
   }
 
@@ -145,9 +134,6 @@ router.put("/:id", (req, res, next) => {
     imgUrl,
     description,
     postname,
-    categories,
-    likes,
-    expireDate
   })
     .then(() => {
       res.json({
@@ -167,7 +153,7 @@ router.delete("/:id", (req, res, next) => {
   Post.findByIdAndRemove(req.params.id)
     .then(() => {
       res.json({
-        message: `Project with ${req.params.id} is removed successfully.`
+        message: `Post with ${req.params.id} is removed successfully.`
       });
     })
     .catch(err => {

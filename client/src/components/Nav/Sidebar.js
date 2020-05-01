@@ -70,9 +70,7 @@ class Sidebar extends Component {
   };
 
   render() {
-
     return (
-
       <Navbar
         className="navbar-vertical fixed-left navbar-light bg-white"
         expand="md"
@@ -188,7 +186,7 @@ class Sidebar extends Component {
             <hr className="my-3" />
             <Nav className="mb-md-3" navbar>
               <NavItem>
-                <NavLink onClick={this.logoutUser} href="/">
+                <NavLink tag={Link} to="/" onClick={this.logoutUser}>
                   <i className="ni ni-button-power text-warning" />
                   Logout
                 </NavLink>
@@ -204,58 +202,3 @@ class Sidebar extends Component {
 
 export default Sidebar;
 
-// {/* <Nav className="align-items-center d-md-none">
-// <UncontrolledDropdown nav>
-//   <DropdownToggle nav className="nav-link-icon">
-//     <i className="ni ni-bell-55" />
-//   </DropdownToggle>
-//   <DropdownMenu
-//     aria-labelledby="navbar-default_dropdown_1"
-//     className="dropdown-menu-arrow"
-//     right
-//   >
-//     <DropdownItem>Action</DropdownItem>
-//     <DropdownItem>Another action</DropdownItem>
-//     <DropdownItem divider />
-//     <DropdownItem>Something else here</DropdownItem>
-//   </DropdownMenu>
-// </UncontrolledDropdown>
-// <UncontrolledDropdown nav>
-//   <DropdownToggle nav>
-//     <Media className="align-items-center">
-//       <span className="avatar avatar-sm rounded-circle">
-//         <img
-//           alt="..."
-//           src={require("../../assets/img/theme/team-1-800x800.jpg")}
-//         />
-//       </span>
-//     </Media>
-//   </DropdownToggle>
-//   <DropdownMenu className="dropdown-menu-arrow" right>
-//     <DropdownItem className="noti-title" header tag="div">
-//     </DropdownItem>
-//     <DropdownItem to="/profile" tag={Link}>
-//       <i className="ni ni-circle-08" />
-//       <span>My Account</span>
-//     </DropdownItem>
-//     <DropdownItem to="/my-posts" tag={Link}>
-//       <i className="ni ni-pin-3" />
-//       <span>My Posts</span>
-//     </DropdownItem>
-//     <DropdownItem to="/favourites" tag={Link}>
-//       <i className="ni ni-favourite-28 " />
-//       <span>My Favourites</span>
-//     </DropdownItem>
-//     <DropdownItem to="/messages" tag={Link}>
-//       <i className="ni ni-email-83 " />
-//       <span>Messages</span>
-//     </DropdownItem>
-//     <DropdownItem divider />
-//     <DropdownItem /* href="#pablo" */ 
-//     href="/" onClick={this.logoutUser}>
-//       <i className="ni ni-button-power" />
-//       <span>Logout</span>
-//     </DropdownItem>
-//   </DropdownMenu>
-// </UncontrolledDropdown>
-// </Nav> */}

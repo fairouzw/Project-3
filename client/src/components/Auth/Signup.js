@@ -10,7 +10,8 @@ class Signup extends Component {
       username: "",
       password: "",
       email: "",
-      errorMessage: null
+      errorMessage: null,
+      sendingEmail: false
     };
   }
 
@@ -21,6 +22,7 @@ class Signup extends Component {
       .then(response => {
         this.props.getUser(response.data);
         this.props.history.push("/home");
+        this.sendsEmailConfirmation();
       })
       .catch(error => {
         if (error.response.status === 400) {
@@ -32,6 +34,11 @@ class Signup extends Component {
         }
       });
   };
+
+  sendsEmailConfirmation = () => {
+    return axios
+       .post("/email", {email: this.state.email})
+  }
 
   handleChange = event => {
     const { name, value } = event.target;

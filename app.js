@@ -18,6 +18,7 @@ const messRoutes = require("./routes/message-routes");
 
 var app = express();
 
+const emailController = require('./email/email.controller');
 const session = require("express-session");
 const passport = require("passport");
 
@@ -57,6 +58,16 @@ app.use(express.static(path.join(__dirname, "/client/build")));
 
 
 // app.use("/users", usersRouter);
+
+app.get('/wake-up', (req, res) => res.json('👌'))
+
+// This is the endpoint that is hit from the onSubmit handler in Landing.js
+// The callback is shelled off to a controller file to keep this file light.
+app.post('/email', emailController.collectEmail)
+
+// Same as above, but this is the endpoint pinged in the componentDidMount of 
+// Confirm.js on the client.
+app.get('/email/confirm/:id', emailController.confirmEmail)
 
 // session section
 app.use(

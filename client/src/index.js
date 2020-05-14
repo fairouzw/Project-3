@@ -9,7 +9,10 @@ import axios from "axios";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import "../src/assets/vendor/nucleo/css/nucleo.css";
 import "../src/assets/vendor/@fortawesome/fontawesome-free/css/all.min.css";
-import {Spinner} from 'spin.js';
+import { Spinner } from 'spin.js';
+import "./fonts/Cookies.ttf";
+import "./fonts/FiraSans-Medium.ttf";
+import "./fonts/PermanentMarker-Regular.ttf";
 
 var opts = {
   lines: 17, // The number of lines to draw

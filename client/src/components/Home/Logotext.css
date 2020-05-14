@@ -1,0 +1,11 @@
+#_logo-text{
+    font-family: "Cookies";
+    font-family: "Permanent Marker Regular";
+    color: var(--magpie-black);
+    transform: rotate(-5deg);
+    font-size: 3.5rem;
+}
+
+#_underline{
+    text-decoration: none;
+}

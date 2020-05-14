@@ -8,6 +8,11 @@ import DisplayPost from "../Posts/DisplayPost";
 import Loader from "react-loader-spinner";
 import Footer from '../Footer/Footer'
 import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
+import add from '../../assets/img/icons/common/Add.svg';
+import user from '../../assets/img/icons/common/User.svg';
+import home from '../../assets/img/icons/common/Home.svg';
+import messages from '../../assets/img/icons/common/Messages.svg';
+import "./Home.css"
 
 import {
   Card,
@@ -145,7 +150,7 @@ class Home extends Component {
                 <CardBody>
                   <PostList posts={this.state.filteredListOfPosts}></PostList>
                 </CardBody>
-               
+
                 <CardFooter> </CardFooter>
               </Card>
             </div>
@@ -154,6 +159,12 @@ class Home extends Component {
 
         <Footer> </Footer>
         {/* <footer>Photo by Julia Solonina on Unsplash</footer> */}
+
+
+
+
+
+
       </div>
     );
   }

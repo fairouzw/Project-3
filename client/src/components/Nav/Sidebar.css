@@ -1,0 +1,7 @@
+#sidenav-main {
+  background-color: var(--cardboard-light);
+  background-image: var(--cardboard-box);
+  font-family: "Fira Sans Medium", sans-serif;
+  font-size: 1.25rem;
+  user-select: none;
+}

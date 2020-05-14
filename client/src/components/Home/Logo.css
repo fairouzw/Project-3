@@ -1,0 +1,16 @@
+#_logo{
+  filter: drop-shadow(var(--shadow));
+  transition: transform 2000ms;
+}
+
+#_logo-auth img{
+width: 12rem;
+}
+
+#_logo:hover{
+  transform: scale(1.05);
+}
+
+#_logo-desktop-nav img{
+width: 10rem;
+}

@@ -21,7 +21,7 @@ authRoutes.post("/signup", (req, res, next) => {
   const { username, password, city, country, email, favourites, posts, follows } = req.body;
 
   if (!username || !password || !email) {
-    res.status(400).json({ message: "Please provide a valid email address, username and password" });
+    res.status(400).json({ message: "Please provide a valid email address, username and password." });
     return;
   }
 

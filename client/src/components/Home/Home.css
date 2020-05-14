@@ -1,0 +1,33 @@
+#_mobilenav{
+    min-width: 100vw;
+    max-width: 100vh;
+    min-height: 15vh;
+    max-height: 15vh;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    position: fixed;
+    bottom: 0;
+    background-color: var(--cardboard);
+}
+
+#_mobilenav img{
+    width: 5rem;
+    padding-top: 1rem;
+}
+
+@media (min-width: 600px) {
+#_mobilenav{
+  display: none;
+}
+  }
+
+@media (max-width: 600px) {
+#_logotext-desktop-nav{
+  display: none;
+}
+
+#_logo-desktop-nav{
+  margin: auto;
+}
+  }

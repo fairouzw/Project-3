@@ -2,7 +2,9 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import Modals from "../Home/Modals";
-import logo from '../Home/icons/finder-logo.png';
+import Logo from "../Home/Logo";
+import Logotext from "../Home/Logotext";
+import "./Sidebar.css";
 
 // reactstrap components
 import {
@@ -84,10 +86,17 @@ class Sidebar extends Component {
             onClick={this.toggleCollapse}
           >
             <span className="navbar-toggler-icon" />
+
           </button>
           <br />
-          <img className="logo-size" src={logo} alt="" />
 
+          <section id="_logo-desktop-nav">
+            <Logo />
+          </section>
+
+          <section id="_logotext-desktop-nav">
+            <Logotext />
+          </section>
           {/* User */}
 
           {/* Collapse */}
@@ -195,7 +204,6 @@ class Sidebar extends Component {
           </Collapse>
         </Container>
       </Navbar>
-
     );
   }
 }

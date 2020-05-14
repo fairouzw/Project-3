@@ -1,11 +1,10 @@
 import React, { Component } from "react";
 import { withRouter, Link } from "react-router-dom";
 import axios from "axios";
-import logo from '../Home/icons/finder-logo.png';
-
-import "../../assets/vendor/nucleo/css/nucleo.css"
-import "../../assets/vendor/@fortawesome/fontawesome-free/css/all.min.css";
-
+import "./Auth.css";
+import Logo from "../Home/Logo";
+import Logotext from "../Home/Logotext";
+import ComingSoonGooglePlay from "../Home/ComingSoonGooglePlay";
 
 class Login extends Component {
   constructor(props) {
@@ -40,70 +39,79 @@ class Login extends Component {
 
   render() {
     return (
-      <div>
-        <div className="container-fluid">
-          <div className="row no-gutter">
-            <div className="d-none d-md-flex col-md-4 col-lg-6 bg-image"></div>
-            <div className="col-md-8 col-lg-6">
-              <div className="login d-flex align-items-center py-5">
-                <div className="container">
-                  <div className="row">
-                    <div className="col-md-9 col-lg-8 mx-auto">
-                      <img className="logo-start" src={logo} alt="" />
-                      <h3 className="login-heading mb-4">Log in</h3>
-                      <div style={{ color: "red" }}>
-                        {" "}
-                        {this.state.errorMessage}
-                      </div>
-                      <form onSubmit={this.handleFormSubmit}>
-                        <div className="form-label-group">
-                          <input
-                            type="text"
-                            id="inputEmail"
-                            className="form-control"
-                            name="username"
-                            onChange={e => this.handleChange(e)}
-                            value={this.state.username}
-                            required="required"
-                            autoFocus
-                          />
-                          <label htmlFor="inputEmail">Username</label>
-                        </div>
 
-                        <div className="form-label-group">
-                          <input
-                            type="password"
-                            id="inputPassword"
-                            className="form-control"
-                            name="password"
-                            onChange={e => this.handleChange(e)}
-                            value={this.state.password}
-                            required="required"
-                          />
-                          <label htmlFor="inputPassword">Password</label>
-                        </div>
+      <>
+        <main id="_main">
+          <section id="_container">
+            <section id="_left">
+              <ComingSoonGooglePlay />
+            </section>
 
-                        <button id="btn-submit"
-                          className="btn btn-lg btn-block btn-login text-uppercase font-weight-bold mb-2"
-                          type="submit"
-                        >
-                          Log in
-                      </button>
-                        <div className="text-center"></div>
-                        <div class="text-center">
-                        <span class="small">Don't have an account? </span><Link class="small" to="/signup"> Sign up here</Link>
-                        </div>
-                      </form>
+            <section id="_right">
+
+              <section id="_logo-auth">
+                <Logo />
+              </section>
+
+              <section>
+                <Logotext />
+              </section>
+
+              <section id="_auth-form">
+
+                <form onSubmit={this.handleFormSubmit}>
+
+                  <section id="_form-fields">
+
+                    <div className="form-label-group">
+                      <input
+                        type="text"
+                        id="inputEmail"
+                        className="form-control"
+                        name="username"
+                        onChange={e => this.handleChange(e)}
+                        value={this.state.username}
+                        required="required"
+                        autoFocus
+                      />
+                      <label htmlFor="inputEmail">E-mail</label>
                     </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
 
-    )
+                    <div className="form-label-group">
+                      <input
+                        type="password"
+                        id="inputPassword"
+                        className="form-control"
+                        name="password"
+                        onChange={e => this.handleChange(e)}
+                        value={this.state.password}
+                        required="required"
+                      />
+                      <label htmlFor="inputPassword">Password</label>
+                    </div>
+
+                    <p id="_error-message">
+                      {""}
+                      {this.state.errorMessage}
+                    </p>
+
+                  </section>
+
+                  <button id="_submit-button" type="submit">Log in</button>
+
+                  <section id="_login-signup">
+                    <strong>
+                      (or sign up <Link to="/signup">here</Link>!)
+                    </strong>
+                  </section>
+
+                </form>
+              </section>
+            </section>
+          </section>
+        </main>
+      </>
+    );
   }
 }
 

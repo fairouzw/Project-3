@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { withRouter, Link } from "react-router-dom";
 import "../../App.css";
-import logo from '../Home/icons/finder-logo.png';
+import logo from '../Home/icons/spotbox-logo.svg';
 import {
   Card,
   CardBody,

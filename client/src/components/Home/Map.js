@@ -7,12 +7,12 @@ class Map extends Component {
 
   state = {
     viewport: {
-      width: "100%",
+      maxWidth: "600px",
       height: "600px",
       latitude: 52.5035239,
       longitude: 13.407602899999999,
       zoom: 11,
-      borderRadius: "inherit"
+      borderRadius: "20px"
     },
     userLocation: {},
     isLoading: true

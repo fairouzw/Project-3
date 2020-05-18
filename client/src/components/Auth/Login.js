@@ -101,7 +101,7 @@ class Login extends Component {
 
                   <section id="_login-signup">
                     <strong>
-                      (or sign up <Link to="/signup">here</Link>!)
+                      (or sign up <Link to="/">here</Link>!)
                     </strong>
                   </section>
 

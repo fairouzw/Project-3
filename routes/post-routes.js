@@ -1,13 +1,23 @@
 var express = require("express");
 var router = express.Router();
-
 let Post = require("../models/post-model");
 const mongoose = require("mongoose");
+const User = require("../models/user-model");
+
+
+//middleware
+const isAuthenticated = (req, res, next) => {
+  if (req.user) {
+      next()
+  } else {
+      res.redirect('/login')
+  }
+}
 
 //GET all posts
 // /api/posts
 // /api/posts?owner_id=12983761823515423
-router.get("/", (req, res, next) => {
+router.get("/",isAuthenticated, (req, res, next) => {
   dbQuery = req.query.owner_id ? { owner: req.query.owner_id } : {}
   Post.find(dbQuery)
     .populate('owner')
@@ -33,7 +43,7 @@ router.get("/", (req, res, next) => {
 });
 
 //get likes
-router.get("/liked", (req, res, next) => {
+router.get("/liked",isAuthenticated, (req, res, next) => {
   console.log(req.user._id)
   Post.find({ likes: req.user._id }).populate('comments')
     .then(allThePosts => {
@@ -48,7 +58,7 @@ router.get("/liked", (req, res, next) => {
     });
 });
 
-router.post("/:id/like", (req, res, next) => {
+router.post("/:id/like",isAuthenticated, (req, res, next) => {
   Post.findByIdAndUpdate(req.params.id, {
     $addToSet: { likes: req.user._id }
   }, { new: true }).then(post => {
@@ -60,7 +70,7 @@ router.post("/:id/like", (req, res, next) => {
   });
 });
 
-router.delete("/:id/like", (req, res, next) => {
+router.delete("/:id/like",isAuthenticated, (req, res, next) => {
   Post.findByIdAndUpdate(req.params.id, {
     $pull: { likes: req.user._id }
   }, { new: true }).then(post => {
@@ -74,7 +84,7 @@ router.delete("/:id/like", (req, res, next) => {
 
 
 // /api/posts/o1i72367458523dasdztr
-router.get("/:id", function (req, res, next) {
+router.get("/:id",isAuthenticated, function (req, res, next) {
   Post.findById(req.params.id).populate('comments').populate('owner')
     .then(post => {
       res.json({
@@ -89,7 +99,7 @@ router.get("/:id", function (req, res, next) {
 });
 
 // post /api/posts/new-post
-router.post("/new-post", (req, res, next) => {
+router.post("/new-post",isAuthenticated, (req, res, next) => {
   console.log("I am here.");
   Post.create({
     imgUrl: req.body.imgUrl,
@@ -118,7 +128,7 @@ router.post("/new-post", (req, res, next) => {
 });
 
 //PUT
-router.put("/:id", (req, res, next) => {
+router.put("/:id",isAuthenticated, (req, res, next) => {
   const {
     imgUrl,
     description,
@@ -146,7 +156,7 @@ router.put("/:id", (req, res, next) => {
 });
 
 
-router.delete("/:id", (req, res, next) => {
+router.delete("/:id",isAuthenticated, (req, res, next) => {
   if (!mongoose.Types.ObjectId.isValid(req.params.id)) {
     res.status(400).json({ message: "Specified id is not valid" });
     return;

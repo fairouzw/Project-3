@@ -1,9 +1,8 @@
 import React, { Component } from "react";
-import { Switch, Route, Redirect, BrowserRouter } from "react-router-dom";
+import { Switch, Route, Redirect } from "react-router-dom";
 import "./App.css";
 
 //pages
-import Start from "./components/Auth/Start";
 import Login from "./components/Auth/Login";
 import Signup from "./components/Auth/Signup";
 import Confirm from "./components/Auth/Confirm";
@@ -53,7 +52,14 @@ class App extends Component {
             path="/"
             render={() => {
               if (this.state.loggedInUser === null) {
-                return <Start />;
+                return (
+                  <Signup
+                    history={this.props.history}
+                    getUser={this.getTheUser}
+                  />
+                );
+              } else {
+                return <Redirect to="/home"></Redirect>;
               }
             }}
           />
@@ -70,31 +76,21 @@ class App extends Component {
           ></Route>
           <Route
             exact
-            path="/signup"
+            path="/home"
             render={() => {
               if (this.state.loggedInUser) {
-                return <Redirect to="/home"></Redirect>;
-              } else {
                 return (
-                  <Signup
-                    history={this.props.history}
+                  <Home
+                    key={this.state.postAddedCount} // force re/renders Home if post has been added
                     getUser={this.getTheUser}
+                    userData={this.state.loggedInUser}
                   />
                 );
+              } else {
+                return <Redirect to="/login"/>;
               }
             }}
           ></Route>
-          <Route
-            exact
-            path="/home"
-            render={() => (
-              <Home
-                key={this.state.postAddedCount} // force re/renders Home if post has been added
-                getUser={this.getTheUser}
-                userData={this.state.loggedInUser}
-              />
-            )}
-          />
           <Route
             exact
             path="/profile"

@@ -8,7 +8,7 @@ const { CLIENT_ORIGIN } = require('../configs/email')
 module.exports = {
 
   confirm: id => ({
-    subject: 'React Confirm Email',
+    subject: 'Spotbox - verify your email address',
     html: `
       <a href='${CLIENT_ORIGIN}/confirm/${id}'>
         click to confirm email

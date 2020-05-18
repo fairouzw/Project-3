@@ -54,7 +54,6 @@ class SinglePost extends Component {
   };
 
   render() {
-    console.log(this.props.post.owner._id);
     var timeAgo = moment(this.props.post.createdAt).fromNow();
     return (
       <Card>

@@ -9,7 +9,6 @@ const mongoose = require("mongoose");
 const cors = require("cors");
 
 var indexRouter = require("./routes/index");
-// var usersRouter = require("./routes/profile-routes");
 const authRoutes = require("./routes/auth-routes");
 const profRoutes = require("./routes/profile-routes");
 const postRoutes = require("./routes/post-routes");
@@ -18,6 +17,7 @@ const messRoutes = require("./routes/message-routes");
 
 var app = express();
 
+const emailController = require('./email/email.controller');
 const session = require("express-session");
 const passport = require("passport");
 
@@ -55,8 +55,13 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "/client/build")));
 
+// This is the endpoint that is hit from the onSubmit handler in Landing.js
+// The callback is shelled off to a controller file to keep this file light.
+app.post('/email', emailController.collectEmail)
 
-// app.use("/users", usersRouter);
+// Same as above, but this is the endpoint pinged in the componentDidMount of 
+// Confirm.js on the client.
+app.get('/email/confirm/:id', emailController.confirmEmail)
 
 // session section
 app.use(

@@ -9,13 +9,17 @@ const userSchema = new Schema(
     city: String,
     country: String,
     // posts: [{ type: Schema.Types.ObjectId, ref: "post" }],
+    confirmed: {
+      type: Boolean,
+      default: false,
+    },
     follows: {
       type: String, // try to implement following category-tags
-      enum: ["food", "electronics", "furniture", "clothes", "dishes"]
-    }
+      enum: ["food", "electronics", "furniture", "clothes", "dishes"],
+    },
   },
   {
-    timestamps: true
+    timestamps: true,
   }
 );
 const User = mongoose.model("User", userSchema);

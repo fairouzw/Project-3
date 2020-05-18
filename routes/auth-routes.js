@@ -7,6 +7,7 @@ const bcrypt = require("bcryptjs");
 const User = require("../models/user-model");
 const Message = require("../models/message-model");
 
+
 // /api/checkuser
 authRoutes.get("/checkuser", (req, res, next) => {
   if (req.user) {

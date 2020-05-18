@@ -3,6 +3,7 @@ var router = express.Router();
 const mongoose = require("mongoose");
 const User = require("../models/user-model");
 
+
 //GET all profiles
 router.get("/profiles", (req, res, next) => {
   User.find()
@@ -68,5 +69,37 @@ router.delete('/profiles/:id/delete', (req, res, next) => {
       res.json(err);
     });
 });
+
+
+exports.collectEmail = (req, res) => {
+  const { email } = req.body
+  
+  User.findOne({ email })
+    .then(user => {
+      
+      // We have a new user! Send them a confirmation email.
+      if (!user) {
+        User.create({ email })
+          .then(newUser => sendEmail(newUser.email, templates.confirm(newUser._id)))
+          .then(() => res.json({ msg: msgs.confirm }))
+          .catch(err => console.log(err))
+      }
+
+      // We have already seen this email address. But the user has not
+      // clicked on the confirmation link. Send another confirmation email.
+      else if (user && !user.confirmed) {
+        sendEmail(user.email, templates.confirm(user._id))
+          .then(() => res.json({ msg: msgs.resend }))
+      }
+
+      // The user has already confirmed this email address
+      else {
+        res.json({ msg: msgs.alreadyConfirmed })
+      }
+
+    })
+    .catch(err => console.log(err))
+}
+
 
 module.exports = router;

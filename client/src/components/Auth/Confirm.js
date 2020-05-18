@@ -24,7 +24,7 @@ class Confirm extends Component {
 
   render() {
     return (
-      <div>
+      <div className='confirm'>
         {this.state.confirming ? (
           <Spinner size="8x" spinning={"spinning"} />
         ) : (

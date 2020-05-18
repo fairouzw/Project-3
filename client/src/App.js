@@ -6,6 +6,7 @@ import "./App.css";
 import Start from "./components/Auth/Start";
 import Login from "./components/Auth/Login";
 import Signup from "./components/Auth/Signup";
+import Confirm from "./components/Auth/Confirm";
 import Profile from "./components/Profile/Profile";
 import Sidebar from "./components/Nav/Sidebar";
 import Home from "./components/Home/Home";
@@ -13,36 +14,40 @@ import MyPosts from "./components/MyPosts/MyPosts";
 import MyFavourites from "./components/MyFavourites/MyFavourites";
 import PostOnMap from "./components/MyFavourites/PostOnMap";
 import Messages from "./components/messages/Messages";
-import AddMessage from "./components/messages/AddMessage"
+import AddMessage from "./components/messages/AddMessage";
 
 class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
       loggedInUser: this.props.user,
-      postAddedCount: 0
+      postAddedCount: 0,
     };
   }
 
-  getTheUser = userObj => {
+  getTheUser = (userObj) => {
     this.setState({
-      loggedInUser: userObj
+      loggedInUser: userObj,
     });
   };
 
   postAddedHandler = () => {
     this.setState({
-      postAddedCount: this.state.postAddedCount + 1
-    })
-  }
+      postAddedCount: this.state.postAddedCount + 1,
+    });
+  };
 
   render() {
     return (
       <div className="App">
         {this.state.loggedInUser !== null ? (
-          <Sidebar getUser={this.getTheUser} postAdded={this.postAddedHandler} />
+          <Sidebar
+            getUser={this.getTheUser}
+            postAdded={this.postAddedHandler}
+          />
         ) : null}
         <Switch>
+          <Route exact path="/confirm/:id" component={Confirm} />
           <Route
             exact
             path="/"
@@ -83,25 +88,21 @@ class App extends Component {
             exact
             path="/home"
             render={() => (
-
               <Home
                 key={this.state.postAddedCount} // force re/renders Home if post has been added
                 getUser={this.getTheUser}
                 userData={this.state.loggedInUser}
               />
-
             )}
           />
           <Route
             exact
             path="/profile"
             render={() => (
-
               <Profile
                 getUser={this.getTheUser}
                 userData={this.state.loggedInUser}
               />
-
             )}
           />
           <Route
@@ -113,7 +114,6 @@ class App extends Component {
                 getUser={this.getTheUser}
                 userData={this.state.loggedInUser}
               />
-
             )}
           />
           <Route
@@ -126,12 +126,16 @@ class App extends Component {
               />
             )}
           />
-          <Route exact path="/posts/:id" render={() => (
-            <PostOnMap
-              getUser={this.getTheUser}
-              userData={this.state.loggedInUser}
-            />
-          )} />
+          <Route
+            exact
+            path="/posts/:id"
+            render={() => (
+              <PostOnMap
+                getUser={this.getTheUser}
+                userData={this.state.loggedInUser}
+              />
+            )}
+          />
           <Route
             exact
             path="/messages"
@@ -140,7 +144,6 @@ class App extends Component {
                 getUser={this.getTheUser}
                 userData={this.state.loggedInUser}
               />
-
             )}
           />
           <Route
@@ -151,7 +154,6 @@ class App extends Component {
                 getUser={this.getTheUser}
                 userData={this.state.loggedInUser}
               />
-
             )}
           />
         </Switch>

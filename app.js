@@ -9,7 +9,6 @@ const mongoose = require("mongoose");
 const cors = require("cors");
 
 var indexRouter = require("./routes/index");
-// var usersRouter = require("./routes/profile-routes");
 const authRoutes = require("./routes/auth-routes");
 const profRoutes = require("./routes/profile-routes");
 const postRoutes = require("./routes/post-routes");
@@ -55,11 +54,6 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "/client/build")));
-
-
-// app.use("/users", usersRouter);
-
-app.get('/wake-up', (req, res) => res.json('👌'))
 
 // This is the endpoint that is hit from the onSubmit handler in Landing.js
 // The callback is shelled off to a controller file to keep this file light.

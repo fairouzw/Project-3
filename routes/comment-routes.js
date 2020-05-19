@@ -6,25 +6,30 @@ let User = require("../models/user-model");
 let Comment = require("../models/comment-model");
 const mongoose = require("mongoose");
 
-router.get('/', function (req, res, next) {
+//middleware
+const isAuthenticated = (req, res, next) => {
+    if (req.user) {
+      next()
+    } else {
+      res.redirect('/login')
+    }
+  }
+
+router.get('/',isAuthenticated, function (req, res, next) {
 
     Comment.find().populate('post').populate('owner').then((response) => {
         res.json(response)
     })
 });
 
-router.get('/:post_id', function (req, res, next) {
-
+router.get('/:post_id',isAuthenticated, function (req, res, next) {
     Comment.find().populate('post').populate('owner').then((response) => {
         res.json(response)
     })
 });
 
-// POST /api/tasks
-router.post('/new-comment', (req, res, next) => {
-
-    // { project_id : '1i263516253gd5', title: 'Clean the room' }
-
+// POST /api/new-comment
+router.post('/new-comment',isAuthenticated, (req, res, next) => {
     Comment.create({
         post: req.body.postId,
         owner: req.user,  //add later ._id
@@ -34,9 +39,7 @@ router.post('/new-comment', (req, res, next) => {
             res.json(comment)
         })
     })
-
 });
-
 
 // // /api/posts/o1i72367458523dasdztr
 // router.get("/:id", function (req, res, next) {

@@ -1,13 +1,19 @@
 var express = require("express");
 var router = express.Router();
-
 let Message = require("../models/message-model");
 let User = require("../models/user-model");
-
 const mongoose = require("mongoose");
 
+//middleware
+const isAuthenticated = (req, res, next) => {
+    if (req.user) {
+        next()
+    } else {
+        res.redirect('/login')
+    }
+}
 
-router.get("/sent", (req, res, next) => {
+router.get("/sent",isAuthenticated, (req, res, next) => {
     Message.find({ sender: req.user._id }).populate('sender').populate('recipient')
 
         .then(allSenderMessages => {
@@ -20,13 +26,13 @@ router.get("/sent", (req, res, next) => {
         });
 })
 
-router.get("/unread", (req, res, next) => {
+router.get("/unread",isAuthenticated, (req, res, next) => {
     Message.count({ read: null, recipient: req.user._id }).then(count => {
         res.json({ count });
     });
 });
 
-router.get("/rec", (req, res, next) => {
+router.get("/rec",isAuthenticated, (req, res, next) => {
     Message.find({ recipient: req.user._id }).populate('recipient').populate('sender')
         .then(allRecipientMessages => {
             allRecipientMessages.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt))
@@ -35,14 +41,13 @@ router.get("/rec", (req, res, next) => {
                 Message.findByIdAndUpdate(message._id, { read: new Date() }).exec();
             })
             res.json(allRecipientMessages);
-        }
-        )
+        })
         .catch(err => {
             res.json(err);
         });
 })
 
-router.get("/:id", (req, res, next) => {
+router.get("/:id",isAuthenticated, (req, res, next) => {
     if (!mongoose.Types.ObjectId.isValid(req.params.id)) {
         res.status(400).json({ message: "Specified id is not valid" });
         return;
@@ -56,7 +61,7 @@ router.get("/:id", (req, res, next) => {
         });
 });
 
-router.get("/new-message/:id", (req, res, next) => {
+router.get("/new-message/:id",isAuthenticated, (req, res, next) => {
     User.findById(req.params.id)
         .then(response => {
             res.status(200).json(response);
@@ -64,11 +69,7 @@ router.get("/new-message/:id", (req, res, next) => {
         .catch(err => {
             res.json(err);
         });
-
-
 })
-
-
 
 // router.post("/new-message/:id", (req, res, next) => {
 //     if (!mongoose.Types.ObjectId.isValid(req.params.id)) {
@@ -90,7 +91,7 @@ router.get("/new-message/:id", (req, res, next) => {
 //     })
 //     )});
 
-router.post('/new-message/:id', (req, res, next) => {
+router.post('/new-message/:id',isAuthenticated, (req, res, next) => {
     Message.create({
         subject: req.body.subject,
         content: req.body.content,
@@ -100,11 +101,8 @@ router.post('/new-message/:id', (req, res, next) => {
         read: null,
 
     }).then((message) => {
-
         res.json(message)
-
     })
-
 });
 
 module.exports = router;

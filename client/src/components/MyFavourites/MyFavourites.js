@@ -1,9 +1,7 @@
 import React, { Component } from 'react'
-import Header from '../Home/Header'
 import axios from 'axios'
 import SingleFavPost from "./SingleFavPost"
 import Footer from '../Footer/Footer'
-// reactstrap components
 import {
   Card,
   CardHeader,
@@ -23,9 +21,6 @@ class MyFavourites extends Component {
 
   getAllPosts = () => {
     axios.get(`/api/posts`).then(res => {
-      console.log("hello")
-      // console.log(res.data);
-      /* pagination ?limit=50 */
       this.setState({
         listOfPosts: res.data,
       });
@@ -35,8 +30,6 @@ class MyFavourites extends Component {
   componentDidMount = () => {
     this.getAllPosts();
   };
-
-
   render() {
     return (
       <div className="main-content" ref="mainContent" >
@@ -65,26 +58,17 @@ class MyFavourites extends Component {
                     {this.state.listOfPosts.length === 0 ? <h4>You haven't liked anything yet.</h4> : 
                   <Row style={{ justifyContent: "center" }}>
                     {this.state.listOfPosts.map((post, idx) => {
-                      if (post.hasLiked) {
-                        return (
-
-                          <SingleFavPost key={idx} post={post} getAllPosts={this.getAllPosts} />
-
-                        )
-                      } else {
-                      }
-                    })}
-
+                    return  post.hasLiked ? <SingleFavPost key={idx} post={post} getAllPosts={this.getAllPosts} /> : null
+                      } 
+                    )}
                   </Row>
                   }
                 </CardBody>
                 <CardFooter className="py-4">
-                
                 </CardFooter>
               </Card>
             </div>
           </Row>
-
         </Container>
         <Footer></Footer>
         {/* <footer>Photo by Eric Ward</footer> */}

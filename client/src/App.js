@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import { Switch, Route, Redirect } from "react-router-dom";
 import "./App.css";
-
 //pages
 import Login from "./components/Auth/Login";
 import Signup from "./components/Auth/Signup";
@@ -87,70 +86,106 @@ class App extends Component {
                   />
                 );
               } else {
-                return <Redirect to="/login"/>;
+                return <Redirect to="/login" />;
               }
             }}
           ></Route>
           <Route
             exact
             path="/profile"
-            render={() => (
-              <Profile
-                getUser={this.getTheUser}
-                userData={this.state.loggedInUser}
-              />
-            )}
+            render={() => {
+              if (this.state.loggedInUser) {
+                return (
+                  <Profile
+                    getUser={this.getTheUser}
+                    userData={this.state.loggedInUser}
+                  />
+                );
+              } else {
+                return <Redirect to="/login" />;
+              }
+            }}
           />
           <Route
             exact
             path="/my-posts"
-            render={() => (
-              <MyPosts
-                key={this.state.postAddedCount}
-                getUser={this.getTheUser}
-                userData={this.state.loggedInUser}
-              />
-            )}
+            render={() => {
+              if (this.state.loggedInUser) {
+                return (
+                  <MyPosts
+                    key={this.state.postAddedCount}
+                    getUser={this.getTheUser}
+                    userData={this.state.loggedInUser}
+                  />
+                );
+              } else {
+                return <Redirect to="/login" />;
+              }
+            }}
           />
           <Route
             exact
             path="/favourites"
-            render={() => (
-              <MyFavourites
-                getUser={this.getTheUser}
-                userData={this.state.loggedInUser}
-              />
-            )}
+            render={() => {
+              if (this.state.loggedInUser) {
+                return (
+                  <MyFavourites
+                    getUser={this.getTheUser}
+                    userData={this.state.loggedInUser}
+                  />
+                );
+              } else {
+                return <Redirect to="/login" />;
+              }
+            }}
           />
           <Route
             exact
             path="/posts/:id"
-            render={() => (
-              <PostOnMap
-                getUser={this.getTheUser}
-                userData={this.state.loggedInUser}
-              />
-            )}
+            render={() => {
+              if (this.state.loggedInUser) {
+                return (
+                  <PostOnMap
+                    getUser={this.getTheUser}
+                    userData={this.state.loggedInUser}
+                  />
+                );
+              } else {
+                return <Redirect to="/login" />;
+              }
+            }}
           />
           <Route
             exact
             path="/messages"
-            render={() => (
-              <Messages
-                getUser={this.getTheUser}
-                userData={this.state.loggedInUser}
-              />
-            )}
+            render={() => {
+              if (this.state.loggedInUser) {
+                return (
+                  <Messages
+                    getUser={this.getTheUser}
+                    userData={this.state.loggedInUser}
+                  />
+                );
+              } else {
+                return <Redirect to="/login" />;
+              }
+            }}
           />
           <Route
             exact
             path="/messages/new-message/:id"
-            render={() => (
-              <AddMessage
-                getUser={this.getTheUser}
-                userData={this.state.loggedInUser}
-              />
-            )}
+            render={() => {
+              if (this.state.loggedInUser) {
+                return (
+                  <AddMessage
+                    getUser={this.getTheUser}
+                    userData={this.state.loggedInUser}
+                  />
+                );
+              } else {
+                return <Redirect to="/login" />;
+              }
+            }}
           />
         </Switch>
       </div>

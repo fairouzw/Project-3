@@ -18,6 +18,7 @@ class Footer extends React.Component {
                     className="font-weight-bold ml-1"
                     href="https://www.creative-tim.com?ref=adr-auth-footer"
                     target="_blank"
+                    rel="noopener noreferrer"
                   >
                     Creative Tim
                   </a>

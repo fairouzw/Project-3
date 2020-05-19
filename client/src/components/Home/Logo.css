@@ -14,3 +14,17 @@ width: 12rem;
 #_logo-desktop-nav img{
 width: 10rem;
 }
+
+  @media only screen 
+  and (min-device-width: 320px) 
+  and (max-device-width: 480px)
+  and (-webkit-min-device-pixel-ratio: 2) {
+#_logo-auth img{
+width: 10rem;
+}
+
+#_logo-desktop-nav img{
+width: 5rem;
+}
+
+}

@@ -7,7 +7,6 @@ class Logo extends Component {
     render() {
         return (
             <div>
-                <div id="_orange-ball"></div>
                 <img className="logo-start" src={logo} alt="Welcome to Spotbox!" title="Welcome to Spotbox!" id="_logo" />
             </div >
         );

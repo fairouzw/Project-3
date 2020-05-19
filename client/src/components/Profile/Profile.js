@@ -126,7 +126,6 @@ class Profile extends Component {
   // }
 
   render() {
-
     return (
       <div className="main-content" ref="mainContent" >
         <UserHeader userName={this.state.username} />

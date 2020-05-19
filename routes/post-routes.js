@@ -44,7 +44,6 @@ router.get("/",isAuthenticated, (req, res, next) => {
 
 //get likes
 router.get("/liked",isAuthenticated, (req, res, next) => {
-  console.log(req.user._id)
   Post.find({ likes: req.user._id }).populate('comments')
     .then(allThePosts => {
       res.json(allThePosts.map(post => ({
@@ -100,7 +99,6 @@ router.get("/:id",isAuthenticated, function (req, res, next) {
 
 // post /api/posts/new-post
 router.post("/new-post",isAuthenticated, (req, res, next) => {
-  console.log("I am here.");
   Post.create({
     imgUrl: req.body.imgUrl,
     location: req.body.location,
@@ -113,7 +111,6 @@ router.post("/new-post",isAuthenticated, (req, res, next) => {
     // categories: req.body.categories,
     // expireDate: req.body.expireDate
   }).then(response => {
-    console.log("I am here. 1 new doc", response);
     res.json({
       response: {
         ...(response.toJSON()),

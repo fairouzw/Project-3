@@ -5,7 +5,7 @@ class Logotext extends Component {
 
     render() {
         return (
-            <h2 className="login-heading mb-4" id="_logo-text"><span id="_underline">Spotbox</span></h2>
+            <h2 className="login-heading mb-4" id="_logo-text">Spotbox</h2>
         );
     }
 }

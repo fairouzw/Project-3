@@ -3,7 +3,6 @@
   background-image: var(--cardboard-box);
   font-family: "Fira Sans Medium", sans-serif;
   font-size: 1.25rem;
-  user-select: none;
 }
 
 #_container{
@@ -31,7 +30,6 @@
 
 #_right{
     padding-top: 1rem;
-    min-width: 400px;
     flex-shrink: 0;
 }
 
@@ -43,7 +41,7 @@
 }
 
 #_auth-form{
-  height: 60vh;
+  height: auto;
   width: 75%;
   display: flex;
   justify-content: center;
@@ -66,7 +64,6 @@
 }
 
 #_form-fields{
-  min-height: 50vh;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -98,12 +95,17 @@ box-shadow: 0 0 0.1rem var(--spotbox-orange);
   color: var(--magpie-black);
 }
 
-@media only screen and (max-width: 800px) {
+  @media only screen 
+  and (min-device-width: 320px) 
+  and (max-device-width: 480px)
+  and (-webkit-min-device-pixel-ratio: 2) {
 #_left{
   display: none;
 }
 
 #_right{
-min-width: 100vw;
+min-width: 100%;
+font-size: 1rem;
 }
-  }
+
+}

@@ -6,6 +6,9 @@ import Logo from "../Home/Logo";
 import Logotext from "../Home/Logotext";
 import "./Sidebar.css";
 
+import "../../assets/vendor/nucleo/css/nucleo.css"
+import "../../assets/vendor/@fortawesome/fontawesome-free/css/all.min.css";
+
 // reactstrap components
 import {
   Collapse,
@@ -148,7 +151,7 @@ class Sidebar extends Component {
             {/* Navigation */}
             <Nav className="mb-md-3" navbar>
               <NavItem>
-                <NavLink tag={Link} to="/home">
+                <NavLink tag={Link} to="/home" onClick={this.toggleCollapse}>
                   <i className="ni ni-square-pin" />
                   Home
                 </NavLink>
@@ -167,25 +170,25 @@ class Sidebar extends Component {
             {/* Navigation */}
             <Nav className="mb-md-3" navbar>
               <NavItem>
-                <NavLink tag={Link} to="/profile">
+                <NavLink tag={Link} to="/profile" onClick={this.toggleCollapse}>
                   <i className="ni ni-circle-08 " />
                   My Account
                 </NavLink>
               </NavItem>
               <NavItem>
-                <NavLink tag={Link} to="/my-posts">
+                <NavLink tag={Link} to="/my-posts" onClick={this.toggleCollapse}>
                   <i className="ni ni-pin-3" />
                   My Posts
                 </NavLink>
               </NavItem>
               <NavItem>
-                <NavLink tag={Link} to="/favourites">
+                <NavLink tag={Link} to="/favourites" onClick={this.toggleCollapse}>
                   <i className="ni ni-favourite-28 " />
                   My Favourites
                 </NavLink>
               </NavItem>
               <NavItem>
-                <NavLink tag={Link} to="/messages" onClick={this.resetUnreadMessages}>
+                <NavLink tag={Link} to="/messages" onClick={this.resetUnreadMessages && this.toggleCollapse}>
                   <i className="ni ni-email-83 " />
                   My Messages
                   {this.state.numberUnreadMessages === 0 ? <p></p> : <p>   <Badge fgColor="#195d8c">{this.state.numberUnreadMessages}</Badge> </p>}

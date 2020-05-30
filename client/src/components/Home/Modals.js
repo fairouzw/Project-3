@@ -4,12 +4,11 @@ import { Modal, NavLink } from "reactstrap";
 
 class Modals extends React.Component {
   state = {
-    createModal: false
+    createModal: false,
   };
   toggleModal = () => {
-    console.log("called BBBBBBB");
     this.setState({
-      createModal: !this.state.createModal
+      createModal: !this.state.createModal,
     });
   };
   render() {
@@ -17,9 +16,8 @@ class Modals extends React.Component {
       <>
         <NavLink onClick={this.toggleModal}>
           <i className="ni ni-fat-add text-orange" />
-          Create Post
+          Add a Box
         </NavLink>
-
         {/* Modal */}
         <Modal
           className="modal-dialog-centered"
@@ -28,7 +26,7 @@ class Modals extends React.Component {
         >
           <div className="modal-header">
             <h5 className="modal-title" id="exampleModalLabel">
-              Create a post
+              Add a Box
             </h5>
             <button
               aria-label="Close"

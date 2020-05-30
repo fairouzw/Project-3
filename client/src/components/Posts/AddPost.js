@@ -4,7 +4,7 @@ import { Button } from "reactstrap";
 
 function getLocation() {
   return new Promise((resolve, reject) => {
-    navigator.geolocation.getCurrentPosition(position => {
+    navigator.geolocation.getCurrentPosition((position) => {
       resolve(position.coords);
     });
   });
@@ -16,52 +16,50 @@ class AddPost extends Component {
     this.state = {
       imgUrl: "",
       description: "",
-      postname: ""
+      postname: "",
     };
   }
 
-  handleFileUpload = target => {
+  handleFileUpload = (target) => {
     console.log("The file to be uploaded is: ", target.files[0]);
-
     const uploadData = new FormData();
     // imageUrl => this name has to be the same as in the model since we pass
     // req.body to .create() method when creating a new thing in '/api/things/create' POST route
     uploadData.append("imgUrl", target.files[0]);
-
     return axios
       .post("/api/upload", uploadData)
-      .then(response => {
+      .then((response) => {
         console.log("response is: ", response);
         // after the console.log we can see that response carries 'secure_url' which we can use to update the state
         return { url: response.data.secure_url, tags: response.data.tags };
       })
-      .catch(err => {
+      .catch((err) => {
         console.log("Error while uploading the file: ", err);
       });
   };
 
-  handleFormSubmit = event => {
+  handleFormSubmit = (event) => {
     event.preventDefault();
     console.log("i clicked");
     const { description, postname } = this.state;
 
     Promise.all([
       this.handleFileUpload(event.target.getElementsByClassName("imgUrl")[0]),
-      getLocation()
+      getLocation(),
     ])
       .then(([imgUploadResult, location]) => {
         return axios
           .get(
             `https://api.mapbox.com/geocoding/v5/mapbox.places/${location.longitude},${location.latitude}.json?access_token=pk.eyJ1IjoibG9zLWxlbmEiLCJhIjoiY2szNHllYzI5MTZsOTNubzI1emZ2aHFiaSJ9.v7gsBidhvQm2T5EOb_GcGA`
           )
-          .then(result => {
+          .then((result) => {
             return axios.post("/api/posts/new-post", {
               imgUrl: imgUploadResult.url,
               location: { lat: location.latitude, long: location.longitude },
               description,
               postname,
               address: result.data.features[0].place_name,
-              tags: imgUploadResult.tags
+              tags: imgUploadResult.tags,
             });
           })
           .then(() => {
@@ -70,14 +68,14 @@ class AddPost extends Component {
             this.setState({
               imgUrl: "",
               description: "",
-              postname: ""
+              postname: "",
             });
           });
       })
-      .catch(error => console.log(error));
+      .catch((error) => console.log(error));
   };
 
-  handleChange = event => {
+  handleChange = (event) => {
     if (
       event.target.name === "location" &&
       event.target.value === "Current Location"
@@ -104,7 +102,7 @@ class AddPost extends Component {
                 value={this.state.postname}
                 onChange={this.handleChange}
                 required
-              // autoFocus
+                // autoFocus
               />
             </div>
             <br />
@@ -124,18 +122,16 @@ class AddPost extends Component {
                 name="description"
                 value={this.state.description}
                 onChange={this.handleChange}
-              // required
-              // autoFocus
+                // required
+                // autoFocus
               />
             </div>
             <br />
-
             <div style={{ justifyContent: "center", marginBottom: "20px" }}>
               <Button id="btn-comment" type="submit">
-                Post Find
-                </Button>
+                Add Box
+              </Button>
             </div>
-
           </form>
         </div>
       </div>

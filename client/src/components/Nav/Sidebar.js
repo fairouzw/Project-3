@@ -172,7 +172,7 @@ class Sidebar extends Component {
               <NavItem>
                 <NavLink tag={Link} to="/profile" onClick={this.toggleCollapse}>
                   <i className="ni ni-circle-08 " />
-                  My Account
+                  My Boxes
                 </NavLink>
               </NavItem>
               <NavItem>

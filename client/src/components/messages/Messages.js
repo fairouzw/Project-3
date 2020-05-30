@@ -81,7 +81,7 @@ class Messages extends Component {
                 ) : (
                   <div>
                     <CardHeader className="border-0">
-                      <h3 className="mb-0">My Messages (Inbox)</h3>
+                      <h3 className="mb-0">Inbox</h3>
                     </CardHeader>
                     <div>
                       <MessageList
@@ -94,13 +94,13 @@ class Messages extends Component {
               <Card className="shadow">
                 <br></br>
                 {this.state.listOfSentMessages.length === 0 ? (
-                  <h3>Yout have no messages in your outbox.</h3>
+                  <h3>You have no messages in your outbox.</h3>
                 ) : (
                   <div>
                     {" "}
                     <CardHeader className="border-0" fgColor="#195D8C">
                       <h3 className="mb-0" fgColor="#195D8C">
-                        My Messages (Outbox)
+                        Outbox
                       </h3>
                     </CardHeader>
                     <div>

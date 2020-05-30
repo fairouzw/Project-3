@@ -162,6 +162,7 @@ class Sidebar extends Component {
                   postAdded={this.props.postAdded}
                 />
               </NavItem>
+             
             </Nav>
             {/* Divider */}
             <hr className="my-3" />
@@ -194,12 +195,19 @@ class Sidebar extends Component {
                   {this.state.numberUnreadMessages === 0 ? <p></p> : <p>   <Badge fgColor="#195d8c">{this.state.numberUnreadMessages}</Badge> </p>}
                 </NavLink>
               </NavItem>
+             
             </Nav>
             <hr className="my-3" />
             <Nav className="mb-md-3" navbar>
+            <NavItem>
+                <NavLink tag={Link} to="/how-to" onClick={this.toggleCollapse}>
+                  <i className="ni ni-settings-gear-65" />
+                  How it Works
+                </NavLink>
+              </NavItem>
               <NavItem>
                 <NavLink tag={Link} to="/" onClick={this.logoutUser}>
-                  <i className="ni ni-button-power text-warning" />
+                  <i className="ni ni-button-power text-orange" />
                   Logout
                 </NavLink>
               </NavItem>

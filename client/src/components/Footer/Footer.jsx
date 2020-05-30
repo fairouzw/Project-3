@@ -1,5 +1,6 @@
-
 import React from "react";
+import { NavLink as RRNavLink, withRouter } from "react-router-dom";
+
 
 // reactstrap components
 import { NavItem, NavLink, Nav, Container, Row, Col } from "reactstrap";
@@ -28,10 +29,10 @@ class Footer extends React.Component {
                 <Nav className="nav-footer justify-content-center justify-content-xl-end">
                   <NavItem>
                     <NavLink
-                      href="https://github.com/fairouzw/Project-3"
-                      target="_blank"
+                      tag={RRNavLink}
+                      exact to="/how-to"
                     >
-                     Hire Us!
+                     How it Works
                     </NavLink>
                   </NavItem>
                   <NavItem>
@@ -52,7 +53,7 @@ class Footer extends React.Component {
                   </NavItem>
                   <NavItem>
                     <NavLink
-                      href="https://github.com/fairouzw"
+                      href="https://www.linkedin.com/in/fairouz-k%C3%B6hler-west-1aa0b160/"
                       target="_blank"
                     >
                       Fairouz West
@@ -68,4 +69,4 @@ class Footer extends React.Component {
   }
 }
 
-export default Footer;
+export default withRouter(Footer);

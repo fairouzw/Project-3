@@ -24,7 +24,7 @@ class Signup extends Component {
       .post("/api/signup", this.state)
       .then(response => {
         this.props.getUser(response.data);
-        this.props.history.push("/home");
+        this.props.history.push("/how-to");
         this.sendsEmailConfirmation();
       })
       .catch(error => {

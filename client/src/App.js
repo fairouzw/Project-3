@@ -13,6 +13,7 @@ import MyFavourites from "./components/MyFavourites/MyFavourites";
 import PostOnMap from "./components/MyFavourites/PostOnMap";
 import Messages from "./components/messages/Messages";
 import AddMessage from "./components/messages/AddMessage";
+import HowTo from "./components/How-To/HowTo";
 
 class App extends Component {
   constructor(props) {
@@ -50,15 +51,15 @@ class App extends Component {
             exact
             path="/"
             render={() => {
-              if (this.state.loggedInUser === null) {
+              if (this.state.loggedInUser) {
+                return <Redirect to="/how-to"></Redirect>;
+              } else {
                 return (
                   <Signup
                     history={this.props.history}
                     getUser={this.getTheUser}
                   />
                 );
-              } else {
-                return <Redirect to="/home"></Redirect>;
               }
             }}
           />
@@ -70,6 +71,17 @@ class App extends Component {
                 return <Redirect to="/home"></Redirect>;
               } else {
                 return <Login getUser={this.getTheUser} />;
+              }
+            }}
+          ></Route>
+          <Route
+            exact
+            path="/how-to"
+            render={() => {
+              if (this.state.loggedInUser) {
+                return <HowTo />;
+              } else {
+                return <Redirect to="/login" />;
               }
             }}
           ></Route>

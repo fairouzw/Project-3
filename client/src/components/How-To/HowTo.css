@@ -1,0 +1,24 @@
+
+ol {
+  text-align: left;
+}
+
+.instruction-box.container{
+  padding-top: 2vh;
+  padding-bottom: 0.5vh;
+  font-family: "Fira Sans Medium", sans-serif;
+  padding-left: 70px;
+  padding-right: 70px;
+
+ 
+}
+
+.heading-box {
+  padding-top: 1vh;
+  padding-bottom: 2vh;
+}
+
+h5 {
+  color: rgb(25, 93, 140);
+}
+

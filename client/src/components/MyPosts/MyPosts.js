@@ -3,6 +3,7 @@ import axios from "axios";
 import "../../App.css";
 import UpdatePost from "../Posts/UpdatePost";
 import Footer from "../Footer/Footer";
+import AlertConfirm from "../How-To/AlertConfirm";
 
 import {
   CardTitle,
@@ -61,6 +62,7 @@ class MyPosts extends Component {
   render() {
     return (
       <div className="main-content" ref="mainContent">
+         { !this.props.getUser.confirmed ? <AlertConfirm/> : null} 
         {/* <UserHeader userName={this.state.username} /> */}
         <div
           className="header  pb-8 pt-5 pt-md-8"

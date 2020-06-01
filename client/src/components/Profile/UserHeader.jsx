@@ -16,7 +16,7 @@ class UserHeader extends React.Component {
               require("../Home/icons/christian-l-dpWdMEUcKZY-unsplash.jpg") +
               ")",
             backgroundSize: "cover",
-            backgroundPosition: "center top"
+            backgroundPosition: "center top",
           }}
         >
           {/* Mask */}

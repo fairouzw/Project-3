@@ -13,6 +13,7 @@ import user from '../../assets/img/icons/common/User.svg';
 import home from '../../assets/img/icons/common/Home.svg';
 import messages from '../../assets/img/icons/common/Messages.svg';
 import "./Home.css"
+import AlertConfirm from "../How-To/AlertConfirm";
 
 import {
   Card,
@@ -92,6 +93,7 @@ class Home extends Component {
   render() {
     return (
       <div className="main-content" ref="mainContent">
+         { !this.props.getUser.confirmed ? <AlertConfirm/> : null} 
         {/* <Header /> */}
         <div className="header  pb-8 pt-5 pt-md-8"
           style={{

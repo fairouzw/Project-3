@@ -3,11 +3,13 @@ import Footer from "../Footer/Footer";
 import "./HowTo.css";
 import BoxesSldies from "./BoxesSlides";
 import { Card, CardHeader, CardBody, Container, Row, Col } from "reactstrap";
+import AlertConfirm from "./AlertConfirm";
 
 class HowTo extends Component {
   render() {
     return (
-      <div className="main-content" ref="mainContent">
+      <div style={{paddingTop: "0px"}} className="main-content" ref="mainContent">
+      { !this.props.getUser.confirmed ? <AlertConfirm/> : null} 
         <div
           className="header  pb-8 pt-5 pt-md-8"
           style={{
@@ -26,6 +28,7 @@ class HowTo extends Component {
               <Card className="shadow">
                 <CardHeader className="border-0">
                   <h3 className="mb-0">How it Works</h3>
+   
                 </CardHeader>
                 <CardBody>
                   <Container className="instruction-box">
@@ -55,7 +58,7 @@ class HowTo extends Component {
                             <li>select on the pins on the map to view boxes</li>
                           </ul>
                         </li>
-                        <li>The posts are live for 24hours - so be quick!</li>
+                        <li>The posts are live for 24 hours - so be quick!</li>
                         <li>
                           If you have managed to find a box - leave a comment in
                           the post, notifying the community of the things you’ve

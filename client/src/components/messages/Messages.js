@@ -5,6 +5,7 @@ import MessageList from "./MessageList";
 import MessageOutList from "./MessageOutList";
 import Footer from "../Footer/Footer";
 import { Card, CardHeader, Container, Row } from "reactstrap";
+import AlertConfirm from "../How-To/AlertConfirm";
 class Messages extends Component {
   constructor() {
     super();
@@ -62,6 +63,7 @@ class Messages extends Component {
   render() {
     return (
       <div className="main-content" ref="mainContent">
+         { !this.props.getUser.confirmed ? <AlertConfirm/> : null} 
         <div
           className="header  pb-8 pt-5 pt-md-8"
           style={{

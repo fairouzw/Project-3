@@ -79,7 +79,9 @@ class App extends Component {
             path="/how-to"
             render={() => {
               if (this.state.loggedInUser) {
-                return <HowTo />;
+                return <HowTo 
+                getUser={this.getTheUser}
+                />;
               } else {
                 return <Redirect to="/login" />;
               }

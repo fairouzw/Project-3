@@ -10,6 +10,7 @@ import {
   Container,
   Row
 } from "reactstrap";
+import AlertConfirm from "../How-To/AlertConfirm";
 
 class MyFavourites extends Component {
   constructor() {
@@ -33,6 +34,7 @@ class MyFavourites extends Component {
   render() {
     return (
       <div className="main-content" ref="mainContent" >
+         { !this.props.getUser.confirmed ? <AlertConfirm/> : null} 
         {/* <Header /> */}
         <div
           className="header  pb-8 pt-5 pt-md-8"

@@ -16,11 +16,14 @@ width: 10rem;
 }
 
   @media only screen 
+  /*
   and (min-device-width: 320px) 
   and (max-device-width: 480px)
   and (-webkit-min-device-pixel-ratio: 2) {
+    */
+    and (max-width: 720px){
 #_logo-auth img{
-width: 10rem;
+width: 8rem;
 }
 
 #_logo-desktop-nav img{

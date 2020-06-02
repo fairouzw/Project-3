@@ -40,7 +40,7 @@ class Signup extends Component {
 
   sendsEmailConfirmation = () => {
     return axios
-       .post("/email", {email: this.state.email})
+      .post("/email", { email: this.state.email })
   }
 
   handleChange = event => {

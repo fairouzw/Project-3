@@ -35,28 +35,26 @@
 
 #_error-message{
   color: var(--error-message);
-  font-size: 1.5rem;
-  min-width: 30vw;
-  max-width: 30vw;
+  font-size: 1rem;
 }
 
 #_auth-form{
   height: auto;
-  width: 75%;
   display: flex;
   justify-content: center;
   margin: auto;
+  padding: 0 1rem;
 }
 
 #_submit-button{
-  width: 100%;
   border-radius: 2rem;
   color: var(--magpie-black);
   background-color: var(--spotbox-orange);
   box-shadow: var(--shadow);
   border: 0;
-  margin: 0.5rem auto;
+  margin: 0.1rem auto;
   transition: box-shadow 500ms;
+  padding: 0.5rem 5rem;
 }
 
 #_submit-button:hover{
@@ -96,9 +94,12 @@ box-shadow: 0 0 0.1rem var(--spotbox-orange);
 }
 
   @media only screen 
+  /*
   and (min-device-width: 320px) 
   and (max-device-width: 480px)
   and (-webkit-min-device-pixel-ratio: 2) {
+    */
+    and (max-width: 720px){
 #_left{
   display: none;
 }

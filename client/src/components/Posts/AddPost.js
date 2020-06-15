@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import axios from "axios";
 import { Button, Progress } from "reactstrap";
-import { Redirect } from "react-router-dom";
+
 
 
 function getLocation() {

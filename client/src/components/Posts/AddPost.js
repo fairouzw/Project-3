@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import axios from "axios";
-import { Button } from "reactstrap";
+import { Button, Progress } from "reactstrap";
+import { Redirect } from "react-router-dom";
+
 
 function getLocation() {
   return new Promise((resolve, reject) => {
@@ -17,7 +19,9 @@ class AddPost extends Component {
       imgUrl: "",
       description: "",
       postname: "",
+      confirming: 1,
     };
+
   }
 
   handleFileUpload = (target) => {
@@ -41,9 +45,11 @@ class AddPost extends Component {
   handleFormSubmit = (event) => {
     event.preventDefault();
     console.log("i clicked");
+    this.setState({ confirming: 2 });
     const { description, postname } = this.state;
 
     Promise.all([
+
       this.handleFileUpload(event.target.getElementsByClassName("imgUrl")[0]),
       getLocation(),
     ])
@@ -61,18 +67,17 @@ class AddPost extends Component {
               address: result.data.features[0].place_name,
               tags: imgUploadResult.tags,
             });
-          })
-          .then(() => {
+          }).then(() => {
+            this.setState({ confirming: 3 })
+          }).then(() => {
             this.props.getAllPosts();
             this.props.closePopup(event);
-            this.setState({
-              imgUrl: "",
-              description: "",
-              postname: "",
-            });
+
           });
       })
-      .catch((error) => console.log(error));
+
+
+      .catch((error) => console.log(error))
   };
 
   handleChange = (event) => {
@@ -89,51 +94,65 @@ class AddPost extends Component {
   render() {
     return (
       <div className="container">
+
+
         <div className="row text-center" style={{ justifyContent: "center" }}>
           <form onSubmit={this.handleFormSubmit}>
-            <label htmlFor="inputEmail">Title/Caption</label>
-            <div className="modal-title">
-              <input
-                type="text"
-                id="inputEmail"
-                className="form-control"
-                placeholder="Caption"
-                name="postname"
-                value={this.state.postname}
-                onChange={this.handleChange}
-                required
-                // autoFocus
-              />
-            </div>
-            <br />
-            <label htmlFor="inputEmail">Upload an image</label>
-            <div className="modal-title">
-              <input type="file" className="imgUrl" primary required />
-            </div>
-            <br />
-            <label htmlFor="inputEmail">Description</label>
-            <div className="modal-title">
-              <input
-                type="textarea"
-                rows="3"
-                id="exampleFormControlTextarea1"
-                className="form-control"
-                placeholder="Write something"
-                name="description"
-                value={this.state.description}
-                onChange={this.handleChange}
-                // required
-                // autoFocus
-              />
-            </div>
-            <br />
-            <div style={{ justifyContent: "center", marginBottom: "20px" }}>
-              <Button id="btn-comment" type="submit">
-                Add Box
+            <div className='confirm'>
+              {this.state.confirming === 1 ? (<div>
+                <label htmlFor="inputEmail">Title/Caption</label>
+                <div className="modal-title">
+                  <input
+                    type="text"
+                    id="inputEmail"
+                    className="form-control"
+                    placeholder="Caption"
+                    name="postname"
+                    value={this.state.postname}
+                    onChange={this.handleChange}
+                    required
+                  // autoFocus
+                  />
+                </div>
+                <br />
+                <label htmlFor="inputEmail">Upload an image</label>
+                <div className="modal-title">
+                  <input type="file" className="imgUrl" primary required />
+                </div>
+                <br />
+                <label htmlFor="inputEmail">Description</label>
+                <div className="modal-title">
+                  <input
+                    type="textarea"
+                    rows="3"
+                    id="exampleFormControlTextarea1"
+                    className="form-control"
+                    placeholder="Write something"
+                    name="description"
+                    value={this.state.description}
+                    onChange={this.handleChange}
+                  // required
+                  // autoFocus
+                  /> </div>
+
+
+                <br />
+                <div style={{ justifyContent: "center", marginBottom: "20px" }}>
+                  <Button id="btn-comment" type="submit">
+                    Add Box
               </Button>
+                </div></div>
+
+              ) :
+                (<div>
+                  <Progress animated color="warning" value="100"> Your box is almost there!  </Progress>
+                </div>)
+              }
             </div>
           </form>
         </div>
+
+
       </div>
     );
   }

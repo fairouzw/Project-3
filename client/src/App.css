@@ -19,7 +19,6 @@
 
 .App-link {
   color: #fe9d49;
-
 }
 
 .location-icon {
@@ -261,6 +260,9 @@ i {
   width: 100%;
   height: 130px;
 }
+.progress-padding {
+  padding: 10px;
+}
 
 /* SIGN-UP SAMPLE STARTS */
 
@@ -402,4 +404,3 @@ i {
 .card-avatar-image:hover {
   transform: translate(-50%, -33%);
 }
-

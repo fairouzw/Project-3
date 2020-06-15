@@ -1,3 +1,7 @@
+* {
+  font-family: "Fira Sans Medium", sans-serif;
+}
+
 @font-face {
   font-family: 'Cookies';
   src: local('Cookies'), url(./fonts/Cookies.ttf) format('truetype');

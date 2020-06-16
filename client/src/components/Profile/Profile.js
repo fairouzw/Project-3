@@ -1,9 +1,11 @@
 import React, { Component } from "react";
+import { withRouter } from "react-router-dom";
 import axios from "axios";
 import "../../App.css";
 import Avatar from "react-avatar";
 import Footer from "../Footer/Footer";
 import AlertConfirm from "../How-To/AlertConfirm";
+import { Modal } from "reactstrap";
 
 import {
   Button,
@@ -21,6 +23,7 @@ import {
 
 import UserHeader from "./UserHeader.jsx";
 
+
 class Profile extends Component {
   constructor(props) {
     super(props);
@@ -34,6 +37,7 @@ class Profile extends Component {
       likesNumber: 0,
       hasLikedList: [],
       counter: 0,
+      createModal: false,
     };
   }
 
@@ -68,6 +72,7 @@ class Profile extends Component {
       })
       .catch((error) => console.log(error));
   };
+
 
   handleChange = (e) => {
     const { name, value } = e.target;
@@ -111,6 +116,36 @@ class Profile extends Component {
     });
   };
 
+  toggleModal = () => {
+    this.setState({
+      createModal: !this.state.createModal,
+    });
+  };
+
+  handleDelete = (event) => {
+    event.preventDefault();
+
+    axios
+      .put(`/api/profiles/${this.props.userData._id}`, {
+        username: "User deleted",
+        email: "",
+        city: "",
+        country: "",
+        password: ""
+
+      })
+      .then(() => {
+        axios
+          .post("/api/logout")
+          .then(() => {
+            this.props.getUser(null);
+            this.props.history.push("/");
+            this.toggleModal(event);
+          })
+          .catch(error => console.log(error));
+      })
+      .catch((error) => console.log(error));
+  }
   // deleteAccount = () => {
   //   axios.delete(`/api/profiles/${this.props.userData._id}/delete`)
   //     .then(() => {
@@ -125,7 +160,7 @@ class Profile extends Component {
   render() {
     return (
       <div className="main-content" ref="mainContent">
-         { !this.props.getUser.confirmed ? <AlertConfirm/> : null} 
+        {!this.props.getUser.confirmed ? <AlertConfirm /> : null}
         <UserHeader userName={this.state.username} />
         <Container className="mt--7" fluid>
           <Row>
@@ -178,17 +213,59 @@ class Profile extends Component {
                       <i className="ni location_pin mr-2" />
                       {this.state.city} {this.state.country}
                     </div>
-                    {/* <div className="h5 mt-4">
-                      <i className="ni business_briefcase-24 mr-2" />
-                      Test
-                  </div> */}
+
 
                     <hr className="my-4" />
 
                     {/* <button type="submit" className="btn btn-danger" onClick={() => this.deleteAccount()}>Delete Account</button> */}
-                    {/* <p>
-                      Do we really nee some text here? We don't want user-description. Focus is on the post...
-                  </p> */}
+                    <div className="text-center">
+                      <p></p>
+                      <Button
+                        id="btn-delete"
+                        className="danger text-uppercase font-weight-bold "
+                        type="submit"
+                        color="danger"
+                        onClick={this.toggleModal}
+                      >
+                        Delete Account
+        </Button>
+
+                      {/* Modal */}
+                      <Modal
+                        className="modal-dialog-centered"
+                        isOpen={this.state.createModal}
+                        toggle={this.toggleModal}
+                      >
+                        <div className="modal-header" >
+                          <h5 className="modal-title" id="exampleModalLabel">
+                            Are you sure you want to delete your account? <br />
+
+                          </h5>
+                        </div>
+                        <div className="modal-header">
+                          <Button
+
+                            id="btn-delete"
+                            className="danger text-uppercase font-weight-bold "
+                            type="submit"
+                            color="danger"
+                            onClick={this.handleDelete}
+                          >
+                            Yes, please.
+        </Button>
+                          <Button
+
+                            className="warning text-uppercase font-weight-bold "
+                            type="submit"
+                            color="warning"
+                            onClick={this.toggleModal}
+                          >
+                            No, wait!
+        </Button>
+                        </div>
+                      </Modal>
+
+                    </div>
                   </div>
                 </CardBody>
               </Card>
@@ -293,6 +370,7 @@ class Profile extends Component {
                           Save
                         </Button>
                       </div>
+
                     </div>
                     <hr className="my-4" />
                     {/* Address */}
@@ -317,6 +395,7 @@ class Profile extends Component {
               </Card>
             </Col>
           </Row>
+
         </Container>
         {/* <footer>Photo by Anastasia Dulgier</footer> */}
         <Footer> </Footer>
@@ -324,4 +403,4 @@ class Profile extends Component {
     );
   }
 }
-export default Profile;
+export default withRouter(Profile);

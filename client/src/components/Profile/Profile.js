@@ -38,7 +38,6 @@ class Profile extends Component {
       hasLikedList: [],
       counter: 0,
       createDeleteModal: false,
-      // createUpdateModal: false,
       updated: false,
     };
   }
@@ -68,7 +67,7 @@ class Profile extends Component {
   componentDidMount = () => {
     this.getAllUserPosts();
     this.getAllPosts();
-    // this.getTheUser();
+
   };
 
 

@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { withRouter } from "react-router-dom";
+import { withRouter, Redirect } from "react-router-dom";
 import axios from "axios";
 import "../../App.css";
 import Avatar from "react-avatar";
@@ -38,6 +38,7 @@ class Profile extends Component {
       hasLikedList: [],
       counter: 0,
       createModal: false,
+      updated: false,
     };
   }
 
@@ -50,10 +51,26 @@ class Profile extends Component {
     });
   };
 
+  // getTheUser = () => {
+  //   axios
+  //     .get(`/api/profiles/${this.props.userData._id}`).then(res => {
+  //       this.setState({
+  //         username: res.data.username,
+  //       });
+
+  //     })
+  //     .catch(err => {
+  //       console.log("backend not running or whatever !");
+  //     });
+  // };
+
   componentDidMount = () => {
     this.getAllUserPosts();
     this.getAllPosts();
+    // this.getTheUser();
   };
+
+
 
   handleFormSubmit = (event) => {
     event.preventDefault();
@@ -65,11 +82,10 @@ class Profile extends Component {
         email,
         city,
         country,
+      }).then(() => {
+        window.location.reload();
       })
-      .then(() => {
-        // this.props.getUser();
-        this.props.history.push("/profile");
-      })
+
       .catch((error) => console.log(error));
   };
 
@@ -159,9 +175,11 @@ class Profile extends Component {
 
   render() {
     return (
+
+
       <div className="main-content" ref="mainContent">
         {!this.props.getUser.confirmed ? <AlertConfirm /> : null}
-        <UserHeader userName={this.state.username} />
+        <UserHeader userName={this.props.userData.username} />
         <Container className="mt--7" fluid>
           <Row>
             <Col className="order-xl-2 mb-5 mb-xl-0" xl="4">
@@ -174,7 +192,7 @@ class Profile extends Component {
                         fgColor="#195d8c"
                         size="175"
                         className="rounded-circle"
-                        name={this.state.username}
+                        name={this.props.userData.username}
                       />
                     </div>
                   </Col>
@@ -208,10 +226,10 @@ class Profile extends Component {
                     </div>
                   </Row>
                   <div className="text-center">
-                    <h3>{this.state.username}</h3>
+                    <h3>{this.props.userData.username}</h3>
                     <div className="h5 font-weight-300">
                       <i className="ni location_pin mr-2" />
-                      {this.state.city} {this.state.country}
+                      {this.props.userData.city} {this.props.userData.country}
                     </div>
 
 
@@ -230,7 +248,7 @@ class Profile extends Component {
                         Delete Account
         </Button>
 
-                      {/* Modal */}
+
                       <Modal
                         className="modal-dialog-centered"
                         isOpen={this.state.createModal}
@@ -400,7 +418,10 @@ class Profile extends Component {
         {/* <footer>Photo by Anastasia Dulgier</footer> */}
         <Footer> </Footer>
       </div>
+
     );
   }
 }
+
 export default withRouter(Profile);
+

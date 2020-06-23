@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { withRouter, Redirect } from "react-router-dom";
+import { withRouter } from "react-router-dom";
 import axios from "axios";
 import "../../App.css";
 import Avatar from "react-avatar";
@@ -37,7 +37,7 @@ class Profile extends Component {
       likesNumber: 0,
       hasLikedList: [],
       counter: 0,
-      createModal: false,
+      createDeleteModal: false,
       updated: false,
     };
   }
@@ -67,10 +67,15 @@ class Profile extends Component {
   componentDidMount = () => {
     this.getAllUserPosts();
     this.getAllPosts();
-    // this.getTheUser();
+
   };
 
 
+  // toggleUpdateModal = () => {
+  //   this.setState({
+  //     createUpdateModal: !this.state.createUpdateModal,
+  //   });
+  // };
 
   handleFormSubmit = (event) => {
     event.preventDefault();
@@ -83,6 +88,7 @@ class Profile extends Component {
         city,
         country,
       }).then(() => {
+        alert("Yay! Your data just has been updated successfully.");
         window.location.reload();
       })
 
@@ -132,11 +138,12 @@ class Profile extends Component {
     });
   };
 
-  toggleModal = () => {
+  toggleDeleteModal = () => {
     this.setState({
-      createModal: !this.state.createModal,
+      createDeleteModal: !this.state.createDeleteModal,
     });
   };
+
 
   handleDelete = (event) => {
     event.preventDefault();
@@ -156,7 +163,7 @@ class Profile extends Component {
           .then(() => {
             this.props.getUser(null);
             this.props.history.push("/");
-            this.toggleModal(event);
+            this.toggleDeleteModal(event);
           })
           .catch(error => console.log(error));
       })
@@ -243,7 +250,7 @@ class Profile extends Component {
                         className="danger text-uppercase font-weight-bold "
                         type="submit"
                         color="danger"
-                        onClick={this.toggleModal}
+                        onClick={this.toggleDeleteModal}
                       >
                         Delete Account
         </Button>
@@ -251,8 +258,8 @@ class Profile extends Component {
 
                       <Modal
                         className="modal-dialog-centered"
-                        isOpen={this.state.createModal}
-                        toggle={this.toggleModal}
+                        isOpen={this.state.createDeleteModal}
+                        toggle={this.toggleDeleteModal}
                       >
                         <div className="modal-header" >
                           <h5 className="modal-title" id="exampleModalLabel">
@@ -276,7 +283,7 @@ class Profile extends Component {
                             className="warning text-uppercase font-weight-bold "
                             type="submit"
                             color="warning"
-                            onClick={this.toggleModal}
+                            onClick={this.toggleDeleteModal}
                           >
                             No, wait!
         </Button>
@@ -383,11 +390,48 @@ class Profile extends Component {
                         <Button
                           id="btn-submit"
                           className="shadow btn-login text-uppercase font-weight-bold "
+                          onClick={this.toggleUpdateModal}
                           type="submit"
+
                         >
                           Save
                         </Button>
+                        {/* <Modal
+                          className="modal-dialog-centered"
+                          isOpen={this.state.createUpdateModal}
+                          toggle={this.toggleUpdateModal}
+                        >
+                          <div className="modal-header" >
+                            <h5 className="modal-title" id="exampleModalLabel">
+                              Are you sure you want to change your data? <br />
+
+                            </h5>
+                          </div>
+                          <div className="modal-header">
+                            <Button
+
+                              id="btn-delete"
+                              className="danger text-uppercase font-weight-bold "
+                              type="submit"
+                              color="danger"
+                              onSubmit={this.handleFormSubmit}
+                            >
+                              Yes, please.
+        </Button>
+                            <Button
+
+                              className="warning text-uppercase font-weight-bold "
+                              type="submit"
+                              color="warning"
+                              onClick={this.toggleUpdateModal}
+                            >
+                              No, wait!
+        </Button>
+                          </div>
+                        </Modal> */}
+
                       </div>
+
 
                     </div>
                     <hr className="my-4" />

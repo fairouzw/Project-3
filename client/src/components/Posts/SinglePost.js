@@ -16,12 +16,31 @@ import {
 } from "reactstrap";
 
 class SinglePost extends Component {
+  intervalID
   constructor(props) {
     super(props);
     this.state = {
       post: this.props.post,
-      comments: this.props.post.comments
+      comments: this.props.post.comments,
+      time: []
     };
+  }
+
+  getTime = () => {
+    var timeAgo = moment(this.props.post.createdAt).fromNow();
+    this.setState({
+      time: timeAgo
+
+    });
+    this.intervalID = setTimeout(this.getTime.bind(this), 5000);
+  }
+
+  componentDidMount() {
+    this.getTime();
+  }
+
+  componentWillUnmount() {
+    clearTimeout(this.intervalID);
   }
 
   addCommentHandler = newComment => {
@@ -54,7 +73,7 @@ class SinglePost extends Component {
   };
 
   render() {
-    var timeAgo = moment(this.props.post.createdAt).fromNow();
+    // var timeAgo = moment(this.props.post.createdAt).fromNow();
     return (
       <Card>
         <CardHeader>
@@ -87,8 +106,8 @@ class SinglePost extends Component {
               <div> <p style={{ textAlign: "center" }}>
                 {" "}
                 Posted{" "}
-                <span className="date timeago" title={timeAgo}>
-                  {timeAgo}
+                <span className="date timeago" title={this.state.time}>
+                  {this.state.time}
                 </span>{" "}
               </p></div>
               <div style={{ textAlign: "center" }}>

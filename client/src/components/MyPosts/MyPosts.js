@@ -62,7 +62,7 @@ class MyPosts extends Component {
   render() {
     return (
       <div className="main-content" ref="mainContent">
-         { !this.props.getUser.confirmed ? <AlertConfirm/> : null} 
+        {!this.props.getUser.confirmed ? <AlertConfirm /> : null}
         {/* <UserHeader userName={this.state.username} /> */}
         <div
           className="header  pb-8 pt-5 pt-md-8"
@@ -89,46 +89,46 @@ class MyPosts extends Component {
                     {this.state.listOfPosts.length === 0 ? (
                       <h4>You have no posts yet.</h4>
                     ) : (
-                      <Row style={{ justifyContent: "center" }}>
-                        {this.state.listOfPosts.map((post) => {
-                          return (
-                            <Card>
-                              <div className="one-post" key={post._id}>
-                                <CardImg
-                                  className="post-pic"
-                                  src={post.imgUrl}
-                                  alt=""
-                                  style={{
-                                    height: "250px",
-                                    objectFit: "contain",
-                                  }}
-                                />
-                                <CardBody style={{ textAlign: "center" }}>
-                                  <CardTitle key={post._id}>
-                                    {post.postname}
-                                  </CardTitle>
-                                  <CardText>
-                                    <div>{post.description}</div>
-                                    <UpdatePost
-                                      posts={this.state.listOfPosts}
-                                      id={post._id}
-                                      postname={post.postname}
-                                      description={post.description}
-                                      likes={post.likes}
-                                      imgUrl={post.imgUrl}
-                                      getAllUserPosts={this.getAllUserPosts}
-                                    >
-                                      {" "}
+                        <Row style={{ justifyContent: "center" }}>
+                          {this.state.listOfPosts.map((post) => {
+                            return (
+                              <Card>
+                                <div className="one-post" key={post._id}>
+                                  <CardImg
+                                    className="post-pic"
+                                    src={post.imgUrl}
+                                    alt=""
+                                    style={{
+                                      height: "250px",
+                                      objectFit: "contain",
+                                    }}
+                                  />
+                                  <CardBody style={{ textAlign: "center" }}>
+                                    <CardTitle key={post._id}>
+                                      {post.postname}
+                                    </CardTitle>
+                                    <CardText>
+                                      <div>{post.description}</div>
+                                      <UpdatePost
+                                        posts={this.state.listOfPosts}
+                                        id={post._id}
+                                        postname={post.postname}
+                                        description={post.description}
+                                        likes={post.likes}
+                                        imgUrl={post.imgUrl}
+                                        getAllUserPosts={this.getAllUserPosts}
+                                      >
+                                        {" "}
                                       Test
                                     </UpdatePost>
-                                  </CardText>
-                                </CardBody>
-                              </div>
-                            </Card>
-                          );
-                        })}
-                      </Row>
-                    )}
+                                    </CardText>
+                                  </CardBody>
+                                </div>
+                              </Card>
+                            );
+                          })}
+                        </Row>
+                      )}
                   </div>
                 </Card>
                 <CardFooter className="py-4"></CardFooter>

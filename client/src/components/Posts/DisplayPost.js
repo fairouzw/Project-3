@@ -13,8 +13,35 @@ import {
 import moment from "moment";
 
 class DisplayPost extends Component {
-  render() {
+  intervalID
+  constructor(props) {
+    super(props);
+    this.state = {
+
+      time: []
+    };
+  }
+
+  getTime = () => {
     var timeAgo = moment(this.props.selectedPost.createdAt).fromNow();
+    this.setState({
+      time: timeAgo
+
+    });
+    this.intervalID = setTimeout(this.getTime.bind(this), 5000);
+  }
+
+  componentDidMount() {
+    this.getTime();
+  }
+
+  componentWillUnmount() {
+    clearTimeout(this.intervalID);
+  }
+
+
+  render() {
+    // var timeAgo = moment(this.props.selectedPost.createdAt).fromNow();
     return (
       <Card>
         <CardHeader>
@@ -44,13 +71,13 @@ class DisplayPost extends Component {
             <CardTitle>{this.props.selectedPost.postname}</CardTitle>
             <CardText>
               {this.props.selectedPost.address}
-              <p style={{ textAlign: "center" }}>
+              <span style={{ textAlign: "center" }}>
                 {" "}
                 Posted{" "}
-                <span className="date timeago" title={timeAgo}>
-                  {timeAgo}
+                <span className="date timeago" title={this.state.time}>
+                  {this.state.time}
                 </span>{" "}
-              </p>
+              </span>
             </CardText>
             {/* Comments map here */}
           </CardBody>
@@ -58,7 +85,7 @@ class DisplayPost extends Component {
           <CardFooter style={{ textAlign: "center" }}>
             {this.props.selectedPost.tags.map((tag) => {
               return (
-                <Badge id="btn-badge" pill>
+                <Badge id="btn-badge" pill key={tag}>
                   {tag}
                 </Badge>
               );

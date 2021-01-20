@@ -6,7 +6,6 @@ var path = require("path");
 var cookieParser = require("cookie-parser");
 var logger = require("morgan");
 const mongoose = require("mongoose");
-const cors = require("cors");
 
 var indexRouter = require("./routes/index");
 const authRoutes = require("./routes/auth-routes");
@@ -17,7 +16,7 @@ const messRoutes = require("./routes/message-routes");
 
 var app = express();
 
-const emailController = require('./email/email.controller');
+const emailController = require("./email/email.controller");
 const session = require("express-session");
 const passport = require("passport");
 
@@ -27,25 +26,24 @@ require("./configs/passport");
 
 mongoose
   .connect(process.env.MONGODB_URI, {
-    useNewUrlParser: true
+    useNewUrlParser: true,
   })
-  .then(x => {
+  .then((x) => {
     console.log(
       `Connected to Mongo! Database name: "${x.connections[0].name}"`
     );
   })
-  .catch(err => {
+  .catch((err) => {
     console.error("Error connecting to mongo", err);
   });
 
 const MongoStore = require("connect-mongo")(session);
 app.use(
   session({
-    secret: "doesn't matter in our case", // but it's required
+    secret: "doesn't matter in our case",
     resave: false,
-    saveUninitialized: false, // don't create cookie for non-logged-in user
-    // MongoStore makes sure the user stays logged in also when the server restarts
-    store: new MongoStore({ mongooseConnection: mongoose.connection })
+    saveUninitialized: false,
+    store: new MongoStore({ mongooseConnection: mongoose.connection }),
   })
 );
 
@@ -55,20 +53,15 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "/client/build")));
 
-// This is the endpoint that is hit from the onSubmit handler in Landing.js
-// The callback is shelled off to a controller file to keep this file light.
-app.post('/email', emailController.collectEmail)
-
-// Same as above, but this is the endpoint pinged in the componentDidMount of 
-// Confirm.js on the client.
-app.get('/email/confirm/:id', emailController.confirmEmail)
+app.post("/email", emailController.collectEmail);
+app.get("/email/confirm/:id", emailController.confirmEmail);
 
 // session section
 app.use(
   session({
     secret: "some secret goes here",
     resave: true,
-    saveUninitialized: true
+    saveUninitialized: true,
   })
 );
 
@@ -95,11 +88,13 @@ app.use(function (err, req, res, next) {
   res.locals.message = err.message;
   res.locals.error = req.app.get("env") === "development" ? err : {};
 
-  console.error(err)
+  console.error(err);
 
   // render the error page
   res.status(err.status || 500);
-  res.json("error with message " + err.message + "(check your server console!)");
+  res.json(
+    "error with message " + err.message + "(check your server console!)"
+  );
 });
 
 app.use((req, res, next) => {

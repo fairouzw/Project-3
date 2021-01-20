@@ -8,13 +8,12 @@ const userSchema = new Schema(
     password: String,
     city: String,
     country: String,
-    // posts: [{ type: Schema.Types.ObjectId, ref: "post" }],
     confirmed: {
       type: Boolean,
       default: false,
     },
     follows: {
-      type: String, // try to implement following category-tags
+      type: String,
       enum: ["food", "electronics", "furniture", "clothes", "dishes"],
     },
   },
@@ -25,4 +24,3 @@ const userSchema = new Schema(
 const User = mongoose.model("User", userSchema);
 
 module.exports = User;
-/* toJSon - use this to conceal password if testing on Post man */

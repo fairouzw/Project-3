@@ -1,10 +1,11 @@
 import React, { Component } from "react";
-import ReactMapGL, { Marker, Popup, GeolocateControl, NavigationControl } from "react-map-gl";
-// import Loader from 'react-loader-spinner'
-// import "react-loader-spinner/dist/loader/css/react-spinner-loader.css"
-
+import ReactMapGL, {
+  Marker,
+  Popup,
+  GeolocateControl,
+  NavigationControl,
+} from "react-map-gl";
 class Map extends Component {
-
   state = {
     viewport: {
       maxWidth: "600px",
@@ -12,30 +13,24 @@ class Map extends Component {
       latitude: 52.5035239,
       longitude: 13.407602899999999,
       zoom: 11,
-      borderRadius: "20px"
+      borderRadius: "20px",
     },
     userLocation: {},
-    isLoading: true
+    isLoading: true,
   };
 
-  customizeMap = viewport => {
+  customizeMap = (viewport) => {
     this.setState({
       viewport: {
         ...viewport,
         width: "100%",
-      }
+      },
     });
   };
 
   closePopup = () => {
-    this.props.setSelectedPost(null)
+    this.props.setSelectedPost(null);
   };
-
-  // componentDidMount = () => {
-  //   this.setState({
-  //     isLoading: false }
-  //   )
-  // }
 
   render() {
     return (
@@ -45,7 +40,6 @@ class Map extends Component {
           onViewportChange={this.customizeMap}
           mapStyle="mapbox://styles/los-lena/ck42spng80a141cpj240g7vzl"
           mapboxApiAccessToken="pk.eyJ1IjoibG9zLWxlbmEiLCJhIjoiY2szNHllYzI5MTZsOTNubzI1emZ2aHFiaSJ9.v7gsBidhvQm2T5EOb_GcGA"
-
         >
           {this.props.posts.map((post, idx) => {
             return (
@@ -71,7 +65,6 @@ class Map extends Component {
           <GeolocateControl
             positionOption={{ enableHighAccuracy: true }}
             trackUserLocation={true}
-
           />
           <NavigationControl />
           {this.props.selectedPost !== null ? (
@@ -81,13 +74,16 @@ class Map extends Component {
               onClose={this.closePopup}
             >
               <div>
-                <img className="location-icon" src={this.props.selectedPost.imgUrl} alt="" />
+                <img
+                  className="location-icon"
+                  src={this.props.selectedPost.imgUrl}
+                  alt=""
+                />
                 <p>{this.props.selectedPost.postname}</p>
               </div>
             </Popup>
           ) : null}
         </ReactMapGL>
-
       </div>
     );
   }

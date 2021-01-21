@@ -6,13 +6,9 @@ import PostList from "./PostList";
 import SearchPost from "./SearchPost";
 import DisplayPost from "../Posts/DisplayPost";
 import Loader from "react-loader-spinner";
-import Footer from '../Footer/Footer'
+import Footer from "../Footer/Footer";
 import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
-import add from '../../assets/img/icons/common/Add.svg';
-import user from '../../assets/img/icons/common/User.svg';
-import home from '../../assets/img/icons/common/Home.svg';
-import messages from '../../assets/img/icons/common/Messages.svg';
-import "./Home.css"
+import "./Home.css";
 import AlertConfirm from "../How-To/AlertConfirm";
 
 import {
@@ -22,7 +18,7 @@ import {
   Container,
   Row,
   Col,
-  CardFooter
+  CardFooter,
 } from "reactstrap";
 
 class Home extends Component {
@@ -32,17 +28,15 @@ class Home extends Component {
       listOfPosts: [],
       filteredListOfPosts: [],
       showPopup: false,
-      selectedPost: null
+      selectedPost: null,
     };
   }
 
   getAllPosts = () => {
-    axios.get(`/api/posts`).then(res => {
-      // console.log(res.data);
-      /* pagination ?limit=50 */
+    axios.get(`/api/posts`).then((res) => {
       this.setState({
         listOfPosts: res.data,
-        filteredListOfPosts: res.data
+        filteredListOfPosts: res.data,
       });
     });
   };
@@ -50,16 +44,15 @@ class Home extends Component {
   componentDidMount = () => {
     this.getAllPosts();
     this.setState({
-      isLoading: false
+      isLoading: false,
     });
   };
 
-  searchResultPost = search => {
+  searchResultPost = (search) => {
     const results = [];
     const postList = [...this.state.listOfPosts];
-    // console.log(this.state.listOfPosts);
 
-    postList.forEach(p => {
+    postList.forEach((p) => {
       for (let tag of p.tags) {
         if (tag.toLowerCase().includes(search.toLowerCase())) {
           return results.push(p);
@@ -77,16 +70,16 @@ class Home extends Component {
     this.setState({ filteredListOfPosts: results });
   };
 
-  togglePopup = event => {
+  togglePopup = (event) => {
     event.preventDefault();
     this.setState({
-      showPopup: !this.state.showPopup
+      showPopup: !this.state.showPopup,
     });
   };
 
-  setSelectedPost = post => {
+  setSelectedPost = (post) => {
     this.setState({
-      selectedPost: post
+      selectedPost: post,
     });
   };
 
@@ -95,13 +88,18 @@ class Home extends Component {
       <div className="main-content" ref="mainContent">
         {!this.props.getUser.confirmed ? <AlertConfirm /> : null}
         {/* <Header /> */}
-        <div className="header  pb-8 pt-5 pt-md-8"
+        <div
+          className="header  pb-8 pt-5 pt-md-8"
           style={{
             minHeight: "400px",
-            backgroundImage: "url(" + require("../../assets/img/berlin-pics/anastasia-dulgier-KX8xURPbkcM-unsplash_copy.jpg") + ")",
+            backgroundImage:
+              "url(" +
+              require("../../assets/img/berlin-pics/anastasia-dulgier-KX8xURPbkcM-unsplash_copy.jpg") +
+              ")",
             backgroundSize: "cover",
-            backgroundPosition: "center top"
-          }}></div>
+            backgroundPosition: "center top",
+          }}
+        ></div>
         <Container className="mt--7" fluid>
           <Row>
             <Col
@@ -122,12 +120,12 @@ class Home extends Component {
                     timeout={5000}
                   />
                 ) : (
-                    <Map
-                      setSelectedPost={this.setSelectedPost}
-                      selectedPost={this.state.selectedPost}
-                      posts={this.state.filteredListOfPosts}
-                    />
-                  )}
+                  <Map
+                    setSelectedPost={this.setSelectedPost}
+                    selectedPost={this.state.selectedPost}
+                    posts={this.state.filteredListOfPosts}
+                  />
+                )}
               </Card>
             </Col>
             {this.state.selectedPost !== null ? (
@@ -161,12 +159,6 @@ class Home extends Component {
 
         <Footer> </Footer>
         {/* <footer>Photo by Julia Solonina on Unsplash</footer> */}
-
-
-
-
-
-
       </div>
     );
   }
